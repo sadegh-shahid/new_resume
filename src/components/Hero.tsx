@@ -10,7 +10,7 @@ export function Hero({ lang }: { lang: Language }) {
 
   useEffect(() => {
     const img = new Image();
-    img.src = '/assets/images/photo-1618005182384-a83a8bd57fbe.webp';
+    img.src = '/images/photo-1618005182384-a83a8bd57fbe.webp';
     img.onload = () => setImageLoaded(true);
   }, []);
 
@@ -49,7 +49,7 @@ export function Hero({ lang }: { lang: Language }) {
         }
         className="absolute inset-0 z-0 mix-blend-overlay pointer-events-none"
         style={{
-          backgroundImage: 'url("/assets/images/photo-1618005182384-a83a8bd57fbe.webp")',
+          backgroundImage: 'url("/images/photo-1618005182384-a83a8bd57fbe.webp")',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
@@ -114,6 +114,7 @@ export function Hero({ lang }: { lang: Language }) {
           </a>
           <a
             href="/resume.pdf"
+            download="Mohammad_Sadegh_Shahid_Resume.pdf"
             className={`inline-flex items-center justify-center border border-transparent bg-white/5 rounded-full px-8 py-4 ${isEn ? 'text-sm uppercase tracking-widest' : 'text-base tracking-normal font-medium'} hover:bg-white/10 text-white/80 hover:text-white transition-all duration-300 w-full sm:w-auto text-center`}
           >
             {t.ctaSecondary}

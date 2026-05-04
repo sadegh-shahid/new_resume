@@ -71,11 +71,11 @@ export const portfolioData = {
           readMore: "Read More",
           readLess: "Show Less",
           images: [
-            "/assets/images/photo-1498050108023-c5249f4df085.webp",
-            "/assets/images/photo-1555421689-491a97ff2040.webp",
-            "/assets/images/photo-1461749280684-dccba630e2f6.webp",
-            "/assets/images/photo-1555066931-4365d14bab8c.webp",
-            "/assets/images/photo-1633356122544-f134324a6cee.webp"
+            "/images/photo-1498050108023-c5249f4df085.webp",
+            "/images/photo-1555421689-491a97ff2040.webp",
+            "/images/photo-1461749280684-dccba630e2f6.webp",
+            "/images/photo-1555066931-4365d14bab8c.webp",
+            "/images/photo-1633356122544-f134324a6cee.webp"
           ]
         },
         {
@@ -89,8 +89,8 @@ export const portfolioData = {
           readMore: "Read More",
           readLess: "Show Less",
           images: [
-            "/assets/images/photo-1551288049-bebda4e38f71.webp",
-            "/assets/images/photo-1547658719-da2b51169166.webp"
+            "/images/photo-1551288049-bebda4e38f71.webp",
+            "/images/photo-1547658719-da2b51169166.webp"
           ]
         },
         {
@@ -104,8 +104,8 @@ export const portfolioData = {
           readMore: "Read More",
           readLess: "Show Less",
           images: [
-            "/assets/images/photo-1626785774573-4b799315345d.webp",
-            "/assets/images/photo-1561070791-2526d30994b5.webp"
+            "/images/photo-1626785774573-4b799315345d.webp",
+            "/images/photo-1561070791-2526d30994b5.webp"
           ]
         }
       ]
@@ -129,8 +129,8 @@ export const portfolioData = {
           concept: "Creating a cohesive visual language from logos to marketing assets across physical and digital mediums.",
           impact: "Established strong, recognizable brand presences that accurately reflect company values.",
           images: [
-            "/assets/images/photo-1626785774573-4b799315345d.webp",
-            "/assets/images/photo-1626785774625-ddcddc3445e9.webp"
+            "/images/photo-1626785774573-4b799315345d.webp",
+            "/images/photo-1626785774625-ddcddc3445e9.webp"
           ],
           detailsBtn: "View Details",
           closeBtn: "Close"
@@ -142,8 +142,8 @@ export const portfolioData = {
           concept: "Capturing atmospheric and narrative-driven imagery to tell a visual story.",
           impact: "Enhanced visual storytelling for campaigns and personal art projects.",
           images: [
-            "/assets/images/photo-1492691527719-9d1e07e534b4.webp",
-            "/assets/images/photo-1542038784456-1ea8e935640e.webp"
+            "/images/photo-1492691527719-9d1e07e534b4.webp",
+            "/images/photo-1542038784456-1ea8e935640e.webp"
           ],
           detailsBtn: "View Details",
           closeBtn: "Close"
@@ -155,8 +155,8 @@ export const portfolioData = {
           concept: "Guiding the creative vision for digital products and campaigns.",
           impact: "Delivered unified aesthetic experiences across all user touchpoints.",
           images: [
-            "/assets/images/photo-1561070791-2526d30994b5.webp",
-            "/assets/images/photo-1558655146-d09347e92766.webp"
+            "/images/photo-1561070791-2526d30994b5.webp",
+            "/images/photo-1558655146-d09347e92766.webp"
           ],
           detailsBtn: "View Details",
           closeBtn: "Close"
@@ -168,8 +168,8 @@ export const portfolioData = {
           concept: "Designing intuitive and accessible user interfaces with a focus on component architecture.",
           impact: "Improved user satisfaction and streamlined organizational workflows.",
           images: [
-            "/assets/images/photo-1507238691740-187a5b1d37b8.webp",
-            "/assets/images/photo-1555421689-491a97ff2040.webp"
+            "/images/photo-1507238691740-187a5b1d37b8.webp",
+            "/images/photo-1555421689-491a97ff2040.webp"
           ],
           detailsBtn: "View Details",
           closeBtn: "Close"
@@ -275,11 +275,11 @@ export const portfolioData = {
           readMore: "بیشتر بخوانید",
           readLess: "بستن",
           images: [
-            "/assets/images/photo-1498050108023-c5249f4df085.webp",
-            "/assets/images/photo-1555421689-491a97ff2040.webp",
-            "/assets/images/photo-1461749280684-dccba630e2f6.webp",
-            "/assets/images/photo-1555066931-4365d14bab8c.webp",
-            "/assets/images/photo-1633356122544-f134324a6cee.webp"
+            "/images/photo-1498050108023-c5249f4df085.webp",
+            "/images/photo-1555421689-491a97ff2040.webp",
+            "/images/photo-1461749280684-dccba630e2f6.webp",
+            "/images/photo-1555066931-4365d14bab8c.webp",
+            "/images/photo-1633356122544-f134324a6cee.webp"
           ]
         },
         {
@@ -293,8 +293,8 @@ export const portfolioData = {
           readMore: "بیشتر بخوانید",
           readLess: "بستن",
           images: [
-            "/assets/images/photo-1551288049-bebda4e38f71.webp",
-            "/assets/images/photo-1547658719-da2b51169166.webp"
+            "/images/photo-1551288049-bebda4e38f71.webp",
+            "/images/photo-1547658719-da2b51169166.webp"
           ]
         },
         {
@@ -308,8 +308,8 @@ export const portfolioData = {
           readMore: "بیشتر بخوانید",
           readLess: "بستن",
           images: [
-            "/assets/images/photo-1626785774573-4b799315345d.webp",
-            "/assets/images/photo-1561070791-2526d30994b5.webp"
+            "/images/photo-1626785774573-4b799315345d.webp",
+            "/images/photo-1561070791-2526d30994b5.webp"
           ]
         }
       ]
@@ -333,8 +333,8 @@ export const portfolioData = {
           concept: "ایجاد یک زبان بصری منسجم از لوگوها تا دارایی‌های بازاریابی.",
           impact: "تثبیت حضور قوی و قابل تشخیص برند از طریق کانال‌های مختلف.",
           images: [
-            "/assets/images/photo-1626785774573-4b799315345d.webp",
-            "/assets/images/photo-1626785774625-ddcddc3445e9.webp"
+            "/images/photo-1626785774573-4b799315345d.webp",
+            "/images/photo-1626785774625-ddcddc3445e9.webp"
           ],
           detailsBtn: "مشاهده جزئیات",
           closeBtn: "بستن"
@@ -346,8 +346,8 @@ export const portfolioData = {
           concept: "ثبت تصاویر جوی و داستان‌محور برای روایت یک داستان بصری.",
           impact: "ارتقاء روایت بصری برای کمپین‌ها و پروژه‌های هنری شخصی.",
           images: [
-            "/assets/images/photo-1492691527719-9d1e07e534b4.webp",
-            "/assets/images/photo-1542038784456-1ea8e935640e.webp"
+            "/images/photo-1492691527719-9d1e07e534b4.webp",
+            "/images/photo-1542038784456-1ea8e935640e.webp"
           ],
           detailsBtn: "مشاهده جزئیات",
           closeBtn: "بستن"
@@ -359,8 +359,8 @@ export const portfolioData = {
           concept: "هدایت چشم‌انداز خلاقانه برای محصولات دیجیتال و کمپین‌ها.",
           impact: "ارائه تجربیات بصری یکپارچه در تمام نقاط تماس کاربر.",
           images: [
-            "/assets/images/photo-1561070791-2526d30994b5.webp",
-            "/assets/images/photo-1558655146-d09347e92766.webp"
+            "/images/photo-1561070791-2526d30994b5.webp",
+            "/images/photo-1558655146-d09347e92766.webp"
           ],
           detailsBtn: "مشاهده جزئیات",
           closeBtn: "بستن"
@@ -372,8 +372,8 @@ export const portfolioData = {
           concept: "طراحی رابط‌های کاربری بصری و در دسترس با تمرکز بر معماری کامپوننت.",
           impact: "بهبود رضایت کاربر و ساده‌سازی جریان‌های کاری سازمانی.",
           images: [
-            "/assets/images/photo-1507238691740-187a5b1d37b8.webp",
-            "/assets/images/photo-1555421689-491a97ff2040.webp"
+            "/images/photo-1507238691740-187a5b1d37b8.webp",
+            "/images/photo-1555421689-491a97ff2040.webp"
           ],
           detailsBtn: "مشاهده جزئیات",
           closeBtn: "بستن"

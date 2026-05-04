@@ -35,6 +35,7 @@ export function BackToTop({ lang }: { lang: Language }) {
           exit={{ opacity: 0, scale: 0.8 }}
           onClick={scrollToTop}
           aria-label={lang === 'en' ? 'Back to top' : 'بازگشت به بالا'}
+          id="back-to-top"
           className="fixed bottom-8 right-8 z-50 p-3 bg-white/10 hover:bg-amber-500/80 text-white backdrop-blur-md border border-white/20 rounded-full shadow-lg transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500"
           style={{ right: lang === 'fa' ? 'auto' : '2rem', left: lang === 'fa' ? '2rem' : 'auto' }}
         >

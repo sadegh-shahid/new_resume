@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from "react";
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { portfolioData, Language } from '../data';
 import { Github, Linkedin, Mail, Phone, Send, CheckCircle2 } from 'lucide-react';
@@ -32,7 +33,7 @@ export function Contact({ lang }: { lang: Language }) {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
     
@@ -66,7 +67,7 @@ export function Contact({ lang }: { lang: Language }) {
         transition={{ duration: 0.8 }}
         className="relative z-10 flex flex-col items-center bg-white/5 border border-white/10 rounded-3xl p-8 lg:p-16"
       >
-        <div className="w-full sticky top-20 z-30 bg-[#0a0a0a]/90 backdrop-blur-md py-4 px-4 -mx-4 rounded-2xl mb-12 text-center">
+        <div className="w-full mb-12 text-center">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

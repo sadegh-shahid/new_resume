@@ -1,5 +1,6 @@
+import React from "react";
 import { motion, AnimatePresence } from 'motion/react';
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { portfolioData, Language } from '../data';
 import { ArrowUpRight, X, ChevronLeft, ChevronRight, Heart } from 'lucide-react';
 
@@ -7,7 +8,35 @@ export function Projects({ lang }: { lang: Language }) {
   const t = portfolioData[lang].projects;
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
   const [favorites, setFavorites] = useState<number[]>([]);
+
+  const paginate = (newDirection: number, length: number) => {
+    setDirection(newDirection);
+    setCurrentImageIndex((prev) => {
+      let next = prev + newDirection;
+      if (next < 0) return length - 1;
+      if (next >= length) return 0;
+      return next;
+    });
+  };
+
+  const slideVariants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? '100%' : '-100%',
+      opacity: 0
+    }),
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1
+    },
+    exit: (direction: number) => ({
+      zIndex: 0,
+      x: direction < 0 ? '100%' : '-100%',
+      opacity: 0
+    })
+  };
 
   const toggleFavorite = (e: React.MouseEvent, id: number) => {
     e.stopPropagation();
@@ -25,13 +54,16 @@ export function Projects({ lang }: { lang: Language }) {
     
     if (selectedProject !== null) {
       document.body.style.overflow = 'hidden';
+      document.body.classList.add('modal-open');
       window.addEventListener('keydown', handleKeyDown);
     } else {
       document.body.style.overflow = '';
+      document.body.classList.remove('modal-open');
     }
     
     return () => {
       document.body.style.overflow = '';
+      document.body.classList.remove('modal-open');
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [selectedProject]);
@@ -44,7 +76,7 @@ export function Projects({ lang }: { lang: Language }) {
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8 }}
       >
-        <div className="sticky top-20 z-30 bg-[#0a0a0a]/90 backdrop-blur-md py-4 px-4 -mx-4 rounded-2xl mb-12">
+        <div className="mb-12">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -70,9 +102,9 @@ export function Projects({ lang }: { lang: Language }) {
                 layoutId={`project-container-${item.id}`}
                 onClick={() => { setSelectedProject(item.id); setCurrentImageIndex(0); }}
               >
-                <div className="flex justify-between items-start mb-8">
-                  <motion.h3 layoutId={`project-title-${item.id}`} className="text-3xl font-light pr-8 rtl:pr-0 rtl:pl-8">{item.name}</motion.h3>
-                  <div className="flex gap-2 shrink-0 z-10 relative">
+                <div className="flex flex-col-reverse md:flex-row md:justify-between items-start mb-8 gap-4 md:gap-0">
+                  <motion.h3 layoutId={`project-title-${item.id}`} className="text-3xl font-light pr-0 md:pr-8 rtl:pr-0 rtl:md:pl-8">{item.name}</motion.h3>
+                  <div className="flex w-full md:w-auto justify-end gap-2 shrink-0 z-10 relative">
                     <button
                       onClick={(e) => toggleFavorite(e, item.id)}
                       className={`p-3 rounded-full transition-all duration-300 focus:outline-none ${favorites.includes(item.id) ? 'bg-amber-500/10 text-amber-500' : 'bg-white/5 text-white/40 hover:bg-white/10 hover:text-white'}`}
@@ -128,7 +160,7 @@ export function Projects({ lang }: { lang: Language }) {
       {/* Modal Overlay */}
       <AnimatePresence>
         {selectedProject !== null && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+          <div className="fixed inset-0 z-50 p-4 sm:p-6 flex items-center justify-center overflow-hidden">
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -143,7 +175,7 @@ export function Projects({ lang }: { lang: Language }) {
               return (
                 <motion.div
                   layoutId={`project-container-${item.id}`}
-                  className="relative w-full max-w-5xl bg-[#111] overflow-hidden rounded-3xl border border-white/10 shadow-2xl flex flex-col md:flex-row my-auto max-h-[90vh]"
+                  className="relative w-full max-w-5xl bg-[#111] overflow-y-auto md:overflow-hidden rounded-3xl border border-white/10 shadow-2xl flex flex-col md:flex-row my-auto max-h-[90vh] z-10"
                 >
                   <button 
                     onClick={() => setSelectedProject(null)}
@@ -155,41 +187,62 @@ export function Projects({ lang }: { lang: Language }) {
 
                   {/* Image Carousel */}
                   {item.images && item.images.length > 0 && (
-                    <div className="w-full md:w-1/2 relative bg-black/50 group/carousel min-h-[300px] md:min-h-full">
-                      <AnimatePresence mode="wait">
+                    <div className="w-full md:w-1/2 relative bg-black/50 group/carousel aspect-video md:aspect-auto md:min-h-full flex-shrink-0 overflow-hidden">
+                      <AnimatePresence initial={false} custom={direction}>
                         <motion.img 
                           key={currentImageIndex}
                           src={item.images[currentImageIndex]}
                           alt={`${item.name} screenshot ${currentImageIndex + 1}`}
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                          transition={{ duration: 0.3 }}
+                          custom={direction}
+                          variants={slideVariants}
+                          initial="enter"
+                          animate="center"
+                          exit="exit"
+                          transition={{
+                            x: { type: "spring", stiffness: 300, damping: 30 },
+                            opacity: { duration: 0.2 }
+                          }}
                           className="absolute inset-0 w-full h-full object-cover"
+                          drag="x"
+                          dragConstraints={{ left: 0, right: 0 }}
+                          dragElastic={1}
+                          onDragEnd={(e, { offset, velocity }) => {
+                            e.stopPropagation();
+                            const swipe = Math.abs(offset.x) * velocity.x;
+                            if (swipe < -10000 || offset.x < -50) {
+                              paginate(1, item.images!.length);
+                            } else if (swipe > 10000 || offset.x > 50) {
+                              paginate(-1, item.images!.length);
+                            }
+                          }}
                         />
                       </AnimatePresence>
                       
                       {item.images.length > 1 && (
                         <>
                           <button 
-                            onClick={(e) => { e.stopPropagation(); setCurrentImageIndex((prev) => (prev > 0 ? prev - 1 : item.images.length - 1)); }}
-                            className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-black/30 hover:bg-black/60 rounded-full text-white/70 hover:text-white backdrop-blur-sm transition-all opacity-0 group-hover/carousel:opacity-100 focus:opacity-100 -translate-x-4 group-hover/carousel:translate-x-0"
+                            onClick={(e) => { e.stopPropagation(); paginate(-1, item.images!.length); }}
+                            className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-black/30 hover:bg-black/60 rounded-full text-white/70 hover:text-white backdrop-blur-sm transition-all opacity-0 group-hover/carousel:opacity-100 focus:opacity-100 -translate-x-4 group-hover/carousel:translate-x-0 z-20"
                             aria-label="Previous image"
                           >
                             <ChevronLeft size={24} />
                           </button>
                           <button 
-                            onClick={(e) => { e.stopPropagation(); setCurrentImageIndex((prev) => (prev < item.images.length - 1 ? prev + 1 : 0)); }}
-                            className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-black/30 hover:bg-black/60 rounded-full text-white/70 hover:text-white backdrop-blur-sm transition-all opacity-0 group-hover/carousel:opacity-100 focus:opacity-100 translate-x-4 group-hover/carousel:translate-x-0"
+                            onClick={(e) => { e.stopPropagation(); paginate(1, item.images!.length); }}
+                            className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-black/30 hover:bg-black/60 rounded-full text-white/70 hover:text-white backdrop-blur-sm transition-all opacity-0 group-hover/carousel:opacity-100 focus:opacity-100 translate-x-4 group-hover/carousel:translate-x-0 z-20"
                             aria-label="Next image"
                           >
                             <ChevronRight size={24} />
                           </button>
-                          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-20">
                             {item.images.map((_, idx) => (
                               <button
                                 key={idx}
-                                onClick={(e) => { e.stopPropagation(); setCurrentImageIndex(idx); }}
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  setDirection(idx > currentImageIndex ? 1 : -1);
+                                  setCurrentImageIndex(idx);
+                                }}
                                 className={`w-2 h-2 rounded-full transition-all ${idx === currentImageIndex ? 'bg-amber-500 w-6' : 'bg-white/40 hover:bg-white/60'}`}
                                 aria-label={`Go to slide ${idx + 1}`}
                               />
@@ -200,8 +253,8 @@ export function Projects({ lang }: { lang: Language }) {
                     </div>
                   )}
 
-                  <div className={`flex flex-col w-full ${item.images && item.images.length > 0 ? 'md:w-1/2' : ''} p-8 md:p-12 overflow-y-auto`}>
-                    <div className="mb-8 pr-12 lg:pr-0 lg:pl-12 rtl:pr-0 rtl:pl-12 rtl:lg:pl-0 rtl:lg:pr-12">
+                  <div className={`flex-1 flex flex-col w-full ${item.images && item.images.length > 0 ? 'md:w-1/2' : ''} p-6 md:p-12 overflow-visible md:overflow-y-auto`}>
+                    <div className="mb-6 md:mb-8 pr-12 lg:pr-0 lg:pl-12 rtl:pr-0 rtl:pl-12 rtl:lg:pl-0 rtl:lg:pr-12">
                       <motion.h3 layoutId={`project-title-${item.id}`} className="text-4xl md:text-5xl font-light mb-2">{item.name}</motion.h3>
                       <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }} className="text-amber-500 text-sm uppercase tracking-widest mt-4 mb-2">{item.role} &middot; {item.year}</motion.p>
                     </div>
