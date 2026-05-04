@@ -130,7 +130,9 @@ export const Contact = memo(({ lang }: { lang: Language }) => {
             </AnimatePresence>
 
             <div className="flex flex-col gap-1 text-left rtl:text-right">
+              <label htmlFor="name" className="sr-only">{isEn ? 'Your Name' : 'نام شما'}</label>
               <input
+                id="name"
                 type="text"
                 placeholder={isEn ? 'Your Name' : 'نام شما'}
                 value={formData.name}
@@ -148,7 +150,9 @@ export const Contact = memo(({ lang }: { lang: Language }) => {
             </div>
 
             <div className="flex flex-col gap-1 text-left rtl:text-right">
+              <label htmlFor="email" className="sr-only">{isEn ? 'Email Address' : 'آدرس ایمیل'}</label>
               <input
+                id="email"
                 type="email"
                 dir="ltr"
                 placeholder={isEn ? 'Email Address' : 'آدرس ایمیل'}
@@ -167,7 +171,9 @@ export const Contact = memo(({ lang }: { lang: Language }) => {
             </div>
 
             <div className="flex flex-col gap-1 text-left rtl:text-right">
+              <label htmlFor="phone" className="sr-only">{isEn ? 'Phone Number (Optional)' : 'شماره تماس (اختیاری)'}</label>
               <input
+                id="phone"
                 type="tel"
                 dir="ltr"
                 placeholder={isEn ? 'Phone Number (Optional)' : 'شماره تماس (اختیاری)'}
@@ -186,7 +192,9 @@ export const Contact = memo(({ lang }: { lang: Language }) => {
             </div>
 
             <div className="flex flex-col gap-1 text-left rtl:text-right mb-2">
+              <label htmlFor="message" className="sr-only">{isEn ? 'Your Message' : 'پیام شما'}</label>
               <textarea
+                id="message"
                 placeholder={isEn ? 'Your Message' : 'پیام شما'}
                 rows={4}
                 value={formData.message}

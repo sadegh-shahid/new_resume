@@ -15,7 +15,6 @@ import { VisualWorks } from './components/VisualWorks';
 const Skills = lazy(() => import('./components/Skills').then(m => ({ default: m.Skills })));
 import { Testimonials } from './components/Testimonials';
 import { Contact } from './components/Contact';
-import { BackToTop } from './components/BackToTop';
 
 export default function App() {
   // Default to Persian based on user request priority
@@ -58,7 +57,6 @@ export default function App() {
       <footer className="text-center py-8 text-white/30 text-sm mt-12 border-t border-white/5 tracking-widest uppercase">
         © {new Date().getFullYear()} Mohammad Sadegh Shahid
       </footer>
-      <BackToTop lang={lang} />
     </div>
   );
 }
