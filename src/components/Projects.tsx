@@ -93,11 +93,11 @@ export function Projects({ lang }: { lang: Language }) {
             return (
               <motion.div
                 key={item.id}
-                initial={{ opacity: 0, scale: 0.95 }}
+                initial={{ opacity: 0, scale: 0.98 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                whileHover={{ scale: 1.02, backgroundColor: "rgba(255, 255, 255, 0.08)" }}
+                whileHover={{ scale: 1.01, backgroundColor: "rgba(255, 255, 255, 0.08)" }}
                 viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.4, ease: "easeOut", delay: index * 0.1 }}
+                transition={{ duration: 0.3, ease: "easeOut", delay: index * 0.05 }}
                 className="group flex flex-col p-8 rounded-3xl bg-white/5 border border-white/5 transition-colors cursor-pointer"
                 layoutId={`project-container-${item.id}`}
                 onClick={() => { setSelectedProject(item.id); setCurrentImageIndex(0); }}
@@ -203,6 +203,8 @@ export function Projects({ lang }: { lang: Language }) {
                             opacity: { duration: 0.2 }
                           }}
                           className="absolute inset-0 w-full h-full object-cover"
+                          loading="lazy"
+                          decoding="async"
                           drag="x"
                           dragConstraints={{ left: 0, right: 0 }}
                           dragElastic={1}

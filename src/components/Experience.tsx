@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { portfolioData, Language } from '../data';
 import { ChevronDown } from 'lucide-react';
 
-export function Experience({ lang }: { lang: Language }) {
+export const Experience = memo(({ lang }: { lang: Language }) => {
   const t = portfolioData[lang].experience;
   const [expandedId, setExpandedId] = useState<number | null>(null);
 
@@ -84,4 +84,4 @@ export function Experience({ lang }: { lang: Language }) {
       </motion.div>
     </section>
   );
-}
+});

@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
+import { memo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { portfolioData, Language } from '../data';
 
-export function Hero({ lang }: { lang: Language }) {
+export const Hero = memo(({ lang }: { lang: Language }) => {
   const t = portfolioData[lang].hero;
   const isEn = lang === 'en';
   const [isHovered, setIsHovered] = useState(false);
@@ -123,4 +124,4 @@ export function Hero({ lang }: { lang: Language }) {
       </motion.div>
     </section>
   );
-}
+});

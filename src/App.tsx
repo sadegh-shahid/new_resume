@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { useScroll, useSpring, motion } from 'motion/react';
 import { Language } from './data';
 import { Header } from './components/Header';
@@ -6,11 +6,12 @@ import { Hero } from './components/Hero';
 import { About } from './components/About';
 import { Experience } from './components/Experience';
 import { Projects } from './components/Projects';
-import { Skills } from './components/Skills';
 import { VisualWorks } from './components/VisualWorks';
 import { Testimonials } from './components/Testimonials';
 import { Contact } from './components/Contact';
 import { BackToTop } from './components/BackToTop';
+
+const Skills = lazy(() => import('./components/Skills').then(module => ({ default: module.Skills })));
 
 export default function App() {
   // Default to Persian based on user request priority
@@ -20,7 +21,8 @@ export default function App() {
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
-    restDelta: 0.001
+    restDelta: 0.01,
+    mass: 0.1
   });
 
   useEffect(() => {
@@ -41,7 +43,9 @@ export default function App() {
         <About lang={lang} />
         <Experience lang={lang} />
         <Projects lang={lang} />
-        <Skills lang={lang} />
+        <Suspense fallback={<div className="h-96" />}>
+          <Skills lang={lang} />
+        </Suspense>
         <VisualWorks lang={lang} />
         <Testimonials lang={lang} />
         <Contact lang={lang} />

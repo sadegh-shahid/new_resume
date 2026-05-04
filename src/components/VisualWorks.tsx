@@ -107,6 +107,8 @@ export function VisualWorks({ lang }: { lang: Language }) {
                               src={img} 
                               alt={`${item.title} preview ${idx + 1}`} 
                               className="w-[280px] h-[180px] object-cover rounded-xl snap-center shrink-0 border border-white/10"
+                              loading="lazy"
+                              decoding="async"
                               referrerPolicy="no-referrer"
                             />
                           ))}

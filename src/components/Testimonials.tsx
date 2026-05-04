@@ -1,8 +1,9 @@
+import { memo } from 'react';
 import { motion } from 'motion/react';
 import { portfolioData, Language } from '../data';
 import { Quote } from 'lucide-react';
 
-export function Testimonials({ lang }: { lang: Language }) {
+export const Testimonials = memo(({ lang }: { lang: Language }) => {
   const t = portfolioData[lang].testimonials;
 
   return (
@@ -56,4 +57,4 @@ export function Testimonials({ lang }: { lang: Language }) {
       </motion.div>
     </section>
   );
-}
+});
