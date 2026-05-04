@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Vazirmatn:wght@300;400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "Vazirmatn", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", "Vazirmatn", ui-serif, serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #050505;
+  color: #FAFAFA;
+}
+
+/* Base text directions based on container dir attribute */
+[dir="rtl"] {
+  font-family: "Vazirmatn", system-ui, sans-serif;
+  text-align: right;
+  line-height: 1.8;
+}
+
+[dir="ltr"] {
+  font-family: "Inter", system-ui, sans-serif;
+  text-align: left;
+}
+
+/* Ensure headings use proper fonts */
+[dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3 {
+  font-family: "Vazirmatn", serif;
+  font-weight: 500 !important;
+  line-height: 1.4 !important;
+}
+
+/* Improve Persian readability */
+[dir="rtl"] p {
+  line-height: 1.9;
+}
+
+[dir="rtl"] .leading-relaxed {
+  line-height: 2 !important;
+}
+
+[dir="rtl"] .font-light {
+  font-weight: 400 !important; /* Make light font slightly thicker in Persian */
+}
+
+[dir="rtl"] .text-sm {
+  font-size: 0.95rem; /* Slightly larger text-sm in Persian */
+}
+
+[dir="rtl"] .text-xs {
+  font-size: 0.85rem;
+}
+
+[dir="ltr"] h1, [dir="ltr"] h2, [dir="ltr"] h3 {
+  font-family: "Playfair Display", serif;
+}
+
+/* Persian and Arabic are connected scripts; letter-spacing breaks them */
+[dir="rtl"] .tracking-widest,
+[dir="rtl"] .tracking-wider,
+[dir="rtl"] .tracking-[0.2em],
+[dir="rtl"] .tracking-tight,
+[dir="rtl"] .tracking-tighter {
+  letter-spacing: normal !important;
+}
+
+/* Hide scrollbar for smooth sections */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
