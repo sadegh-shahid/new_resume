@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { portfolioData, Language } from '../data';
 import { ChevronDown, Wrench, Lightbulb, Target } from 'lucide-react';
 
-export function VisualWorks({ lang }: { lang: Language }) {
+export const VisualWorks = memo(({ lang }: { lang: Language }) => {
   const t = portfolioData[lang].visual;
   const [expandedId, setExpandedId] = useState<number | null>(null);
 
@@ -108,6 +108,8 @@ export function VisualWorks({ lang }: { lang: Language }) {
                               alt={`${item.title} preview ${idx + 1}`} 
                               className="w-[280px] h-[180px] object-cover rounded-xl snap-center shrink-0 border border-white/10"
                               referrerPolicy="no-referrer"
+                              loading="lazy"
+                              decoding="async"
                             />
                           ))}
                         </div>
@@ -131,4 +133,4 @@ export function VisualWorks({ lang }: { lang: Language }) {
       </motion.div>
     </section>
   );
-}
+});

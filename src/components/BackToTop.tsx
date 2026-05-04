@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, memo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ChevronUp } from 'lucide-react';
 import { Language } from '../data';
 
-export function BackToTop({ lang }: { lang: Language }) {
+export const BackToTop = memo(({ lang }: { lang: Language }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -44,4 +44,4 @@ export function BackToTop({ lang }: { lang: Language }) {
       )}
     </AnimatePresence>
   );
-}
+});

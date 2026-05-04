@@ -1,10 +1,10 @@
-import React from "react";
+import React, { memo } from "react";
 import { motion, AnimatePresence } from 'motion/react';
 import { useState, useEffect } from 'react';
 import { portfolioData, Language } from '../data';
 import { ArrowUpRight, X, ChevronLeft, ChevronRight, Heart } from 'lucide-react';
 
-export function Projects({ lang }: { lang: Language }) {
+export const Projects = memo(({ lang }: { lang: Language }) => {
   const t = portfolioData[lang].projects;
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -203,6 +203,8 @@ export function Projects({ lang }: { lang: Language }) {
                             opacity: { duration: 0.2 }
                           }}
                           className="absolute inset-0 w-full h-full object-cover"
+                          loading="lazy"
+                          decoding="async"
                           drag="x"
                           dragConstraints={{ left: 0, right: 0 }}
                           dragElastic={1}
@@ -290,4 +292,4 @@ export function Projects({ lang }: { lang: Language }) {
       </AnimatePresence>
     </section>
   );
-}
+});
