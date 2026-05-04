@@ -22,7 +22,7 @@ export function About({ lang }: { lang: Language }) {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, ease: "easeOut" }}
-              className="text-4xl md:text-6xl font-light tracking-tighter mb-8 sticky top-24 z-30 bg-[#0a0a0a]/90 backdrop-blur-md py-4 px-4 -mx-4 rounded-2xl"
+              className="text-4xl md:text-6xl font-light tracking-tighter mb-8"
             >
               {t.title}
             </motion.h2>
