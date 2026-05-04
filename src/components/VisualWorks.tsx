@@ -14,8 +14,8 @@ export function VisualWorks({ lang }: { lang: Language }) {
   return (
     <section className="py-24 px-6 max-w-5xl mx-auto">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8 }}
       >

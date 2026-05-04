@@ -62,7 +62,7 @@ body {
 /* Persian and Arabic are connected scripts; letter-spacing breaks them */
 [dir="rtl"] .tracking-widest,
 [dir="rtl"] .tracking-wider,
-[dir="rtl"] .tracking-[0.2em],
+[dir="rtl"] .tracking-\[0\.2em\],
 [dir="rtl"] .tracking-tight,
 [dir="rtl"] .tracking-tighter {
   letter-spacing: normal !important;
