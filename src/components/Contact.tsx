@@ -1,10 +1,10 @@
-import React from "react";
+import React, { memo } from "react";
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { portfolioData, Language } from '../data';
 import { Github, Linkedin, Mail, Phone, Send, CheckCircle2 } from 'lucide-react';
 
-export function Contact({ lang }: { lang: Language }) {
+export const Contact = memo(({ lang }: { lang: Language }) => {
   const t = portfolioData[lang].contact;
   
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
@@ -52,11 +52,11 @@ export function Contact({ lang }: { lang: Language }) {
     <section id="contact" className="py-24 px-6 max-w-5xl mx-auto relative">
       <motion.div 
         animate={{ 
-          scale: [1, 1.2, 1],
-          opacity: [1, 0.6, 1],
-          rotate: [0, 90, 0]
+          scale: 1,
+          opacity: 1,
+          rotate: 0
         }}
-        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        transition={{ duration: 0.5 }}
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[100px] pointer-events-none" 
       />
       
@@ -239,4 +239,4 @@ export function Contact({ lang }: { lang: Language }) {
       </motion.div>
     </section>
   );
-}
+});

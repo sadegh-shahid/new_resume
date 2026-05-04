@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, memo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { portfolioData, Language } from '../data';
 
-export function Hero({ lang }: { lang: Language }) {
+export const Hero = memo(({ lang }: { lang: Language }) => {
   const t = portfolioData[lang].hero;
   const isEn = lang === 'en';
   const [isHovered, setIsHovered] = useState(false);
@@ -38,14 +38,14 @@ export function Hero({ lang }: { lang: Language }) {
             ? { opacity: 0 }
             : isHovered 
               ? { scale: 1.05, opacity: 0.15 } 
-              : { scale: [1, 1.03, 1], opacity: [0.15, 0.1, 0.15] }
+              : { scale: 1, opacity: 0.15 }
         }
         transition={
           !imageLoaded
             ? { duration: 0 }
             : isHovered 
               ? { duration: 1, ease: "easeOut" } 
-              : { duration: 20, repeat: Infinity, ease: "easeInOut", opacity: { duration: 1 } }
+              : { duration: 1 }
         }
         className="absolute inset-0 z-0 mix-blend-overlay pointer-events-none"
         style={{
@@ -60,12 +60,12 @@ export function Hero({ lang }: { lang: Language }) {
         animate={
           isHovered 
             ? { scale: 1.05, opacity: 0.85 } 
-            : { scale: [1, 1.1, 1], opacity: [1, 0.7, 1] }
+            : { scale: 1, opacity: 1 }
         }
         transition={
           isHovered 
             ? { duration: 0.5, ease: "easeOut" } 
-            : { duration: 12, repeat: Infinity, ease: "easeInOut" }
+            : { duration: 0.5 }
         }
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/5 rounded-full blur-[120px] pointer-events-none" 
       />
@@ -123,4 +123,4 @@ export function Hero({ lang }: { lang: Language }) {
       </motion.div>
     </section>
   );
-}
+});

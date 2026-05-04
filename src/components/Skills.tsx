@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import { motion } from 'motion/react';
 import { portfolioData, Language } from '../data';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer, Tooltip } from 'recharts';
 
-export function Skills({ lang }: { lang: Language }) {
+export const Skills = memo(({ lang }: { lang: Language }) => {
   const t = portfolioData[lang].skills;
   const [activeSkill, setActiveSkill] = useState<number | null>(null);
 
@@ -94,7 +94,7 @@ export function Skills({ lang }: { lang: Language }) {
                   fill="#f59e0b"
                   fillOpacity={0.2}
                   isAnimationActive={true}
-                  animationDuration={1500}
+                  animationDuration={500}
                 />
                 <Tooltip 
                   contentStyle={{ backgroundColor: '#050505', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '8px', color: '#fff' }}
@@ -107,4 +107,4 @@ export function Skills({ lang }: { lang: Language }) {
       </motion.div>
     </section>
   );
-}
+});

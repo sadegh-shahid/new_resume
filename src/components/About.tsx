@@ -1,10 +1,11 @@
+import { memo } from 'react';
 import { motion } from 'motion/react';
 import { portfolioData, Language } from '../data';
 import { Code, Server, Layout, Fingerprint, PenTool, Image as ImageIcon, Camera, Sparkles } from 'lucide-react';
 
 const focusIcons = [Code, Server, Layout, Fingerprint, PenTool, ImageIcon, Camera, Sparkles];
 
-export function About({ lang }: { lang: Language }) {
+export const About = memo(({ lang }: { lang: Language }) => {
   const t = portfolioData[lang].about;
 
   return (
@@ -57,4 +58,4 @@ export function About({ lang }: { lang: Language }) {
       </motion.div>
     </section>
   );
-}
+});

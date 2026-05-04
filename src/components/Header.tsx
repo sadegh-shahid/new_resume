@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Globe } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { portfolioData, Language } from '../data';
@@ -8,7 +8,7 @@ interface HeaderProps {
   setLang: (lang: Language) => void;
 }
 
-export function Header({ lang, setLang }: HeaderProps) {
+export const Header = memo(({ lang, setLang }: HeaderProps) => {
   const t = portfolioData[lang].nav;
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
@@ -68,4 +68,4 @@ export function Header({ lang, setLang }: HeaderProps) {
       </motion.button>
     </header>
   );
-}
+});
