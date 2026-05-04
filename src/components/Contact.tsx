@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { portfolioData, Language } from '../data';
 import { Github, Linkedin, Mail, Phone, Send, CheckCircle2 } from 'lucide-react';
@@ -32,7 +32,7 @@ export function Contact({ lang }: { lang: Language }) {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!validate()) return;
     

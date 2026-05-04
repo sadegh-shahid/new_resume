@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'motion/react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { portfolioData, Language } from '../data';
 import { ArrowUpRight, X, ChevronLeft, ChevronRight, Heart } from 'lucide-react';
 
@@ -203,7 +203,7 @@ export function Projects({ lang }: { lang: Language }) {
                   <div className={`flex flex-col w-full ${item.images && item.images.length > 0 ? 'md:w-1/2' : ''} p-8 md:p-12 overflow-y-auto`}>
                     <div className="mb-8 pr-12 lg:pr-0 lg:pl-12 rtl:pr-0 rtl:pl-12 rtl:lg:pl-0 rtl:lg:pr-12">
                       <motion.h3 layoutId={`project-title-${item.id}`} className="text-4xl md:text-5xl font-light mb-2">{item.name}</motion.h3>
-                      <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }} className="text-amber-500 text-sm uppercase tracking-widest mt-4 mb-2">{item.role} &middot; {item.date}</motion.p>
+                      <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }} className="text-amber-500 text-sm uppercase tracking-widest mt-4 mb-2">{item.role} &middot; {item.year}</motion.p>
                     </div>
 
                     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.4 }} className="grid grid-cols-1 gap-6 mb-8">
