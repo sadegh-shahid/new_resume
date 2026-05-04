@@ -19,7 +19,17 @@ export function VisualWorks({ lang }: { lang: Language }) {
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8 }}
       >
-        <h2 className="text-4xl md:text-5xl font-light tracking-tighter mb-16">{t.title}</h2>
+        <div className="sticky top-20 z-30 bg-[#0a0a0a]/90 backdrop-blur-md py-4 px-4 -mx-4 rounded-2xl mb-16">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="text-4xl md:text-5xl font-light tracking-tighter"
+          >
+            {t.title}
+          </motion.h2>
+        </div>
         
         <div className="flex flex-col gap-4">
           {t.items.map((item, i) => {

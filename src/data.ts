@@ -61,19 +61,21 @@ export const portfolioData = {
       items: [
         {
           id: 1,
-          name: "AFSSOLAR",
+          name: "AFSSOLAR & Custom Headless CMS",
           year: "2024",
           link: "https://afssolar.ir",
-          role: "Senior Designer & Web Developer",
-          stack: ["Next.js", "TypeScript", "UI/UX", "Brand Identity", "AI Tools"],
-          impact: "Created a cohesive brand foundation, service presentation, and a scalable base for future website content.",
-          details: "This project required a full brand identity creation from scratch, translating it into a performant web presence using Next.js. AI tools were extensively used to generate content and optimize design workflows.",
+          role: "Full-Stack Engineer, Senior Designer & Architect",
+          stack: ["React 19", "Express", "Drizzle ORM", "MariaDB", "Next.js", "Brand Identity"],
+          impact: "Created a cohesive brand foundation and engineered a hardened, enterprise-grade CMS tailored for the AFS platform, delivering robust real-time SEO, advanced security, and automated CI/CD pipelines.",
+          details: "This overarching project required a full brand identity creation from scratch and translating it into a performant web presence. Concurrently, I designed and built a custom headless CMS featuring a block-based architecture, nested pages, content slots, auto-saving drafts, and a Tiptap rich-text editor integrated with a powerful media library. Emphasized security through granular RBAC, JWT revocation, HttpOnly secure cookies, CSRF protection, file upload magic-number validation, and comprehensive audit logs. Architected the backend using Drizzle ORM on MariaDB, enabling seamless SSG hydration and maximum performance. Established fully automated deployments to cPanel via GitHub Actions.",
           readMore: "Read More",
           readLess: "Show Less",
           images: [
-            "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=1200",
-            "https://images.unsplash.com/photo-1555421689-491a97ff2040?auto=format&fit=crop&q=80&w=1200",
-            "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&q=80&w=1200"
+            "/assets/images/photo-1498050108023-c5249f4df085.webp",
+            "/assets/images/photo-1555421689-491a97ff2040.webp",
+            "/assets/images/photo-1461749280684-dccba630e2f6.webp",
+            "/assets/images/photo-1555066931-4365d14bab8c.webp",
+            "/assets/images/photo-1633356122544-f134324a6cee.webp"
           ]
         },
         {
@@ -87,8 +89,8 @@ export const portfolioData = {
           readMore: "Read More",
           readLess: "Show Less",
           images: [
-            "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200",
-            "https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&q=80&w=1200"
+            "/assets/images/photo-1551288049-bebda4e38f71.webp",
+            "/assets/images/photo-1547658719-da2b51169166.webp"
           ]
         },
         {
@@ -102,8 +104,8 @@ export const portfolioData = {
           readMore: "Read More",
           readLess: "Show Less",
           images: [
-            "https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&q=80&w=1200",
-            "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=1200"
+            "/assets/images/photo-1626785774573-4b799315345d.webp",
+            "/assets/images/photo-1561070791-2526d30994b5.webp"
           ]
         }
       ]
@@ -127,8 +129,8 @@ export const portfolioData = {
           concept: "Creating a cohesive visual language from logos to marketing assets across physical and digital mediums.",
           impact: "Established strong, recognizable brand presences that accurately reflect company values.",
           images: [
-            "https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&q=80&w=800",
-            "https://images.unsplash.com/photo-1626785774625-ddcddc3445e9?auto=format&fit=crop&q=80&w=800"
+            "/assets/images/photo-1626785774573-4b799315345d.webp",
+            "/assets/images/photo-1626785774625-ddcddc3445e9.webp"
           ],
           detailsBtn: "View Details",
           closeBtn: "Close"
@@ -140,8 +142,8 @@ export const portfolioData = {
           concept: "Capturing atmospheric and narrative-driven imagery to tell a visual story.",
           impact: "Enhanced visual storytelling for campaigns and personal art projects.",
           images: [
-            "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&q=80&w=800",
-            "https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&q=80&w=800"
+            "/assets/images/photo-1492691527719-9d1e07e534b4.webp",
+            "/assets/images/photo-1542038784456-1ea8e935640e.webp"
           ],
           detailsBtn: "View Details",
           closeBtn: "Close"
@@ -153,8 +155,8 @@ export const portfolioData = {
           concept: "Guiding the creative vision for digital products and campaigns.",
           impact: "Delivered unified aesthetic experiences across all user touchpoints.",
           images: [
-            "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=800",
-            "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=800"
+            "/assets/images/photo-1561070791-2526d30994b5.webp",
+            "/assets/images/photo-1558655146-d09347e92766.webp"
           ],
           detailsBtn: "View Details",
           closeBtn: "Close"
@@ -166,8 +168,8 @@ export const portfolioData = {
           concept: "Designing intuitive and accessible user interfaces with a focus on component architecture.",
           impact: "Improved user satisfaction and streamlined organizational workflows.",
           images: [
-            "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=800",
-            "https://images.unsplash.com/photo-1555421689-491a97ff2040?auto=format&fit=crop&q=80&w=800"
+            "/assets/images/photo-1507238691740-187a5b1d37b8.webp",
+            "/assets/images/photo-1555421689-491a97ff2040.webp"
           ],
           detailsBtn: "View Details",
           closeBtn: "Close"
@@ -263,19 +265,21 @@ export const portfolioData = {
       items: [
         {
           id: 1,
-          name: "AFSSOLAR",
+          name: "وب‌سایت AFSSOLAR و سیستم مدیریت محتوای اختصاصی",
           year: "۱۴۰۳",
           link: "https://afssolar.ir",
-          role: "طراح ارشد و توسعه‌دهنده وب",
-          stack: ["Next.js", "TypeScript", "UI/UX", "هویت برند", "ابزارهای AI"],
-          impact: "ایجاد پایه‌ای منسجم برای برند، معرفی خدمات و آماده‌سازی مسیر توسعه محتوای بیشتر در وب‌سایت.",
-          details: "این پروژه نیازمند خلق هویت برند از پایه بود که به طراحی یک حضور دیجیتال کارآمد تحت Next.js منجر شد. از ابزارهای هوش مصنوعی برای تولید محتوا و بهینه‌سازی جریان کار طراحی به‌طور گسترده استفاده گردید.",
+          role: "توسعه‌دهنده فول‌استک و طراح ارشد",
+          stack: ["React 19", "Express", "Drizzle ORM", "MariaDB", "Next.js", "هویت برند"],
+          impact: "ایجاد یکپارچگی در برند و طراحی و مهندسی یک CMS اختصاصی و حرفه‌ای سازمانی برای پلتفرم AFS با تمرکز بر امنیت پیشرفته، ابزارهای بلادرنگ سئو، و دیپلوی خودکار.",
+          details: "این پروژه نیازمند خلق هویت برند از پایه بود که به طراحی یک حضور دیجیتال کارآمد منجر شد. هم‌زمان، معماری یک سیستم مدیریت محتوا با قابلیت‌های پیشرفته شامل ساختار بلاک‌بیس، مدیریت صفحات تودرتو، اسلات‌های محتوا، ذخیره خودکار پیش‌نویس‌ها و پیاده‌سازی ادیتور Tiptap همراه با مدیریت یکپارچه مدیا انجام شد. امنیت سیستم به‌شدت مورد توجه قرار گرفت و به‌وسیله RBAC، کوکی‌های دور از دسترس مرورگر، جلوگیری از حملات پیشرفته، اعتبارسنجی فایل‌های آپلودی مبتنی‌بر ساختار باینری، و لاگ‌های کامل کاربری تضمین شد. بک‌اند با استفاده از Drizzle و MariaDB بازطراحی شد که بستر پیاده‌سازی SSG و بهبود راندمان را فراهم آورد. سیستم CI/CD اتوماتیک نیز با گیت‌هاب اکشنز پیاده‌سازی شد.",
           readMore: "بیشتر بخوانید",
           readLess: "بستن",
           images: [
-            "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=1200",
-            "https://images.unsplash.com/photo-1555421689-491a97ff2040?auto=format&fit=crop&q=80&w=1200",
-            "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&q=80&w=1200"
+            "/assets/images/photo-1498050108023-c5249f4df085.webp",
+            "/assets/images/photo-1555421689-491a97ff2040.webp",
+            "/assets/images/photo-1461749280684-dccba630e2f6.webp",
+            "/assets/images/photo-1555066931-4365d14bab8c.webp",
+            "/assets/images/photo-1633356122544-f134324a6cee.webp"
           ]
         },
         {
@@ -289,8 +293,8 @@ export const portfolioData = {
           readMore: "بیشتر بخوانید",
           readLess: "بستن",
           images: [
-            "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200",
-            "https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&q=80&w=1200"
+            "/assets/images/photo-1551288049-bebda4e38f71.webp",
+            "/assets/images/photo-1547658719-da2b51169166.webp"
           ]
         },
         {
@@ -304,8 +308,8 @@ export const portfolioData = {
           readMore: "بیشتر بخوانید",
           readLess: "بستن",
           images: [
-            "https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&q=80&w=1200",
-            "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=1200"
+            "/assets/images/photo-1626785774573-4b799315345d.webp",
+            "/assets/images/photo-1561070791-2526d30994b5.webp"
           ]
         }
       ]
@@ -329,8 +333,8 @@ export const portfolioData = {
           concept: "ایجاد یک زبان بصری منسجم از لوگوها تا دارایی‌های بازاریابی.",
           impact: "تثبیت حضور قوی و قابل تشخیص برند از طریق کانال‌های مختلف.",
           images: [
-            "https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&q=80&w=800",
-            "https://images.unsplash.com/photo-1626785774625-ddcddc3445e9?auto=format&fit=crop&q=80&w=800"
+            "/assets/images/photo-1626785774573-4b799315345d.webp",
+            "/assets/images/photo-1626785774625-ddcddc3445e9.webp"
           ],
           detailsBtn: "مشاهده جزئیات",
           closeBtn: "بستن"
@@ -342,8 +346,8 @@ export const portfolioData = {
           concept: "ثبت تصاویر جوی و داستان‌محور برای روایت یک داستان بصری.",
           impact: "ارتقاء روایت بصری برای کمپین‌ها و پروژه‌های هنری شخصی.",
           images: [
-            "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&q=80&w=800",
-            "https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&q=80&w=800"
+            "/assets/images/photo-1492691527719-9d1e07e534b4.webp",
+            "/assets/images/photo-1542038784456-1ea8e935640e.webp"
           ],
           detailsBtn: "مشاهده جزئیات",
           closeBtn: "بستن"
@@ -355,8 +359,8 @@ export const portfolioData = {
           concept: "هدایت چشم‌انداز خلاقانه برای محصولات دیجیتال و کمپین‌ها.",
           impact: "ارائه تجربیات بصری یکپارچه در تمام نقاط تماس کاربر.",
           images: [
-            "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=800",
-            "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=800"
+            "/assets/images/photo-1561070791-2526d30994b5.webp",
+            "/assets/images/photo-1558655146-d09347e92766.webp"
           ],
           detailsBtn: "مشاهده جزئیات",
           closeBtn: "بستن"
@@ -368,8 +372,8 @@ export const portfolioData = {
           concept: "طراحی رابط‌های کاربری بصری و در دسترس با تمرکز بر معماری کامپوننت.",
           impact: "بهبود رضایت کاربر و ساده‌سازی جریان‌های کاری سازمانی.",
           images: [
-            "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=800",
-            "https://images.unsplash.com/photo-1555421689-491a97ff2040?auto=format&fit=crop&q=80&w=800"
+            "/assets/images/photo-1507238691740-187a5b1d37b8.webp",
+            "/assets/images/photo-1555421689-491a97ff2040.webp"
           ],
           detailsBtn: "مشاهده جزئیات",
           closeBtn: "بستن"

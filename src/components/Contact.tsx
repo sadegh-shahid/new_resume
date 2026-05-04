@@ -66,8 +66,16 @@ export function Contact({ lang }: { lang: Language }) {
         transition={{ duration: 0.8 }}
         className="relative z-10 flex flex-col items-center bg-white/5 border border-white/10 rounded-3xl p-8 lg:p-16"
       >
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-light tracking-tighter mb-4">{t.title}</h2>
+        <div className="w-full sticky top-20 z-30 bg-[#0a0a0a]/90 backdrop-blur-md py-4 px-4 -mx-4 rounded-2xl mb-12 text-center">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="text-4xl md:text-5xl font-light tracking-tighter mb-4"
+          >
+            {t.title}
+          </motion.h2>
           <p className="text-white/60 text-lg max-w-xl mx-auto">{t.message}</p>
         </div>
         
@@ -106,6 +114,20 @@ export function Contact({ lang }: { lang: Language }) {
           </div>
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full order-1 lg:order-2">
+            <AnimatePresence>
+              {status === 'success' && (
+                <motion.div
+                  initial={{ opacity: 0, y: -20, height: 0 }}
+                  animate={{ opacity: 1, y: 0, height: 'auto' }}
+                  exit={{ opacity: 0, y: -20, height: 0 }}
+                  className="bg-green-500/10 border border-green-500/50 text-green-500 p-4 rounded-xl flex items-center gap-3 mb-2"
+                >
+                  <CheckCircle2 size={24} />
+                  <span className="font-semibold">{isEn ? 'Thank you! Your message has been sent successfully.' : 'با تشکر! پیام شما با موفقیت ارسال شد.'}</span>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
             <div className="flex flex-col gap-1 text-left rtl:text-right">
               <input
                 type="text"
@@ -183,27 +205,10 @@ export function Contact({ lang }: { lang: Language }) {
             <button
               type="submit"
               disabled={status === 'submitting' || status === 'success'}
-              className="group relative flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-white text-black font-medium hover:bg-amber-500 transition-colors disabled:opacity-80 disabled:cursor-not-allowed overflow-hidden"
+              className="group relative flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-white text-black font-medium hover:bg-amber-500 transition-colors disabled:opacity-80 disabled:cursor-not-allowed overflow-hidden mt-2"
             >
               <AnimatePresence mode="wait">
-                {status === 'success' ? (
-                  <motion.div
-                    key="success"
-                    initial={{ opacity: 0, scale: 0.8, y: 10 }}
-                    animate={{ opacity: 1, scale: 1, y: 0 }}
-                    exit={{ opacity: 0, scale: 0.8, y: -10 }}
-                    transition={{ type: "spring", bounce: 0.6, duration: 0.6 }}
-                    className="flex items-center gap-2 text-green-700"
-                  >
-                    <motion.div
-                      animate={{ scale: [1, 1.2, 1], rotate: [0, 10, -10, 0] }}
-                      transition={{ duration: 0.5, delay: 0.1 }}
-                    >
-                      <CheckCircle2 size={20} />
-                    </motion.div>
-                    <span className="font-semibold">{isEn ? 'Message Sent!' : 'پیام ارسال شد!'}</span>
-                  </motion.div>
-                ) : status === 'submitting' ? (
+                {status === 'submitting' ? (
                   <motion.div
                     key="submitting"
                     initial={{ opacity: 0, y: 10 }}
@@ -222,7 +227,7 @@ export function Contact({ lang }: { lang: Language }) {
                     exit={{ opacity: 0, y: -10 }}
                     className="flex items-center gap-2"
                   >
-                    <span>{isEn ? 'Send Message' : 'ارسال پیام'}</span>
+                    <span>{status === 'success' ? (isEn ? 'Sent' : 'ارسال شد') : (isEn ? 'Send Message' : 'ارسال پیام')}</span>
                     <Send size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 rtl:group-hover:-translate-x-1 transition-transform" />
                   </motion.div>
                 )}

@@ -19,8 +19,18 @@ export function Experience({ lang }: { lang: Language }) {
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8 }}
       >
-        <h2 className="text-4xl md:text-6xl font-light tracking-tighter mb-4">{t.title}</h2>
-        <p className="text-white/50 text-lg mb-16 max-w-2xl">{t.summary}</p>
+        <div className="sticky top-20 z-30 bg-[#0a0a0a]/90 backdrop-blur-md py-4 px-4 -mx-4 rounded-2xl mb-8">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="text-4xl md:text-6xl font-light tracking-tighter"
+          >
+            {t.title}
+          </motion.h2>
+          <p className="text-white/50 text-lg mt-2 max-w-2xl">{t.summary}</p>
+        </div>
 
         <div className="flex flex-col relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-white/20 before:to-transparent">
           {t.items.map((item, index) => {

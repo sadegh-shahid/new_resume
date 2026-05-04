@@ -10,7 +10,7 @@ export function Hero({ lang }: { lang: Language }) {
 
   useEffect(() => {
     const img = new Image();
-    img.src = 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop';
+    img.src = '/assets/images/photo-1618005182384-a83a8bd57fbe.webp';
     img.onload = () => setImageLoaded(true);
   }, []);
 
@@ -49,7 +49,7 @@ export function Hero({ lang }: { lang: Language }) {
         }
         className="absolute inset-0 z-0 mix-blend-overlay pointer-events-none"
         style={{
-          backgroundImage: 'url("https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop")',
+          backgroundImage: 'url("/assets/images/photo-1618005182384-a83a8bd57fbe.webp")',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
