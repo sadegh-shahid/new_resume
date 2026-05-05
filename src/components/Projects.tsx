@@ -229,7 +229,7 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.95, y: 20 }}
                     transition={{ duration: 0.1, ease: "easeOut" }}
-                    className="relative w-full max-w-5xl bg-[#111] overflow-y-auto md:overflow-hidden rounded-3xl border border-white/10 shadow-2xl flex flex-col md:flex-row my-auto max-h-[90vh] z-10"
+                    className="relative w-full max-w-5xl bg-[#111] overflow-y-auto md:overflow-hidden rounded-3xl border border-white/10 shadow-2xl flex flex-col md:flex-row my-auto max-h-83vh] z-10"
                   >
                     <button
                       onClick={() => setSelectedProject(null)}
