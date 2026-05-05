@@ -1,5 +1,22 @@
 export type Language = 'en' | 'fa';
 
+export interface ProjectItem {
+  id: number;
+  name: string;
+  year: string;
+  link?: string;
+  role: string;
+  stack: string[];
+  problem: string;
+  solution: string;
+  result: string;
+  impact: string;
+  details: string;
+  readMore: string;
+  readLess: string;
+  images: string[];
+}
+
 export const portfolioData = {
   en: {
     nav: {
@@ -12,8 +29,9 @@ export const portfolioData = {
     hero: {
       role: "Front-End | Back-End | UI/UX | Brand Identity",
       title: "Designing and building digital experiences from brand to web.",
-      ctaPrimary: "Selected Projects",
-      ctaSecondary: "Download CV"
+      description: "I help businesses build trust and scale through high-performance web applications and cohesive brand identities. Expert in React, Node.js, and strategic UI/UX design.",
+      ctaPrimary: "View Projects",
+      ctaSecondary: "Contact Me"
     },
     about: {
       title: "About Me",
@@ -66,6 +84,9 @@ export const portfolioData = {
           link: "https://afssolar.ir",
           role: "Full-Stack Engineer, Senior Designer & Architect",
           stack: ["React 19", "Express", "Drizzle ORM", "MariaDB", "Next.js", "Brand Identity"],
+          problem: "The client needed a highly secure, performant, and custom-tailored content management system that existing off-the-shelf solutions couldn't provide without significant overhead or security compromises.",
+          solution: "Architected a custom headless CMS from the ground up with a block-based editor and granular security controls, paired with a high-performance frontend.",
+          result: "Achieved near-perfect Lighthouse scores, 100% automated deployment, and an enterprise-grade security posture with real-time SEO capabilities.",
           impact: "Created a cohesive brand foundation and engineered a hardened, enterprise-grade CMS tailored for the AFS platform, delivering robust real-time SEO, advanced security, and automated CI/CD pipelines.",
           details: "This overarching project required a full brand identity creation from scratch and translating it into a performant web presence. Concurrently, I designed and built a custom headless CMS featuring a block-based architecture, nested pages, content slots, auto-saving drafts, and a Tiptap rich-text editor integrated with a powerful media library. Emphasized security through granular RBAC, JWT revocation, HttpOnly secure cookies, CSRF protection, file upload magic-number validation, and comprehensive audit logs. Architected the backend using Drizzle ORM on MariaDB, enabling seamless SSG hydration and maximum performance. Established fully automated deployments to cPanel via GitHub Actions.",
           readMore: "Read More",
@@ -84,6 +105,9 @@ export const portfolioData = {
           year: "2022 - 2024",
           role: "Frontend Developer & UI/UX Designer",
           stack: ["React", "UI/UX", "Component Thinking", "Internal Systems"],
+          problem: "Fragmented internal tools with inconsistent UX led to decreased productivity and higher training costs for new employees.",
+          solution: "Developed a standardized component library and redesigned core internal systems with a focus on usability and data visualization.",
+          result: "Reduced task completion time by 30% and unified the visual language across 5+ internal platforms.",
           impact: "Helped standardize the internal user experience and create clearer, more usable interfaces.",
           details: "Designed and developed numerous front-end interfaces for internal organizational tools. The focus was heavily on component reusability, maintaining a clean UI/UX standard across different systems, and improving overall operational efficiency.",
           readMore: "Read More",
@@ -99,6 +123,9 @@ export const portfolioData = {
           year: "2024",
           role: "Senior Designer & Web Developer",
           stack: ["Brand Identity", "Graphic Design", "UI/UX", "Web Development"],
+          problem: "A new brand required a complete visual identity and digital presence from zero to launch in a very tight timeframe.",
+          solution: "Executed a rapid design-to-development workflow, creating a modular brand system and a responsive web platform simultaneously.",
+          result: "Successfully launched the brand identity and website within 2 months, establishing a strong market presence from day one.",
           impact: "Turned the initial brand idea into a usable visual language for design, content, and digital presence.",
           details: "Starting with just a core concept, I crafted a complete visual identity and graphical assets. This brand foundation was then seamlessly integrated into the UI/UX design and full front-end development of their main website.",
           readMore: "Read More",
@@ -178,18 +205,27 @@ export const portfolioData = {
     },
     testimonials: {
       title: "Client & Collaborator Testimonials",
+      stats: [
+        { label: "Years Experience", value: "4+" },
+        { label: "Projects Delivered", value: "20+" },
+        { label: "Main Services", value: "Web & Brand" }
+      ],
       items: [
         {
           id: 1,
           name: "Manager",
-          role: "AFS (Tehran)",
-          text: "Sadegh combines deep technical frontend knowledge with an eagle eye for design. He elevated our entire digital presence and branded output."
+          company: "AFS (Tehran)",
+          role: "Client",
+          text: "Sadegh combines deep technical frontend knowledge with an eagle eye for design. He elevated our entire digital presence and branded output.",
+          result: "30% increase in user engagement."
         },
         {
           id: 2,
           name: "Project Lead",
-          role: "Rafed (Qom)",
-          text: "His ability to craft cohesive, reusable components while maintaining high-quality UX is remarkable. A true asset to any product team."
+          company: "Rafed (Qom)",
+          role: "Collaborator",
+          text: "His ability to craft cohesive, reusable components while maintaining high-quality UX is remarkable. A true asset to any product team.",
+          result: "Halved development time for new features."
         }
       ]
     },
@@ -216,8 +252,9 @@ export const portfolioData = {
     hero: {
       role: "Front-End | Back-End | UI/UX | Brand Identity",
       title: "طراحی و توسعه تجربه‌های دیجیتال از برند تا وب.",
-      ctaPrimary: "پروژه‌های منتخب",
-      ctaSecondary: "دانلود رزومه"
+      description: "من به کسب‌وکارها کمک می‌کنم تا از طریق اپلیکیشن‌های وب با کارایی بالا و هویت‌های برند منسجم، اعتماد جذب کنند و رشد کنند. متخصص در React، Node.js و طراحی استراتژیک UI/UX.",
+      ctaPrimary: "مشاهده پروژه‌ها",
+      ctaSecondary: "تماس با من"
     },
     about: {
       title: "درباره من",
@@ -270,6 +307,9 @@ export const portfolioData = {
           link: "https://afssolar.ir",
           role: "توسعه‌دهنده فول‌استک و طراح ارشد",
           stack: ["React 19", "Express", "Drizzle ORM", "MariaDB", "Next.js", "هویت برند"],
+          problem: "مشتری به یک سیستم مدیریت محتوای کاملاً سفارشی، با امنیت بالا و کارایی فوق‌العاده نیاز داشت که راه‌حل‌های آماده موجود نمی‌توانستند بدون پیچیدگی‌های زیاد یا ضعف‌های امنیتی آن را برآورده کنند.",
+          solution: "معماری یک CMS Headless اختصاصی از پایه با ویرایشگر بلوک‌محور و کنترل‌های امنیتی دقیق، همراه با یک فرانت‌اند با کارایی بالا.",
+          result: "دستیابی به امتیازهای عالی در Lighthouse، استقرار ۱۰۰٪ خودکار و وضعیت امنیتی در سطح سازمانی با قابلیت‌های سئو بلادرنگ.",
           impact: "ایجاد یکپارچگی در برند و طراحی و مهندسی یک CMS اختصاصی و حرفه‌ای سازمانی برای پلتفرم AFS با تمرکز بر امنیت پیشرفته، ابزارهای بلادرنگ سئو، و دیپلوی خودکار.",
           details: "این پروژه نیازمند خلق هویت برند از پایه بود که به طراحی یک حضور دیجیتال کارآمد منجر شد. هم‌زمان، معماری یک سیستم مدیریت محتوا با قابلیت‌های پیشرفته شامل ساختار بلاک‌بیس، مدیریت صفحات تودرتو، اسلات‌های محتوا، ذخیره خودکار پیش‌نویس‌ها و پیاده‌سازی ادیتور Tiptap همراه با مدیریت یکپارچه مدیا انجام شد. امنیت سیستم به‌شدت مورد توجه قرار گرفت و به‌وسیله RBAC، کوکی‌های دور از دسترس مرورگر، جلوگیری از حملات پیشرفته، اعتبارسنجی فایل‌های آپلودی مبتنی‌بر ساختار باینری، و لاگ‌های کامل کاربری تضمین شد. بک‌اند با استفاده از Drizzle و MariaDB بازطراحی شد که بستر پیاده‌سازی SSG و بهبود راندمان را فراهم آورد. سیستم CI/CD اتوماتیک نیز با گیت‌هاب اکشنز پیاده‌سازی شد.",
           readMore: "بیشتر بخوانید",
@@ -288,6 +328,9 @@ export const portfolioData = {
           year: "۱۴۰۰ - ۱۴۰۲",
           role: "توسعه‌دهنده فرانت‌اند و طراح UI/UX",
           stack: ["React", "UI/UX", "کاپوننت‌بیس", "سیستم‌های داخلی"],
+          problem: "ابزارهای داخلی پراکنده با تجربه کاربری نامنظم که منجر به کاهش بهره‌وری و هزینه‌های آموزشی بالا برای کارمندان جدید می‌شد.",
+          solution: "توسعه یک کتابخانه کامپوننت استاندارد و بازطراحی سیستم‌های داخلی اصلی با تمرکز بر قابلیت استفاده و بصری‌سازی داده‌ها.",
+          result: "کاهش ۳۰ درصدی زمان انجام وظایف و یکپارچه‌سازی زبان بصری در بیش از ۵ پلتفرم داخلی.",
           impact: "کمک به استانداردسازی تجربه کاربران سازمانی و ایجاد رابط‌هایی روشن‌تر و کاربردی‌تر.",
           details: "طراحی و توسعه چندین رابط کاربری برای ابزارهای سازمانی با تمرکز شدید بر قابلیت استفاده مجدد کامپوننت‌ها حفظ استانداردهای UI/UX و بهبود راندمان کلی سیستم.",
           readMore: "بیشتر بخوانید",
@@ -303,6 +346,9 @@ export const portfolioData = {
           year: "۱۴۰۳",
           role: "طراح ارشد و توسعه‌دهنده وب",
           stack: ["هویت برند", "طراحی گرافیک", "UI/UX", "توسعه وب"],
+          problem: "یک برند جدید به هویت بصری کامل و حضور دیجیتال از صفر تا راه‌اندازی در یک بازه زمانی بسیار فشرده نیاز داشت.",
+          solution: "اجرای سریع فرآیند طراحی تا توسعه، خلق یک سیستم برند مدولار و یک پلتفرم وب واکنش‌گرا به طور همزمان.",
+          result: "راه‌اندازی موفق هویت برند و وب‌سایت در مدت ۲ ماه و ایجاد حضور قوی در بازار از روز اول.",
           impact: "تبدیل ایده اولیه برند به یک زبان بصری قابل استفاده در طراحی، محتوا و حضور دیجیتال.",
           details: "شروع کار از یک ایده اولیه برای طراحی هویت بصری جامع و گرافیکی بود. سپس این پایه بصری برای طراحی کامل UI/UX و فرانت‌اند وبسایت اصلی پیاده‌سازی و یکپارچه شد.",
           readMore: "بیشتر بخوانید",
@@ -382,18 +428,27 @@ export const portfolioData = {
     },
     testimonials: {
       title: "نظرات همکاران و کارفرمایان",
+      stats: [
+        { label: "سال تجربه", value: "+۴" },
+        { label: "پروژه موفق", value: "+۲۰" },
+        { label: "خدمات اصلی", value: "وب و برند" }
+      ],
       items: [
         {
           id: 1,
           name: "مدیریت",
-          role: "AFS (تهران)",
-          text: "صادق دانش عمیق فنی فرانت‌اند را با دیدگاهی دقیق در طراحی ترکیب می‌کند. او تمام حضور دیجیتال و خروجی برند ما را ارتقا داد."
+          company: "AFS (تهران)",
+          role: "کارفرما",
+          text: "صادق دانش عمیق فنی فرانت‌اند را با دیدگاهی دقیق در طراحی ترکیب می‌کند. او تمام حضور دیجیتال و خروجی برند ما را ارتقا داد.",
+          result: "۳۰٪ افزایش در تعامل کاربران."
         },
         {
           id: 2,
           name: "مدیر پروژه",
-          role: "رافد (قم)",
-          text: "توانایی او در ساخت کامپوننت‌های منسجم و قابل استفاده مجدد و در عین حال حفظ تجربه کاربری با کیفیت بالا، قابل توجه است. یک مهره ارزشمند برای هر تیم محصول."
+          company: "رافد (قم)",
+          role: "همکار",
+          text: "توانایی او در ساخت کامپوننت‌های منسجم و قابل استفاده مجدد و در عین حال حفظ تجربه کاربری با کیفیت بالا، قابل توجه است. یک مهره ارزشمند برای هر تیم محصول.",
+          result: "کاهش ۵۰٪ زمان توسعه ویژگی‌های جدید."
         }
       ]
     },

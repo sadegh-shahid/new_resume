@@ -105,16 +105,23 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
             ))}
           </motion.span>
         </h1>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="text-white/60 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
+        >
+          {(t as any).description}
+        </motion.p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 w-full max-w-sm sm:max-w-none mx-auto">
           <a
             href="#projects"
-            className={`inline-flex items-center justify-center border border-white/30 rounded-full px-8 py-4 ${isEn ? 'text-sm uppercase tracking-widest' : 'text-base tracking-normal font-medium'} hover:bg-white hover:text-black transition-all duration-300 w-full sm:w-auto text-center`}
+            className={`inline-flex items-center justify-center border border-white/30 rounded-full px-8 py-4 ${isEn ? 'text-sm uppercase tracking-widest' : 'text-base tracking-normal font-medium'} hover:bg-white hover:text-black transition-all duration-300 w-full sm:w-auto text-center font-semibold`}
           >
             {t.ctaPrimary}
           </a>
           <a
-            href="/resume.pdf"
-            download="Mohammad_Sadegh_Shahid_Resume.pdf"
+            href="#contact"
             className={`inline-flex items-center justify-center border border-transparent bg-white/5 rounded-full px-8 py-4 ${isEn ? 'text-sm uppercase tracking-widest' : 'text-base tracking-normal font-medium'} hover:bg-white/10 text-white/80 hover:text-white transition-all duration-300 w-full sm:w-auto text-center`}
           >
             {t.ctaSecondary}

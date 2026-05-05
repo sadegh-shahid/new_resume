@@ -21,10 +21,26 @@ export const Testimonials = memo(({ lang }: { lang: Language }) => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, ease: "easeOut" }}
             id="testimonials-heading" 
-            className="text-4xl md:text-6xl font-light tracking-tighter"
+            className="text-4xl md:text-6xl font-light tracking-tighter mb-12"
           >
             {t.title}
           </motion.h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-16">
+            {(t as any).stats.map((stat: any, index: number) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-white/5 border border-white/5 rounded-2xl p-8 text-center"
+              >
+                <div className="text-3xl md:text-4xl font-light text-amber-500 mb-2">{stat.value}</div>
+                <div className="text-xs uppercase tracking-widest text-white/40">{stat.label}</div>
+              </motion.div>
+            ))}
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -42,13 +58,18 @@ export const Testimonials = memo(({ lang }: { lang: Language }) => {
                 "{item.text}"
               </p>
               
+              <div className="bg-amber-500/5 border border-amber-500/10 rounded-2xl p-4 mb-8">
+                <span className="block text-[10px] uppercase tracking-[0.2em] text-amber-500/60 mb-1">{lang === 'en' ? 'Result' : 'نتیجه'}</span>
+                <p className="text-white/80 text-sm font-medium">{(item as any).result}</p>
+              </div>
+
               <div className="flex items-center gap-4 mt-auto">
                 <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center font-serif text-xl border border-white/20" aria-hidden="true">
                   {item.name.charAt(0)}
                 </div>
                 <div>
                   <h3 className="text-white font-medium">{item.name}</h3>
-                  <p className="text-white/50 text-sm uppercase tracking-widest">{item.role}</p>
+                  <p className="text-white/50 text-xs uppercase tracking-widest">{(item as any).role} &middot; {(item as any).company}</p>
                 </div>
               </div>
             </motion.div>

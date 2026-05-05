@@ -68,6 +68,15 @@ export const Contact = memo(({ lang }: { lang: Language }) => {
         className="relative z-10 flex flex-col items-center bg-white/5 border border-white/10 rounded-3xl p-8 lg:p-16"
       >
         <div className="w-full mb-12 text-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20 text-green-500 text-[10px] uppercase tracking-widest mb-6"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+            {isEn ? 'Available for freelance / remote' : 'آماده برای پروژه‌های فریلنس و دورکاری'}
+          </motion.div>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -91,6 +100,16 @@ export const Contact = memo(({ lang }: { lang: Language }) => {
                   <span className="text-sm text-white/50">{isEn ? 'Email' : 'ایمیل'}</span>
                   <span className="text-sm tracking-widest text-white/90" dir="ltr">{t.email}</span>
                 </div>
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigator.clipboard.writeText(t.email);
+                  }}
+                  className="mr-auto rtl:ml-auto p-2 hover:bg-white/10 rounded-lg transition-colors text-white/40 hover:text-white"
+                  title={isEn ? "Copy Email" : "کپی ایمیل"}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                </button>
               </a>
               
               <a href={t.whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label="Contact on WhatsApp" className="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500 hover:bg-amber-500/5 transition-all duration-300 focus:outline-none w-full">

@@ -98,7 +98,7 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
                 whileHover={{ scale: 1.02, backgroundColor: "rgba(255, 255, 255, 0.08)" }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.4, ease: "easeOut", delay: index * 0.1 }}
-                className="group flex flex-col p-8 rounded-3xl bg-white/5 border border-white/5 transition-colors cursor-pointer"
+                className="group flex flex-col p-8 rounded-3xl card-bg border transition-colors cursor-pointer"
                 layoutId={`project-container-${item.id}`}
                 onClick={() => { setSelectedProject(item.id); setCurrentImageIndex(0); }}
               >
@@ -262,15 +262,25 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
                     </div>
 
                     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.4 }} className="grid grid-cols-1 gap-6 mb-8">
-                      <div className="bg-white/5 border border-white/5 rounded-2xl p-6 md:p-8 text-left rtl:text-right shadow-inner">
-                        <span className="block text-xs uppercase tracking-widest text-amber-500 mb-3">{lang === 'en' ? 'Impact' : 'تأثیر'}</span>
-                        <p className="text-white/90 text-sm md:text-base leading-relaxed md:leading-loose">{item.impact}</p>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                      <div className="bg-white/5 border border-white/5 rounded-2xl p-6 text-left rtl:text-right">
+                        <span className="block text-xs uppercase tracking-widest text-amber-500 mb-2">{lang === 'en' ? 'Problem' : 'مسئله'}</span>
+                        <p className="text-white/90 text-xs md:text-sm leading-relaxed">{item.problem}</p>
                       </div>
-                      
-                      <div className="bg-black/20 border border-white/10 rounded-2xl p-6 md:p-8 text-left rtl:text-right">
-                        <span className="block text-xs uppercase tracking-widest text-amber-500 mb-3">{lang === 'en' ? 'Details' : 'جزئیات'}</span>
-                        <p className="text-white/70 text-sm md:text-base leading-relaxed md:leading-loose whitespace-pre-wrap">{item.details}</p>
+                      <div className="bg-white/5 border border-white/5 rounded-2xl p-6 text-left rtl:text-right">
+                        <span className="block text-xs uppercase tracking-widest text-amber-500 mb-2">{lang === 'en' ? 'Solution' : 'راهکار'}</span>
+                        <p className="text-white/90 text-xs md:text-sm leading-relaxed">{item.solution}</p>
                       </div>
+                      <div className="bg-white/5 border border-white/5 rounded-2xl p-6 text-left rtl:text-right">
+                        <span className="block text-xs uppercase tracking-widest text-amber-500 mb-2">{lang === 'en' ? 'Result' : 'نتیجه'}</span>
+                        <p className="text-white/90 text-xs md:text-sm leading-relaxed">{item.result}</p>
+                      </div>
+                    </div>
+
+                    <div className="bg-black/20 border border-white/10 rounded-2xl p-6 md:p-8 text-left rtl:text-right mb-8">
+                      <span className="block text-xs uppercase tracking-widest text-amber-500 mb-3">{lang === 'en' ? 'Deep Dive' : 'جزئیات بیشتر'}</span>
+                      <p className="text-white/70 text-sm md:text-base leading-relaxed md:leading-loose whitespace-pre-wrap">{item.details}</p>
+                    </div>
                     </motion.div>
 
                     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.4 }} className="pt-6 border-t border-white/10 text-left rtl:text-right">
