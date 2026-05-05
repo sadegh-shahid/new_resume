@@ -98,8 +98,18 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
                 whileHover={{ scale: 1.02, backgroundColor: "rgba(255, 255, 255, 0.08)" }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.4, ease: "easeOut", delay: index * 0.1 }}
-                className="group flex flex-col p-8 rounded-3xl card-bg border transition-colors cursor-pointer"
+                className="group flex flex-col p-8 rounded-3xl card-bg border transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-amber-500/40"
                 onClick={() => { setSelectedProject(item.id); setCurrentImageIndex(0); }}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setSelectedProject(item.id);
+                    setCurrentImageIndex(0);
+                  }
+                }}
+                aria-label={`${lang === 'en' ? 'View details for' : 'مشاهده جزئیات'} ${item.name}`}
               >
                 <div className="flex flex-col-reverse md:flex-row md:justify-between items-start mb-8 gap-4 md:gap-0">
                   <h3 className="text-3xl font-light pr-0 md:pr-8 rtl:pr-0 rtl:md:pl-8">{item.name}</h3>
@@ -143,12 +153,12 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
                     ))}
                   </div>
 
-                  <button 
-                    onClick={() => { setSelectedProject(item.id); setCurrentImageIndex(0); }}
-                    className="flex items-center gap-2 text-xs uppercase tracking-widest text-white/40 hover:text-white transition-colors focus:outline-none focus:text-white"
-                  >
-                    <span>{item.readMore}</span>
-                  </button>
+                  <div className="flex items-center mt-6">
+                    <div className="w-full md:w-auto flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs uppercase tracking-widest text-amber-500 font-bold group-hover:bg-amber-500 group-hover:text-black transition-all duration-300">
+                      <span>{item.readMore}</span>
+                      <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    </div>
+                  </div>
                 </div>
               </motion.div>
             );
