@@ -66,7 +66,7 @@ export const Experience = memo(({ lang }: { lang: Language }) => {
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: "easeOut" }}
+                        transition={{ duration: 0.1, ease: "easeOut" }}
                         className="overflow-hidden"
                       >
                         <p className="text-white/70 leading-relaxed text-sm md:text-base border-t border-white/10 pt-4 mt-2">
