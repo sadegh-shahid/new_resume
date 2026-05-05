@@ -262,7 +262,7 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
                     </div>
 
                     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.4 }} className="grid grid-cols-1 gap-6 mb-8">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                    <div className="grid grid-cols-1 gap-4 mb-6">
                       <div className="bg-white/5 border border-white/5 rounded-2xl p-6 text-left rtl:text-right">
                         <span className="block text-xs uppercase tracking-widest text-amber-500 mb-2">{lang === 'en' ? 'Problem' : 'مسئله'}</span>
                         <p className="text-white/90 text-xs md:text-sm leading-relaxed">{item.problem}</p>
