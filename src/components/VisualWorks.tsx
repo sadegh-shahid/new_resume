@@ -60,7 +60,7 @@ export const VisualWorks = memo(({ lang }: { lang: Language }) => {
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.1 }}
                   >
                     <div className="px-6 md:px-10 pb-8 pt-4 border-t border-white/10 text-white/70">
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

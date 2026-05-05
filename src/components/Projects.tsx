@@ -174,6 +174,7 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
+              transition={{ duration: 0.1 }}
               onClick={() => setSelectedProject(null)}
               className="fixed inset-0 bg-black/80 backdrop-blur-sm"
               aria-hidden="true"
@@ -186,7 +187,7 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
                   initial={{ opacity: 0, scale: 0.95, y: 20 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                  transition={{ duration: 0.3, ease: "easeOut" }}
+                  transition={{ duration: 0.1, ease: "easeOut" }}
                   className="relative w-full max-w-5xl bg-[#111] overflow-y-auto md:overflow-hidden rounded-3xl border border-white/10 shadow-2xl flex flex-col md:flex-row my-auto max-h-[90vh] z-10"
                 >
                   <button 
@@ -270,10 +271,10 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
                   <div className={`flex-1 flex flex-col w-full ${item.images && item.images.length > 0 ? 'md:w-1/2' : ''} p-6 md:p-12 overflow-visible md:overflow-y-auto`}>
                     <div className="mb-6 md:mb-8 pr-12 lg:pr-0 lg:pl-12 rtl:pr-0 rtl:pl-12 rtl:lg:pl-0 rtl:lg:pr-12">
                       <h3 className="text-4xl md:text-5xl font-light mb-2">{item.name}</h3>
-                      <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }} className="text-amber-500 text-sm uppercase tracking-widest mt-4 mb-2">{item.role} &middot; {item.year}</motion.p>
+                      <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.1 }} className="text-amber-500 text-sm uppercase tracking-widest mt-4 mb-2">{item.role} &middot; {item.year}</motion.p>
                     </div>
 
-                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.4 }} className="grid grid-cols-1 gap-6 mb-8">
+                    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.1 }} className="grid grid-cols-1 gap-6 mb-8">
                     <div className="grid grid-cols-1 gap-4 mb-6">
                       <div className="bg-white/5 border border-white/5 rounded-2xl p-6 text-left rtl:text-right">
                         <span className="block text-xs uppercase tracking-widest text-amber-500 mb-2">{lang === 'en' ? 'Problem' : 'مسئله'}</span>
@@ -295,7 +296,7 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
                     </div>
                     </motion.div>
 
-                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.4 }} className="pt-6 border-t border-white/10 text-left rtl:text-right">
+                    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.1 }} className="pt-6 border-t border-white/10 text-left rtl:text-right">
                       <span className="block text-xs uppercase tracking-widest text-white/40 mb-4">{lang === 'en' ? 'Technologies' : 'فناوری‌ها'}</span>
                       <div className="flex flex-wrap gap-2 rtl:justify-start">
                         {item.stack.map(tech => (
