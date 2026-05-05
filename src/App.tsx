@@ -43,9 +43,9 @@ export default function App() {
       <Header lang={lang} setLang={setLang} />
       <main>
         <Hero lang={lang} />
+        <Projects lang={lang} />
         <About lang={lang} />
         <Experience lang={lang} />
-        <Projects lang={lang} />
         <Suspense fallback={<div className="h-[600px] flex items-center justify-center text-white/20">...</div>}>
           <Skills lang={lang} />
         </Suspense>

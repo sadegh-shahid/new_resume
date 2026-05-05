@@ -11,8 +11,26 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background-color: #050505;
-  color: #FAFAFA;
+  background-color: #030303;
+  color: #E5E5E5;
+}
+
+h1, h2, h3 {
+  color: #FFFFFF;
+}
+
+.text-body {
+  color: #A3A3A3;
+}
+
+.card-bg {
+  background-color: #0A0A0A;
+  border-color: #1A1A1A;
+}
+
+.card-bg:hover {
+  border-color: #262626;
+  background-color: #0D0D0D;
 }
 
 /* Base text directions based on container dir attribute */
@@ -27,20 +45,31 @@ body {
   text-align: left;
 }
 
+/* Focus states */
+:focus-visible {
+  outline: 2px solid #F59E0B;
+  outline-offset: 4px;
+}
+
 /* Ensure headings use proper fonts */
 [dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3 {
-  font-family: "Vazirmatn", serif;
-  font-weight: 500 !important;
+  font-family: "Vazirmatn", sans-serif;
+  font-weight: 600 !important;
   line-height: 1.4 !important;
+}
+
+/* Specific class for serif headings in Persian if needed */
+[dir="rtl"] .font-serif-heading {
+  font-family: "Vazirmatn", sans-serif; /* Keep Vazirmatn as primary for Persian */
 }
 
 /* Improve Persian readability */
 [dir="rtl"] p {
-  line-height: 1.9;
+  line-height: 2;
 }
 
 [dir="rtl"] .leading-relaxed {
-  line-height: 2 !important;
+  line-height: 2.2 !important;
 }
 
 [dir="rtl"] .font-light {
@@ -55,8 +84,12 @@ body {
   font-size: 0.85rem;
 }
 
-[dir="ltr"] h1, [dir="ltr"] h2, [dir="ltr"] h3 {
+[dir="ltr"] h1, [dir="ltr"] h2 {
   font-family: "Playfair Display", serif;
+}
+
+[dir="ltr"] h3, [dir="ltr"] p {
+  font-family: "Inter", sans-serif;
 }
 
 /* Persian and Arabic are connected scripts; letter-spacing breaks them */
