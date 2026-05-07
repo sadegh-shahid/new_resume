@@ -49,113 +49,219 @@ export const Contact = memo(({ lang }: { lang: Language }) => {
   const isEn = lang === 'en';
 
   return (
-    <section id="contact" className="py-48 px-8 md:px-24 lg:px-32 relative overflow-hidden">
-      {/* Cinematic lighting effect */}
-      <div className="absolute bottom-0 right-0 w-[60vw] h-[60vw] bg-[#8C9475]/5 blur-[150px] -z-10 pointer-events-none" />
+    <section id="contact" className="py-24 px-6 max-w-5xl mx-auto relative">
+      <motion.div 
+        animate={{ 
+          scale: 1,
+          opacity: 1,
+          rotate: 0
+        }}
+        transition={{ duration: 0.5 }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[100px] pointer-events-none" 
+      />
       
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8 }}
+        className="relative z-10 flex flex-col items-center bg-white/5 border border-white/10 rounded-3xl p-8 lg:p-16"
       >
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-24">
-          <div className="md:col-span-5">
-            <motion.h2
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className={`text-6xl md:text-8xl font-light tracking-tight mb-16 ${isEn ? 'font-serif italic' : ''}`}
-            >
-              {t.title}
-            </motion.h2>
-
-            <div className="space-y-24">
-              <div>
-                <p className="text-white/30 text-xl leading-relaxed mb-16 font-light italic max-w-sm">
-                  {t.message}
-                </p>
-
-                <div className="space-y-12">
-                   <a href={`mailto:${t.email}`} className="block group w-fit">
-                      <span className="text-[10px] uppercase tracking-[0.3em] text-[#8C9475]/40 group-hover:text-[#8C9475] transition-colors block mb-4">01 / {lang === 'en' ? 'Email' : 'ایمیل'}</span>
-                      <span className="text-2xl md:text-3xl text-white/50 group-hover:text-white transition-all duration-500 font-light">{t.email}</span>
-                      <div className="h-px w-0 group-hover:w-full bg-[#8C9475]/30 transition-all duration-700 mt-4" />
-                   </a>
-                   <a href={t.whatsappUrl} className="block group w-fit">
-                      <span className="text-[10px] uppercase tracking-[0.3em] text-[#8C9475]/40 group-hover:text-[#8C9475] transition-colors block mb-4">02 / {lang === 'en' ? 'WhatsApp' : 'واتساپ'}</span>
-                      <span className="text-2xl md:text-3xl text-white/50 group-hover:text-white transition-all duration-500 font-light">{t.phone}</span>
-                      <div className="h-px w-0 group-hover:w-full bg-[#8C9475]/30 transition-all duration-700 mt-4" />
-                   </a>
+        <div className="w-full mb-12 text-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20 text-green-500 text-[10px] uppercase tracking-widest mb-6"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+            {isEn ? 'Available for freelance / remote' : 'آماده برای پروژه‌های فریلنس و دورکاری'}
+          </motion.div>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="text-4xl md:text-5xl font-light tracking-tighter mb-4"
+          >
+            {t.title}
+          </motion.h2>
+          <p className="text-white/60 text-lg max-w-xl mx-auto">{t.message}</p>
+        </div>
+        
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 w-full">
+          <div className="flex flex-col h-full justify-between gap-8 order-2 lg:order-1">
+            <div className="flex flex-col gap-6">
+              <a href={`mailto:${t.email}`} aria-label="Send an email" className="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500 hover:bg-amber-500/5 transition-all duration-300 focus:outline-none w-full">
+                <div className="p-3 bg-black/30 rounded-full text-amber-500">
+                  <Mail size={20} aria-hidden="true" />
                 </div>
-              </div>
+                <div className="flex flex-col items-start rtl:items-end">
+                  <span className="text-sm text-white/50">{isEn ? 'Email' : 'ایمیل'}</span>
+                  <span className="text-sm tracking-widest text-white/90" dir="ltr">{t.email}</span>
+                </div>
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigator.clipboard.writeText(t.email);
+                  }}
+                  className="mr-auto rtl:ml-auto p-2 hover:bg-white/10 rounded-lg transition-colors text-white/40 hover:text-white"
+                  title={isEn ? "Copy Email" : "کپی ایمیل"}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                </button>
+              </a>
+              
+              <a href={t.whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label="Contact on WhatsApp" className="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500 hover:bg-amber-500/5 transition-all duration-300 focus:outline-none w-full">
+                <div className="p-3 bg-black/30 rounded-full text-amber-500">
+                  <Phone size={20} aria-hidden="true" />
+                </div>
+                <div className="flex flex-col items-start rtl:items-end">
+                  <span className="text-sm text-white/50">{isEn ? 'WhatsApp' : 'واتساپ'}</span>
+                  <span className="text-sm tracking-widest text-white/90" dir="ltr">{t.phone}</span>
+                </div>
+              </a>
+            </div>
 
-              <div className="flex gap-12 pt-12 border-t border-white/5 w-fit">
-                <a href={t.linkedinUrl} target="_blank" rel="noopener noreferrer" className="text-white/20 hover:text-[#8C9475] transition-colors uppercase text-[10px] tracking-[0.3em]">LinkedIn</a>
-                <a href={t.githubUrl} target="_blank" rel="noopener noreferrer" className="text-white/20 hover:text-[#8C9475] transition-colors uppercase text-[10px] tracking-[0.3em]">GitHub</a>
-              </div>
+            <div className="flex justify-center lg:justify-start gap-4">
+              <a href={t.linkedinUrl} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" className="p-4 bg-white/5 border border-white/10 text-white/60 hover:text-amber-500 hover:border-amber-500/50 hover:bg-amber-500/10 transition-all duration-300 focus:outline-none rounded-2xl">
+                <Linkedin size={22} aria-hidden="true" />
+              </a>
+              <a href={t.githubUrl} target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" className="p-4 bg-white/5 border border-white/10 text-white/60 hover:text-amber-500 hover:border-amber-500/50 hover:bg-amber-500/10 transition-all duration-300 focus:outline-none rounded-2xl">
+                <Github size={22} aria-hidden="true" />
+              </a>
             </div>
           </div>
 
-          <div className="md:col-span-7 pt-12 md:pt-32">
-            <form onSubmit={handleSubmit} className="space-y-12">
-               <div className="relative group">
-                  <label htmlFor="name" className="text-[10px] uppercase tracking-widest text-white/20 group-focus-within:text-[#8C9475] transition-colors mb-4 block">01 / {isEn ? 'Name' : 'نام'}</label>
-                  <input
-                    id="name"
-                    type="text"
-                    value={formData.name}
-                    onChange={(e) => setFormData({...formData, name: e.target.value})}
-                    className="w-full bg-transparent border-b border-white/10 focus:border-[#8C9475] py-4 text-white outline-none transition-colors font-light"
-                    placeholder={isEn ? "Your Name" : "نام شما"}
-                  />
-               </div>
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full order-1 lg:order-2">
+            <AnimatePresence>
+              {status === 'success' && (
+                <motion.div
+                  initial={{ opacity: 0, y: -20, height: 0 }}
+                  animate={{ opacity: 1, y: 0, height: 'auto' }}
+                  exit={{ opacity: 0, y: -20, height: 0 }}
+                  className="bg-green-500/10 border border-green-500/50 text-green-500 p-4 rounded-xl flex items-center gap-3 mb-2"
+                >
+                  <CheckCircle2 size={24} />
+                  <span className="font-semibold">{isEn ? 'Thank you! Your message has been sent successfully.' : 'با تشکر! پیام شما با موفقیت ارسال شد.'}</span>
+                </motion.div>
+              )}
+            </AnimatePresence>
 
-               <div className="relative group">
-                  <label htmlFor="email" className="text-[10px] uppercase tracking-widest text-white/20 group-focus-within:text-[#8C9475] transition-colors mb-4 block">02 / {isEn ? 'Email' : 'ایمیل'}</label>
-                  <input
-                    id="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    className="w-full bg-transparent border-b border-white/10 focus:border-[#8C9475] py-4 text-white outline-none transition-colors font-light"
-                    placeholder={isEn ? "Email Address" : "آدرس ایمیل"}
-                  />
-               </div>
+            <div className="flex flex-col gap-1 text-left rtl:text-right">
+              <label htmlFor="name" className="sr-only">{isEn ? 'Your Name' : 'نام شما'}</label>
+              <input
+                id="name"
+                type="text"
+                placeholder={isEn ? 'Your Name' : 'نام شما'}
+                value={formData.name}
+                onChange={(e) => {
+                  setFormData({...formData, name: e.target.value});
+                  if (errors.name) setErrors({...errors, name: ''});
+                }}
+                className={`w-full bg-black/30 border ${errors.name ? 'border-red-500 focus:ring-red-500/50' : 'border-white/10 focus:border-amber-500 focus:ring-amber-500/50'} rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:ring-1 transition-all`}
+              />
+              <AnimatePresence>
+                {errors.name && (
+                  <motion.span initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="text-red-500 text-xs px-2">{errors.name}</motion.span>
+                )}
+              </AnimatePresence>
+            </div>
 
-               <div className="relative group">
-                  <label htmlFor="message" className="text-[10px] uppercase tracking-widest text-white/20 group-focus-within:text-[#8C9475] transition-colors mb-4 block">03 / {isEn ? 'Message' : 'پیام'}</label>
-                  <textarea
-                    id="message"
-                    rows={4}
-                    value={formData.message}
-                    onChange={(e) => setFormData({...formData, message: e.target.value})}
-                    className="w-full bg-transparent border-b border-white/10 focus:border-[#8C9475] py-4 text-white outline-none transition-colors font-light resize-none"
-                    placeholder={isEn ? "What's on your mind?" : "چه در ذهن دارید؟"}
-                  />
-               </div>
+            <div className="flex flex-col gap-1 text-left rtl:text-right">
+              <label htmlFor="email" className="sr-only">{isEn ? 'Email Address' : 'آدرس ایمیل'}</label>
+              <input
+                id="email"
+                type="email"
+                dir="ltr"
+                placeholder={isEn ? 'Email Address' : 'آدرس ایمیل'}
+                value={formData.email}
+                onChange={(e) => {
+                  setFormData({...formData, email: e.target.value});
+                  if (errors.email) setErrors({...errors, email: ''});
+                }}
+                className={`w-full bg-black/30 border ${errors.email ? 'border-red-500 focus:ring-red-500/50' : 'border-white/10 focus:border-amber-500 focus:ring-amber-500/50'} rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:ring-1 transition-all ${!isEn && 'text-right'}`}
+              />
+              <AnimatePresence>
+                {errors.email && (
+                  <motion.span initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="text-red-500 text-xs px-2">{errors.email}</motion.span>
+                )}
+              </AnimatePresence>
+            </div>
 
-               <button
-                  type="submit"
-                  disabled={status === 'submitting'}
-                  className="group relative flex items-center gap-8 py-4 px-2 overflow-hidden"
-               >
-                  <span className="text-xs uppercase tracking-[0.3em] text-white/80 group-hover:text-white transition-colors">{isEn ? 'Send Message' : 'ارسال پیام'}</span>
-                  <div className="w-12 h-[1px] bg-[#8C9475] transform scale-x-100 group-hover:scale-x-150 transition-transform origin-left" />
+            <div className="flex flex-col gap-1 text-left rtl:text-right">
+              <label htmlFor="phone" className="sr-only">{isEn ? 'Phone Number (Optional)' : 'شماره تماس (اختیاری)'}</label>
+              <input
+                id="phone"
+                type="tel"
+                dir="ltr"
+                placeholder={isEn ? 'Phone Number (Optional)' : 'شماره تماس (اختیاری)'}
+                value={formData.phone}
+                onChange={(e) => {
+                  setFormData({...formData, phone: e.target.value});
+                  if (errors.phone) setErrors({...errors, phone: ''});
+                }}
+                className={`w-full bg-black/30 border ${errors.phone ? 'border-red-500 focus:ring-red-500/50' : 'border-white/10 focus:border-amber-500 focus:ring-amber-500/50'} rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:ring-1 transition-all ${!isEn && 'text-right'}`}
+              />
+              <AnimatePresence>
+                {errors.phone && (
+                  <motion.span initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="text-red-500 text-xs px-2">{errors.phone}</motion.span>
+                )}
+              </AnimatePresence>
+            </div>
 
-                  {status === 'success' && (
-                    <motion.span
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      className="text-xs text-[#8C9475]"
-                    >
-                      {isEn ? 'Received' : 'دریافت شد'}
-                    </motion.span>
-                  )}
-               </button>
-            </form>
-          </div>
+            <div className="flex flex-col gap-1 text-left rtl:text-right mb-2">
+              <label htmlFor="message" className="sr-only">{isEn ? 'Your Message' : 'پیام شما'}</label>
+              <textarea
+                id="message"
+                placeholder={isEn ? 'Your Message' : 'پیام شما'}
+                rows={4}
+                value={formData.message}
+                onChange={(e) => {
+                  setFormData({...formData, message: e.target.value});
+                  if (errors.message) setErrors({...errors, message: ''});
+                }}
+                className={`w-full bg-black/30 border ${errors.message ? 'border-red-500 focus:ring-red-500/50' : 'border-white/10 focus:border-amber-500 focus:ring-amber-500/50'} rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:ring-1 transition-all resize-none`}
+              />
+              <AnimatePresence>
+                {errors.message && (
+                  <motion.span initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="text-red-500 text-xs px-2">{errors.message}</motion.span>
+                )}
+              </AnimatePresence>
+            </div>
+
+            <button
+              type="submit"
+              disabled={status === 'submitting' || status === 'success'}
+              className="group relative flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-white text-black font-medium hover:bg-amber-500 transition-colors disabled:opacity-80 disabled:cursor-not-allowed overflow-hidden mt-2"
+            >
+              <AnimatePresence mode="wait">
+                {status === 'submitting' ? (
+                  <motion.div
+                    key="submitting"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    className="flex items-center gap-2"
+                  >
+                    <div className="w-4 h-4 border-2 border-black/20 border-t-black rounded-full animate-spin" />
+                    <span>{isEn ? 'Sending...' : 'در حال ارسال...'}</span>
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="idle"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    className="flex items-center gap-2"
+                  >
+                    <span>{status === 'success' ? (isEn ? 'Sent' : 'ارسال شد') : (isEn ? 'Send Message' : 'ارسال پیام')}</span>
+                    <Send size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 rtl:group-hover:-translate-x-1 transition-transform" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </button>
+          </form>
         </div>
       </motion.div>
     </section>

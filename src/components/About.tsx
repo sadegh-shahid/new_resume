@@ -8,53 +8,51 @@ const focusIcons = [Code, Server, Layout, Fingerprint, PenTool, ImageIcon, Camer
 export const About = memo(({ lang }: { lang: Language }) => {
   const t = portfolioData[lang].about;
 
-  const isEn = lang === 'en';
-
   return (
-    <section id="about" className="py-32 px-8 md:px-24 lg:px-32 relative">
+    <section id="about" className="py-24 px-6 max-w-5xl mx-auto">
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8 }}
       >
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-24">
-          <div className="md:col-span-7">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <div>
             <motion.h2 
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className={`text-5xl md:text-7xl font-light tracking-tight mb-12 ${isEn ? 'font-serif italic' : ''}`}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="text-4xl md:text-6xl font-light tracking-tighter mb-8"
             >
               {t.title}
             </motion.h2>
-            <p className="text-white/40 text-xl leading-relaxed mb-12 font-light">
+            <p className="text-white/70 text-lg leading-relaxed mb-8">
               {t.summary}
             </p>
-            <div className="w-24 h-[1px] bg-[#8C9475] opacity-50" />
           </div>
           
-          <div className="md:col-span-5 flex flex-col justify-center">
-            <div className="relative p-12 bg-white/[0.01] border border-white/5 overflow-hidden">
-               {/* Aesthetic corner accent */}
-               <div className="absolute top-0 right-0 w-8 h-8 border-t border-r border-[#8C9475]/30" />
-               <div className="absolute bottom-0 left-0 w-8 h-8 border-b border-l border-[#8C9475]/30" />
-
-              <h3 className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-10 block font-semibold">
-                {lang === 'en' ? 'Core Focus' : 'حوزه‌های تمرکز'}
-              </h3>
-              <ul className="flex flex-col gap-6">
-                {t.coreFocus.map((focus, i) => {
-                  return (
-                    <li key={i} className="flex items-center gap-6 text-white/50 group transition-all duration-500">
-                      <span className="text-[#8C9475] text-[10px] font-mono opacity-40 group-hover:opacity-100 transition-opacity">0{i + 1}</span>
-                      <span className="group-hover:text-white group-hover:translate-x-2 transition-all text-sm uppercase tracking-widest font-light">{focus}</span>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
+          <div className="bg-white/5 border border-white/10 rounded-3xl p-8 lg:p-12">
+            <h3 className="text-sm uppercase tracking-widest text-white/50 mb-8 border-b border-white/10 pb-4">
+              Focus Areas
+            </h3>
+            <ul className="flex flex-col gap-4">
+              {t.coreFocus.map((focus, i) => {
+                const Icon = focusIcons[i] || Code;
+                return (
+                  <li key={i} className="flex items-center gap-4 text-white/80 group transition-all duration-300">
+                    <motion.div 
+                      whileHover={{ scale: 1.15, rotate: 5 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                      className="p-2.5 bg-white/5 rounded-xl text-white/50 group-hover:bg-amber-500/10 group-hover:text-amber-500 border border-transparent group-hover:border-amber-500/20 transition-all duration-300"
+                    >
+                      <Icon size={18} />
+                    </motion.div>
+                    <span className="group-hover:text-white transition-colors">{focus}</span>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
         </div>
       </motion.div>

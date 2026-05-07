@@ -16,71 +16,118 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
 
   return (
     <section 
-      className="min-h-screen flex flex-col items-start justify-center pt-32 pb-24 px-8 md:px-24 lg:px-32 relative overflow-hidden"
+      className="min-h-screen flex flex-col items-center justify-center pt-24 px-6 text-center relative overflow-hidden"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Background atmospheric light - directional falloff instead of a blob */}
+      {/* Loading Placeholder */}
+      <AnimatePresence>
+        {!imageLoaded && (
+          <motion.div
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1 }}
+            className="absolute inset-0 z-0 bg-white/5 backdrop-blur-3xl animate-pulse pointer-events-none"
+          />
+        )}
+      </AnimatePresence>
+
+      {/* Abstract Background Image */}
+      <motion.div
+        animate={
+          !imageLoaded
+            ? { opacity: 0 }
+            : isHovered 
+              ? { scale: 1.05, opacity: 0.15 } 
+              : { scale: 1, opacity: 0.15 }
+        }
+        transition={
+          !imageLoaded
+            ? { duration: 0 }
+            : isHovered 
+              ? { duration: 1, ease: "easeOut" } 
+              : { duration: 1 }
+        }
+        className="absolute inset-0 z-0 mix-blend-overlay pointer-events-none"
+        style={{
+          backgroundImage: 'url("/images/photo-1618005182384-a83a8bd57fbe.webp")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      />
+
+      {/* Background atmospheric blur */}
       <motion.div 
         animate={
           isHovered 
-            ? { opacity: 0.12, x: -20 }
-            : { opacity: 0.08, x: 0 }
+            ? { scale: 1.05, opacity: 0.85 } 
+            : { scale: 1, opacity: 1 }
         }
-        className="absolute top-0 right-0 w-[70vw] h-full bg-gradient-to-bl from-[#8C9475]/20 via-transparent to-transparent pointer-events-none"
+        transition={
+          isHovered 
+            ? { duration: 0.5, ease: "easeOut" } 
+            : { duration: 0.5 }
+        }
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/5 rounded-full blur-[120px] pointer-events-none" 
       />
 
       <motion.div
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-        className="relative z-10 max-w-5xl"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+        className="relative z-10 max-w-4xl mx-auto"
       >
-        <h2 className={`text-[#8C9475] uppercase ${isEn ? 'tracking-[0.3em]' : 'tracking-normal'} text-xs md:text-sm font-medium mb-8 opacity-80`}>
+        <h2 className={`text-white/50 uppercase ${isEn ? 'tracking-[0.2em]' : 'tracking-normal'} text-xs md:text-sm font-semibold mb-6`}>
           {t.role}
         </h2>
-
-        <h1 className={`text-6xl md:text-8xl lg:text-9xl leading-[1] font-light tracking-tight mb-12 max-w-4xl ${isEn ? 'font-serif italic' : 'font-bold'}`}>
-          {t.title}
+        <h1 className={`text-5xl md:text-7xl lg:text-8xl leading-[1.1] font-light tracking-tighter mb-10 ${isEn ? '' : 'font-bold'}`}>
+          <span className="sr-only">{t.title}</span>
+          <motion.span
+            initial="hidden"
+            animate="visible"
+            variants={{
+              visible: { transition: { staggerChildren: 0.1 } }
+            }}
+            aria-hidden="true"
+            className="inline-flex flex-wrap justify-center gap-x-3 gap-y-4"
+          >
+            {t.title.split(" ").map((word, index) => (
+              <span key={index} className="inline-block overflow-hidden relative pb-2">
+                <motion.span
+                  className="inline-block"
+                  variants={{
+                    hidden: { opacity: 0, y: "100%" },
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } }
+                  }}
+                >
+                  {word}
+                </motion.span>
+              </span>
+            ))}
+          </motion.span>
         </h1>
-
-        <div className="flex flex-col md:flex-row md:items-end gap-12 mt-8">
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.8 }}
-            className="text-white/40 text-lg md:text-xl max-w-xl leading-relaxed font-light"
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="text-white/60 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
+        >
+          {(t as any).description}
+        </motion.p>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 w-full max-w-sm sm:max-w-none mx-auto">
+          <a
+            href="#projects"
+            className={`inline-flex items-center justify-center border border-white/30 rounded-full px-8 py-4 ${isEn ? 'text-sm uppercase tracking-widest' : 'text-base tracking-normal font-medium'} hover:bg-white hover:text-black transition-all duration-300 w-full sm:w-auto text-center font-semibold`}
           >
-            {(t as any).description}
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 1.2 }}
-            className="flex flex-col sm:flex-row items-center gap-8"
+            {t.ctaPrimary}
+          </a>
+          <a
+            href="#contact"
+            className={`inline-flex items-center justify-center border border-transparent bg-white/5 rounded-full px-8 py-4 ${isEn ? 'text-sm uppercase tracking-widest' : 'text-base tracking-normal font-medium'} hover:bg-white/10 text-white/80 hover:text-white transition-all duration-300 w-full sm:w-auto text-center`}
           >
-            <a
-              href="#projects"
-              className={`group relative overflow-hidden px-2 py-1 ${isEn ? 'text-xs uppercase tracking-widest' : 'text-sm'} text-white/80 hover:text-white transition-colors duration-500`}
-            >
-              <span className="relative z-10">{t.ctaPrimary}</span>
-              <span className="absolute bottom-0 left-0 w-full h-[1px] bg-[#8C9475] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-            </a>
-
-            <a
-              href="#contact"
-              className={`group relative overflow-hidden px-2 py-1 ${isEn ? 'text-xs uppercase tracking-widest' : 'text-sm'} text-white/40 hover:text-white transition-colors duration-500`}
-            >
-              <span className="relative z-10">{t.ctaSecondary}</span>
-              <span className="absolute bottom-0 left-0 w-full h-[1px] bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-            </a>
-          </motion.div>
+            {t.ctaSecondary}
+          </a>
         </div>
       </motion.div>
-
-      {/* Vertical decorative line */}
-      <div className="absolute right-12 md:right-24 top-0 bottom-0 w-[1px] bg-white/5 hidden md:block" />
     </section>
   );
 });
