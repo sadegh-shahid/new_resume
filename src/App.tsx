@@ -1,61 +1,99 @@
-import { useState, useEffect, lazy, Suspense } from 'react';
-import { useScroll, useSpring, motion } from 'motion/react';
+import { useState, useEffect, lazy, Suspense, useRef } from 'react';
+import { useScroll, useSpring, motion, useMotionValue } from 'motion/react';
+import Lenis from 'lenis';
 import { Language } from './data';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
-import { About } from './components/About';
+import { About as Philosophy } from './components/Philosophy';
 import { Experience } from './components/Experience';
 import { Projects } from './components/Projects';
 import { VisualWorks } from './components/VisualWorks';
-
-// ⚡ Bolt: Code-splitting for better initial load performance.
-// The Skills component depends on the 'recharts' library, which is relatively large.
-// By lazy loading it, we move recharts and the Skills logic into a separate chunk,
-// reducing the main bundle size by ~45% (from ~731kB to ~400kB).
 const Skills = lazy(() => import('./components/Skills').then(m => ({ default: m.Skills })));
-import { Testimonials } from './components/Testimonials';
 import { Contact } from './components/Contact';
 
 export default function App() {
-  // Default to Persian based on user request priority
   const [lang, setLang] = useState<Language>('fa');
-  
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
-    restDelta: 0.01,
-    mass: 0.1
+    restDelta: 0.001
   });
 
   useEffect(() => {
-    // Set text direction based on chosen language
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+    return () => lenis.destroy();
+  }, []);
+
+  useEffect(() => {
     document.documentElement.dir = lang === 'fa' ? 'rtl' : 'ltr';
     document.documentElement.lang = lang;
   }, [lang]);
 
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      mouseX.set(e.clientX);
+      mouseY.set(e.clientY);
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, [mouseX, mouseY]);
+
   return (
-    <div className="min-h-screen selection:bg-white selection:text-black">
+    <div className="min-h-screen bg-bg text-primary selection:bg-accent/30 selection:text-white">
+      <div className="film-grain" />
+
       <motion.div 
-        className="fixed top-0 left-0 right-0 h-1 bg-amber-500 z-50 origin-left rtl:origin-right"
+        className="custom-cursor hidden md:block"
+        style={{ x: mouseX, y: mouseY, translateX: '-50%', translateY: '-50%' }}
+      />
+
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-[2px] bg-accent z-[110] origin-left rtl:origin-right"
         style={{ scaleX }}
       />
+
       <Header lang={lang} setLang={setLang} />
+
       <main>
-        <Hero lang={lang} />
+        <section id="hero">
+          <Hero lang={lang} />
+        </section>
+
         <Projects lang={lang} />
-        <About lang={lang} />
-        <Experience lang={lang} />
-        <Suspense fallback={<div className="h-[600px] flex items-center justify-center text-white/20">...</div>}>
+        <Philosophy lang={lang} />
+
+        <Suspense fallback={<div className="h-96 flex items-center justify-center opacity-5">...</div>}>
           <Skills lang={lang} />
         </Suspense>
-        <VisualWorks lang={lang} />
-        <Testimonials lang={lang} />
+
+        <Experience lang={lang} />
+
+        <section id="visual">
+          <VisualWorks lang={lang} />
+        </section>
+
         <Contact lang={lang} />
       </main>
       
-      <footer className="text-center py-8 text-white/30 text-sm mt-12 border-t border-white/5 tracking-widest uppercase">
-        © {new Date().getFullYear()} Mohammad Sadegh Shahid
+      <footer className="py-20 border-t border-white/5 text-center">
+        <div className="container mx-auto px-6">
+          <p className="text-[10px] text-muted uppercase tracking-[0.3em]">
+            © {new Date().getFullYear()} — Engineered by Mohammad Sadegh Shahid
+          </p>
+        </div>
       </footer>
     </div>
   );

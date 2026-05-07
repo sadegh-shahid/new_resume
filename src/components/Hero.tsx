@@ -1,133 +1,78 @@
-import { useState, useEffect, memo } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { portfolioData, Language } from '../data';
+import React from 'react';
+import { motion } from 'motion/react';
+import { Language } from '../data';
 
-export const Hero = memo(({ lang }: { lang: Language }) => {
-  const t = portfolioData[lang].hero;
+export const Hero = React.memo(({ lang }: { lang: Language }) => {
   const isEn = lang === 'en';
-  const [isHovered, setIsHovered] = useState(false);
-  const [imageLoaded, setImageLoaded] = useState(false);
-
-  useEffect(() => {
-    const img = new Image();
-    img.src = '/images/photo-1618005182384-a83a8bd57fbe.webp';
-    img.onload = () => setImageLoaded(true);
-  }, []);
+  const name = isEn ? "Mohammad Sadegh Shahid" : "محمد صادق شهید";
+  const headline = isEn ? "Crafting cinematic digital experiences." : "خلق تجربه‌های دیجیتال سینمایی.";
+  const subheadline = isEn
+    ? "I design and engineer interfaces where motion, photography, and code converge into emotionally resonant digital worlds."
+    : "من رابط‌هایی را طراحی و مهندسی می‌کنم که در آن‌ها حرکت، عکاسی و کد برای خلق دنیاهای دیجیتال تاثیرگذار با هم تلاقی می‌کنند.";
 
   return (
-    <section 
-      className="min-h-screen flex flex-col items-center justify-center pt-24 px-6 text-center relative overflow-hidden"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      {/* Loading Placeholder */}
-      <AnimatePresence>
-        {!imageLoaded && (
-          <motion.div
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1 }}
-            className="absolute inset-0 z-0 bg-white/5 backdrop-blur-3xl animate-pulse pointer-events-none"
-          />
-        )}
-      </AnimatePresence>
-
-      {/* Abstract Background Image */}
-      <motion.div
-        animate={
-          !imageLoaded
-            ? { opacity: 0 }
-            : isHovered 
-              ? { scale: 1.05, opacity: 0.15 } 
-              : { scale: 1, opacity: 0.15 }
-        }
-        transition={
-          !imageLoaded
-            ? { duration: 0 }
-            : isHovered 
-              ? { duration: 1, ease: "easeOut" } 
-              : { duration: 1 }
-        }
-        className="absolute inset-0 z-0 mix-blend-overlay pointer-events-none"
-        style={{
-          backgroundImage: 'url("/images/photo-1618005182384-a83a8bd57fbe.webp")',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      />
-
-      {/* Background atmospheric blur */}
-      <motion.div 
-        animate={
-          isHovered 
-            ? { scale: 1.05, opacity: 0.85 } 
-            : { scale: 1, opacity: 1 }
-        }
-        transition={
-          isHovered 
-            ? { duration: 0.5, ease: "easeOut" } 
-            : { duration: 0.5 }
-        }
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/5 rounded-full blur-[120px] pointer-events-none" 
-      />
-
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-        className="relative z-10 max-w-4xl mx-auto"
-      >
-        <h2 className={`text-white/50 uppercase ${isEn ? 'tracking-[0.2em]' : 'tracking-normal'} text-xs md:text-sm font-semibold mb-6`}>
-          {t.role}
-        </h2>
-        <h1 className={`text-5xl md:text-7xl lg:text-8xl leading-[1.1] font-light tracking-tighter mb-10 ${isEn ? '' : 'font-bold'}`}>
-          <span className="sr-only">{t.title}</span>
-          <motion.span
-            initial="hidden"
-            animate="visible"
-            variants={{
-              visible: { transition: { staggerChildren: 0.1 } }
-            }}
-            aria-hidden="true"
-            className="inline-flex flex-wrap justify-center gap-x-3 gap-y-4"
-          >
-            {t.title.split(" ").map((word, index) => (
-              <span key={index} className="inline-block overflow-hidden relative pb-2">
-                <motion.span
-                  className="inline-block"
-                  variants={{
-                    hidden: { opacity: 0, y: "100%" },
-                    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } }
-                  }}
-                >
-                  {word}
-                </motion.span>
+    <div className="relative min-h-[80vh] flex items-center pt-24 pb-12 overflow-hidden">
+      <div className="container mx-auto px-6">
+        <div className="flex flex-col lg:flex-row items-start gap-8 lg:gap-0">
+          {/* Left Side: Content (70% width on desktop) */}
+          <div className="w-full lg:w-[70%] z-10">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <span className="inline-block text-accent uppercase tracking-[0.3em] text-[10px] font-medium mb-4">
+                {name}
               </span>
-            ))}
-          </motion.span>
-        </h1>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="text-white/60 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
-        >
-          {(t as any).description}
-        </motion.p>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 w-full max-w-sm sm:max-w-none mx-auto">
-          <a
-            href="#projects"
-            className={`inline-flex items-center justify-center border border-white/30 rounded-full px-8 py-4 ${isEn ? 'text-sm uppercase tracking-widest' : 'text-base tracking-normal font-medium'} hover:bg-white hover:text-black transition-all duration-300 w-full sm:w-auto text-center font-semibold`}
-          >
-            {t.ctaPrimary}
-          </a>
-          <a
-            href="#contact"
-            className={`inline-flex items-center justify-center border border-transparent bg-white/5 rounded-full px-8 py-4 ${isEn ? 'text-sm uppercase tracking-widest' : 'text-base tracking-normal font-medium'} hover:bg-white/10 text-white/80 hover:text-white transition-all duration-300 w-full sm:w-auto text-center`}
-          >
-            {t.ctaSecondary}
-          </a>
+
+              <h1 className="mb-6 max-w-[1000px] leading-[1.05]">
+                {headline}
+              </h1>
+
+              <p className="large-body text-muted max-w-[650px] mb-8">
+                {subheadline}
+              </p>
+
+              <div className="flex gap-8 items-center">
+                <a
+                  href="#projects"
+                  className="group relative py-1 text-primary text-sm font-medium tracking-wide"
+                >
+                  {isEn ? "View Selected Works" : "مشاهده پروژه‌ها"}
+                  <div className="absolute bottom-0 left-0 w-full h-[1px] bg-accent transform origin-left scale-x-100 group-hover:scale-x-110 transition-transform duration-300" />
+                </a>
+
+                <a
+                  href="#contact"
+                  className="text-muted hover:text-primary transition-colors text-sm font-medium tracking-wide"
+                >
+                  {isEn ? "Let's Talk" : "گفتگو کنیم"}
+                </a>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Right Side: Abstract Parallax Shape */}
+          <div className="w-full lg:w-[30%] h-[300px] lg:h-[400px] relative">
+            <motion.div
+              animate={{
+                scale: [1, 1.05, 1],
+                opacity: [0.15, 0.25, 0.15],
+              }}
+              transition={{
+                duration: 15,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[250px] lg:w-[400px] lg:h-[400px] rounded-full blur-[100px] bg-accent/20 pointer-events-none"
+            />
+          </div>
         </div>
-      </motion.div>
-    </section>
+      </div>
+
+      <div className="absolute inset-0 amber-overlay pointer-events-none opacity-50" />
+    </div>
   );
 });
+
+Hero.displayName = 'Hero';
