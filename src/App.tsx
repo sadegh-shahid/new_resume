@@ -35,9 +35,12 @@ export default function App() {
   }, [lang]);
 
   return (
-    <div className="min-h-screen selection:bg-white selection:text-black">
+    <div className="min-h-screen selection:bg-white selection:text-black bg-[#080808]">
+      <div className="cinematic-overlay" />
+      <div className="vignette" />
+
       <motion.div 
-        className="fixed top-0 left-0 right-0 h-1 bg-amber-500 z-50 origin-left rtl:origin-right"
+        className="fixed top-0 left-0 right-0 h-[2px] bg-[#8C9475] z-50 origin-left rtl:origin-right opacity-50"
         style={{ scaleX }}
       />
       <Header lang={lang} setLang={setLang} />
@@ -54,8 +57,10 @@ export default function App() {
         <Contact lang={lang} />
       </main>
       
-      <footer className="text-center py-8 text-white/30 text-sm mt-12 border-t border-white/5 tracking-widest uppercase">
-        © {new Date().getFullYear()} Mohammad Sadegh Shahid
+      <footer className="py-24 px-8 md:px-24 lg:px-32 mt-24 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-white/10 text-[10px] tracking-[0.4em] uppercase">
+        <span>© {new Date().getFullYear()} Mohammad Sadegh Shahid</span>
+        <span className="hidden md:block h-px flex-1 bg-white/5 mx-12" />
+        <span>Cinematic Digital Identity</span>
       </footer>
     </div>
   );
