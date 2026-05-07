@@ -1,61 +1,70 @@
 import { memo } from 'react';
 import { motion } from 'motion/react';
 import { portfolioData, Language } from '../data';
-import { Code, Server, Layout, Fingerprint, PenTool, Image as ImageIcon, Camera, Sparkles } from 'lucide-react';
-
-const focusIcons = [Code, Server, Layout, Fingerprint, PenTool, ImageIcon, Camera, Sparkles];
 
 export const About = memo(({ lang }: { lang: Language }) => {
   const t = portfolioData[lang].about;
 
   return (
-    <section id="about" className="py-24 px-6 max-w-5xl mx-auto">
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8 }}
-      >
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          <div>
-            <motion.h2 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              className="text-4xl md:text-6xl font-light tracking-tighter mb-8"
-            >
-              {t.title}
-            </motion.h2>
-            <p className="text-white/70 text-lg leading-relaxed mb-8">
-              {t.summary}
-            </p>
+    <section id="about" className="py-40 px-8 md:px-24 border-t border-white/5 bg-off-black">
+      <div className="max-w-7xl mx-auto">
+        {/* Philosophy Section */}
+        <div className="grid grid-cols-12 gap-12 mb-40">
+          <div className="col-span-12 lg:col-span-4">
+            <h2 className="text-xs uppercase tracking-[0.4em] text-white/30 mb-8">{t.title}</h2>
           </div>
-          
-          <div className="bg-white/5 border border-white/10 rounded-3xl p-8 lg:p-12">
-            <h3 className="text-sm uppercase tracking-widest text-white/50 mb-8 border-b border-white/10 pb-4">
-              Focus Areas
-            </h3>
-            <ul className="flex flex-col gap-4">
-              {t.coreFocus.map((focus, i) => {
-                const Icon = focusIcons[i] || Code;
-                return (
-                  <li key={i} className="flex items-center gap-4 text-white/80 group transition-all duration-300">
-                    <motion.div 
-                      whileHover={{ scale: 1.15, rotate: 5 }}
-                      transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                      className="p-2.5 bg-white/5 rounded-xl text-white/50 group-hover:bg-amber-500/10 group-hover:text-amber-500 border border-transparent group-hover:border-amber-500/20 transition-all duration-300"
-                    >
-                      <Icon size={18} />
-                    </motion.div>
-                    <span className="group-hover:text-white transition-colors">{focus}</span>
-                  </li>
-                );
-              })}
-            </ul>
+          <div className="col-span-12 lg:col-span-8">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, ease: "easeOut" }}
+              className="text-3xl md:text-5xl font-light leading-[1.2] tracking-tight text-white mb-20"
+            >
+              {t.summary}
+            </motion.p>
           </div>
         </div>
-      </motion.div>
+
+        {/* Principles Grid */}
+        <div className="grid grid-cols-12 gap-12 mb-40">
+          <div className="col-span-12 lg:col-span-4">
+            <h2 className="text-xs uppercase tracking-[0.4em] text-white/30 mb-8">Principles</h2>
+          </div>
+          <div className="col-span-12 lg:col-span-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-16">
+              {(t as any).philosophy.map((item: any, i: number) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: i * 0.1 }}
+                >
+                  <h3 className="text-xl font-bold mb-4">{item.title}</h3>
+                  <p className="text-white/50 leading-relaxed font-light">{item.detail}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Areas of Focus - Clean List */}
+        <div className="grid grid-cols-12 gap-12">
+          <div className="col-span-12 lg:col-span-4">
+            <h2 className="text-xs uppercase tracking-[0.4em] text-white/30 mb-8">Expertise</h2>
+          </div>
+          <div className="col-span-12 lg:col-span-8">
+            <div className="flex flex-wrap gap-x-12 gap-y-4">
+              {t.coreFocus.map((focus, i) => (
+                <span key={i} className="text-2xl md:text-3xl font-light text-white/20 hover:text-white transition-colors cursor-default">
+                  {focus}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   );
 });

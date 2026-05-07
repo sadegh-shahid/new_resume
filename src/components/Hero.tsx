@@ -1,133 +1,90 @@
-import { useState, useEffect, memo } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { memo } from 'react';
+import { motion } from 'motion/react';
 import { portfolioData, Language } from '../data';
 
 export const Hero = memo(({ lang }: { lang: Language }) => {
   const t = portfolioData[lang].hero;
   const isEn = lang === 'en';
-  const [isHovered, setIsHovered] = useState(false);
-  const [imageLoaded, setImageLoaded] = useState(false);
-
-  useEffect(() => {
-    const img = new Image();
-    img.src = '/images/photo-1618005182384-a83a8bd57fbe.webp';
-    img.onload = () => setImageLoaded(true);
-  }, []);
 
   return (
     <section 
-      className="min-h-screen flex flex-col items-center justify-center pt-24 px-6 text-center relative overflow-hidden"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      className="min-h-screen flex flex-col justify-center px-8 md:px-24 relative overflow-hidden bg-off-black"
     >
-      {/* Loading Placeholder */}
-      <AnimatePresence>
-        {!imageLoaded && (
+      {/* Cinematic Background Elements */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-bl from-olive-accent/10 to-transparent opacity-50" />
+        <div className="absolute bottom-0 left-0 w-2/3 h-2/3 bg-gradient-to-tr from-black to-transparent opacity-80" />
+      </div>
+
+      <div className="relative z-10 grid grid-cols-12 gap-8 items-end">
+        {/* Left Column: Role & Title */}
+        <div className="col-span-12 lg:col-span-9">
           <motion.div
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1 }}
-            className="absolute inset-0 z-0 bg-white/5 backdrop-blur-3xl animate-pulse pointer-events-none"
-          />
-        )}
-      </AnimatePresence>
-
-      {/* Abstract Background Image */}
-      <motion.div
-        animate={
-          !imageLoaded
-            ? { opacity: 0 }
-            : isHovered 
-              ? { scale: 1.05, opacity: 0.15 } 
-              : { scale: 1, opacity: 0.15 }
-        }
-        transition={
-          !imageLoaded
-            ? { duration: 0 }
-            : isHovered 
-              ? { duration: 1, ease: "easeOut" } 
-              : { duration: 1 }
-        }
-        className="absolute inset-0 z-0 mix-blend-overlay pointer-events-none"
-        style={{
-          backgroundImage: 'url("/images/photo-1618005182384-a83a8bd57fbe.webp")',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      />
-
-      {/* Background atmospheric blur */}
-      <motion.div 
-        animate={
-          isHovered 
-            ? { scale: 1.05, opacity: 0.85 } 
-            : { scale: 1, opacity: 1 }
-        }
-        transition={
-          isHovered 
-            ? { duration: 0.5, ease: "easeOut" } 
-            : { duration: 0.5 }
-        }
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/5 rounded-full blur-[120px] pointer-events-none" 
-      />
-
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-        className="relative z-10 max-w-4xl mx-auto"
-      >
-        <h2 className={`text-white/50 uppercase ${isEn ? 'tracking-[0.2em]' : 'tracking-normal'} text-xs md:text-sm font-semibold mb-6`}>
-          {t.role}
-        </h2>
-        <h1 className={`text-5xl md:text-7xl lg:text-8xl leading-[1.1] font-light tracking-tighter mb-10 ${isEn ? '' : 'font-bold'}`}>
-          <span className="sr-only">{t.title}</span>
-          <motion.span
-            initial="hidden"
-            animate="visible"
-            variants={{
-              visible: { transition: { staggerChildren: 0.1 } }
-            }}
-            aria-hidden="true"
-            className="inline-flex flex-wrap justify-center gap-x-3 gap-y-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
-            {t.title.split(" ").map((word, index) => (
-              <span key={index} className="inline-block overflow-hidden relative pb-2">
-                <motion.span
-                  className="inline-block"
-                  variants={{
-                    hidden: { opacity: 0, y: "100%" },
-                    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } }
-                  }}
-                >
-                  {word}
-                </motion.span>
-              </span>
-            ))}
-          </motion.span>
-        </h1>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="text-white/60 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
-        >
-          {(t as any).description}
-        </motion.p>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 w-full max-w-sm sm:max-w-none mx-auto">
-          <a
-            href="#projects"
-            className={`inline-flex items-center justify-center border border-white/30 rounded-full px-8 py-4 ${isEn ? 'text-sm uppercase tracking-widest' : 'text-base tracking-normal font-medium'} hover:bg-white hover:text-black transition-all duration-300 w-full sm:w-auto text-center font-semibold`}
-          >
-            {t.ctaPrimary}
-          </a>
-          <a
-            href="#contact"
-            className={`inline-flex items-center justify-center border border-transparent bg-white/5 rounded-full px-8 py-4 ${isEn ? 'text-sm uppercase tracking-widest' : 'text-base tracking-normal font-medium'} hover:bg-white/10 text-white/80 hover:text-white transition-all duration-300 w-full sm:w-auto text-center`}
-          >
-            {t.ctaSecondary}
-          </a>
+            <h2 className={`text-white/30 uppercase tracking-[0.4em] text-[10px] md:text-xs mb-8 ${isEn ? '' : 'tracking-normal'}`}>
+              {t.role}
+            </h2>
+
+            <h1 className="text-6xl md:text-8xl lg:text-[10rem] leading-[0.9] font-bold tracking-tighter mb-12 max-w-5xl">
+              <motion.span
+                initial={{ clipPath: "inset(0 100% 0 0)" }}
+                animate={{ clipPath: "inset(0 0% 0 0)" }}
+                transition={{ duration: 1.5, ease: [0.77, 0, 0.175, 1] }}
+                className="block"
+              >
+                {t.title.split(' ').slice(0, 3).join(' ')}
+              </motion.span>
+              <motion.span
+                initial={{ clipPath: "inset(0 100% 0 0)" }}
+                animate={{ clipPath: "inset(0 0% 0 0)" }}
+                transition={{ duration: 1.5, delay: 0.2, ease: [0.77, 0, 0.175, 1] }}
+                className="block text-white/40"
+              >
+                {t.title.split(' ').slice(3).join(' ')}
+              </motion.span>
+            </h1>
+          </motion.div>
         </div>
-      </motion.div>
+
+        {/* Right/Bottom: Description & CTA - Asymmetrical Placement */}
+        <div className="col-span-12 lg:col-span-5 lg:col-start-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
+          >
+            <p className="text-white/50 text-lg md:text-xl mb-12 leading-relaxed font-light">
+              {t.description}
+            </p>
+
+            <div className="flex items-center gap-12">
+              <a
+                href="#projects"
+                className="text-xs uppercase tracking-[0.3em] text-white hover:text-white/60 transition-colors border-b border-white/20 pb-2"
+              >
+                {t.ctaPrimary}
+              </a>
+              <a
+                href="#contact"
+                className="text-xs uppercase tracking-[0.3em] text-white/40 hover:text-white transition-colors"
+              >
+                {t.ctaSecondary}
+              </a>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Decorative vertical line */}
+      <motion.div 
+        initial={{ scaleY: 0 }}
+        animate={{ scaleY: 1 }}
+        transition={{ duration: 1.5, delay: 1, ease: [0.77, 0, 0.175, 1] }}
+        className="absolute left-8 md:left-24 bottom-0 w-[1px] h-32 bg-white/10 origin-bottom"
+      />
     </section>
   );
 });
