@@ -15,6 +15,7 @@ export interface ProjectItem {
   readMore: string;
   readLess: string;
   images: string[];
+  statement: string; // Added for editorial feel
 }
 
 export const portfolioData = {
@@ -23,116 +24,100 @@ export const portfolioData = {
       about: "About",
       experience: "Experience",
       projects: "Projects",
-      skills: "Skills",
+      skills: "Expertise",
       contact: "Contact"
     },
     hero: {
-      role: "Front-End | Back-End | UI/UX | Brand Identity",
-      title: "Designing and building digital experiences from brand to web.",
-      description: "I help businesses build trust and scale through high-performance web applications and cohesive brand identities. Expert in React, Node.js, and strategic UI/UX design.",
+      role: "Creative Frontend Engineer",
+      title: "Building immersive digital experiences through engineering and cinematic design.",
+      description: "I create immersive interfaces that blend frontend engineering, motion design, and visual storytelling into emotionally intentional digital experiences.",
       ctaPrimary: "View Projects",
-      ctaSecondary: "Contact Me"
+      ctaSecondary: "Inquiry"
     },
     about: {
-      title: "About Me",
-      summary: "Over the past four years, I've worked hands-on across Front-End, Back-End, and UI/UX, building digital experiences that balance technical precision with thoughtful interface design. I actively use AI models and tools to optimize design workflows and accelerate product development. My background includes more than ten years of cinematic and artistic photography.",
+      title: "Philosophy",
+      summary: "I see interfaces as experiences, not pages. My work sits at the intersection of technical precision and cinematic storytelling, focusing on rhythm, detail, and emotional clarity. Performance is not just a metric; it is part of the aesthetic experience.",
+      philosophy: [
+        { title: "Clarity over decoration", detail: "Every element must serve a purpose. If it doesn't add to the story, it's noise." },
+        { title: "Motion with purpose", detail: "Animation should guide attention and provide context, not just decorate the page." },
+        { title: "Emotion through restraint", detail: "Luxury is felt in what is left out. We use negative space to let the content breathe." }
+      ],
       coreFocus: [
-        "Front-End Development",
-        "Back-End Development",
+        "Frontend Architecture",
+        "Motion Systems",
         "UI/UX Design",
-        "Brand Identity",
-        "Graphic Design",
-        "Visual Storytelling",
-        "Cinematic & Artistic Photography",
-        "AI-Assisted Workflow"
+        "Cinematic Photography",
+        "AI Integration",
+        "Performance Optimization"
       ]
     },
     experience: {
-      title: "Experience",
-      summary: "4+ years in Web & Product Development. 10+ years in Visual Direction & Brand Identity.",
+      title: "Archive",
+      summary: "A history of building for the web and the eye.",
       items: [
         {
           id: 1,
           role: "Senior Designer & Web Developer",
           company: "AFS (Tehran)",
-          date: "Nov 2024 - Present",
-          description: "Led a multidisciplinary workflow covering brand identity, graphic assets, complete UI/UX, and end-to-end website implementation, while also using AI tools for design enhancement, content production, product development, video creation, and teaser editing."
+          date: "2024 — Present",
+          description: "Directing the digital identity and architectural implementation of high-performance energy solutions."
         },
         {
           id: 2,
           role: "Senior Designer & Web Developer",
           company: "Makhtoot (Qom)",
-          date: "Feb 2024 - Apr 2024",
-          description: "Built the brand identity from concept to detailed execution, produced the required graphic assets, and then designed the UI/UX and fully developed the website with a brand-led approach."
+          date: "2024",
+          description: "Crafting brand-led digital presences from concept to full execution."
         },
         {
           id: 3,
           role: "Frontend Developer & UI/UX Designer",
           company: "Rafed (Qom)",
-          date: "Jan 2022 - Mar 2024",
-          description: "Designed UI/UX and developed frontend interfaces for the company and its internal systems, with a focus on usability, structured interfaces, and reusable product components."
+          date: "2022 — 2024",
+          description: "Engineering structured interfaces and reusable systems for complex internal platforms."
         }
       ]
     },
     projects: {
-      title: "Selected Projects",
+      title: "Selected Works",
       items: [
         {
           id: 1,
-          name: "AFSSOLAR & Custom Headless CMS",
+          name: "AFSSOLAR",
           year: "2024",
           link: "https://afssolar.ir",
-          role: "Full-Stack Engineer, Senior Designer & Architect",
-          stack: ["React 19", "Express", "Drizzle ORM", "MariaDB", "Next.js", "Brand Identity"],
-          problem: "The client needed a highly secure, performant, and custom-tailored content management system that existing off-the-shelf solutions couldn't provide without significant overhead or security compromises.",
-          solution: "Architected a custom headless CMS from the ground up with a block-based editor and granular security controls, paired with a high-performance frontend.",
-          result: "Achieved near-perfect Lighthouse scores, 100% automated deployment, and an enterprise-grade security posture with real-time SEO capabilities.",
-          impact: "Created a cohesive brand foundation and engineered a hardened, enterprise-grade CMS tailored for the AFS platform, delivering robust real-time SEO, advanced security, and automated CI/CD pipelines.",
-          details: "This overarching project required a full brand identity creation from scratch and translating it into a performant web presence. Concurrently, I designed and built a custom headless CMS featuring a block-based architecture, nested pages, content slots, auto-saving drafts, and a Tiptap rich-text editor integrated with a powerful media library. Emphasized security through granular RBAC, JWT revocation, HttpOnly secure cookies, CSRF protection, file upload magic-number validation, and comprehensive audit logs. Architected the backend using Drizzle ORM on MariaDB, enabling seamless SSG hydration and maximum performance. Established fully automated deployments to cPanel via GitHub Actions.",
-          readMore: "Read More",
-          readLess: "Show Less",
+          role: "Full-Stack Engineer & Architect",
+          stack: ["React 19", "Express", "Drizzle ORM", "MariaDB"],
+          statement: "Built a cinematic interaction system focused on emotional pacing and visual immersion.",
+          problem: "The client needed a highly secure, performant, and custom-tailored content management system.",
+          solution: "Architected a custom headless CMS from the ground up with a block-based editor.",
+          result: "Achieved near-perfect Lighthouse scores and an enterprise-grade security posture.",
+          impact: "Created a cohesive brand foundation and engineered a hardened, enterprise-grade CMS.",
+          details: "This overarching project required a full brand identity creation from scratch and translating it into a performant web presence. Concurrently, I designed and built a custom headless CMS featuring a block-based architecture, nested pages, and a Tiptap rich-text editor.",
+          readMore: "View Case Study",
+          readLess: "Close",
           images: [
             "/images/photo-1498050108023-c5249f4df085.webp",
-            "/images/photo-1555421689-491a97ff2040.webp",
-            "/images/photo-1461749280684-dccba630e2f6.webp",
-            "/images/photo-1555066931-4365d14bab8c.webp",
-            "/images/photo-1633356122544-f134324a6cee.webp"
+            "/images/photo-1555421689-491a97ff2040.webp"
           ]
         },
         {
           id: 2,
-          name: "Rafed Internal Systems",
-          year: "2022 - 2024",
-          role: "Frontend Developer & UI/UX Designer",
-          stack: ["React", "UI/UX", "Component Thinking", "Internal Systems"],
-          problem: "Fragmented internal tools with inconsistent UX led to decreased productivity and higher training costs for new employees.",
-          solution: "Developed a standardized component library and redesigned core internal systems with a focus on usability and data visualization.",
-          result: "Reduced task completion time by 30% and unified the visual language across 5+ internal platforms.",
+          name: "Rafed Systems",
+          year: "2022-2024",
+          role: "Frontend Developer",
+          stack: ["React", "UI/UX", "Internal Systems"],
+          statement: "Standardizing complex data visualization through refined component architecture.",
+          problem: "Fragmented internal tools with inconsistent UX led to decreased productivity.",
+          solution: "Developed a standardized component library and redesigned core internal systems.",
+          result: "Reduced task completion time by 30% and unified the visual language.",
           impact: "Helped standardize the internal user experience and create clearer, more usable interfaces.",
-          details: "Designed and developed numerous front-end interfaces for internal organizational tools. The focus was heavily on component reusability, maintaining a clean UI/UX standard across different systems, and improving overall operational efficiency.",
-          readMore: "Read More",
-          readLess: "Show Less",
+          details: "Designed and developed numerous front-end interfaces for internal organizational tools. The focus was heavily on component reusability and maintaining a clean UI/UX standard.",
+          readMore: "View Case Study",
+          readLess: "Close",
           images: [
             "/images/photo-1551288049-bebda4e38f71.webp",
             "/images/photo-1547658719-da2b51169166.webp"
-          ]
-        },
-        {
-          id: 3,
-          name: "Makhtoot",
-          year: "2024",
-          role: "Senior Designer & Web Developer",
-          stack: ["Brand Identity", "Graphic Design", "UI/UX", "Web Development"],
-          problem: "A new brand required a complete visual identity and digital presence from zero to launch in a very tight timeframe.",
-          solution: "Executed a rapid design-to-development workflow, creating a modular brand system and a responsive web platform simultaneously.",
-          result: "Successfully launched the brand identity and website within 2 months, establishing a strong market presence from day one.",
-          impact: "Turned the initial brand idea into a usable visual language for design, content, and digital presence.",
-          details: "Starting with just a core concept, I crafted a complete visual identity and graphical assets. This brand foundation was then seamlessly integrated into the UI/UX design and full front-end development of their main website.",
-          readMore: "Read More",
-          readLess: "Show Less",
-          images: [
-            "/images/photo-1626785774573-4b799315345d.webp",
-            "/images/photo-1561070791-2526d30994b5.webp"
           ]
         }
       ]
@@ -140,10 +125,10 @@ export const portfolioData = {
     skills: {
       title: "Expertise",
       categories: [
-        { name: "Web Development", items: "Next.js, React, TypeScript, Web Development", level: 90 },
-        { name: "Product & UX", items: "Back-End Development, UI/UX Design, Product Thinking, Responsive Interfaces", level: 85 },
-        { name: "Visual & Brand", items: "Brand Identity, Graphic Design, Visual Storytelling, Art Direction", level: 95 },
-        { name: "AI Workflow", items: "AI Tools, ChatGPT, Midjourney, Content Production, Workflow Optimization", level: 88 }
+        { name: "Engineering", items: "React, Next.js, TypeScript, Node.js, Drizzle, MariaDB", level: 90 },
+        { name: "Design", items: "UI/UX Design, Motion Systems, Brand Identity, Figma", level: 95 },
+        { name: "Creative", items: "Cinematic Photography, Art Direction, Visual Storytelling", level: 95 },
+        { name: "Innovation", items: "AI-Assisted Workflow, Performance Optimization", level: 88 }
       ]
     },
     visual: {
@@ -151,14 +136,11 @@ export const portfolioData = {
       items: [
         {
           id: 1,
-          title: "Brand Identity / Graphic Design",
+          title: "Brand Identity",
           tools: "Illustrator, Photoshop, Midjourney",
-          concept: "Creating a cohesive visual language from logos to marketing assets across physical and digital mediums.",
-          impact: "Established strong, recognizable brand presences that accurately reflect company values.",
-          images: [
-            "/images/photo-1626785774573-4b799315345d.webp",
-            "/images/photo-1626785774625-ddcddc3445e9.webp"
-          ],
+          concept: "Creating a cohesive visual language from logos to marketing assets.",
+          impact: "Established strong, recognizable brand presences.",
+          images: ["/images/photo-1626785774573-4b799315345d.webp"],
           detailsBtn: "View Details",
           closeBtn: "Close"
         },
@@ -166,72 +148,34 @@ export const portfolioData = {
           id: 2,
           title: "Cinematic Photography",
           tools: "Lightroom, Professional Camera Gear",
-          concept: "Capturing atmospheric and narrative-driven imagery to tell a visual story.",
-          impact: "Enhanced visual storytelling for campaigns and personal art projects.",
-          images: [
-            "/images/photo-1492691527719-9d1e07e534b4.webp",
-            "/images/photo-1542038784456-1ea8e935640e.webp"
-          ],
-          detailsBtn: "View Details",
-          closeBtn: "Close"
-        },
-        {
-          id: 3,
-          title: "Visual Narrative / Art Direction",
-          tools: "Figma, AI Tools, Video Editing",
-          concept: "Guiding the creative vision for digital products and campaigns.",
-          impact: "Delivered unified aesthetic experiences across all user touchpoints.",
-          images: [
-            "/images/photo-1561070791-2526d30994b5.webp",
-            "/images/photo-1558655146-d09347e92766.webp"
-          ],
-          detailsBtn: "View Details",
-          closeBtn: "Close"
-        },
-        {
-          id: 4,
-          title: "Interface Design / Digital Product",
-          tools: "Figma, React, UI/UX Principles",
-          concept: "Designing intuitive and accessible user interfaces with a focus on component architecture.",
-          impact: "Improved user satisfaction and streamlined organizational workflows.",
-          images: [
-            "/images/photo-1507238691740-187a5b1d37b8.webp",
-            "/images/photo-1555421689-491a97ff2040.webp"
-          ],
+          concept: "Capturing atmospheric and narrative-driven imagery.",
+          impact: "Enhanced visual storytelling for campaigns.",
+          images: ["/images/photo-1492691527719-9d1e07e534b4.webp"],
           detailsBtn: "View Details",
           closeBtn: "Close"
         }
       ]
     },
     testimonials: {
-      title: "Client & Collaborator Testimonials",
+      title: "Voice",
       stats: [
-        { label: "Years Experience", value: "4+" },
-        { label: "Projects Delivered", value: "20+" },
-        { label: "Main Services", value: "Web & Brand" }
+        { label: "Engineering", value: "4+ Yrs" },
+        { label: "Visual Arts", value: "10+ Yrs" }
       ],
       items: [
         {
           id: 1,
           name: "Manager",
-          company: "AFS (Tehran)",
+          company: "AFS",
           role: "Client",
-          text: "Sadegh combines deep technical frontend knowledge with an eagle eye for design. He elevated our entire digital presence and branded output.",
+          text: "Sadegh combines deep technical frontend knowledge with an eagle eye for design. He elevated our entire digital presence.",
           result: "30% increase in user engagement."
-        },
-        {
-          id: 2,
-          name: "Project Lead",
-          company: "Rafed (Qom)",
-          role: "Collaborator",
-          text: "His ability to craft cohesive, reusable components while maintaining high-quality UX is remarkable. A true asset to any product team.",
-          result: "Halved development time for new features."
         }
       ]
     },
     contact: {
-      title: "Let's work together",
-      message: "If you have a project or role in mind, the best first step is a short message with your goal, timeline, and core need.",
+      title: "Inquiry",
+      message: "Available for select projects and engineering roles that value visual maturity and technical precision.",
       email: "m110s11061@gmail.com",
       phone: "+98 936 991 3228",
       linkedin: "linkedin.com/in/mohammad-sadegh-shahid",
@@ -243,130 +187,95 @@ export const portfolioData = {
   },
   fa: {
     nav: {
-      about: "درباره من",
-      experience: "تجربیات",
+      about: "فلسفه",
+      experience: "آرشیو",
       projects: "پروژه‌ها",
-      skills: "مهارت‌ها",
+      skills: "تخصص",
       contact: "تماس"
     },
     hero: {
-      role: "Front-End | Back-End | UI/UX | Brand Identity",
-      title: "طراحی و توسعه تجربه‌های دیجیتال از برند تا وب.",
-      description: "من به کسب‌وکارها کمک می‌کنم تا از طریق اپلیکیشن‌های وب با کارایی بالا و هویت‌های برند منسجم، اعتماد جذب کنند و رشد کنند. متخصص در React، Node.js و طراحی استراتژیک UI/UX.",
+      role: "مهندس فرانت‌اند خلاق",
+      title: "خلق تجربه‌های دیجیتال غوطه‌ورکننده از طریق مهندسی و طراحی سینمایی.",
+      description: "من رابط‌هایی می‌سازم که مهندسی فرانت‌اند، طراحی حرکت و روایت بصری را در تجربه‌های دیجیتالی با بار احساسی و آگاهانه ترکیب می‌کنند.",
       ctaPrimary: "مشاهده پروژه‌ها",
-      ctaSecondary: "تماس با من"
+      ctaSecondary: "استعلام"
     },
     about: {
-      title: "درباره من",
-      summary: "در چهار سال اخیر به‌صورت عملی در حوزه‌های Front-End، Back-End و UI/UX فعالیت کرده‌ام و تجربه‌های دیجیتالی ساخته‌ام که دقت فنی را با طراحی هدفمند ترکیب می‌کنند. به‌طور فعال از مدل‌ها و ابزارهای هوش مصنوعی برای بهینه‌سازی فرآیند طراحی و تسریع توسعه محصول استفاده می‌کنم. بیش از ده سال تجربه در عکاسی سینمایی و هنری دارم.",
+      title: "فلسفه",
+      summary: "من رابط‌ها را به عنوان تجربه می‌بینم، نه صرفاً صفحه. کار من در نقطه تلاقی دقت فنی و روایت سینمایی قرار دارد، با تمرکز بر ریتم، جزئیات و وضوح احساسی. عملکرد تنها یک متریک نیست؛ بلکه بخشی از تجربه زیبایی‌شناختی است.",
+      philosophy: [
+        { title: "وضوح فراتر از تزیین", detail: "هر المان باید هدفی را دنبال کند. اگر به داستان چیزی اضافه نمی‌کند، پس مزاحم است." },
+        { title: "حرکت با هدف", detail: "انیمیشن باید توجه را هدایت کند و زمینه را فراهم سازد، نه اینکه صرفاً صفحه را تزیین کند." },
+        { title: "احساس از طریق خویشتن‌داری", detail: "لوکس بودن در چیزهایی است که حذف شده‌اند. ما از فضای منفی استفاده می‌کنیم تا محتوا نفس بکشد." }
+      ],
       coreFocus: [
-        "توسعه فرانت‌اند",
-        "توسعه بک‌اند",
-        "طراحی رابط و تجربه کاربری",
-        "هویت برند",
-        "طراحی گرافیک",
-        "روایت بصری",
-        "عکاسی هنری و سینمایی",
-        "جریان‌کار مبتنی بر هوش‌مصنوعی"
+        "معماری فرانت‌اند",
+        "سیستم‌های حرکتی",
+        "طراحی UI/UX",
+        "عکاسی سینمایی",
+        "یکپارچه‌سازی هوش مصنوعی",
+        "بهینه‌سازی عملکرد"
       ]
     },
     experience: {
-      title: "تجربیات",
-      summary: "۴+ سال در توسعه وب و محصول. ۱۰+ سال در جهت‌گیری بصری و هویت برند.",
+      title: "آرشیو",
+      summary: "تاریخچه‌ای از ساختن برای وب و برای چشم.",
       items: [
         {
           id: 1,
           role: "طراح ارشد و توسعه‌دهنده وب",
           company: "AFS (تهران)",
-          date: "آبان ۱۴۰۳ - اکنون",
-          description: "مدیریت و اجرای فرایند طراحی هویت برند، تولید گرافیک‌های موردنیاز، طراحی و پیاده‌سازی کامل وب‌سایت و استفاده کاربردی از ابزارهای هوش مصنوعی برای بهبود طراحی، تولید محتوا، توسعه محصول، ساخت ویدیو و تدوین تیزر."
+          date: "۱۴۰۳ — اکنون",
+          description: "هدایت هویت دیجیتال و پیاده‌سازی معماری راه‌حل‌های انرژی با کارایی بالا."
         },
         {
           id: 2,
           role: "طراح ارشد و توسعه‌دهنده وب",
           company: "مخطوط (قم)",
-          date: "بهمن ۱۴۰۲ - اردیبهشت ۱۴۰۳",
-          description: "طراحی و توسعه هویت برند از مرحله ایده‌پردازی تا اجرای جزئیات بصری، تولید خروجی‌های گرافیکی موردنیاز و سپس طراحی UI/UX و توسعه کامل وب‌سایت با رویکرد برندمحور."
+          date: "۱۴۰۳",
+          description: "خلق حضور دیجیتال برندمحور از ایده تا اجرای کامل."
         },
         {
           id: 3,
           role: "توسعه‌دهنده فرانت‌اند و طراح UI/UX",
           company: "رافد (قم)",
-          date: "دی ۱۴۰۰ - اسفند ۱۴۰۲",
-          description: "طراحی UI/UX و توسعه فرانت‌اند برای مجموعه و پروژه‌های درون‌سازمانی، با تمرکز بر تجربه کاربری، ساختار منظم رابط‌ها و پیاده‌سازی صفحات و کامپوننت‌های موردنیاز محصولات سازمانی."
+          date: "۱۴۰۰ — ۱۴۰۲",
+          description: "مهندسی رابط‌های ساختاریافته و سیستم‌های قابل استفاده مجدد برای پلتفرم‌های پیچیده داخلی."
         }
       ]
     },
     projects: {
-      title: "پروژه‌های منتخب",
+      title: "آثار منتخب",
       items: [
         {
           id: 1,
-          name: "وب‌سایت AFSSOLAR و سیستم مدیریت محتوای اختصاصی",
+          name: "AFSSOLAR",
           year: "۱۴۰۳",
           link: "https://afssolar.ir",
-          role: "توسعه‌دهنده فول‌استک و طراح ارشد",
-          stack: ["React 19", "Express", "Drizzle ORM", "MariaDB", "Next.js", "هویت برند"],
-          problem: "مشتری به یک سیستم مدیریت محتوای کاملاً سفارشی، با امنیت بالا و کارایی فوق‌العاده نیاز داشت که راه‌حل‌های آماده موجود نمی‌توانستند بدون پیچیدگی‌های زیاد یا ضعف‌های امنیتی آن را برآورده کنند.",
-          solution: "معماری یک CMS Headless اختصاصی از پایه با ویرایشگر بلوک‌محور و کنترل‌های امنیتی دقیق، همراه با یک فرانت‌اند با کارایی بالا.",
-          result: "دستیابی به امتیازهای عالی در Lighthouse، استقرار ۱۰۰٪ خودکار و وضعیت امنیتی در سطح سازمانی با قابلیت‌های سئو بلادرنگ.",
-          impact: "ایجاد یکپارچگی در برند و طراحی و مهندسی یک CMS اختصاصی و حرفه‌ای سازمانی برای پلتفرم AFS با تمرکز بر امنیت پیشرفته، ابزارهای بلادرنگ سئو، و دیپلوی خودکار.",
-          details: "این پروژه نیازمند خلق هویت برند از پایه بود که به طراحی یک حضور دیجیتال کارآمد منجر شد. هم‌زمان، معماری یک سیستم مدیریت محتوا با قابلیت‌های پیشرفته شامل ساختار بلاک‌بیس، مدیریت صفحات تودرتو، اسلات‌های محتوا، ذخیره خودکار پیش‌نویس‌ها و پیاده‌سازی ادیتور Tiptap همراه با مدیریت یکپارچه مدیا انجام شد. امنیت سیستم به‌شدت مورد توجه قرار گرفت و به‌وسیله RBAC، کوکی‌های دور از دسترس مرورگر، جلوگیری از حملات پیشرفته، اعتبارسنجی فایل‌های آپلودی مبتنی‌بر ساختار باینری، و لاگ‌های کامل کاربری تضمین شد. بک‌اند با استفاده از Drizzle و MariaDB بازطراحی شد که بستر پیاده‌سازی SSG و بهبود راندمان را فراهم آورد. سیستم CI/CD اتوماتیک نیز با گیت‌هاب اکشنز پیاده‌سازی شد.",
-          readMore: "بیشتر بخوانید",
+          role: "مهندس فول‌استک و معمار",
+          stack: ["React 19", "Express", "Drizzle ORM", "MariaDB"],
+          statement: "ساخت یک سیستم تعاملی سینمایی با تمرکز بر ریتم احساسی و غوطه‌وری بصری.",
+          problem: "مشتری به یک سیستم مدیریت محتوای کاملاً سفارشی، امن و با کارایی بالا نیاز داشت.",
+          solution: "معماری یک CMS Headless اختصاصی از پایه با ویرایشگر بلوک‌محور.",
+          result: "دستیابی به امتیازهای عالی در Lighthouse و وضعیت امنیتی در سطح سازمانی.",
+          impact: "ایجاد یکپارچگی در برند و طراحی یک CMS اختصاصی و حرفه‌ای.",
+          details: "این پروژه نیازمند خلق هویت برند از پایه بود که به طراحی یک حضور دیجیتال کارآمد منجر شد. هم‌زمان، معماری یک سیستم مدیریت محتوا با قابلیت‌های پیشرفته انجام شد.",
+          readMore: "مشاهده مطالعه موردی",
           readLess: "بستن",
           images: [
             "/images/photo-1498050108023-c5249f4df085.webp",
-            "/images/photo-1555421689-491a97ff2040.webp",
-            "/images/photo-1461749280684-dccba630e2f6.webp",
-            "/images/photo-1555066931-4365d14bab8c.webp",
-            "/images/photo-1633356122544-f134324a6cee.webp"
-          ]
-        },
-        {
-          id: 2,
-          name: "سیستم‌های داخلی رافد",
-          year: "۱۴۰۰ - ۱۴۰۲",
-          role: "توسعه‌دهنده فرانت‌اند و طراح UI/UX",
-          stack: ["React", "UI/UX", "کاپوننت‌بیس", "سیستم‌های داخلی"],
-          problem: "ابزارهای داخلی پراکنده با تجربه کاربری نامنظم که منجر به کاهش بهره‌وری و هزینه‌های آموزشی بالا برای کارمندان جدید می‌شد.",
-          solution: "توسعه یک کتابخانه کامپوننت استاندارد و بازطراحی سیستم‌های داخلی اصلی با تمرکز بر قابلیت استفاده و بصری‌سازی داده‌ها.",
-          result: "کاهش ۳۰ درصدی زمان انجام وظایف و یکپارچه‌سازی زبان بصری در بیش از ۵ پلتفرم داخلی.",
-          impact: "کمک به استانداردسازی تجربه کاربران سازمانی و ایجاد رابط‌هایی روشن‌تر و کاربردی‌تر.",
-          details: "طراحی و توسعه چندین رابط کاربری برای ابزارهای سازمانی با تمرکز شدید بر قابلیت استفاده مجدد کامپوننت‌ها حفظ استانداردهای UI/UX و بهبود راندمان کلی سیستم.",
-          readMore: "بیشتر بخوانید",
-          readLess: "بستن",
-          images: [
-            "/images/photo-1551288049-bebda4e38f71.webp",
-            "/images/photo-1547658719-da2b51169166.webp"
-          ]
-        },
-        {
-          id: 3,
-          name: "مخطوط",
-          year: "۱۴۰۳",
-          role: "طراح ارشد و توسعه‌دهنده وب",
-          stack: ["هویت برند", "طراحی گرافیک", "UI/UX", "توسعه وب"],
-          problem: "یک برند جدید به هویت بصری کامل و حضور دیجیتال از صفر تا راه‌اندازی در یک بازه زمانی بسیار فشرده نیاز داشت.",
-          solution: "اجرای سریع فرآیند طراحی تا توسعه، خلق یک سیستم برند مدولار و یک پلتفرم وب واکنش‌گرا به طور همزمان.",
-          result: "راه‌اندازی موفق هویت برند و وب‌سایت در مدت ۲ ماه و ایجاد حضور قوی در بازار از روز اول.",
-          impact: "تبدیل ایده اولیه برند به یک زبان بصری قابل استفاده در طراحی، محتوا و حضور دیجیتال.",
-          details: "شروع کار از یک ایده اولیه برای طراحی هویت بصری جامع و گرافیکی بود. سپس این پایه بصری برای طراحی کامل UI/UX و فرانت‌اند وبسایت اصلی پیاده‌سازی و یکپارچه شد.",
-          readMore: "بیشتر بخوانید",
-          readLess: "بستن",
-          images: [
-            "/images/photo-1626785774573-4b799315345d.webp",
-            "/images/photo-1561070791-2526d30994b5.webp"
+            "/images/photo-1555421689-491a97ff2040.webp"
           ]
         }
       ]
     },
     skills: {
-      title: "تخصص‌ها",
+      title: "تخصص",
       categories: [
-        { name: "توسعه وب", items: "Next.js, React, TypeScript, توسعه وب", level: 90 },
-        { name: "محصول و تجربه کاربری", items: "توسعه سمت سرور، طراحی UI/UX، تفکر محصول، رابط‌های واکنش‌گرا", level: 85 },
-        { name: "بصری و برند", items: "هویت برند، طراحی گرافیک، روایت بصری، کارگردانی هنری", level: 95 },
-        { name: "هوش مصنوعی", items: "ابزارهای AI، ChatGPT، Midjourney، تولید محتوا، بهینه‌سازی فرآیند", level: 88 }
+        { name: "مهندسی", items: "React, Next.js, TypeScript, Node.js, Drizzle, MariaDB", level: 90 },
+        { name: "طراحی", items: "UI/UX Design, Motion Systems, Brand Identity, Figma", level: 95 },
+        { name: "خلاقیت", items: "Cinematic Photography, Art Direction, Visual Storytelling", level: 95 },
+        { name: "نوآوری", items: "AI-Assisted Workflow, Performance Optimization", level: 88 }
       ]
     },
     visual: {
@@ -374,87 +283,36 @@ export const portfolioData = {
       items: [
         {
           id: 1,
-          title: "هویت برند / طراحی گرافیک",
+          title: "هویت برند",
           tools: "Illustrator, Photoshop, Midjourney",
           concept: "ایجاد یک زبان بصری منسجم از لوگوها تا دارایی‌های بازاریابی.",
-          impact: "تثبیت حضور قوی و قابل تشخیص برند از طریق کانال‌های مختلف.",
-          images: [
-            "/images/photo-1626785774573-4b799315345d.webp",
-            "/images/photo-1626785774625-ddcddc3445e9.webp"
-          ],
-          detailsBtn: "مشاهده جزئیات",
-          closeBtn: "بستن"
-        },
-        {
-          id: 2,
-          title: "عکاسی سینمایی",
-          tools: "لایت‌روم، تجهیزات حرفه‌ای عکاسی",
-          concept: "ثبت تصاویر جوی و داستان‌محور برای روایت یک داستان بصری.",
-          impact: "ارتقاء روایت بصری برای کمپین‌ها و پروژه‌های هنری شخصی.",
-          images: [
-            "/images/photo-1492691527719-9d1e07e534b4.webp",
-            "/images/photo-1542038784456-1ea8e935640e.webp"
-          ],
-          detailsBtn: "مشاهده جزئیات",
-          closeBtn: "بستن"
-        },
-        {
-          id: 3,
-          title: "روایت بصری / جهت‌گیری هنری",
-          tools: "Figma, AI Tools, ویرایش ویدیو",
-          concept: "هدایت چشم‌انداز خلاقانه برای محصولات دیجیتال و کمپین‌ها.",
-          impact: "ارائه تجربیات بصری یکپارچه در تمام نقاط تماس کاربر.",
-          images: [
-            "/images/photo-1561070791-2526d30994b5.webp",
-            "/images/photo-1558655146-d09347e92766.webp"
-          ],
-          detailsBtn: "مشاهده جزئیات",
-          closeBtn: "بستن"
-        },
-        {
-          id: 4,
-          title: "طراحی رابط کاربری / محصول دیجیتال",
-          tools: "Figma, React, اصول UI/UX",
-          concept: "طراحی رابط‌های کاربری بصری و در دسترس با تمرکز بر معماری کامپوننت.",
-          impact: "بهبود رضایت کاربر و ساده‌سازی جریان‌های کاری سازمانی.",
-          images: [
-            "/images/photo-1507238691740-187a5b1d37b8.webp",
-            "/images/photo-1555421689-491a97ff2040.webp"
-          ],
+          impact: "تثبیت حضور قوی و قابل تشخیص برند.",
+          images: ["/images/photo-1626785774573-4b799315345d.webp"],
           detailsBtn: "مشاهده جزئیات",
           closeBtn: "بستن"
         }
       ]
     },
     testimonials: {
-      title: "نظرات همکاران و کارفرمایان",
+      title: "صدا",
       stats: [
-        { label: "سال تجربه", value: "+۴" },
-        { label: "پروژه موفق", value: "+۲۰" },
-        { label: "خدمات اصلی", value: "وب و برند" }
+        { label: "مهندسی", value: "+۴ سال" },
+        { label: "هنرهای بصری", value: "+۱۰ سال" }
       ],
       items: [
         {
           id: 1,
           name: "مدیریت",
-          company: "AFS (تهران)",
+          company: "AFS",
           role: "کارفرما",
-          text: "صادق دانش عمیق فنی فرانت‌اند را با دیدگاهی دقیق در طراحی ترکیب می‌کند. او تمام حضور دیجیتال و خروجی برند ما را ارتقا داد.",
+          text: "صادق دانش عمیق فنی فرانت‌اند را با دیدگاهی دقیق در طراحی ترکیب می‌کند. او تمام حضور دیجیتال ما را ارتقا داد.",
           result: "۳۰٪ افزایش در تعامل کاربران."
-        },
-        {
-          id: 2,
-          name: "مدیر پروژه",
-          company: "رافد (قم)",
-          role: "همکار",
-          text: "توانایی او در ساخت کامپوننت‌های منسجم و قابل استفاده مجدد و در عین حال حفظ تجربه کاربری با کیفیت بالا، قابل توجه است. یک مهره ارزشمند برای هر تیم محصول.",
-          result: "کاهش ۵۰٪ زمان توسعه ویژگی‌های جدید."
         }
       ]
     },
     contact: {
-      title: "بیایید همکاری کنیم",
-      message: "اگر پروژه یا فرصت همکاری مشخصی دارید، بهترین مسیر شروع یک پیام کوتاه با توضیح هدف، زمان‌بندی و نیاز اصلی شماست.",
+      title: "استعلام",
+      message: "آماده برای پروژه‌های منتخب و نقش‌های مهندسی که برای بلوغ بصری و دقت فنی ارزش قائل هستند.",
       email: "m110s11061@gmail.com",
       phone: "+98 936 991 3228",
       linkedin: "linkedin.com/in/mohammad-sadegh-shahid",
