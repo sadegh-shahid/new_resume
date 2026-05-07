@@ -11,54 +11,69 @@ export const Experience = memo(({ lang }: { lang: Language }) => {
     setExpandedId(prev => prev === id ? null : id);
   };
 
+  const isEn = lang === 'en';
+
   return (
-    <section id="experience" className="py-24 px-6 max-w-5xl mx-auto">
+    <section id="experience" className="py-48 px-8 md:px-24 lg:px-32 relative">
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1 }}
       >
-        <div className="mb-8">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="text-4xl md:text-6xl font-light tracking-tighter"
-          >
-            {t.title}
-          </motion.h2>
-          <p className="text-white/50 text-lg mt-2 max-w-2xl">{t.summary}</p>
-        </div>
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-24">
+          <div className="md:col-span-4">
+            <motion.h2
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className={`text-5xl md:text-7xl font-light tracking-tight mb-12 ${isEn ? 'font-serif italic' : ''}`}
+            >
+              {t.title}
+            </motion.h2>
+            <div className="h-px w-24 bg-[#8C9475]/30 mb-8" />
+            <p className="text-white/20 text-xs uppercase tracking-[0.3em] font-medium">
+              {lang === 'en' ? 'Professional Narrative' : 'روایت حرفه‌ای'}
+            </p>
+          </div>
 
-        <div className="flex flex-col relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-white/20 before:to-transparent">
-          {t.items.map((item, index) => {
-            const isExpanded = expandedId === item.id;
-            return (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active py-6"
-              >
-                {/* Timeline marker */}
-                <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white/20 bg-black/50 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transition-colors group-hover:border-amber-500/50 group-hover:bg-amber-500/10 cursor-pointer" onClick={() => toggleExpand(item.id)}>
-                  <div className="w-2 h-2 rounded-full bg-white/50 group-hover:bg-amber-500 transition-colors" />
-                </div>
-                
-                {/* Content card */}
-                <div className="w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] bg-white/5 border border-white/10 p-6 rounded-2xl hover:bg-white/10 transition-colors cursor-pointer text-left rtl:text-right" onClick={() => toggleExpand(item.id)}>
-                  <div className="flex justify-between items-start mb-2">
-                    <span className="text-sm uppercase tracking-wider text-amber-500/80 font-mono">{item.date}</span>
-                    <motion.div animate={{ rotate: isExpanded ? 180 : 0 }} className="text-white/50">
-                      <ChevronDown size={18} aria-hidden="true" />
-                    </motion.div>
+          <div className="md:col-span-8 flex flex-col border-t border-white/5">
+            {t.items.map((item, index) => {
+              const isExpanded = expandedId === item.id;
+              return (
+                <motion.div
+                  key={item.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: index * 0.1 }}
+                  className="border-b border-white/5 py-16 group cursor-pointer transition-all duration-700"
+                  onClick={() => toggleExpand(item.id)}
+                >
+                  <div className="flex flex-col md:grid md:grid-cols-8 items-baseline gap-8">
+                     <div className="md:col-span-2">
+                        <span className="text-[#8C9475] text-xs font-mono opacity-40 group-hover:opacity-100 transition-opacity">0{index + 1}</span>
+                        <span className="ml-4 text-white/20 text-xs uppercase tracking-widest">{item.date}</span>
+                     </div>
+
+                     <div className="md:col-span-5">
+                        <h3 className={`text-3xl md:text-5xl font-light text-white/40 group-hover:text-white transition-all duration-500 ${isEn ? 'font-serif' : ''}`}>{item.role}</h3>
+                        <span className="text-sm uppercase tracking-widest text-[#8C9475]/40 group-hover:text-[#8C9475] transition-colors mt-4 block">{item.company}</span>
+                     </div>
+
+                     <div className="md:col-span-1 flex justify-end">
+                        <div className="relative w-8 h-8 flex items-center justify-center">
+                          <motion.div
+                            animate={{ rotate: isExpanded ? 45 : 0 }}
+                            className="text-white/10 group-hover:text-[#8C9475] transition-colors"
+                          >
+                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-px h-6 bg-current" />
+                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-px bg-current" />
+                          </motion.div>
+                        </div>
+                     </div>
                   </div>
-                  <h3 className="text-2xl font-light mb-1 text-white">{item.role}</h3>
-                  <span className="text-lg font-medium text-white/50 block mb-4">{item.company}</span>
 
                   <AnimatePresence>
                     {isExpanded && (
@@ -66,19 +81,23 @@ export const Experience = memo(({ lang }: { lang: Language }) => {
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.1, ease: "easeOut" }}
+                        transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                         className="overflow-hidden"
                       >
-                        <p className="text-white/70 leading-relaxed text-sm md:text-base border-t border-white/10 pt-4 mt-2">
-                          {item.description}
-                        </p>
+                        <div className="md:grid md:grid-cols-8 mt-12">
+                           <div className="md:col-start-3 md:col-span-6">
+                              <p className="text-white/50 leading-relaxed font-light text-lg italic border-l border-[#8C9475]/20 pl-8 rtl:border-l-0 rtl:border-r rtl:pr-8">
+                                {item.description}
+                              </p>
+                           </div>
+                        </div>
                       </motion.div>
                     )}
                   </AnimatePresence>
-                </div>
-              </motion.div>
-            );
-          })}
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </motion.div>
     </section>
