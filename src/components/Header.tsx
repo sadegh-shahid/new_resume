@@ -24,41 +24,48 @@ export const Header = memo(({ lang, setLang }: HeaderProps) => {
     }
   };
 
-  const isEn = lang === 'en';
-
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-8 md:px-24 lg:px-32 py-8 flex justify-between items-center bg-transparent" role="banner">
-      <div className="text-xl font-light tracking-tighter" aria-hidden="true" dir="ltr">
-        <span className="text-white">Mohammad Sadegh</span>
-        <span className="text-white/20 ml-2">Shahid</span>
+    <header className="fixed top-0 left-0 right-0 z-50 p-6 flex justify-between items-center backdrop-blur-md bg-black/40 border-b border-white/5" role="banner">
+      <div className="text-xl font-medium tracking-tighter" aria-hidden="true" dir="ltr">
+        <span>Sadegh</span>
+        <span className="text-white/50">Shahid</span>
       </div>
       
-      <div className="flex items-center gap-12">
-        <nav aria-label="Main Navigation" className="hidden lg:flex gap-10 text-[10px] uppercase tracking-[0.3em] text-white/40">
-          <a href="#projects" onClick={(e) => handleNavClick(e, 'projects')} className="hover:text-white transition-colors">{t.projects}</a>
-          <a href="#about" onClick={(e) => handleNavClick(e, 'about')} className="hover:text-white transition-colors">{t.about}</a>
-          <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')} className="hover:text-white transition-colors">{t.contact}</a>
-        </nav>
+      <nav aria-label="Main Navigation" className="hidden md:flex gap-8 text-sm uppercase tracking-widest text-white/70">
+        <a href="#about" onClick={(e) => handleNavClick(e, 'about')} className="hover:text-white transition-colors">{t.about}</a>
+        <a href="#experience" onClick={(e) => handleNavClick(e, 'experience')} className="hover:text-white transition-colors">{t.experience}</a>
+        <a href="#projects" onClick={(e) => handleNavClick(e, 'projects')} className="hover:text-white transition-colors">{t.projects}</a>
+        <a href="#skills" onClick={(e) => handleNavClick(e, 'skills')} className="hover:text-white transition-colors">{t.skills}</a>
+        <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')} className="hover:text-white transition-colors">{t.contact}</a>
+      </nav>
 
-        <motion.button
-          onClick={() => setLang(lang === 'en' ? 'fa' : 'en')}
-          aria-label={`Switch language to ${lang === 'en' ? 'Persian' : 'English'}`}
-          className="flex items-center gap-3 text-[10px] uppercase tracking-[0.2em] text-white/40 hover:text-white transition-colors focus:outline-none"
-        >
-          <div className="w-4 h-[1px] bg-white/20" />
-          <AnimatePresence mode="wait">
-            <motion.span
-              key={lang}
-              initial={{ opacity: 0, y: -4 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 4 }}
-              transition={{ duration: 0.2 }}
-            >
-              {lang === 'en' ? 'Persian' : 'English'}
-            </motion.span>
-          </AnimatePresence>
-        </motion.button>
-      </div>
+      <motion.button
+        onClick={() => setLang(lang === 'en' ? 'fa' : 'en')}
+        aria-label={`Switch language to ${lang === 'en' ? 'Persian' : 'English'}`}
+        whileTap={{ scale: 0.9 }}
+        className="flex items-center gap-2 text-xs uppercase tracking-widest border border-white/20 rounded-full px-4 py-2 hover:bg-white/10 transition-colors focus:outline-none focus:ring-2 focus:ring-white/50 overflow-hidden relative"
+      >
+        <motion.div
+          key={lang + 'glow'}
+          initial={{ opacity: 0.5, scale: 0.8 }}
+          animate={{ opacity: 0, scale: 2 }}
+          transition={{ duration: 0.4 }}
+          className="absolute inset-0 bg-white/20 rounded-full pointer-events-none"
+        />
+        <Globe size={14} aria-hidden="true" />
+        <AnimatePresence mode="wait">
+          <motion.span
+            key={lang}
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            transition={{ duration: 0.2 }}
+            className="block"
+          >
+            {lang === 'en' ? 'FA' : 'EN'}
+          </motion.span>
+        </AnimatePresence>
+      </motion.button>
     </header>
   );
 });

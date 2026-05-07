@@ -6,76 +6,73 @@ import { Quote } from 'lucide-react';
 export const Testimonials = memo(({ lang }: { lang: Language }) => {
   const t = portfolioData[lang].testimonials;
 
-  const isEn = lang === 'en';
-
   return (
-    <section id="testimonials" className="py-48 px-8 md:px-24 lg:px-32 relative overflow-hidden" aria-labelledby="testimonials-heading">
+    <section id="testimonials" className="py-24 px-6 max-w-6xl mx-auto border-t border-white/10" aria-labelledby="testimonials-heading">
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8 }}
       >
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-24 mb-32">
-          <div className="md:col-span-5">
-            <motion.h2
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              id="testimonials-heading"
-              className={`text-5xl md:text-7xl font-light tracking-tight mb-12 ${isEn ? 'font-serif italic' : ''}`}
-            >
-              {t.title}
-            </motion.h2>
-            <div className="h-px w-24 bg-[#8C9475]/30 mb-8" />
-            <p className="text-white/20 text-xs uppercase tracking-[0.3em] font-medium">
-              {lang === 'en' ? 'Collaborative Reflections' : 'بازتاب همکاری‌ها'}
-            </p>
-          </div>
+        <div className="mb-16">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            id="testimonials-heading" 
+            className="text-4xl md:text-6xl font-light tracking-tighter mb-12"
+          >
+            {t.title}
+          </motion.h2>
 
-          <div className="md:col-span-7 grid grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-16">
             {(t as any).stats.map((stat: any, index: number) => (
-              <div
+              <motion.div
                 key={index}
-                className="border border-white/5 p-12 relative overflow-hidden group"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-white/5 border border-white/5 rounded-2xl p-8 text-center"
               >
-                <div className="absolute top-0 left-0 w-full h-full bg-[#8C9475]/5 -translate-y-full group-hover:translate-y-0 transition-transform duration-700" />
-                <div className="relative z-10">
-                  <div className="text-4xl md:text-6xl font-light text-[#8C9475]/60 mb-6">{stat.value}</div>
-                  <div className="text-[10px] uppercase tracking-[0.3em] text-white/30">{stat.label}</div>
-                </div>
-              </div>
+                <div className="text-3xl md:text-4xl font-light text-amber-500 mb-2">{stat.value}</div>
+                <div className="text-xs uppercase tracking-widest text-white/40">{stat.label}</div>
+              </motion.div>
             ))}
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {t.items.map((item, index) => (
-            <div
+            <motion.div
               key={item.id}
-              className={`flex flex-col p-16 border border-white/5 relative group transition-all duration-700 ${index % 2 !== 0 ? 'md:translate-y-24' : ''}`}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="flex flex-col p-8 rounded-3xl bg-white/5 border border-white/5"
             >
-              <div className="absolute top-0 left-0 w-1 h-0 group-hover:h-full bg-[#8C9475]/30 transition-all duration-700" />
+              <Quote className="text-amber-500/30 mb-6" size={40} aria-hidden="true" />
+              <p className={`text-white/90 text-lg md:text-xl font-light mb-8 flex-grow italic ${lang === 'en' ? 'leading-relaxed' : 'leading-[2.2] tracking-normal'}`}>
+                "{item.text}"
+              </p>
               
-              <div className="text-[#8C9475] mb-12 opacity-20 group-hover:opacity-50 transition-opacity">
-                 <Quote size={32} />
+              <div className="bg-amber-500/5 border border-amber-500/10 rounded-2xl p-4 mb-8">
+                <span className="block text-[10px] uppercase tracking-[0.2em] text-amber-500/60 mb-1">{lang === 'en' ? 'Result' : 'نتیجه'}</span>
+                <p className="text-white/80 text-sm font-medium">{(item as any).result}</p>
               </div>
 
-              <p className={`text-white/40 group-hover:text-white/70 text-xl font-light mb-16 flex-grow transition-colors ${isEn ? 'font-serif italic leading-relaxed' : 'leading-[2.2]'}`}>
-                {item.text}
-              </p>
-
-              <div className="flex items-center gap-8 border-t border-white/5 pt-12">
-                <div className="w-16 h-16 bg-[#0C0C0C] flex items-center justify-center font-serif text-2xl border border-white/10 text-[#8C9475]/40" aria-hidden="true">
+              <div className="flex items-center gap-4 mt-auto">
+                <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center font-serif text-xl border border-white/20" aria-hidden="true">
                   {item.name.charAt(0)}
                 </div>
                 <div>
-                  <h3 className="text-white/80 font-light text-xl mb-2">{item.name}</h3>
-                  <p className="text-[#8C9475]/40 text-[10px] uppercase tracking-[0.2em]">{(item as any).role} &middot; {(item as any).company}</p>
+                  <h3 className="text-white font-medium">{item.name}</h3>
+                  <p className="text-white/50 text-xs uppercase tracking-widest">{(item as any).role} &middot; {(item as any).company}</p>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </motion.div>
