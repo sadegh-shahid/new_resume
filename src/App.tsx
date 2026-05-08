@@ -29,9 +29,9 @@ export default function App() {
 
   return (
     <div className="min-h-screen selection:bg-[#D6C7A8] selection:text-[#0A0A0A]" dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang}>
-      {/* Progress Bar - Subtle */}
+      {/* Progress Bar - Nearly Invisible */}
       <motion.div 
-        className="fixed top-0 left-0 right-0 h-[2px] bg-[#D6C7A8]/30 z-[60] origin-left"
+        className="fixed top-0 left-0 right-0 h-[1px] bg-[#D6C7A8]/20 z-[60] origin-left"
         style={{ scaleX }}
       />
       
@@ -47,10 +47,10 @@ export default function App() {
         <Contact lang={lang} />
       </main>
       
-      {/* Footer - Minimal */}
-      <footer className="text-center py-12 text-white/30 text-xs border-t border-white/[0.08] mt-24">
-        <p className="font-light">ساخته‌شده با دقت، ریتم، و هدف</p>
-        <p className="mt-2 opacity-50">© {new Date().getFullYear()} Sadegh Shahid</p>
+      {/* Footer - Minimal, Quiet */}
+      <footer className="text-center py-16 text-white/20 text-[10px] tracking-widest border-t border-white/[0.04] mt-32">
+        <p className="font-light opacity-60">ساخته‌شده با دقت، ریتم، و هدف</p>
+        <p className="mt-3 opacity-30">© {new Date().getFullYear()} Sadegh Shahid</p>
       </footer>
     </div>
   );

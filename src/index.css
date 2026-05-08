@@ -10,7 +10,7 @@
   --color-bg-secondary: #171717;
   --color-text-primary: #F3F1EB;
   --color-text-secondary: #8B8B8B;
-  --color-border-soft: rgba(255, 255, 255, 0.08);
+  --color-border-soft: rgba(255, 255, 255, 0.06);
   --color-accent-ivory: #D6C7A8;
   --color-accent-olive: #5E6654;
   --color-accent-amber: #B07D52;
@@ -32,7 +32,7 @@ body {
   font-family: var(--font-sans);
   background-color: #0A0A0A;
   color: #F3F1EB;
-  line-height: 1.9;
+  line-height: 2.1;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
@@ -69,8 +69,8 @@ body::after {
 /* Typography System - Persian First */
 h1, h2, h3, h4, h5, h6 {
   color: #F3F1EB;
-  font-weight: 600;
-  line-height: 1.35;
+  font-weight: 500;
+  line-height: 1.4;
   letter-spacing: normal;
   margin: 0;
 }
@@ -82,12 +82,12 @@ h1, h2, h3, h4, h5, h6 {
 
 [dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] h4, [dir="rtl"] h5, [dir="rtl"] h6 {
   font-family: "Vazirmatn", sans-serif;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 [dir="rtl"] p {
-  line-height: 1.9;
-  max-width: 620px;
+  line-height: 2.2;
+  max-width: 640px;
 }
 
 /* LTR for English */
@@ -247,14 +247,14 @@ a:hover {
   background-color: #171717;
 }
 
-/* Button Styles */
+/* Button Styles - Restrained, No Jump */
 .btn-primary {
   background-color: #D6C7A8;
   color: #0A0A0A;
   padding: 1rem 2rem;
   border-radius: 9999px;
   font-weight: 500;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -263,7 +263,6 @@ a:hover {
 
 .btn-primary:hover {
   background-color: #E5D5B8;
-  transform: translateY(-2px);
 }
 
 .btn-ghost {
@@ -271,9 +270,9 @@ a:hover {
   color: #F3F1EB;
   padding: 1rem 2rem;
   border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   font-weight: 500;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -281,26 +280,44 @@ a:hover {
 }
 
 .btn-ghost:hover {
-  border-color: rgba(255, 255, 255, 0.4);
-  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.03);
 }
 
-/* Section Spacing - Editorial Breathing Room */
+/* Section Spacing - Editorial Breathing Room with Rhythm Variation */
 .section-padding {
-  padding-top: clamp(96px, 12vw, 160px);
-  padding-bottom: clamp(96px, 12vw, 160px);
+  padding-top: clamp(120px, 14vw, 200px);
+  padding-bottom: clamp(120px, 14vw, 200px);
 }
 
 .section-padding-mobile {
-  padding-top: clamp(64px, 8vw, 96px);
-  padding-bottom: clamp(64px, 8vw, 96px);
+  padding-top: clamp(80px, 10vw, 120px);
+  padding-bottom: clamp(80px, 10vw, 120px);
 }
 
 @media (min-width: 768px) {
   .section-padding-mobile {
-    padding-top: clamp(96px, 12vw, 160px);
-    padding-bottom: clamp(96px, 12vw, 160px);
+    padding-top: clamp(120px, 14vw, 200px);
+    padding-bottom: clamp(120px, 14vw, 200px);
   }
+}
+
+/* Quiet sections - intentional stillness */
+.section-quiet {
+  padding-top: clamp(160px, 18vw, 240px);
+  padding-bottom: clamp(160px, 18vw, 240px);
+}
+
+/* Compressed sections - for rhythm variation */
+.section-compressed {
+  padding-top: clamp(80px, 10vw, 120px);
+  padding-bottom: clamp(80px, 10vw, 120px);
+}
+
+/* Visual silence - extra breathing room */
+.section-silent {
+  padding-top: clamp(200px, 22vw, 320px);
+  padding-bottom: clamp(200px, 22vw, 320px);
 }
 
 

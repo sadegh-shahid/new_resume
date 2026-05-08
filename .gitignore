@@ -8,11 +8,7 @@ build/
 *.js.map
 *.ts.map
 
-# Logs and temp files
-*.log
-*.tmp
-
-# Environment
+# Environment variables
 .env
 .env.local
 *.env.*
@@ -23,30 +19,38 @@ build/
 *.swp
 *.swo
 
-# Python (if applicable)
+# Logs
+*.log
+
+# Coverage
+coverage/
+htmlcov/
+.coverage
+
+# Temporary files
+*.tmp
+.DS_Store
+Thumbs.db
+
+# Python specific
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
 .Python
-env/
+*.so
+*.egg-info/
+.eggs/
+
+# Virtual environments
 venv/
 .venv/
-pip-log.txt
-pip-selfcheck.json
-*.so
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-*.db
-*.sqlite
-*.sqlite3
-.pytest_cache/
-.mypy_cache/
-.hypothesis/
+.env/
+
+# Testing
+.nyc_output/
+coverage/
+junit.xml
 
 # OS generated files
 .DS_Store
@@ -56,11 +60,4 @@ coverage.xml
 .Trashes
 ehthumbs.db
 Thumbs.db
-Icon?
-```
-
-Wait, let me reconsider. The file changes only show source code files (.html, .tsx, .css) and no build artifacts or dependencies. According to rule 6, if the changes contain only source/config files and no build artifacts, dependencies, or temp files, I should output nothing.
-
-```gitignore
-
 ```
