@@ -75,42 +75,56 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
   }, [selectedProject]);
 
   return (
-    <section id="projects" className="py-32 px-6 max-w-6xl mx-auto section-quiet">
+    <section id="projects" className="py-40 px-6 max-w-7xl mx-auto section-quiet">
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        viewport={{ once: true, margin: "-50px" }}
-        transition={{ duration: 1.2 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 1.4 }}
       >
-        <div className="mb-20">
+        {/* Section Header - Editorial Style */}
+        <div className="mb-28 max-w-3xl">
           <motion.h2
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-4xl md:text-5xl font-light tracking-tight"
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            className="text-[clamp(2.2rem, 5vw, 3.5rem)] font-light tracking-tight text-[#F3F1EB] mb-6"
           >
             {t.title}
           </motion.h2>
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="text-white/40 text-[15px] leading-relaxed max-w-[420px]"
+          >
+            {lang === 'en' 
+              ? "Selected case studies in creative development and AI-driven design."
+              : "مطالعات موردی منتخب در توسعه خلاق و طراحی مبتنی بر هوش مصنوعی."
+            }
+          </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
+        {/* Projects Grid - More Breathing Room */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-20">
           {t.items.map((item, index) => {
             return (
               <motion.div
                 key={item.id}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 whileHover={{
-                  backgroundColor: "rgba(255, 255, 255, 0.04)",
+                  backgroundColor: "rgba(255, 255, 255, 0.03)",
                 }}
-                viewport={{ once: true, margin: "-50px" }}
+                viewport={{ once: true, margin: "-40px" }}
                 transition={{
-                  duration: 0.8,
+                  duration: 1,
                   ease: [0.16, 1, 0.3, 1],
-                  delay: index * 0.12,
+                  delay: index * 0.15,
                 }}
-                className="group flex flex-col p-10 rounded-3xl card-bg border border-white/[0.04] transition-all cursor-pointer focus:outline-none focus:ring-1 focus:ring-amber-500/30"
+                className="group flex flex-col p-12 rounded-3xl card-bg border border-white/[0.03] transition-all duration-500 cursor-pointer focus:outline-none focus:ring-1 focus:ring-amber-500/30"
                 onClick={() => {
                   setSelectedProject(item.id);
                   setCurrentImageIndex(0);
@@ -126,8 +140,8 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
                 }}
                 aria-label={`${lang === "en" ? "View details for" : "مشاهده جزئیات"} ${item.name}`}
               >
-                <div className="flex flex-col-reverse md:flex-row md:justify-between items-start mb-10 gap-4 md:gap-0">
-                  <h3 className="text-2xl font-light pr-0 md:pr-8 rtl:pr-0 rtl:md:pl-8">
+                <div className="flex flex-col-reverse md:flex-row md:justify-between items-start mb-12 gap-4 md:gap-0">
+                  <h3 className="text-[clamp(1.4rem, 3vw, 1.8rem)] font-light pr-0 md:pr-8 rtl:pr-0 rtl:md:pl-8 text-[#F3F1EB]">
                     {item.name}
                   </h3>
                   <div className="flex w-full md:w-auto justify-end gap-2 shrink-0 z-10 relative">
