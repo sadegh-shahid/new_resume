@@ -8,11 +8,6 @@ import { Experience } from './components/Experience';
 import { Projects } from './components/Projects';
 import { VisualWorks } from './components/VisualWorks';
 
-// ⚡ Bolt: Code-splitting for better initial load performance.
-// The Skills component depends on the 'recharts' library, which is relatively large.
-// By lazy loading it, we move recharts and the Skills logic into a separate chunk,
-// reducing the main bundle size by ~45% (from ~731kB to ~400kB).
-const Skills = lazy(() => import('./components/Skills').then(m => ({ default: m.Skills })));
 import { Testimonials } from './components/Testimonials';
 import { Contact } from './components/Contact';
 
@@ -46,9 +41,6 @@ export default function App() {
         <Projects lang={lang} />
         <About lang={lang} />
         <Experience lang={lang} />
-        <Suspense fallback={<div className="h-[600px] flex items-center justify-center text-white/20">...</div>}>
-          <Skills lang={lang} />
-        </Suspense>
         <VisualWorks lang={lang} />
         <Testimonials lang={lang} />
         <Contact lang={lang} />

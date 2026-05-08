@@ -35,7 +35,6 @@ export const Header = memo(({ lang, setLang }: HeaderProps) => {
         <a href="#about" onClick={(e) => handleNavClick(e, 'about')} className="hover:text-white transition-colors">{t.about}</a>
         <a href="#experience" onClick={(e) => handleNavClick(e, 'experience')} className="hover:text-white transition-colors">{t.experience}</a>
         <a href="#projects" onClick={(e) => handleNavClick(e, 'projects')} className="hover:text-white transition-colors">{t.projects}</a>
-        <a href="#skills" onClick={(e) => handleNavClick(e, 'skills')} className="hover:text-white transition-colors">{t.skills}</a>
         <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')} className="hover:text-white transition-colors">{t.contact}</a>
       </nav>
 

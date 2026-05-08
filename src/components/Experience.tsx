@@ -1,10 +1,14 @@
 import { useState, memo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { portfolioData, Language } from '../data';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Code, Server, Layout, Fingerprint, PenTool, Image as ImageIcon, Camera, Sparkles } from 'lucide-react';
+
+const focusIcons = [Code, Server, Layout, Fingerprint, PenTool, ImageIcon, Camera, Sparkles];
 
 export const Experience = memo(({ lang }: { lang: Language }) => {
   const t = portfolioData[lang].experience;
+  const aboutT = portfolioData[lang].about;
+  const skillsT = portfolioData[lang].skills;
   const [expandedId, setExpandedId] = useState<number | null>(null);
 
   const toggleExpand = (id: number) => {
@@ -12,14 +16,14 @@ export const Experience = memo(({ lang }: { lang: Language }) => {
   };
 
   return (
-    <section id="experience" className="py-24 px-6 max-w-5xl mx-auto">
+    <section id="experience" className="py-24 px-6 max-w-5xl mx-auto border-t border-white/10">
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8 }}
       >
-        <div className="mb-8">
+        <div className="mb-16">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -32,7 +36,8 @@ export const Experience = memo(({ lang }: { lang: Language }) => {
           <p className="text-white/50 text-lg mt-2 max-w-2xl">{t.summary}</p>
         </div>
 
-        <div className="flex flex-col relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-white/20 before:to-transparent">
+        {/* Timeline */}
+        <div className="flex flex-col relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-white/20 before:to-transparent mb-24">
           {t.items.map((item, index) => {
             const isExpanded = expandedId === item.id;
             return (
@@ -79,6 +84,42 @@ export const Experience = memo(({ lang }: { lang: Language }) => {
               </motion.div>
             );
           })}
+        </div>
+
+        {/* Expertise Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 border-t border-white/10 pt-24">
+          <div>
+            <h3 className="text-2xl font-light tracking-tight mb-8 text-white">
+              {skillsT.title}
+            </h3>
+            <div className="space-y-8">
+              {skillsT.categories.map((cat, i) => (
+                <div key={i} className="border-l border-white/10 pl-6 rtl:border-l-0 rtl:border-r rtl:pr-6">
+                  <h4 className="text-lg font-medium text-amber-500 mb-2">{cat.name}</h4>
+                  <p className="text-white/50 text-sm leading-relaxed">{cat.items}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h3 className="text-sm uppercase tracking-widest text-white/40 mb-8 border-b border-white/10 pb-4">
+              {lang === 'en' ? 'Focus Areas' : 'زمینه‌های تمرکز'}
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {aboutT.coreFocus.map((focus, i) => {
+                const Icon = focusIcons[i] || Code;
+                return (
+                  <div key={i} className="flex items-center gap-4 text-white/70 group">
+                    <div className="p-2 bg-white/5 rounded-lg text-white/30 group-hover:text-amber-500/80 transition-colors">
+                      <Icon size={18} />
+                    </div>
+                    <span className="text-sm tracking-wide">{focus}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </motion.div>
     </section>
