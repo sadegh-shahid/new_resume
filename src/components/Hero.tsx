@@ -1,6 +1,7 @@
 import { useState, useEffect, memo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { portfolioData, Language } from '../data';
+import { CinematicParticles } from './CinematicParticles';
 
 export const Hero = memo(({ lang }: { lang: Language }) => {
   const t = portfolioData[lang].hero;
@@ -69,6 +70,9 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
         }
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/5 rounded-full blur-[120px] pointer-events-none" 
       />
+
+      {/* Cinematic Background Particles */}
+      <CinematicParticles />
 
       <motion.div
         initial={{ opacity: 0, y: 30 }}
