@@ -20,10 +20,9 @@ export interface ProjectItem {
 export const portfolioData = {
   en: {
     nav: {
-      about: "About",
+      about: "Approach",
       experience: "Experience",
       projects: "Projects",
-      skills: "Skills",
       contact: "Contact"
     },
     hero: {
@@ -34,8 +33,13 @@ export const portfolioData = {
       ctaSecondary: "Contact Me"
     },
     about: {
-      title: "About Me",
-      summary: "Over the past four years, I've worked hands-on across Front-End, Back-End, and UI/UX, building digital experiences that balance technical precision with thoughtful interface design. I actively use AI models and tools to optimize design workflows and accelerate product development. My background includes more than ten years of cinematic and artistic photography.",
+      title: "Approach",
+      paragraphs: [
+        "I design and engineer interfaces where photography, motion, and code converge. Every pixel, transition, and interaction is intentional — never decorative.",
+        "My process is rooted in cinematic thinking. I treat digital experiences like film: rhythm, atmosphere, tension, and emotional clarity matter more than visual complexity.",
+        "Performance is aesthetics. Restraint is confidence. Details are respect."
+      ],
+      location: "Currently based in Iran • Available for selective international projects",
       coreFocus: [
         "Front-End Development",
         "Back-End Development",
@@ -243,10 +247,9 @@ export const portfolioData = {
   },
   fa: {
     nav: {
-      about: "درباره من",
+      about: "رویکرد",
       experience: "تجربیات",
       projects: "پروژه‌ها",
-      skills: "مهارت‌ها",
       contact: "تماس"
     },
     hero: {
@@ -257,8 +260,13 @@ export const portfolioData = {
       ctaSecondary: "تماس با من"
     },
     about: {
-      title: "درباره من",
-      summary: "در چهار سال اخیر به‌صورت عملی در حوزه‌های Front-End، Back-End و UI/UX فعالیت کرده‌ام و تجربه‌های دیجیتالی ساخته‌ام که دقت فنی را با طراحی هدفمند ترکیب می‌کنند. به‌طور فعال از مدل‌ها و ابزارهای هوش مصنوعی برای بهینه‌سازی فرآیند طراحی و تسریع توسعه محصول استفاده می‌کنم. بیش از ده سال تجربه در عکاسی سینمایی و هنری دارم.",
+      title: "رویکرد",
+      paragraphs: [
+        "من رابط‌هایی را طراحی و مهندسی می‌کنم که در آن‌ها عکاسی، حرکت و کد با هم تلاقی می‌کنند. هر پیکسل، جابجایی و تعامل هدفمند است - هرگز صرفاً تزئینی نیست.",
+        "فرآیند من ریشه در تفکر سینمایی دارد. من با تجربه‌های دیجیتال مانند فیلم برخورد می‌کنم: ریتم، فضا، تعلیق و وضوح احساسی بیش از پیچیدگی بصری اهمیت دارند.",
+        "عملکرد، زیبایی‌شناسی است. خویشتن‌داری، اعتماد به نفس است. جزئیات، احترام است."
+      ],
+      location: "در حال حاضر مستقر در ایران • آماده برای پروژه‌های منتخب بین‌المللی",
       coreFocus: [
         "توسعه فرانت‌اند",
         "توسعه بک‌اند",
