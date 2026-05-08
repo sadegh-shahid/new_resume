@@ -26,11 +26,11 @@ export const portfolioData = {
       contact: "Contact"
     },
     hero: {
-      role: "Front-End | Back-End | UI/UX | Brand Identity",
-      title: "Designing and building digital experiences from brand to web.",
-      description: "I help businesses build trust and scale through high-performance web applications and cohesive brand identities. Expert in React, Node.js, and strategic UI/UX design.",
+      role: "Brand Identity Designer · Developer · Digital Experience Director",
+      title: "Designing digital experiences with a cinematic approach, from brand identity to product.",
+      description: "For me, design is not just about beauty. Every project has rhythm, light, silence, and purpose. Like a film — only with code and pixels.",
       ctaPrimary: "View Projects",
-      ctaSecondary: "Contact Me"
+      ctaSecondary: "Download Resume"
     },
     about: {
       title: "Approach",
@@ -253,11 +253,11 @@ export const portfolioData = {
       contact: "تماس"
     },
     hero: {
-      role: "Front-End | Back-End | UI/UX | Brand Identity",
-      title: "طراحی و توسعه تجربه‌های دیجیتال از برند تا وب.",
-      description: "من به کسب‌وکارها کمک می‌کنم تا از طریق اپلیکیشن‌های وب با کارایی بالا و هویت‌های برند منسجم، اعتماد جذب کنند و رشد کنند. متخصص در React، Node.js و طراحی استراتژیک UI/UX.",
+      role: "طراح هویت برند · توسعه‌دهنده · کارگردان تجربه دیجیتال",
+      title: "طراحی تجربه‌های دیجیتال با نگاه سینمایی، از هویت برند تا محصول",
+      description: "برای من طراحی فقط زیبایی نیست. هر پروژه ریتم، نور، سکوت، و هدف دارد. مثل یک فیلم — فقط با کد و پیکسل.",
       ctaPrimary: "مشاهده پروژه‌ها",
-      ctaSecondary: "تماس با من"
+      ctaSecondary: "دریافت رزومه"
     },
     about: {
       title: "رویکرد",

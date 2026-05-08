@@ -1,4 +1,4 @@
-import { useState, useEffect, lazy, Suspense } from 'react';
+import { useState, useEffect } from 'react';
 import { useScroll, useSpring, motion } from 'motion/react';
 import { Language } from './data';
 import { Header } from './components/Header';
@@ -7,7 +7,6 @@ import { About } from './components/About';
 import { Experience } from './components/Experience';
 import { Projects } from './components/Projects';
 import { VisualWorks } from './components/VisualWorks';
-
 import { Testimonials } from './components/Testimonials';
 import { Contact } from './components/Contact';
 
@@ -19,8 +18,7 @@ export default function App() {
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
-    restDelta: 0.01,
-    mass: 0.1
+    restDelta: 0.001
   });
 
   useEffect(() => {
@@ -30,12 +28,15 @@ export default function App() {
   }, [lang]);
 
   return (
-    <div className="min-h-screen selection:bg-white selection:text-black">
+    <div className="min-h-screen selection:bg-[#D6C7A8] selection:text-[#0A0A0A]" dir={lang === 'fa' ? 'rtl' : 'ltr'} lang={lang}>
+      {/* Progress Bar - Subtle */}
       <motion.div 
-        className="fixed top-0 left-0 right-0 h-1 bg-amber-500 z-50 origin-left rtl:origin-right"
+        className="fixed top-0 left-0 right-0 h-[2px] bg-[#D6C7A8]/30 z-[60] origin-left"
         style={{ scaleX }}
       />
+      
       <Header lang={lang} setLang={setLang} />
+      
       <main>
         <Hero lang={lang} />
         <Projects lang={lang} />
@@ -46,8 +47,10 @@ export default function App() {
         <Contact lang={lang} />
       </main>
       
-      <footer className="text-center py-8 text-white/30 text-sm mt-12 border-t border-white/5 tracking-widest uppercase">
-        © {new Date().getFullYear()} Mohammad Sadegh Shahid
+      {/* Footer - Minimal */}
+      <footer className="text-center py-12 text-white/30 text-xs border-t border-white/[0.08] mt-24">
+        <p className="font-light">ساخته‌شده با دقت، ریتم، و هدف</p>
+        <p className="mt-2 opacity-50">© {new Date().getFullYear()} Sadegh Shahid</p>
       </footer>
     </div>
   );
