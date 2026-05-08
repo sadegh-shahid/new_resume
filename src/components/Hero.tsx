@@ -59,7 +59,7 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
           </motion.span>
 
           {/* Headline - Line by line reveal, reduced scale for Persian */}
-          <h1 className={`${isFa ? 'text-[clamp(2.2rem, 6vw, 4.5rem)]' : 'text-hero-display'} font-light text-[#F3F1EB] mb-8 ${isFa ? 'leading-[1.4]' : 'leading-[1.35]'}`}>
+          <h1 className={`${isFa ? 'text-[clamp(2.2rem, 6vw, 4.5rem)]' : 'text-hero-display'} font-light text-[#F3F1EB] mb-8 ${isFa ? 'leading-[1.4]' : 'leading-[1.35]'}`} dir={isFa ? 'rtl' : 'ltr'}>
             <span className="sr-only">{t.title}</span>
             <motion.div
               initial="hidden"
@@ -70,7 +70,7 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
               aria-hidden="true"
               className="flex flex-col"
             >
-              {t.title.split("،").map((line, index) => (
+              {t.title.split("\n").map((line, index) => (
                 <motion.span
                   key={index}
                   className="inline-block overflow-hidden"
@@ -84,7 +84,7 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
                     }
                   }}
                 >
-                  {line}{index < t.title.split("،").length - 1 && "،"}
+                  {line}
                 </motion.span>
               ))}
             </motion.div>

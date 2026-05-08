@@ -3,6 +3,7 @@ import { useScroll, useSpring, motion } from 'motion/react';
 import { Language } from './data';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
+import { CapabilitySnapshot } from './components/CapabilitySnapshot';
 import { About } from './components/About';
 import { Experience } from './components/Experience';
 import { Projects } from './components/Projects';
@@ -39,6 +40,7 @@ export default function App() {
       
       <main>
         <Hero lang={lang} />
+        <CapabilitySnapshot lang={lang} />
         <Projects lang={lang} />
         <About lang={lang} />
         <Experience lang={lang} />
