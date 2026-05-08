@@ -1,12 +1,10 @@
 import { useState, useEffect, memo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { portfolioData, Language } from '../data';
-import { CinematicParticles } from './CinematicParticles';
 
 export const Hero = memo(({ lang }: { lang: Language }) => {
   const t = portfolioData[lang].hero;
-  const isEn = lang === 'en';
-  const [isHovered, setIsHovered] = useState(false);
+  const isFa = lang === 'fa';
   const [imageLoaded, setImageLoaded] = useState(false);
 
   useEffect(() => {
@@ -16,38 +14,23 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
   }, []);
 
   return (
-    <section 
-      className="min-h-screen flex flex-col items-center justify-center pt-24 px-6 text-center relative overflow-hidden"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
+    <section className="min-h-screen flex items-center justify-center pt-[72px] px-6 relative overflow-hidden">
       {/* Loading Placeholder */}
       <AnimatePresence>
         {!imageLoaded && (
           <motion.div
+            initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 1 }}
-            className="absolute inset-0 z-0 bg-white/5 backdrop-blur-3xl animate-pulse pointer-events-none"
+            className="absolute inset-0 z-0 bg-white/[0.02] backdrop-blur-sm pointer-events-none"
           />
         )}
       </AnimatePresence>
 
-      {/* Abstract Background Image */}
+      {/* Abstract Background Image - Cinematic */}
       <motion.div
-        animate={
-          !imageLoaded
-            ? { opacity: 0 }
-            : isHovered 
-              ? { scale: 1.05, opacity: 0.15 } 
-              : { scale: 1, opacity: 0.15 }
-        }
-        transition={
-          !imageLoaded
-            ? { duration: 0 }
-            : isHovered 
-              ? { duration: 1, ease: "easeOut" } 
-              : { duration: 1 }
-        }
+        animate={imageLoaded ? { opacity: 0.12 } : { opacity: 0 }}
+        transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
         className="absolute inset-0 z-0 mix-blend-overlay pointer-events-none"
         style={{
           backgroundImage: 'url("/images/photo-1618005182384-a83a8bd57fbe.webp")',
@@ -56,82 +39,150 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
         }}
       />
 
-      {/* Background atmospheric blur */}
-      <motion.div 
-        animate={
-          isHovered 
-            ? { scale: 1.05, opacity: 0.85 } 
-            : { scale: 1, opacity: 1 }
-        }
-        transition={
-          isHovered 
-            ? { duration: 0.5, ease: "easeOut" } 
-            : { duration: 0.5 }
-        }
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/5 rounded-full blur-[120px] pointer-events-none" 
-      />
+      {/* Background atmospheric blur - subtle vignette effect */}
+      <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-white/[0.03] rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-[#D6C7A8]/[0.02] rounded-full blur-[100px] pointer-events-none" />
 
-      {/* Cinematic Background Particles */}
-      <CinematicParticles />
-
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-        className="relative z-10 max-w-4xl mx-auto"
-      >
-        <h2 className={`text-white/50 uppercase ${isEn ? 'tracking-[0.2em]' : 'tracking-normal'} text-xs md:text-sm font-semibold mb-6`}>
-          {t.role}
-        </h2>
-        <h1 className={`text-5xl md:text-7xl lg:text-8xl leading-[1.1] font-light tracking-tighter mb-10 ${isEn ? '' : 'font-bold'}`}>
-          <span className="sr-only">{t.title}</span>
+      {/* Main Content - Asymmetrical RTL Composition */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        {/* Right Side - Text Content (RTL first) */}
+        <motion.div
+          initial={{ opacity: 0, x: isFa ? 30 : -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+          className="flex flex-col items-start text-right rtl:text-right"
+        >
+          {/* Top Label */}
           <motion.span
-            initial="hidden"
-            animate="visible"
-            variants={{
-              visible: { transition: { staggerChildren: 0.1 } }
-            }}
-            aria-hidden="true"
-            className="inline-flex flex-wrap justify-center gap-x-3 gap-y-4"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-xs md:text-sm text-white/40 uppercase tracking-normal mb-6 block"
           >
-            {t.title.split(" ").map((word, index) => (
-              <span key={index} className="inline-block overflow-hidden relative pb-2">
+            {t.role}
+          </motion.span>
+
+          {/* Headline - Line by line reveal */}
+          <h1 className="text-hero-display font-bold text-[#F3F1EB] mb-8 leading-[1.35]">
+            <span className="sr-only">{t.title}</span>
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={{
+                visible: { transition: { staggerChildren: 0.12 } }
+              }}
+              aria-hidden="true"
+              className="flex flex-col"
+            >
+              {t.title.split("،").map((line, index) => (
                 <motion.span
-                  className="inline-block"
+                  key={index}
+                  className="inline-block overflow-hidden"
                   variants={{
-                    hidden: { opacity: 0, y: "100%" },
-                    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } }
+                    hidden: { opacity: 0, y: "100%", filter: "blur(8px)" },
+                    visible: { 
+                      opacity: 1, 
+                      y: 0, 
+                      filter: "blur(0px)",
+                      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+                    }
                   }}
                 >
-                  {word}
+                  {line}{index < t.title.split("،").length - 1 && "،"}
                 </motion.span>
-              </span>
-            ))}
-          </motion.span>
-        </h1>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="text-white/60 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
+              ))}
+            </motion.div>
+          </h1>
+
+          {/* Subtext */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="text-body-lg text-white/60 max-w-[620px] mb-10 leading-[1.9]"
+          >
+            {t.description}
+          </motion.p>
+
+          {/* Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-wrap gap-4"
+          >
+            <a
+              href="#projects"
+              className="btn-primary group"
+            >
+              {t.ctaPrimary}
+              <svg className="w-4 h-4 transition-transform group-hover:translate-x-[-2px] rtl:group-hover:translate-x-[2px]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+            <a
+              href="/resume.pdf"
+              download
+              className="btn-ghost"
+            >
+              {t.ctaSecondary}
+            </a>
+          </motion.div>
+        </motion.div>
+
+        {/* Left Side - Visual Composition (Abstract, cinematic) */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
+          className="hidden lg:flex items-center justify-center relative h-[600px]"
         >
-          {(t as any).description}
-        </motion.p>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 w-full max-w-sm sm:max-w-none mx-auto">
-          <a
-            href="#projects"
-            className={`inline-flex items-center justify-center border border-white/30 rounded-full px-8 py-4 ${isEn ? 'text-sm uppercase tracking-widest' : 'text-base tracking-normal font-medium'} hover:bg-white hover:text-black transition-all duration-300 w-full sm:w-auto text-center font-semibold`}
-          >
-            {t.ctaPrimary}
-          </a>
-          <a
-            href="#contact"
-            className={`inline-flex items-center justify-center border border-transparent bg-white/5 rounded-full px-8 py-4 ${isEn ? 'text-sm uppercase tracking-widest' : 'text-base tracking-normal font-medium'} hover:bg-white/10 text-white/80 hover:text-white transition-all duration-300 w-full sm:w-auto text-center`}
-          >
-            {t.ctaSecondary}
-          </a>
-        </div>
-      </motion.div>
+          {/* Layered abstract composition - photography-inspired */}
+          <div className="relative w-full h-full">
+            {/* Main image fragment */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 0.4, x: 0 }}
+              transition={{ duration: 1.4, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="absolute top-[10%] right-[10%] w-[60%] h-[50%] overflow-hidden rounded-sm"
+            >
+              <div className="w-full h-full bg-gradient-to-br from-white/[0.08] to-transparent" />
+            </motion.div>
+
+            {/* Secondary fragment */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 0.3, x: 0 }}
+              transition={{ duration: 1.4, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="absolute bottom-[20%] left-[15%] w-[50%] h-[40%] overflow-hidden rounded-sm"
+            >
+              <div className="w-full h-full bg-gradient-to-tl from-[#D6C7A8]/[0.06] to-transparent" />
+            </motion.div>
+
+            {/* Architectural lines */}
+            <motion.div
+              initial={{ opacity: 0, scaleX: 0 }}
+              animate={{ opacity: 0.15, scaleX: 1 }}
+              transition={{ duration: 1.2, delay: 1, ease: [0.16, 1, 0.3, 1] }}
+              className="absolute top-[30%] left-[5%] w-[80%] h-[1px] bg-white/20"
+            />
+            <motion.div
+              initial={{ opacity: 0, scaleY: 0 }}
+              animate={{ opacity: 0.12, scaleY: 1 }}
+              transition={{ duration: 1.2, delay: 1.1, ease: [0.16, 1, 0.3, 1] }}
+              className="absolute top-[10%] right-[25%] w-[1px] h-[60%] bg-white/15"
+            />
+
+            {/* Glass reflection effect */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.08 }}
+              transition={{ duration: 1.6, delay: 1.2 }}
+              className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-transparent"
+            />
+          </div>
+        </motion.div>
+      </div>
     </section>
   );
 });
