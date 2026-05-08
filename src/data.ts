@@ -26,17 +26,38 @@ export const portfolioData = {
       contact: "Contact"
     },
     hero: {
-      role: "Brand Identity Designer · Developer · Digital Experience Director",
-      title: "Designing digital experiences with a cinematic approach, from brand identity to product.",
-      description: "For me, design is not just about beauty. Every project has rhythm, light, silence, and purpose. Like a film — only with code and pixels.",
+      role: "Brand Identity Designer · Developer · AI Creative Systems",
+      title: "Designing digital experiences\nwith a cinematic approach",
+      description: "A blend of design, development, and creative thinking to build lasting experiences.",
       ctaPrimary: "View Projects",
       ctaSecondary: "Download Resume"
+    },
+    capabilities: {
+      blocks: [
+        {
+          title: "Brand Identity",
+          description: "Building visual systems and brand strategy"
+        },
+        {
+          title: "Product Design",
+          description: "Designing digital experiences with cinematic approach"
+        },
+        {
+          title: "Development",
+          description: "Frontend development focused on motion and experience"
+        },
+        {
+          title: "AI Workflow",
+          description: "Thoughtful use of AI in creative process"
+        }
+      ]
     },
     about: {
       title: "Approach",
       paragraphs: [
         "I design and engineer interfaces where photography, motion, and code converge. Every pixel, transition, and interaction is intentional — never decorative.",
         "My process is rooted in cinematic thinking. I treat digital experiences like film: rhythm, atmosphere, tension, and emotional clarity matter more than visual complexity.",
+        "AI is part of my workflow—not as automation, but as a thinking partner. It helps me explore faster, iterate deeper, and find directions I might miss alone.",
         "Performance is aesthetics. Restraint is confidence. Details are respect."
       ],
       location: "Currently based in Iran • Available for selective international projects",
@@ -233,6 +254,10 @@ export const portfolioData = {
         }
       ]
     },
+    humanMoment: {
+      quote: "Behind every pixel and line of code, there's a person who cares deeply about the details you might never notice.",
+      attribution: "— A quiet note"
+    },
     contact: {
       title: "Let's work together",
       message: "If you have a project or role in mind, the best first step is a short message with your goal, timeline, and core need.",
@@ -253,17 +278,42 @@ export const portfolioData = {
       contact: "تماس"
     },
     hero: {
-      role: "طراح هویت برند · تجربه دیجیتال",
-      title: "تصویر، هویت، تجربه دیجیتال",
-      description: "طراحی با ریتم، نور، سکوت.",
+      role: "طراح هویت برند · توسعه‌دهنده · سیستم‌های خلاق AI",
+      title: "طراحی تجربه‌های دیجیتال\nبا نگاه سینمایی",
+      description: "ترکیبی از طراحی، توسعه، و تفکر خلاق برای ساخت تجربه‌های ماندگار.",
       ctaPrimary: "مشاهده پروژه‌ها",
       ctaSecondary: "دریافت رزومه"
+    },
+    capabilities: {
+      blocks: [
+        {
+          title: "هویت برند",
+          description: "ساخت سیستم‌های بصری و استراتژی برند"
+        },
+        {
+          title: "طراحی محصول",
+          description: "طراحی تجربه‌های دیجیتال با نگاه سینمایی"
+        },
+        {
+          title: "توسعه",
+          description: "Frontend development با تمرکز بر motion و تجربه"
+        },
+        {
+          title: "AI Workflow",
+          description: "استفاده هدفمند از AI در فرایند خلاق"
+        }
+      ]
+    },
+    humanMoment: {
+      quote: "پشت هر پیکسل و هر خط کد، انسانی هست که برای جزئیاتی اهمیت قائل است که شاید هرگز نبینید.",
+      attribution: "— یادداشتی آرام"
     },
     about: {
       title: "رویکرد",
       paragraphs: [
         "طراحی رابط‌هایی که عکاسی، حرکت و کد را کنار هم می‌نشاند.",
         "تفکر سینمایی در تجربه دیجیتال: ریتم، فضا، تعلیق.",
+        "هوش مصنوعی بخشی از فرایند من است—نه به عنوان اتوماسیون، بلکه به عنوان همراه فکر. کمک می‌کند سریع‌تر کاوش کنم، عمیق‌تر تکرار کنم، و مسیرهایی را پیدا کنم که به تنهایی ممکن بود نبینم.",
         "عملکرد، زیبایی است. خویشتن‌داری، اعتماد. جزئیات، احترام."
       ],
       location: "ایران • پروژه‌های منتخب بین‌المللی",
@@ -459,6 +509,10 @@ export const portfolioData = {
           result: "کاهش ۵۰٪ زمان توسعه ویژگی‌های جدید."
         }
       ]
+    },
+    humanMoment: {
+      quote: "پشت هر پیکسل و هر خط کد، انسانی هست که برای جزئیاتی اهمیت قائل است که شاید هرگز نبینید.",
+      attribution: "— یادداشتی آرام"
     },
     contact: {
       title: "همکاری",
