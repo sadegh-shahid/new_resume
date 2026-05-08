@@ -26,9 +26,9 @@ export const portfolioData = {
       contact: "Contact"
     },
     hero: {
-      role: "Brand Identity Designer · Developer · AI Creative Systems",
-      title: "Designing digital experiences\nwith a cinematic approach",
-      description: "A blend of design, development, and creative thinking to build lasting experiences.",
+      role: "Creative Developer & AI-Driven Digital Designer",
+      title: "Digital Designer crafting cinematic\nweb experiences with AI",
+      description: "Designing emotionally-driven digital experiences through code, branding, and AI systems.",
       ctaPrimary: "View Projects",
       ctaSecondary: "Download Resume"
     },
@@ -36,19 +36,19 @@ export const portfolioData = {
       blocks: [
         {
           title: "Brand Identity",
-          description: "Building visual systems and brand strategy"
+          description: "Visual systems and brand strategy with editorial sensibility"
         },
         {
           title: "Product Design",
-          description: "Designing digital experiences with cinematic approach"
+          description: "Cinematic digital experiences with emotional depth"
         },
         {
           title: "Development",
-          description: "Frontend development focused on motion and experience"
+          description: "Frontend craft focused on motion, rhythm, and atmosphere"
         },
         {
           title: "AI Workflow",
-          description: "Thoughtful use of AI in creative process"
+          description: "Creative augmentation through AI-assisted ideation and systems"
         }
       ]
     },
@@ -57,10 +57,10 @@ export const portfolioData = {
       paragraphs: [
         "I design and engineer interfaces where photography, motion, and code converge. Every pixel, transition, and interaction is intentional — never decorative.",
         "My process is rooted in cinematic thinking. I treat digital experiences like film: rhythm, atmosphere, tension, and emotional clarity matter more than visual complexity.",
-        "AI is part of my workflow—not as automation, but as a thinking partner. It helps me explore faster, iterate deeper, and find directions I might miss alone.",
+        "AI is integrated into my creative workflow—not as automation, but as a thinking partner. It helps me explore faster, iterate deeper, and discover directions I might miss alone.",
         "Performance is aesthetics. Restraint is confidence. Details are respect."
       ],
-      location: "Currently based in Iran • Available for selective international projects",
+      location: "Based in Iran • Available for selective international projects",
       coreFocus: [
         "Front-End Development",
         "Back-End Development",
@@ -69,7 +69,7 @@ export const portfolioData = {
         "Graphic Design",
         "Visual Storytelling",
         "Cinematic & Artistic Photography",
-        "AI-Assisted Workflow"
+        "AI-Assisted Creative Workflow"
       ]
     },
     experience: {
@@ -165,10 +165,10 @@ export const portfolioData = {
     skills: {
       title: "Expertise",
       categories: [
-        { name: "Web Development", items: "Next.js, React, TypeScript, Web Development", level: 90 },
-        { name: "Product & UX", items: "Back-End Development, UI/UX Design, Product Thinking, Responsive Interfaces", level: 85 },
-        { name: "Visual & Brand", items: "Brand Identity, Graphic Design, Visual Storytelling, Art Direction", level: 95 },
-        { name: "AI Workflow", items: "AI Tools, ChatGPT, Midjourney, Content Production, Workflow Optimization", level: 88 }
+        { name: "Creative Development", items: "React, Next.js, TypeScript, Motion Design, Cinematic Interfaces", level: 90 },
+        { name: "Product & Experience", items: "UI/UX Design, Visual Systems, Interaction Design, Digital Storytelling", level: 85 },
+        { name: "Brand & Visual", items: "Brand Identity, Art Direction, Graphic Design, Visual Narrative", level: 95 },
+        { name: "AI Creative Systems", items: "AI-Assisted Ideation, Prompt Engineering, Creative Automation, Visual Experimentation", level: 88 }
       ]
     },
     visual: {
@@ -278,9 +278,9 @@ export const portfolioData = {
       contact: "تماس"
     },
     hero: {
-      role: "طراح هویت برند · توسعه‌دهنده · سیستم‌های خلاق AI",
-      title: "طراحی تجربه‌های دیجیتال\nبا نگاه سینمایی",
-      description: "ترکیبی از طراحی، توسعه، و تفکر خلاق برای ساخت تجربه‌های ماندگار.",
+      role: "توسعه‌دهنده خلاق و طراح دیجیتال با محوریت AI",
+      title: "طراح دیجیتال، خلق تجربه‌های وب\nسینمایی با هوش مصنوعی",
+      description: "طراحی تجربه‌های دیجیتال با عمق احساسی از طریق کد، برندینگ و سیستم‌های AI.",
       ctaPrimary: "مشاهده پروژه‌ها",
       ctaSecondary: "دریافت رزومه"
     },
@@ -288,25 +288,21 @@ export const portfolioData = {
       blocks: [
         {
           title: "هویت برند",
-          description: "ساخت سیستم‌های بصری و استراتژی برند"
+          description: "سیستم‌های بصری و استراتژی برند با حساسیت ادیتوریال"
         },
         {
           title: "طراحی محصول",
-          description: "طراحی تجربه‌های دیجیتال با نگاه سینمایی"
+          description: "تجربه‌های دیجیتال سینمایی با عمق احساسی"
         },
         {
           title: "توسعه",
-          description: "Frontend development با تمرکز بر motion و تجربه"
+          description: "صنعت‌گری فرانت‌اند با تمرکز بر motion، ریتم و اتمسفر"
         },
         {
-          title: "AI Workflow",
-          description: "استفاده هدفمند از AI در فرایند خلاق"
+          title: "سیستم‌های خلاق AI",
+          description: "تقویت خلاقیت از طریق ایده‌پردازی و سیستم‌های مبتنی بر AI"
         }
       ]
-    },
-    humanMoment: {
-      quote: "پشت هر پیکسل و هر خط کد، انسانی هست که برای جزئیاتی اهمیت قائل است که شاید هرگز نبینید.",
-      attribution: "— یادداشتی آرام"
     },
     about: {
       title: "رویکرد",
@@ -325,7 +321,7 @@ export const portfolioData = {
         "طراحی گرافیک",
         "روایت بصری",
         "عکاسی هنری و سینمایی",
-        "جریان‌کار مبتنی بر هوش‌مصنوعی"
+        "جریان‌کار خلاق مبتنی بر هوش‌مصنوعی"
       ]
     },
     experience: {
@@ -421,10 +417,10 @@ export const portfolioData = {
     skills: {
       title: "تخصص‌ها",
       categories: [
-        { name: "توسعه وب", items: "Next.js, React, TypeScript, توسعه وب", level: 90 },
-        { name: "محصول و تجربه کاربری", items: "توسعه سمت سرور، طراحی UI/UX، تفکر محصول، رابط‌های واکنش‌گرا", level: 85 },
-        { name: "بصری و برند", items: "هویت برند، طراحی گرافیک، روایت بصری، کارگردانی هنری", level: 95 },
-        { name: "هوش مصنوعی", items: "ابزارهای AI، ChatGPT، Midjourney، تولید محتوا، بهینه‌سازی فرآیند", level: 88 }
+        { name: "توسعه خلاق", items: "React, Next.js, TypeScript, Motion Design, رابط‌های سینمایی", level: 90 },
+        { name: "محصول و تجربه", items: "طراحی UI/UX, سیستم‌های بصری, طراحی تعامل, روایت دیجیتال", level: 85 },
+        { name: "برند و بصری", items: "هویت برند, جهت‌گیری هنری, طراحی گرافیک, روایت بصری", level: 95 },
+        { name: "سیستم‌های خلاق AI", items: "ایده‌پردازی مبتنی بر AI, مهندسی پرامپت, اتوماسیون خلاق, آزمایش بصری", level: 88 }
       ]
     },
     visual: {
