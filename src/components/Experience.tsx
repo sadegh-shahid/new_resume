@@ -5,6 +5,14 @@ import { ChevronDown, Code, Server, Layout, Fingerprint, PenTool, Image as Image
 
 const focusIcons = [Code, Server, Layout, Fingerprint, PenTool, ImageIcon, Camera, Sparkles];
 
+// Map Expertise index to Focus Area indices
+const expertiseToFocusMap: Record<number, number[]> = {
+  0: [0, 1], // Web Development -> Front-End, Back-End
+  1: [2, 6], // Product & UX -> UI/UX, Photography
+  2: [3, 4, 5], // Visual & Brand -> Brand, Graphic, Visual Storytelling
+  3: [7], // AI Workflow -> AI-Assisted
+};
+
 export const Experience = memo(({ lang }: { lang: Language }) => {
   const t = portfolioData[lang].experience;
   const aboutT = portfolioData[lang].about;
@@ -86,39 +94,37 @@ export const Experience = memo(({ lang }: { lang: Language }) => {
           })}
         </div>
 
-        {/* Expertise Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 border-t border-white/10 pt-24">
-          <div>
-            <h3 className="text-2xl font-light tracking-tight mb-8 text-white">
-              {skillsT.title}
-            </h3>
-            <div className="space-y-8">
-              {skillsT.categories.map((cat, i) => (
-                <div key={i} className="border-l border-white/10 pl-6 rtl:border-l-0 rtl:border-r rtl:pr-6">
-                  <h4 className="text-lg font-medium text-amber-500 mb-2">{cat.name}</h4>
-                  <p className="text-white/50 text-sm leading-relaxed">{cat.items}</p>
-                </div>
-              ))}
-            </div>
-          </div>
+        {/* Combined Expertise & Focus Areas Section */}
+        <div className="border-t border-white/10 pt-24">
+          <h3 className="text-2xl md:text-3xl font-light tracking-tight mb-12 text-white">
+            {skillsT.title}
+          </h3>
 
-          <div>
-            <h3 className="text-sm uppercase tracking-widest text-white/40 mb-8 border-b border-white/10 pb-4">
-              {lang === 'en' ? 'Focus Areas' : 'زمینه‌های تمرکز'}
-            </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {aboutT.coreFocus.map((focus, i) => {
-                const Icon = focusIcons[i] || Code;
-                return (
-                  <div key={i} className="flex items-center gap-4 text-white/70 group">
-                    <div className="p-2 bg-white/5 rounded-lg text-white/30 group-hover:text-amber-500/80 transition-colors">
-                      <Icon size={18} />
-                    </div>
-                    <span className="text-sm tracking-wide">{focus}</span>
-                  </div>
-                );
-              })}
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+            {skillsT.categories.map((cat, i) => (
+              <div key={i} className="bg-white/5 border border-white/10 p-8 rounded-3xl hover:bg-white/10 transition-all duration-300 group">
+                <div className="flex flex-wrap gap-3 mb-6">
+                  {expertiseToFocusMap[i]?.map(focusIdx => {
+                    const Icon = focusIcons[focusIdx];
+                    return (
+                      <div key={focusIdx} className="p-2 bg-white/5 rounded-lg text-white/30 group-hover:text-amber-500/80 transition-colors" title={aboutT.coreFocus[focusIdx]}>
+                        <Icon size={18} />
+                      </div>
+                    );
+                  })}
+                </div>
+                <h4 className="text-xl font-medium text-amber-500 mb-3">{cat.name}</h4>
+                <p className="text-white/50 text-sm md:text-base leading-relaxed">{cat.items}</p>
+
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {expertiseToFocusMap[i]?.map(focusIdx => (
+                    <span key={focusIdx} className="text-[10px] uppercase tracking-widest text-white/20 border border-white/5 px-2 py-1 rounded">
+                      {aboutT.coreFocus[focusIdx]}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </motion.div>
