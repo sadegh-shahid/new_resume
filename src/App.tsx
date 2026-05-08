@@ -1,5 +1,6 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
 import { useScroll, useSpring, motion } from 'motion/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import { Language } from './data';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
@@ -49,6 +50,7 @@ export default function App() {
       <footer className="text-center py-8 text-white/30 text-sm mt-12 border-t border-white/5 tracking-widest uppercase">
         © {new Date().getFullYear()} Mohammad Sadegh Shahid
       </footer>
+      <SpeedInsights />
     </div>
   );
 }
