@@ -75,43 +75,42 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
   }, [selectedProject]);
 
   return (
-    <section id="projects" className="py-24 px-6 max-w-6xl mx-auto">
+    <section id="projects" className="py-32 px-6 max-w-6xl mx-auto section-quiet">
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 1.2 }}
       >
-        <div className="mb-12">
+        <div className="mb-20">
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="text-4xl md:text-6xl font-light tracking-tighter"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="text-4xl md:text-5xl font-light tracking-tight"
           >
             {t.title}
           </motion.h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
           {t.items.map((item, index) => {
             return (
               <motion.div
                 key={item.id}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
                 whileHover={{
-                  scale: 1.02,
-                  backgroundColor: "rgba(255, 255, 255, 0.08)",
+                  backgroundColor: "rgba(255, 255, 255, 0.04)",
                 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{
-                  duration: 0.4,
-                  ease: "easeOut",
-                  delay: index * 0.1,
+                  duration: 0.8,
+                  ease: [0.16, 1, 0.3, 1],
+                  delay: index * 0.12,
                 }}
-                className="group flex flex-col p-8 rounded-3xl card-bg border transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-amber-500/40"
+                className="group flex flex-col p-10 rounded-3xl card-bg border border-white/[0.04] transition-all cursor-pointer focus:outline-none focus:ring-1 focus:ring-amber-500/30"
                 onClick={() => {
                   setSelectedProject(item.id);
                   setCurrentImageIndex(0);
@@ -127,26 +126,26 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
                 }}
                 aria-label={`${lang === "en" ? "View details for" : "مشاهده جزئیات"} ${item.name}`}
               >
-                <div className="flex flex-col-reverse md:flex-row md:justify-between items-start mb-8 gap-4 md:gap-0">
-                  <h3 className="text-3xl font-light pr-0 md:pr-8 rtl:pr-0 rtl:md:pl-8">
+                <div className="flex flex-col-reverse md:flex-row md:justify-between items-start mb-10 gap-4 md:gap-0">
+                  <h3 className="text-2xl font-light pr-0 md:pr-8 rtl:pr-0 rtl:md:pl-8">
                     {item.name}
                   </h3>
                   <div className="flex w-full md:w-auto justify-end gap-2 shrink-0 z-10 relative">
                     <button
                       onClick={(e) => toggleFavorite(e, item.id)}
-                      className={`p-3 rounded-full transition-all duration-300 focus:outline-none ${favorites.includes(item.id) ? "bg-amber-500/10 text-amber-500" : "bg-white/5 text-white/40 hover:bg-white/10 hover:text-white"}`}
+                      className={`p-3 rounded-full transition-all duration-400 focus:outline-none ${favorites.includes(item.id) ? "bg-amber-500/10 text-amber-500" : "bg-white/5 text-white/30 hover:bg-white/8 hover:text-white/60"}`}
                       aria-label="Toggle favorite"
                     >
                       <motion.div
                         animate={
                           favorites.includes(item.id)
-                            ? { scale: [1, 1.2, 1] }
+                            ? { scale: [1, 1.15, 1] }
                             : {}
                         }
-                        transition={{ duration: 0.3 }}
+                        transition={{ duration: 0.4 }}
                       >
                         <Heart
-                          size={20}
+                          size={18}
                           className={
                             favorites.includes(item.id)
                               ? "fill-amber-500 text-amber-500"
@@ -161,29 +160,29 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={(e) => e.stopPropagation()}
-                        className="p-3 bg-white/10 rounded-full hover:bg-white hover:text-black transition-colors"
+                        className="p-3 bg-white/5 rounded-full hover:bg-white/10 transition-colors"
                       >
-                        <ArrowUpRight size={20} />
+                        <ArrowUpRight size={18} />
                       </a>
                     )}
                   </div>
                 </div>
 
                 <div className="mt-auto">
-                  <p className="text-sm uppercase tracking-widest text-white/50 mb-2">
+                  <p className="text-xs uppercase tracking-widest text-white/30 mb-3">
                     {item.role}
                   </p>
 
-                  <p className="text-white/80 leading-relaxed mb-6 text-left rtl:text-right line-clamp-3">
+                  <p className="text-white/70 leading-relaxed mb-8 text-left rtl:text-right line-clamp-3 text-sm">
                     {item.impact}
                   </p>
 
-                  <div className="flex flex-wrap gap-2 mb-6 rtl:justify-start">
+                  <div className="flex flex-wrap gap-2 mb-8 rtl:justify-start">
                     {item.stack.map((tech) => (
                       <span
                         key={tech}
                         dir="ltr"
-                        className="px-3 py-1 text-xs border border-white/20 rounded-full text-white/70"
+                        className="px-3 py-1 text-[10px] border border-white/[0.06] rounded-full text-white/50"
                       >
                         {tech}
                       </span>
@@ -191,11 +190,11 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
                   </div>
 
                   <div className="flex items-center mt-6">
-                    <div className="w-full md:w-auto flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs uppercase tracking-widest text-amber-500 font-bold group-hover:bg-amber-500 group-hover:text-black transition-all duration-300">
+                    <div className="w-full md:w-auto flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-amber-500/5 border border-amber-500/10 text-xs uppercase tracking-widest text-amber-500/80 font-medium group-hover:bg-amber-500/10 group-hover:border-amber-500/20 transition-all duration-400">
                       <span>{item.readMore}</span>
                       <ArrowUpRight
-                        size={16}
-                        className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                        size={14}
+                        className="transition-transform group-hover:translate-x-[0.5px] group-hover:-translate-y-[0.5px] rtl:group-hover:-translate-x-[0.5px]"
                       />
                     </div>
                   </div>
