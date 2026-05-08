@@ -75,7 +75,7 @@ export const Contact = memo(({ lang }: { lang: Language }) => {
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20 text-green-500 text-[10px] uppercase tracking-widest mb-6"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-            {isEn ? 'Available for freelance / remote' : 'آماده برای پروژه‌های فریلنس و دورکاری'}
+            {isEn ? 'Available for freelance / remote' : 'آماده برای پروژه‌های منتخب'}
           </motion.div>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}

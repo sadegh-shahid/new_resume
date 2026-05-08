@@ -27,9 +27,9 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
         )}
       </AnimatePresence>
 
-      {/* Abstract Background Image - Cinematic, Nearly Invisible */}
+      {/* Abstract Background Image - More visible for visual weight */}
       <motion.div
-        animate={imageLoaded ? { opacity: 0.06 } : { opacity: 0 }}
+        animate={imageLoaded ? { opacity: 0.12 } : { opacity: 0 }}
         transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
         className="absolute inset-0 z-0 mix-blend-overlay pointer-events-none"
         style={{
@@ -40,8 +40,8 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
       />
 
       {/* Main Content - Asymmetrical RTL Composition with Silence */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-        {/* Right Side - Text Content (RTL first) */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        {/* Right Side - Text Content (RTL first) - Reduced scale */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -53,13 +53,13 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.2, delay: 0.5 }}
-            className="text-xs md:text-sm text-white/30 uppercase tracking-normal mb-8 block"
+            className={`text-xs md:text-sm text-white/30 uppercase tracking-normal mb-6 block ${isFa ? 'mb-5' : ''}`}
           >
             {t.role}
           </motion.span>
 
-          {/* Headline - Line by line reveal, slower, more deliberate */}
-          <h1 className="text-hero-display font-light text-[#F3F1EB] mb-10 leading-[1.35]">
+          {/* Headline - Line by line reveal, reduced scale for Persian */}
+          <h1 className={`${isFa ? 'text-[clamp(2.2rem, 6vw, 4.5rem)]' : 'text-hero-display'} font-light text-[#F3F1EB] mb-8 ${isFa ? 'leading-[1.4]' : 'leading-[1.35]'}`}>
             <span className="sr-only">{t.title}</span>
             <motion.div
               initial="hidden"
@@ -90,12 +90,12 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
             </motion.div>
           </h1>
 
-          {/* Subtext - More breathing room */}
+          {/* Subtext - Smaller, more breathable */}
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1.2, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
-            className="text-body-lg text-white/50 max-w-[620px] mb-12 leading-[2.2]"
+            transition={{ duration: 1.2, delay: 1.0, ease: [0.16, 1, 0.3, 1] }}
+            className={`text-white/50 max-w-[480px] leading-[2.2] mb-10 ${isFa ? 'text-base md:text-lg' : 'text-body-lg'}`}
           >
             {t.description}
           </motion.p>
@@ -104,7 +104,7 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1.2, delay: 1.4, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 1.2, delay: 1.3, ease: [0.16, 1, 0.3, 1] }}
             className="flex flex-wrap gap-4"
           >
             <a
@@ -126,14 +126,14 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
           </motion.div>
         </motion.div>
 
-        {/* Left Side - Visual Silence (removed decorative elements) */}
+        {/* Left Side - Visual Silence / Atmospheric Space */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1], delay: 0.6 }}
-          className="hidden lg:flex items-center justify-center relative h-[600px]"
+          className="hidden lg:flex items-center justify-center relative h-[500px]"
         >
-          {/* Empty space - intentional silence */}
+          {/* Empty space - intentional silence for visual breathing */}
         </motion.div>
       </div>
     </section>
