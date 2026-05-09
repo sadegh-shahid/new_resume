@@ -80,7 +80,7 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
       className="px-6 max-w-7xl mx-auto section-quiet relative"
     >
       <div
-        className="absolute top-10 left-6 rtl:left-auto rtl:right-6 text-[clamp(6rem,12vw,10rem)] font-light text-white/[0.03] leading-none select-none pointer-events-none font-serif z-0"
+        className="absolute top-10 left-6 rtl:left-auto rtl:right-6 text-[clamp(6rem,12vw,10rem)] font-light text-white/[0.05] leading-none select-none pointer-events-none font-serif z-0"
         aria-hidden="true"
       >
         {lang === "fa" ? "۰۲" : "02"}
@@ -132,7 +132,7 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
                   ease: [0.16, 1, 0.3, 1],
                   delay: index * 0.15,
                 }}
-                className="group flex flex-col p-12 rounded-3xl card-bg border border-white/[0.03] transition-all duration-500 cursor-pointer focus:outline-none focus:ring-1 focus:ring-amber-500/30"
+                className="group flex flex-col p-6 md:p-10 lg:p-12 rounded-3xl card-bg border border-white/[0.03] transition-all duration-500 cursor-pointer focus:outline-none focus:ring-1 focus:ring-amber-500/30"
                 onClick={() => {
                   setSelectedProject(item.id);
                   setCurrentImageIndex(0);
