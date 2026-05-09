@@ -12,7 +12,10 @@ export const VisualWorks = memo(({ lang }: { lang: Language }) => {
   };
 
   return (
-    <section className="py-40 px-6 max-w-5xl mx-auto section-quiet">
+    <section id="visual-works" className="py-40 px-6 max-w-5xl mx-auto section-quiet relative">
+      <div className="absolute top-10 left-6 rtl:left-auto rtl:right-6 text-[clamp(6rem,12vw,10rem)] font-light text-white/[0.03] leading-none select-none pointer-events-none font-serif z-0" aria-hidden="true">
+        {lang === 'fa' ? '۰۴' : '04'}
+      </div>
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
