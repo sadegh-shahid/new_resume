@@ -28,12 +28,6 @@ export const CapabilitySnapshot = memo(({ lang }: { lang: Language }) => {
               }}
               className="group p-6 rounded-2xl bg-white/[0.02] border border-white/[0.04] hover:bg-white/[0.03] hover:border-white/[0.06] transition-all duration-500"
             >
-              <svg className="w-5 h-5 mb-4 text-amber-500/40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                {index === 0 && <circle cx="12" cy="12" r="10"/>}
-                {index === 1 && <rect x="3" y="3" width="18" height="18" rx="2"/>}
-                {index === 2 && <><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/></>}
-                {index === 3 && <><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M12 8v8"/><path d="M8 12h8"/></>}
-              </svg>
               <h3 className="text-sm font-medium text-[#F3F1EB] mb-2 tracking-wide">
                 {block.title}
               </h3>
