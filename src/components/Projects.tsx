@@ -249,7 +249,7 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
                     initial={{ opacity: 0, scale: 0.95, y: 20 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                    transition={{ duration: 0.1, ease: "easeOut" }}
+                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                     className="relative w-full max-w-5xl bg-[#111] overflow-y-auto md:overflow-hidden rounded-3xl border border-white/10 shadow-2xl flex flex-col md:flex-row my-auto max-h-[80vh] z-10"
                   >
                     <button

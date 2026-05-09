@@ -270,6 +270,10 @@ export const portfolioData = {
       linkedinUrl: "https://linkedin.com/in/mohammad-sadegh-shahid",
       githubUrl: "https://github.com/mohammadsadeghshahid",
       whatsappUrl: "https://wa.me/989369913228"
+    },
+    footer: {
+      tagline: "Built with precision, rhythm, and intent",
+      copyright: "© {year} Sadegh Shahid"
     }
   },
   fa: {
@@ -524,6 +528,10 @@ export const portfolioData = {
       linkedinUrl: "https://linkedin.com/in/mohammad-sadegh-shahid",
       githubUrl: "https://github.com/mohammadsadeghshahid",
       whatsappUrl: "https://wa.me/989369913228"
+    },
+    footer: {
+      tagline: "ساخته‌شده با دقت، ریتم، و هدف",
+      copyright: "© {year} صادق شهید"
     }
   }
 };

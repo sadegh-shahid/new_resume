@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useScroll, useSpring, motion } from "motion/react";
-import { Language } from "./data";
+import { Language, portfolioData } from "./data";
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 import { CapabilitySnapshot } from "./components/CapabilitySnapshot";
@@ -57,10 +57,8 @@ export default function App() {
 
       {/* Footer - Minimal, Quiet */}
       <footer className="text-center py-16 text-white/40 text-[10px] tracking-widest border-t border-white/[0.04] mt-32">
-        <p className="font-light opacity-80">ساخته‌شده با دقت، ریتم، و هدف</p>
-        <p className="mt-3 opacity-50">
-          © {new Date().getFullYear()} Sadegh Shahid
-        </p>
+        <p className="font-light opacity-80">{portfolioData[lang].footer.tagline}</p>
+        <p className="mt-3 opacity-50">{portfolioData[lang].footer.copyright.replace('{year}', String(new Date().getFullYear()))}</p>
       </footer>
     </div>
   );
