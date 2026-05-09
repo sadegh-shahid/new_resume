@@ -7,7 +7,6 @@ import {
   X,
   ChevronLeft,
   ChevronRight,
-  Heart,
 } from "lucide-react";
 
 export const Projects = memo(({ lang }: { lang: Language }) => {
@@ -15,7 +14,6 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [direction, setDirection] = useState(0);
-  const [favorites, setFavorites] = useState<number[]>([]);
 
   const paginate = (newDirection: number, length: number) => {
     setDirection(newDirection);
@@ -42,13 +40,6 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
       x: direction < 0 ? "100%" : "-100%",
       opacity: 0,
     }),
-  };
-
-  const toggleFavorite = (e: React.MouseEvent, id: number) => {
-    e.stopPropagation();
-    setFavorites((prev) =>
-      prev.includes(id) ? prev.filter((f) => f !== id) : [...prev, id],
-    );
   };
 
   useEffect(() => {
@@ -153,29 +144,6 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
                     {item.name}
                   </h3>
                   <div className="flex w-full md:w-auto justify-end gap-2 shrink-0 z-10 relative">
-                    <button
-                      onClick={(e) => toggleFavorite(e, item.id)}
-                      className={`p-3 rounded-full transition-all duration-400 focus:outline-none ${favorites.includes(item.id) ? "bg-amber-500/10 text-amber-500" : "bg-white/5 text-white/30 hover:bg-white/8 hover:text-white/60"}`}
-                      aria-label="Toggle favorite"
-                    >
-                      <motion.div
-                        animate={
-                          favorites.includes(item.id)
-                            ? { scale: [1, 1.15, 1] }
-                            : {}
-                        }
-                        transition={{ duration: 0.4 }}
-                      >
-                        <Heart
-                          size={18}
-                          className={
-                            favorites.includes(item.id)
-                              ? "fill-amber-500 text-amber-500"
-                              : ""
-                          }
-                        />
-                      </motion.div>
-                    </button>
                     {item.link && (
                       <a
                         href={item.link}
@@ -191,7 +159,7 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
                 </div>
 
                 <div className="mt-auto">
-                  <p className="text-xs uppercase tracking-widest text-white/50 mb-3">
+                  <p className="text-xs uppercase tracking-widest text-white/60 mb-3">
                     {item.role}
                   </p>
 
@@ -204,7 +172,7 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
                       <span
                         key={tech}
                         dir="ltr"
-                        className="px-3 py-1 text-[10px] border border-white/[0.06] rounded-full text-white/50"
+                        className="px-3 py-1 text-[10px] border border-white/[0.06] rounded-full text-white/60"
                       >
                         {tech}
                       </span>

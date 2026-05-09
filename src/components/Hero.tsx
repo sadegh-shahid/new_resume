@@ -68,7 +68,7 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.2, delay: 0.5 }}
-            className={`text-[10px] md:text-xs text-white/50 uppercase tracking-widest mb-8 block ${isFa ? 'tracking-normal' : ''}`}
+            className={`text-[10px] md:text-xs text-white/60 uppercase tracking-widest mb-8 block ${isFa ? 'tracking-normal' : ''}`}
           >
             {t.role}
           </motion.span>

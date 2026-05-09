@@ -83,7 +83,7 @@ export const VisualWorks = memo(({ lang }: { lang: Language }) => {
                       <div className="px-6 md:px-10 pb-8 pt-4 border-t border-white/[0.04] text-white/60">
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                           <div className="flex flex-col gap-2 relative group/tooltip-tools">
-                            <div className="flex items-center gap-2 text-amber-500/60 mb-1 cursor-help w-max">
+                            <div className="flex items-center gap-2 text-amber-500 mb-1 cursor-help w-max">
                               <Wrench size={14} aria-hidden="true" />
                               <span className="font-medium text-xs uppercase tracking-widest">
                                 {lang === "en" ? "Tools" : "ابزارها"}
@@ -95,7 +95,7 @@ export const VisualWorks = memo(({ lang }: { lang: Language }) => {
                           </div>
 
                           <div className="flex flex-col gap-2 relative group/tooltip-concept">
-                            <div className="flex items-center gap-2 text-amber-500/60 mb-1 cursor-help w-max">
+                            <div className="flex items-center gap-2 text-amber-500 mb-1 cursor-help w-max">
                               <Lightbulb size={14} aria-hidden="true" />
                               <span className="font-medium text-xs uppercase tracking-widest">
                                 {lang === "en" ? "Concept" : "مفهوم"}
@@ -107,7 +107,7 @@ export const VisualWorks = memo(({ lang }: { lang: Language }) => {
                           </div>
 
                           <div className="flex flex-col gap-2 relative group/tooltip-impact">
-                            <div className="flex items-center gap-2 text-amber-500/60 mb-1 cursor-help w-max">
+                            <div className="flex items-center gap-2 text-amber-500 mb-1 cursor-help w-max">
                               <Target size={14} aria-hidden="true" />
                               <span className="font-medium text-xs uppercase tracking-widest">
                                 {lang === "en" ? "Impact" : "تأثیر"}
@@ -151,7 +151,7 @@ export const VisualWorks = memo(({ lang }: { lang: Language }) => {
                         <div className="mt-8 flex justify-end">
                           <button
                             onClick={() => setExpandedId(null)}
-                            className="text-white/30 hover:text-white transition-colors text-[10px] uppercase tracking-widest px-4 py-2 rounded-full border border-white/[0.06] hover:border-white/[0.15] focus:outline-none"
+                            className="text-white/50 hover:text-white transition-colors text-[10px] uppercase tracking-widest px-4 py-2 rounded-full border border-white/[0.06] hover:border-white/[0.15] focus:outline-none"
                           >
                             {item.closeBtn}
                           </button>

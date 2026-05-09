@@ -51,7 +51,7 @@ export const About = memo(({ lang }: { lang: Language }) => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.4 }}
-          className="mt-24 pt-8 border-t border-white/[0.04] text-xs tracking-widest text-white/50"
+          className="mt-24 pt-8 border-t border-white/[0.04] text-xs tracking-widest text-white/60"
         >
           {t.location}
         </motion.div>

@@ -56,9 +56,9 @@ export default function App() {
       </main>
 
       {/* Footer - Minimal, Quiet */}
-      <footer className="text-center py-16 text-white/40 text-[10px] tracking-widest border-t border-white/[0.04] mt-32">
-        <p className="font-light opacity-80">{portfolioData[lang].footer.tagline}</p>
-        <p className="mt-3 opacity-50">{portfolioData[lang].footer.copyright.replace('{year}', String(new Date().getFullYear()))}</p>
+      <footer className="text-center py-16 text-white/60 text-[10px] tracking-widest border-t border-white/[0.04] mt-32">
+        <p className="font-light">{portfolioData[lang].footer.tagline}</p>
+        <p className="mt-3 text-white/50">{portfolioData[lang].footer.copyright.replace('{year}', String(new Date().getFullYear()))}</p>
       </footer>
     </div>
   );

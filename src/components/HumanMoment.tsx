@@ -25,7 +25,7 @@ export const HumanMoment = memo(({ lang }: { lang: Language }) => {
           </p>
           
           {t.attribution && (
-            <p className="mt-6 text-xs text-white/30 tracking-widest uppercase">
+            <p className="mt-6 text-xs text-white/50 tracking-widest uppercase">
               {t.attribution}
             </p>
           )}
