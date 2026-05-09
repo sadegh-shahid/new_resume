@@ -77,7 +77,7 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
   return (
     <section
       id="projects"
-      className=" px-6 max-w-7xl mx-auto section-quiet relative"
+      className="px-6 max-w-7xl mx-auto section-quiet relative"
     >
       <div
         className="absolute top-10 left-6 rtl:left-auto rtl:right-6 text-[clamp(6rem,12vw,10rem)] font-light text-white/[0.03] leading-none select-none pointer-events-none font-serif z-0"
@@ -191,7 +191,7 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
                 </div>
 
                 <div className="mt-auto">
-                  <p className="text-xs uppercase tracking-widest text-white/30 mb-3">
+                  <p className="text-xs uppercase tracking-widest text-white/50 mb-3">
                     {item.role}
                   </p>
 

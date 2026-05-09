@@ -56,9 +56,9 @@ export default function App() {
       </main>
 
       {/* Footer - Minimal, Quiet */}
-      <footer className="text-center py-16 text-white/20 text-[10px] tracking-widest border-t border-white/[0.04] mt-32">
-        <p className="font-light opacity-60">ساخته‌شده با دقت، ریتم، و هدف</p>
-        <p className="mt-3 opacity-30">
+      <footer className="text-center py-16 text-white/40 text-[10px] tracking-widest border-t border-white/[0.04] mt-32">
+        <p className="font-light opacity-80">ساخته‌شده با دقت، ریتم، و هدف</p>
+        <p className="mt-3 opacity-50">
           © {new Date().getFullYear()} Sadegh Shahid
         </p>
       </footer>

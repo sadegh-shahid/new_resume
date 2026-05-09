@@ -72,7 +72,7 @@ export const Testimonials = memo(({ lang }: { lang: Language }) => {
                 </div>
                 <div>
                   <h3 className="text-white font-medium">{item.name}</h3>
-                  <p className="text-white/50 text-xs uppercase tracking-widest">{(item as any).role} &middot; {(item as any).company}</p>
+                  <p className="text-white/60 text-xs uppercase tracking-widest">{(item as any).role} &middot; {(item as any).company}</p>
                 </div>
               </div>
             </motion.div>
