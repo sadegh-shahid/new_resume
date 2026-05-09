@@ -74,7 +74,7 @@ export const Experience = memo(({ lang }: { lang: Language }) => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.2 }}
-            className="text-white/55 text-base mt-4 max-w-2xl leading-relaxed"
+            className="text-white/60 text-base mt-4 max-w-2xl leading-relaxed"
           >
             {t.summary}
           </motion.p>
@@ -107,7 +107,7 @@ export const Experience = memo(({ lang }: { lang: Language }) => {
                   onClick={() => toggleExpand(item.id)}
                 >
                   <div className="flex justify-between items-start mb-3">
-                    <span className="text-[10px] uppercase tracking-widest text-amber-500/60 font-mono">
+                    <span className="text-[10px] uppercase tracking-widest text-amber-500 font-mono">
                       {item.date}
                     </span>
                     <motion.div

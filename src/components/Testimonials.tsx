@@ -62,7 +62,7 @@ export const Testimonials = memo(({ lang }: { lang: Language }) => {
               </p>
               
               <div className="bg-amber-500/5 border border-amber-500/10 rounded-2xl p-4 mb-8">
-                <span className="block text-[10px] uppercase tracking-[0.2em] text-amber-500/60 mb-1">{lang === 'en' ? 'Result' : 'نتیجه'}</span>
+                <span className="block text-[10px] uppercase tracking-[0.2em] text-amber-500 mb-1">{lang === 'en' ? 'Result' : 'نتیجه'}</span>
                 <p className="text-white/80 text-sm font-medium">{(item as any).result}</p>
               </div>
 

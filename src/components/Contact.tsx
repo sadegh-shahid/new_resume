@@ -214,7 +214,7 @@ export const Contact = memo(({ lang }: { lang: Language }) => {
                   initial={{ opacity: 0, y: -20, height: 0 }}
                   animate={{ opacity: 1, y: 0, height: "auto" }}
                   exit={{ opacity: 0, y: -20, height: 0 }}
-                  className="bg-green-500/10 border border-green-500/50 text-green-500 p-4 rounded-xl flex items-center gap-3 mb-2"
+                  className="bg-amber-500/10 border border-amber-500/30 text-amber-500 p-4 rounded-xl flex items-center gap-3 mb-2"
                 >
                   <CheckCircle2 size={24} />
                   <span className="font-semibold">
@@ -239,7 +239,7 @@ export const Contact = memo(({ lang }: { lang: Language }) => {
                   setFormData({ ...formData, name: e.target.value });
                   if (errors.name) setErrors({ ...errors, name: "" });
                 }}
-                className={`w-full bg-black/30 border ${errors.name ? "border-red-500 focus:ring-red-500/50" : "border-white/10 focus:border-amber-500 focus:ring-amber-500/50"} rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:ring-1 transition-all`}
+                className={`w-full bg-black/30 border ${errors.name ? "border-red-500 focus:ring-red-500/50" : "border-white/10 focus:border-amber-500 focus:ring-amber-500/50"} rounded-xl px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:ring-1 transition-all`}
               />
               <AnimatePresence>
                 {errors.name && (
@@ -269,7 +269,7 @@ export const Contact = memo(({ lang }: { lang: Language }) => {
                   setFormData({ ...formData, email: e.target.value });
                   if (errors.email) setErrors({ ...errors, email: "" });
                 }}
-                className={`w-full bg-black/30 border ${errors.email ? "border-red-500 focus:ring-red-500/50" : "border-white/10 focus:border-amber-500 focus:ring-amber-500/50"} rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:ring-1 transition-all ${!isEn && "text-right"}`}
+                className={`w-full bg-black/30 border ${errors.email ? "border-red-500 focus:ring-red-500/50" : "border-white/10 focus:border-amber-500 focus:ring-amber-500/50"} rounded-xl px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:ring-1 transition-all ${!isEn && "text-right"}`}
               />
               <AnimatePresence>
                 {errors.email && (
@@ -301,7 +301,7 @@ export const Contact = memo(({ lang }: { lang: Language }) => {
                   setFormData({ ...formData, phone: e.target.value });
                   if (errors.phone) setErrors({ ...errors, phone: "" });
                 }}
-                className={`w-full bg-black/30 border ${errors.phone ? "border-red-500 focus:ring-red-500/50" : "border-white/10 focus:border-amber-500 focus:ring-amber-500/50"} rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:ring-1 transition-all ${!isEn && "text-right"}`}
+                className={`w-full bg-black/30 border ${errors.phone ? "border-red-500 focus:ring-red-500/50" : "border-white/10 focus:border-amber-500 focus:ring-amber-500/50"} rounded-xl px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:ring-1 transition-all ${!isEn && "text-right"}`}
               />
               <AnimatePresence>
                 {errors.phone && (
@@ -330,7 +330,7 @@ export const Contact = memo(({ lang }: { lang: Language }) => {
                   setFormData({ ...formData, message: e.target.value });
                   if (errors.message) setErrors({ ...errors, message: "" });
                 }}
-                className={`w-full bg-black/30 border ${errors.message ? "border-red-500 focus:ring-red-500/50" : "border-white/10 focus:border-amber-500 focus:ring-amber-500/50"} rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:ring-1 transition-all resize-none`}
+                className={`w-full bg-black/30 border ${errors.message ? "border-red-500 focus:ring-red-500/50" : "border-white/10 focus:border-amber-500 focus:ring-amber-500/50"} rounded-xl px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:ring-1 transition-all resize-none`}
               />
               <AnimatePresence>
                 {errors.message && (
@@ -349,7 +349,7 @@ export const Contact = memo(({ lang }: { lang: Language }) => {
             <button
               type="submit"
               disabled={status === "submitting" || status === "success"}
-              className="group relative flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-white text-black font-medium hover:bg-amber-500 transition-colors disabled:opacity-80 disabled:cursor-not-allowed overflow-hidden mt-2"
+              className="group relative flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-[#D6C7A8] text-[#0A0A0A] font-medium hover:bg-[#E5D5B8] transition-colors disabled:opacity-80 disabled:cursor-not-allowed overflow-hidden mt-2"
             >
               <AnimatePresence mode="wait">
                 {status === "submitting" ? (
