@@ -48,7 +48,7 @@ export const Experience = memo(({ lang }: { lang: Language }) => {
       className="px-6 max-w-5xl mx-auto border-t border-white/[0.04] section-quiet relative"
     >
       <div
-        className="absolute top-10 left-6 rtl:left-auto rtl:right-6 text-[clamp(6rem,12vw,10rem)] font-light text-white/[0.03] leading-none select-none pointer-events-none font-serif z-0"
+        className="absolute top-10 left-6 rtl:left-auto rtl:right-6 text-[clamp(6rem,12vw,10rem)] font-light text-white/[0.05] leading-none select-none pointer-events-none font-serif z-0"
         aria-hidden="true"
       >
         {lang === "fa" ? "۰۳" : "03"}
@@ -91,11 +91,11 @@ export const Experience = memo(({ lang }: { lang: Language }) => {
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.8, delay: index * 0.12 }}
-                className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active py-8"
+                className="relative flex items-center justify-between md:justify-normal group is-active py-8"
               >
                 {/* Timeline marker */}
                 <div
-                  className="flex items-center justify-center w-10 h-10 rounded-full border border-white/[0.08] bg-black/30 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transition-colors group-hover:border-amber-500/30 group-hover:bg-amber-500/5 cursor-pointer"
+                  className="flex items-center justify-center w-10 h-10 rounded-full border border-white/[0.08] bg-black/30 text-white shadow shrink-0 md:order-1 md:-translate-x-1/2 z-10 transition-colors group-hover:border-amber-500/30 group-hover:bg-amber-500/5 cursor-pointer"
                   onClick={() => toggleExpand(item.id)}
                 >
                   <div className="w-1.5 h-1.5 rounded-full bg-white/30 group-hover:bg-amber-500/60 transition-colors" />
@@ -103,7 +103,7 @@ export const Experience = memo(({ lang }: { lang: Language }) => {
 
                 {/* Content card */}
                 <div
-                  className="w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] bg-white/[0.03] border border-white/[0.04] p-6 rounded-2xl hover:bg-white/[0.05] transition-colors cursor-pointer text-left rtl:text-right"
+                  className="w-[calc(100%-4rem)] md:w-[calc(100%-3rem)] bg-white/[0.03] border border-white/[0.04] p-6 rounded-2xl hover:bg-white/[0.05] transition-colors cursor-pointer text-left rtl:text-right"
                   onClick={() => toggleExpand(item.id)}
                 >
                   <div className="flex justify-between items-start mb-3">
