@@ -1,6 +1,7 @@
 import { useState, useEffect, memo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { portfolioData, Language } from '../data';
+import { CinematicParticles } from './CinematicParticles';
 
 export const Hero = memo(({ lang }: { lang: Language }) => {
   const t = portfolioData[lang].hero;
@@ -15,6 +16,11 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
 
   return (
     <section className="min-h-screen flex items-center justify-center pt-[72px] px-6 relative overflow-hidden section-silent">
+      {/* Layer 0: Cinematic Particles — Ambient Floating Dust */}
+      <div className="absolute inset-0 z-[1] pointer-events-none overflow-hidden">
+        <CinematicParticles />
+      </div>
+
       {/* Loading Placeholder */}
       <AnimatePresence>
         {!imageLoaded && (
@@ -27,9 +33,9 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
         )}
       </AnimatePresence>
 
-      {/* Abstract Background Image - Restrained, Cinematic */}
+      {/* Layer 1: Abstract Background Image — Slightly more present */}
       <motion.div
-        animate={imageLoaded ? { opacity: 0.08 } : { opacity: 0 }}
+        animate={imageLoaded ? { opacity: 0.12 } : { opacity: 0 }}
         transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
         className="absolute inset-0 z-0 mix-blend-overlay pointer-events-none"
         style={{
@@ -39,40 +45,40 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
         }}
       />
 
-      {/* Subtle Cinematic Gradient Overlay - Premium Atmosphere */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] rounded-full bg-[#D6C7A8]/[0.03] blur-[120px]" />
-        <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] rounded-full bg-[#B07D52]/[0.02] blur-[100px]" />
+      {/* Layer 2: Atmospheric Gradient Blobs — Stronger, more complex */}
+      <div className="absolute inset-0 z-[2] pointer-events-none">
+        <div className="absolute top-[-15%] left-[-15%] w-[75%] h-[75%] rounded-full bg-[#D6C7A8]/[0.06] blur-[140px]" />
+        <div className="absolute bottom-[-15%] right-[-15%] w-[65%] h-[65%] rounded-full bg-[#B07D52]/[0.05] blur-[120px]" />
+        <div className="absolute top-[30%] right-[5%] w-[45%] h-[45%] rounded-full bg-[#5E6654]/[0.04] blur-[90px]" />
       </div>
 
-      {/* Main Content - Asymmetrical RTL Composition with Silence */}
+      {/* Layer 3: Text-safe vignette so background can be brighter without hurting readability */}
+      <div className="absolute inset-0 z-[3] pointer-events-none bg-gradient-to-r from-[#0A0A0A]/60 via-transparent to-[#0A0A0A]/60" />
+
+      {/* Main Content */}
       <div className="relative z-10 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-        {/* Right Side - Text Content (RTL first) - Refined Typography Hierarchy */}
+        {/* Right Side — Text */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
           className="flex flex-col items-start text-right rtl:text-right"
         >
-          {/* Top Label - Whisper Quiet, Smaller Scale for Premium Feel */}
           <motion.span
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.2, delay: 0.5 }}
-            className={`text-[10px] md:text-xs text-white/25 uppercase tracking-widest mb-8 block ${isFa ? 'mb-6 tracking-normal' : ''}`}
+            className={`text-[10px] md:text-xs text-white/30 uppercase tracking-widest mb-8 block ${isFa ? 'tracking-normal' : ''}`}
           >
             {t.role}
           </motion.span>
 
-          {/* Headline - Bold & Confident, Line by line reveal */}
           <h1 className={`${isFa ? 'text-[clamp(2.4rem, 6vw, 4rem)]' : 'text-hero-display'} font-light text-[#F3F1EB] mb-10 ${isFa ? 'leading-[1.45]' : 'leading-[1.35]'}`} dir={isFa ? 'rtl' : 'ltr'}>
             <span className="sr-only">{t.title}</span>
             <motion.div
               initial="hidden"
               animate="visible"
-              variants={{
-                visible: { transition: { staggerChildren: 0.22 } }
-              }}
+              variants={{ visible: { transition: { staggerChildren: 0.22 } } }}
               aria-hidden="true"
               className="flex flex-col"
             >
@@ -96,61 +102,80 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
             </motion.div>
           </h1>
 
-          {/* Subtext - Smaller, Quieter, More Breathable */}
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.2, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
-            className={`text-white/45 max-w-[460px] leading-[2.3] mb-12 ${isFa ? 'text-[15px] md:text-base' : 'text-[15px] md:text-body-lg'}`}
+            className={`text-white/50 max-w-[460px] leading-[2.3] mb-12 ${isFa ? 'text-[15px] md:text-base' : 'text-[15px] md:text-body-lg'}`}
           >
             {t.description}
           </motion.p>
 
-          {/* Buttons - Restrained entrance, Elegant Spacing */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.2, delay: 1.5, ease: [0.16, 1, 0.3, 1] }}
             className="flex flex-wrap gap-5"
           >
-            <a
-              href="#projects"
-              className="btn-primary group"
-            >
+            <a href="#projects" className="btn-primary group">
               {t.ctaPrimary}
               <svg className="w-4 h-4 transition-transform group-hover:translate-x-[-1px] rtl:group-hover:translate-x-[1px]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </a>
-            <a
-              href="/resume.pdf"
-              download
-              className="btn-ghost"
-            >
+            <a href="/resume.pdf" download className="btn-ghost">
               {t.ctaSecondary}
             </a>
           </motion.div>
         </motion.div>
 
-        {/* Left Side - Visual Silence / Atmospheric Space */}
+        {/* Left Side — Cinematic Visual Composition */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1], delay: 0.6 }}
-          className="hidden lg:flex items-center justify-center relative h-[500px]"
+          className="hidden lg:flex items-center justify-center relative h-[600px]"
         >
-          {/* Atmospheric Orb */}
+          {/* Primary Orb — Amber, dominant */}
           <motion.div
-            animate={{
-              rotate: 360,
-              scale: [1, 1.05, 1]
+            animate={{ rotate: 360, scale: [1, 1.1, 1] }}
+            transition={{
+              rotate: { duration: 45, repeat: Infinity, ease: "linear" },
+              scale: { duration: 5, repeat: Infinity, ease: "easeInOut" }
             }}
+            className="absolute w-[480px] h-[480px] rounded-full bg-gradient-to-tr from-amber-500/15 to-transparent blur-[100px]"
+          />
+          
+          {/* Secondary Orb — Ivory, offset for depth */}
+          <motion.div
+            animate={{ rotate: -360, scale: [1, 1.06, 1] }}
             transition={{
               rotate: { duration: 60, repeat: Infinity, ease: "linear" },
-              scale: { duration: 8, repeat: Infinity, ease: "easeInOut" }
+              scale: { duration: 7, repeat: Infinity, ease: "easeInOut" }
             }}
-            className="w-[400px] h-[400px] rounded-full bg-gradient-to-br from-amber-500/10 to-transparent blur-[80px]"
+            className="absolute w-[340px] h-[340px] rounded-full bg-gradient-to-bl from-[#D6C7A8]/12 to-transparent blur-[80px] translate-x-[-50px] translate-y-[80px]"
           />
+          
+          {/* Tertiary Orb — Olive, small accent pulse */}
+          <motion.div
+            animate={{ scale: [1, 1.3, 1], opacity: [0.4, 0.7, 0.4] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute w-[180px] h-[180px] rounded-full bg-[#5E6654]/25 blur-[60px] translate-x-[100px] translate-y-[-100px]"
+          />
+
+          {/* Concentric Rings — "Lens" focal point */}
+          <motion.div 
+            animate={{ rotate: 360 }}
+            transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
+            className="absolute w-[300px] h-[300px] border border-white/[0.05] rounded-full"
+          />
+          <motion.div 
+            animate={{ rotate: -360 }}
+            transition={{ duration: 90, repeat: Infinity, ease: "linear" }}
+            className="absolute w-[260px] h-[260px] border border-white/[0.04] rounded-full"
+          />
+          <div className="absolute w-[220px] h-[220px] border border-white/[0.03] rounded-full" />
+          <div className="absolute w-[8px] h-[8px] bg-amber-500/30 rounded-full blur-[2px]" />
         </motion.div>
       </div>
     </section>

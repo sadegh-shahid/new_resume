@@ -16,19 +16,23 @@ export const CinematicParticles: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
-
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
     let animationFrameId: number;
     let particles: Particle[] = [];
-    const particleCount = 50; // 40-60 requested
+    const particleCount = 30; // Fewer = more elegant
 
     const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      const parent = canvas.parentElement;
+      if (parent) {
+        canvas.width = parent.clientWidth;
+        canvas.height = parent.clientHeight;
+      }
       initParticles();
     };
 
@@ -40,23 +44,20 @@ export const CinematicParticles: React.FC = () => {
     };
 
     const createParticle = (isInitial = false): Particle => {
-      const size = Math.random() * 2 + 0.5; // 0.5 to 2.5
-
-      // "some particles larger and slower (foreground), some smaller and faster (background)"
-      // Speed is inversely proportional to size
-      const speedBase = Math.random() * 0.1 + 0.05;
-      const speedY = -(speedBase * (2.5 / size)) * 0.5;
-      const speedX = (Math.random() - 0.5) * 0.05 * (2.5 / size);
+      const size = Math.random() * 2.5 + 1; // Slightly larger
+      const speedBase = Math.random() * 0.06 + 0.02; // Slower
+      const speedY = -(speedBase * (2.5 / size)) * 0.35;
+      const speedX = (Math.random() - 0.5) * 0.03 * (2.5 / size);
 
       const isAmber = Math.random() > 0.4;
-      const color = isAmber ? '245, 158, 11' : '229, 229, 224';
-      const opacity = Math.random() * (0.15 - 0.08) + 0.08;
+      const color = isAmber ? '214, 199, 168' : '229, 229, 224'; // ivory + warm gray
+      const opacity = Math.random() * (0.28 - 0.15) + 0.15; // More visible
       const rotation = Math.random() * Math.PI * 2;
-      const rotationSpeed = (Math.random() - 0.5) * 0.01;
+      const rotationSpeed = (Math.random() - 0.5) * 0.006;
 
       return {
         x: Math.random() * canvas.width,
-        y: isInitial ? Math.random() * canvas.height : canvas.height + 20,
+        y: isInitial ? Math.random() * canvas.height : canvas.height + 30,
         size,
         speedY,
         speedX,
@@ -75,33 +76,22 @@ export const CinematicParticles: React.FC = () => {
         p.x += p.speedX;
         p.rotation += p.rotationSpeed;
 
-        // Reset particle if it goes off screen (top)
-        if (p.y < -20) {
-          particles[index] = createParticle(false);
-        }
+        if (p.y < -30) particles[index] = createParticle(false);
+        if (p.x < -30) p.x = canvas.width + 30;
+        if (p.x > canvas.width + 30) p.x = -30;
 
-        // Wrap around horizontally gently
-        if (p.x < -20) p.x = canvas.width + 20;
-        if (p.x > canvas.width + 20) p.x = -20;
-
-        // Fade in/out at edges for a softer look
         let currentOpacity = p.opacity;
-        const fadeZone = 150;
-        if (p.y < fadeZone) {
-          currentOpacity *= Math.max(0, p.y / fadeZone);
-        } else if (p.y > canvas.height - fadeZone) {
-          currentOpacity *= Math.max(0, (canvas.height - p.y) / fadeZone);
-        }
+        const fadeZone = 180;
+        if (p.y < fadeZone) currentOpacity *= Math.max(0, p.y / fadeZone);
+        else if (p.y > canvas.height - fadeZone) currentOpacity *= Math.max(0, (canvas.height - p.y) / fadeZone);
 
-        ctx.beginPath();
-        // Use ovals/circles as requested
-        // Add a bit of "glow/softness" by using a radial gradient or just multiple draws
-        const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 2);
+        const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 3);
         gradient.addColorStop(0, `rgba(${p.color}, ${Math.max(0, currentOpacity)})`);
         gradient.addColorStop(1, `rgba(${p.color}, 0)`);
 
         ctx.fillStyle = gradient;
-        ctx.ellipse(p.x, p.y, p.size * 2, p.size * 1.4, p.rotation, 0, Math.PI * 2);
+        ctx.beginPath();
+        ctx.ellipse(p.x, p.y, p.size * 2.5, p.size * 1.8, p.rotation, 0, Math.PI * 2);
         ctx.fill();
       });
 
@@ -121,7 +111,7 @@ export const CinematicParticles: React.FC = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 pointer-events-none"
+      className="absolute inset-0 w-full h-full pointer-events-none"
       style={{ zIndex: 0 }}
     />
   );

@@ -8,10 +8,7 @@ export const HumanMoment = memo(({ lang }: { lang: Language }) => {
   return (
     <section className="section-silent border-t border-white/[0.04] py-32 px-6 overflow-hidden">
       <div className="max-w-3xl mx-auto relative">
-        {/* Large, faint editorial section number */}
-        <div className="absolute -top-16 -left-8 md:-left-20 text-[8rem] font-light text-white/[0.03] leading-none pointer-events-none select-none" aria-hidden="true">
-          05
-        </div>
+       
 
         <motion.div
           initial={{ opacity: 0 }}
