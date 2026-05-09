@@ -14,7 +14,7 @@ export const VisualWorks = memo(({ lang }: { lang: Language }) => {
   return (
     <section
       id="visual-works"
-      className=" px-6 max-w-5xl mx-auto section-quiet relative"
+      className="px-6 max-w-5xl mx-auto section-quiet relative"
     >
       <div
         className="absolute top-10 left-6 rtl:left-auto rtl:right-6 text-[clamp(6rem,12vw,10rem)] font-light text-white/[0.03] leading-none select-none pointer-events-none font-serif z-0"
@@ -61,7 +61,7 @@ export const VisualWorks = memo(({ lang }: { lang: Language }) => {
                   className="w-full text-left rtl:text-right py-8 px-6 md:px-10 flex items-center justify-between hover:bg-white/[0.03] transition-colors focus:outline-none"
                   aria-expanded={isExpanded}
                 >
-                  <h3 className="text-xl md:text-2xl font-light text-white/70 group-hover:text-white transition-colors">
+                  <h3 className="text-xl md:text-2xl font-light text-white/80 group-hover:text-white transition-colors">
                     {item.title}
                   </h3>
                   <motion.div

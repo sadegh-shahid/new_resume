@@ -1,5 +1,5 @@
-import React, { memo } from 'react';
-import { Globe } from 'lucide-react';
+import React, { memo, useState } from 'react';
+import { Globe, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { portfolioData, Language } from '../data';
 import { Logo } from './Logo';
@@ -11,6 +11,7 @@ interface HeaderProps {
 
 export const Header = memo(({ lang, setLang }: HeaderProps) => {
   const t = portfolioData[lang].nav;
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     e.preventDefault();
@@ -20,6 +21,7 @@ export const Header = memo(({ lang, setLang }: HeaderProps) => {
       window.history.pushState(null, '', `#${targetId}`);
       elem.setAttribute('tabindex', '-1');
       elem.focus({ preventScroll: true });
+      setMobileOpen(false);
     }
   };
 
@@ -59,6 +61,26 @@ export const Header = memo(({ lang, setLang }: HeaderProps) => {
       </nav>
 
       {/* Language Switch - Right in RTL */}
+      <div className="flex items-center gap-4">
+        <button
+          onClick={() => setMobileOpen(!mobileOpen)}
+          className="md:hidden p-2 text-white/60 hover:text-white transition-colors focus:outline-none"
+          aria-label="Toggle menu"
+          aria-expanded={mobileOpen}
+        >
+          <div className="w-6 h-5 relative flex flex-col justify-between">
+            <span
+              className={`w-full h-[1px] bg-current transition-all duration-300 ${mobileOpen ? 'rotate-45 translate-y-[9px]' : ''}`}
+            />
+            <span
+              className={`w-full h-[1px] bg-current transition-all duration-300 ${mobileOpen ? 'opacity-0' : ''}`}
+            />
+            <span
+              className={`w-full h-[1px] bg-current transition-all duration-300 ${mobileOpen ? '-rotate-45 -translate-y-[9px]' : ''}`}
+            />
+          </div>
+        </button>
+
       <motion.button
         onClick={() => setLang(lang === 'en' ? 'fa' : 'en')}
         aria-label={`Switch language to ${lang === 'en' ? 'Persian' : 'English'}`}
@@ -78,6 +100,38 @@ export const Header = memo(({ lang, setLang }: HeaderProps) => {
           </motion.span>
         </AnimatePresence>
       </motion.button>
+      </div>
+
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
+            className="absolute top-[72px] left-0 right-0 bg-[#0A0A0A]/95 backdrop-blur-xl border-b border-white/[0.06] p-6 flex flex-col gap-4 md:hidden z-40"
+          >
+            <a href="#about" onClick={(e) => handleNavClick(e, 'about')} className="text-lg text-white/70 hover:text-white py-2 border-b border-white/[0.03]">
+              {t.about}
+            </a>
+            <a href="#projects" onClick={(e) => handleNavClick(e, 'projects')} className="text-lg text-white/70 hover:text-white py-2 border-b border-white/[0.03]">
+              {t.projects}
+            </a>
+            <a href="#experience" onClick={(e) => handleNavClick(e, 'experience')} className="text-lg text-white/70 hover:text-white py-2 border-b border-white/[0.03]">
+              {t.experience}
+            </a>
+            <a href="#visual-works" onClick={(e) => handleNavClick(e, 'visual-works')} className="text-lg text-white/70 hover:text-white py-2 border-b border-white/[0.03]">
+              {t.visual}
+            </a>
+            <a href="#testimonials" onClick={(e) => handleNavClick(e, 'testimonials')} className="text-lg text-white/70 hover:text-white py-2 border-b border-white/[0.03]">
+              {t.testimonials}
+            </a>
+            <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')} className="text-lg text-white/70 hover:text-white py-2 border-b border-white/[0.03]">
+              {t.contact}
+            </a>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 });

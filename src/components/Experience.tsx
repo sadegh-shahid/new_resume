@@ -45,7 +45,7 @@ export const Experience = memo(({ lang }: { lang: Language }) => {
   return (
     <section
       id="experience"
-      className=" px-6 max-w-5xl mx-auto border-t border-white/[0.04] section-quiet relative"
+      className="px-6 max-w-5xl mx-auto border-t border-white/[0.04] section-quiet relative"
     >
       <div
         className="absolute top-10 left-6 rtl:left-auto rtl:right-6 text-[clamp(6rem,12vw,10rem)] font-light text-white/[0.03] leading-none select-none pointer-events-none font-serif z-0"
@@ -74,7 +74,7 @@ export const Experience = memo(({ lang }: { lang: Language }) => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.2 }}
-            className="text-white/40 text-base mt-4 max-w-2xl leading-relaxed"
+            className="text-white/55 text-base mt-4 max-w-2xl leading-relaxed"
           >
             {t.summary}
           </motion.p>

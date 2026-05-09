@@ -68,7 +68,7 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.2, delay: 0.5 }}
-            className={`text-[10px] md:text-xs text-white/30 uppercase tracking-widest mb-8 block ${isFa ? 'tracking-normal' : ''}`}
+            className={`text-[10px] md:text-xs text-white/50 uppercase tracking-widest mb-8 block ${isFa ? 'tracking-normal' : ''}`}
           >
             {t.role}
           </motion.span>
@@ -106,7 +106,7 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.2, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
-            className={`text-white/50 max-w-[460px] leading-[2.3] mb-12 ${isFa ? 'text-[15px] md:text-base' : 'text-[15px] md:text-body-lg'}`}
+            className={`text-white/60 max-w-[460px] leading-[2.3] mb-12 ${isFa ? 'text-[15px] md:text-base' : 'text-[15px] md:text-body-lg'}`}
           >
             {t.description}
           </motion.p>
