@@ -7,7 +7,10 @@ export const Testimonials = memo(({ lang }: { lang: Language }) => {
   const t = portfolioData[lang].testimonials;
 
   return (
-    <section id="testimonials" className="py-24 px-6 max-w-6xl mx-auto border-t border-white/10" aria-labelledby="testimonials-heading">
+    <section id="testimonials" className="py-24 px-6 max-w-6xl mx-auto border-t border-white/10 relative" aria-labelledby="testimonials-heading">
+      <div className="absolute top-10 left-6 rtl:left-auto rtl:right-6 text-[clamp(6rem,12vw,10rem)] font-light text-white/[0.03] leading-none select-none pointer-events-none font-serif z-0" aria-hidden="true">
+        {lang === 'fa' ? '۰۵' : '05'}
+      </div>
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}

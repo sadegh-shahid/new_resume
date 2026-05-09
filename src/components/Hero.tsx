@@ -139,7 +139,18 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
           transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1], delay: 0.6 }}
           className="hidden lg:flex items-center justify-center relative h-[500px]"
         >
-          {/* Empty space - intentional silence for visual breathing */}
+          {/* Atmospheric Orb */}
+          <motion.div
+            animate={{
+              rotate: 360,
+              scale: [1, 1.05, 1]
+            }}
+            transition={{
+              rotate: { duration: 60, repeat: Infinity, ease: "linear" },
+              scale: { duration: 8, repeat: Infinity, ease: "easeInOut" }
+            }}
+            className="w-[400px] h-[400px] rounded-full bg-gradient-to-br from-amber-500/10 to-transparent blur-[80px]"
+          />
         </motion.div>
       </div>
     </section>

@@ -2,6 +2,7 @@ import React, { memo } from 'react';
 import { Globe } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { portfolioData, Language } from '../data';
+import { Logo } from './Logo';
 
 interface HeaderProps {
   lang: Language;
@@ -25,8 +26,8 @@ export const Header = memo(({ lang, setLang }: HeaderProps) => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center h-[72px] px-6 backdrop-blur-md bg-[#0A0A0A]/60 border-b border-white/[0.08]" role="banner">
       {/* Logo - Left in RTL */}
-      <div className="text-xl font-medium tracking-tight" aria-label="Sadegh Shahid" dir="ltr">
-        <span className="text-[#D6C7A8]">S</span><span className="text-white/70">adegh</span><span className="text-white/40">Shahid</span>
+      <div className="flex items-center" aria-label="Sadegh Shahid">
+        <Logo />
       </div>
       
       {/* Navigation - Center */}

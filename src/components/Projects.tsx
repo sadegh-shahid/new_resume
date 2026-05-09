@@ -75,7 +75,10 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
   }, [selectedProject]);
 
   return (
-    <section id="projects" className="py-40 px-6 max-w-7xl mx-auto section-quiet">
+    <section id="projects" className="py-40 px-6 max-w-7xl mx-auto section-quiet relative">
+      <div className="absolute top-10 left-6 rtl:left-auto rtl:right-6 text-[clamp(6rem,12vw,10rem)] font-light text-white/[0.03] leading-none select-none pointer-events-none font-serif z-0" aria-hidden="true">
+        {lang === 'fa' ? '۰۲' : '02'}
+      </div>
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
