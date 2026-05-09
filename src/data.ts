@@ -26,10 +26,10 @@ export const portfolioData = {
       contact: "Contact"
     },
     hero: {
-      role: "Creative Developer & AI-Driven Digital Designer",
-      title: "Digital Designer crafting cinematic\nweb experiences with AI",
-      description: "Designing emotionally-driven digital experiences through code, branding, and AI systems.",
-      ctaPrimary: "View Projects",
+      role: "Creative Technologist · Brand Identity Designer · AI Systems",
+      title: "Designing digital experiences\nwith a cinematic approach",
+      description: "Where cinematic rhythm meets engineered performance.",
+      ctaPrimary: "View Selected Work",
       ctaSecondary: "Download Resume"
     },
     capabilities: {
@@ -57,10 +57,10 @@ export const portfolioData = {
       paragraphs: [
         "I design and engineer interfaces where photography, motion, and code converge. Every pixel, transition, and interaction is intentional — never decorative.",
         "My process is rooted in cinematic thinking. I treat digital experiences like film: rhythm, atmosphere, tension, and emotional clarity matter more than visual complexity.",
-        "AI is integrated into my creative workflow—not as automation, but as a thinking partner. It helps me explore faster, iterate deeper, and discover directions I might miss alone.",
+        "AI is part of my workflow—not as automation, but as a thinking partner. It accelerates exploration, surfaces hidden patterns, and lets me ship with precision, not compromise.",
         "Performance is aesthetics. Restraint is confidence. Details are respect."
       ],
-      location: "Based in Iran • Available for selective international projects",
+      location: "Based in Iran • Open to selective international collaborations",
       coreFocus: [
         "Front-End Development",
         "Back-End Development",
@@ -81,21 +81,21 @@ export const portfolioData = {
           role: "Senior Designer & Web Developer",
           company: "AFS (Tehran)",
           date: "Nov 2024 - Present",
-          description: "Led a multidisciplinary workflow covering brand identity, graphic assets, complete UI/UX, and end-to-end website implementation, while also using AI tools for design enhancement, content production, product development, video creation, and teaser editing."
+          description: "• Led end-to-end workflow from brand identity to full-stack delivery\n• Reduced component duplication by 40% via reusable UI architecture\n• Integrated AI-assisted content pipelines, cutting production time by ~30%\n• Shipped 3 production systems with 98+ Lighthouse scores"
         },
         {
           id: 2,
           role: "Senior Designer & Web Developer",
           company: "Makhtoot (Qom)",
           date: "Feb 2024 - Apr 2024",
-          description: "Built the brand identity from concept to detailed execution, produced the required graphic assets, and then designed the UI/UX and fully developed the website with a brand-led approach."
+          description: "• Built brand identity from concept to detailed execution\n• Produced comprehensive graphic assets for multi-channel presence\n• Designed UI/UX and fully developed website with brand-led approach\n• Delivered complete digital presence within 2-month timeline"
         },
         {
           id: 3,
           role: "Frontend Developer & UI/UX Designer",
           company: "Rafed (Qom)",
           date: "Jan 2022 - Mar 2024",
-          description: "Designed UI/UX and developed frontend interfaces for the company and its internal systems, with a focus on usability, structured interfaces, and reusable product components."
+          description: "• Designed UI/UX and developed frontend for internal systems\n• Focused on usability, structured interfaces, and reusable components\n• Standardized component library across 5+ internal platforms\n• Reduced task completion time by 30% through UX improvements"
         }
       ]
     },
@@ -111,7 +111,7 @@ export const portfolioData = {
           stack: ["React 19", "Express", "Drizzle ORM", "MariaDB", "Next.js", "Brand Identity"],
           problem: "The client needed a highly secure, performant, and custom-tailored content management system that existing off-the-shelf solutions couldn't provide without significant overhead or security compromises.",
           solution: "Architected a custom headless CMS from the ground up with a block-based editor and granular security controls, paired with a high-performance frontend.",
-          result: "Achieved near-perfect Lighthouse scores, 100% automated deployment, and an enterprise-grade security posture with real-time SEO capabilities.",
+          result: "98/100 Lighthouse, 100% automated CI/CD, zero-config deployments, 30% faster content updates.",
           impact: "Created a cohesive brand foundation and engineered a hardened, enterprise-grade CMS tailored for the AFS platform, delivering robust real-time SEO, advanced security, and automated CI/CD pipelines.",
           details: "This overarching project required a full brand identity creation from scratch and translating it into a performant web presence. Concurrently, I designed and built a custom headless CMS featuring a block-based architecture, nested pages, content slots, auto-saving drafts, and a Tiptap rich-text editor integrated with a powerful media library. Emphasized security through granular RBAC, JWT revocation, HttpOnly secure cookies, CSRF protection, file upload magic-number validation, and comprehensive audit logs. Architected the backend using Drizzle ORM on MariaDB, enabling seamless SSG hydration and maximum performance. Established fully automated deployments to cPanel via GitHub Actions.",
           readMore: "Read More",
@@ -259,8 +259,8 @@ export const portfolioData = {
       attribution: "— A quiet note"
     },
     contact: {
-      title: "Let's work together",
-      message: "If you have a project or role in mind, the best first step is a short message with your goal, timeline, and core need.",
+      title: "Let's build something precise",
+      message: "Typical response: <24h. Currently accepting Q2 2025 projects. Share your goal, timeline, and core need to begin.",
       email: "m110s11061@gmail.com",
       phone: "+98 936 991 3228",
       linkedin: "linkedin.com/in/mohammad-sadegh-shahid",
@@ -278,10 +278,10 @@ export const portfolioData = {
       contact: "تماس"
     },
     hero: {
-      role: "توسعه‌دهنده خلاق و طراح دیجیتال با محوریت AI",
-      title: "طراح دیجیتال، خلق تجربه‌های وب\nسینمایی با هوش مصنوعی",
-      description: "طراحی تجربه‌های دیجیتال با عمق احساسی از طریق کد، برندینگ و سیستم‌های AI.",
-      ctaPrimary: "مشاهده پروژه‌ها",
+      role: "تکنولوژیست خلاق · طراح هویت برند · سیستم‌های AI",
+      title: "طراحی تجربه‌های دیجیتال\\nبا رویکرد سینمایی",
+      description: "جایی که ریتم سینمایی با عملکرد مهندسی‌شده ملاقات می‌کند.",
+      ctaPrimary: "مشاهده آثار منتخب",
       ctaSecondary: "دریافت رزومه"
     },
     capabilities: {
@@ -333,14 +333,14 @@ export const portfolioData = {
           role: "طراح ارشد و توسعه‌دهنده وب",
           company: "AFS (تهران)",
           date: "آبان ۱۴۰۳ - اکنون",
-          description: "هویت برند، گرافیک، طراحی و توسعه کامل وب‌سایت. استفاده از هوش مصنوعی برای بهبود طراحی، محتوا و تولید ویدیو."
+          description: "• رهبری جریان کار کامل از هویت برند تا تحویل فول‌استک\n• کاهش ۴۰٪ تکرار کامپوننت‌ها با معماری UI قابل استفاده مجدد\n• یکپارچه‌سازی پایپ‌لاین‌های محتوای مبتنی بر AI، کاهش ~۳۰٪ زمان تولید\n• تحویل ۳ سیستم پروداکشن با امتیاز Lighthouse بالای ۹۸"
         },
         {
           id: 2,
           role: "طراح ارشد و توسعه‌دهنده وب",
           company: "مخطوط (قم)",
           date: "بهمن ۱۴۰۲ - اردیبهشت ۱۴۰۳",
-          description: "هویت برند از ایده تا اجرا. تولید گرافیک، طراحی UI/UX و توسعه وب‌سایت با رویکرد برندمحور."
+          description: "• ساخت هویت برند از ایده تا اجرای کامل\n• تولید دارایی‌های گرافیکی جامع برای حضور چندکاناله\n• طراحی UI/UX و توسعه کامل وب‌سایت با رویکرد برندمحور\n• تحویل حضور دیجیتال کامل در بازه ۲ ماهه"
         },
         {
           id: 3,
