@@ -23,6 +23,8 @@ export const portfolioData = {
       about: "Approach",
       experience: "Experience",
       projects: "Projects",
+      visual: "Visual Works",
+      testimonials: "Testimonials",
       contact: "Contact"
     },
     hero: {
@@ -275,6 +277,8 @@ export const portfolioData = {
       about: "رویکرد",
       experience: "تجربیات",
       projects: "پروژه‌ها",
+      visual: "آثار بصری",
+      testimonials: "نظرات",
       contact: "تماس"
     },
     hero: {

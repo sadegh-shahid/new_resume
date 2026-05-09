@@ -1,8 +1,7 @@
-import { useState, useEffect, memo } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { portfolioData, Language } from '../data';
 import { Github, Linkedin, Mail, Phone, Send, CheckCircle2 } from 'lucide-react';
-import { HumanMoment } from './HumanMoment';
 
 export const Contact = memo(({ lang }: { lang: Language }) => {
   const t = portfolioData[lang].contact;
@@ -265,8 +264,6 @@ export const Contact = memo(({ lang }: { lang: Language }) => {
         </div>
       </motion.div>
       
-      {/* Human Moment - A quiet, personal touch before the end */}
-      <HumanMoment lang={lang} />
     </section>
   );
 });
