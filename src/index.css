@@ -75,28 +75,47 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
 
-/* RTL Default Styling */
+/* LTR (English) */
+[dir="ltr"] {
+  text-align: left;
+}
+
+[dir="ltr"] h1, [dir="ltr"] h2 { 
+  line-height: 1.25; 
+  letter-spacing: -0.04em; 
+}
+
+[dir="ltr"] p { 
+  line-height: 1.7; 
+  letter-spacing: 0.01em; 
+}
+
+[dir="ltr"] h1, [dir="ltr"] h2, [dir="ltr"] h3 {
+  font-family: "Inter Tight", "Inter", sans-serif;
+}
+
+/* RTL (Persian) */
 [dir="rtl"] {
   text-align: right;
+}
+
+[dir="rtl"] h1, [dir="rtl"] h2 { 
+  line-height: 1.45; 
+  letter-spacing: 0; 
+}
+
+[dir="rtl"] p { 
+  line-height: 2.0; 
+  max-width: 680px; 
+}
+
+[dir="rtl"] .font-mono, [dir="rtl"] .tracking-widest { 
+  letter-spacing: 0 !important; 
 }
 
 [dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] h4, [dir="rtl"] h5, [dir="rtl"] h6 {
   font-family: "Vazirmatn", sans-serif;
   font-weight: 600;
-}
-
-[dir="rtl"] p {
-  line-height: 2.2;
-  max-width: 640px;
-}
-
-/* LTR for English */
-[dir="ltr"] {
-  text-align: left;
-}
-
-[dir="ltr"] h1, [dir="ltr"] h2, [dir="ltr"] h3 {
-  font-family: "Inter Tight", "Inter", sans-serif;
 }
 
 /* Persian Typography Specifics */
@@ -116,10 +135,16 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: normal !important;
 }
 
-/* Font Sizes - Persian Editorial Scale */
-.text-hero-display {
-  font-size: clamp(3rem, 8vw, 6.5rem);
+/* Hero Responsive Scale */
+.text-hero-display { 
+  font-size: clamp(2.8rem, 7vw, 5.5rem); 
   line-height: 1.35;
+}
+
+@media (max-width: 768px) { 
+  .text-hero-display { 
+    font-size: clamp(2.2rem, 9vw, 3.8rem); 
+  } 
 }
 
 .text-section-title {
@@ -304,8 +329,15 @@ a:hover {
 
 /* Quiet sections - intentional stillness */
 .section-quiet {
-  padding-top: clamp(160px, 18vw, 240px);
-  padding-bottom: clamp(160px, 18vw, 240px);
+  padding-top: clamp(100px, 14vw, 180px);
+  padding-bottom: clamp(100px, 14vw, 180px);
+}
+
+@media (max-width: 768px) {
+  .section-quiet { 
+    padding-top: clamp(80px, 12vw, 100px); 
+    padding-bottom: clamp(80px, 12vw, 100px); 
+  }
 }
 
 /* Compressed sections - for rhythm variation */
