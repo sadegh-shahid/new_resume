@@ -49,7 +49,7 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
       <div className="absolute inset-0 z-[2] pointer-events-none">
         <div className="absolute top-[-15%] left-[-15%] w-[75%] h-[75%] rounded-full bg-[#D6C7A8]/[0.06] blur-[140px]" />
         <div className="absolute bottom-[-15%] right-[-15%] w-[65%] h-[65%] rounded-full bg-[#B07D52]/[0.05] blur-[120px]" />
-        <div className="absolute top-[30%] right-[5%] w-[45%] h-[45%] rounded-full bg-[#5E6654]/[0.04] blur-[90px]" />
+        <div className="absolute top-[30%] right-[5%] w-[45%] h-[45%] rounded-full bg-[#B07D52]/[0.05] blur-[90px]" />
       </div>
 
       {/* Layer 3: Text-safe vignette so background can be brighter without hurting readability */}
@@ -143,7 +143,7 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
               rotate: { duration: 45, repeat: Infinity, ease: "linear" },
               scale: { duration: 5, repeat: Infinity, ease: "easeInOut" }
             }}
-            className="absolute w-[480px] h-[480px] rounded-full bg-gradient-to-tr from-amber-500/15 to-transparent blur-[100px]"
+            className="absolute w-[480px] h-[480px] rounded-full bg-gradient-to-tr from-amber-500/15 to-transparent blur-[100px] will-change-transform"
           />
           
           {/* Secondary Orb — Ivory, offset for depth */}
@@ -153,28 +153,28 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
               rotate: { duration: 60, repeat: Infinity, ease: "linear" },
               scale: { duration: 7, repeat: Infinity, ease: "easeInOut" }
             }}
-            className="absolute w-[340px] h-[340px] rounded-full bg-gradient-to-bl from-[#D6C7A8]/12 to-transparent blur-[80px] translate-x-[-50px] translate-y-[80px]"
+            className="absolute w-[340px] h-[340px] rounded-full bg-gradient-to-bl from-[#D6C7A8]/12 to-transparent blur-[80px] translate-x-[-50px] translate-y-[80px] will-change-transform"
           />
           
           {/* Tertiary Orb — Olive, small accent pulse */}
           <motion.div
             animate={{ scale: [1, 1.3, 1], opacity: [0.4, 0.7, 0.4] }}
             transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute w-[180px] h-[180px] rounded-full bg-[#5E6654]/25 blur-[60px] translate-x-[100px] translate-y-[-100px]"
+            className="absolute w-[180px] h-[180px] rounded-full bg-[#B07D52]/20 blur-[60px] translate-x-[100px] translate-y-[-100px] will-change-transform"
           />
 
           {/* Concentric Rings — "Lens" focal point */}
           <motion.div 
             animate={{ rotate: 360 }}
             transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
-            className="absolute w-[300px] h-[300px] border border-white/[0.05] rounded-full"
+            className="absolute w-[300px] h-[300px] border border-white/[0.05] rounded-full will-change-transform"
           />
           <motion.div 
             animate={{ rotate: -360 }}
             transition={{ duration: 90, repeat: Infinity, ease: "linear" }}
-            className="absolute w-[260px] h-[260px] border border-white/[0.04] rounded-full"
+            className="absolute w-[260px] h-[260px] border border-white/[0.04] rounded-full will-change-transform"
           />
-          <div className="absolute w-[220px] h-[220px] border border-white/[0.03] rounded-full" />
+          <div className="absolute w-[220px] h-[220px] border border-white/[0.03] rounded-full will-change-transform" />
           <div className="absolute w-[8px] h-[8px] bg-amber-500/30 rounded-full blur-[2px]" />
         </motion.div>
       </div>

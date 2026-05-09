@@ -1,32 +1,75 @@
-```gitignore
+```
 # Dependencies
 node_modules/
 
-# Build outputs
+# Build artifacts
 dist/
 build/
-*.js.map
-*.ts.map
-*.jsx.map
-*.tsx.map
+*.js
+*.ts
+*.tsx
 
-# Environment variables
+# Logs and temp files
+*.log
+*.tmp
+
+# Environment
 .env
 .env.local
-.env.*
+*.env.*
 
-# Logs
-*.log
+# Editors
+.vscode/
+.idea/
 
-# Coverage reports
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Compiled
+*.o
+*.obj
+*.so
+*.a
+*.dll
+*.exe
+
+# Coverage
 coverage/
-.nyc_output/
-```
+htmlcov/
+.coverage
 
-Wait, let me reconsider the modified files: `src/App.tsx`, `src/components/Projects.tsx`, `src/data.ts` - these are all source code files (.tsx and .ts), not build artifacts or dependencies.
+# MyPy
+.mypy_cache/
 
-Since the changes only involve source code files and no build artifacts, dependencies, or temporary files, the output should be empty.
+# PyTest
+.pytest_cache/
 
-```gitignore
+# Gradle
+.gradle/
 
+# Target
+target/
+
+# Compressed
+*.zip
+*.gz
+*.tar
+*.tgz
+*.bz2
+*.xz
+*.7z
+*.rar
+*.zst
+*.lz4
+*.lzh
+*.cab
+*.arj
+*.rpm
+*.deb
+*.Z
+*.lz
+*.lzo
 ```
