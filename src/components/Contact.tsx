@@ -92,7 +92,7 @@ export const Contact = memo(({ lang }: { lang: Language }) => {
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-500 text-[10px] uppercase tracking-widest mb-6"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-500 text-[12px] uppercase tracking-widest mb-6"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
             {isEn
@@ -117,7 +117,7 @@ export const Contact = memo(({ lang }: { lang: Language }) => {
               <a
                 href={`mailto:${t.email}`}
                 aria-label="Send an email"
-                className="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500 hover:bg-amber-500/5 transition-all duration-300 focus:outline-none w-full"
+                className="flex items-center justify-between  gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500 hover:bg-amber-500/5 transition-all duration-300 focus:outline-none w-full"
               >
                 <div className="p-3 bg-black/30 rounded-full text-amber-500">
                   <Mail size={20} aria-hidden="true" />
@@ -133,29 +133,6 @@ export const Contact = memo(({ lang }: { lang: Language }) => {
                     {t.email}
                   </span>
                 </div>
-                <button
-                  onClick={(e) => {
-                    e.preventDefault();
-                    navigator.clipboard.writeText(t.email);
-                  }}
-                  className="mr-auto rtl:ml-auto p-2 hover:bg-white/10 rounded-lg transition-colors text-white/40 hover:text-white"
-                  title={isEn ? "Copy Email" : "کپی ایمیل"}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
-                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
-                  </svg>
-                </button>
               </a>
 
               <a
@@ -163,9 +140,9 @@ export const Contact = memo(({ lang }: { lang: Language }) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Contact on WhatsApp"
-                className="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500 hover:bg-amber-500/5 transition-all duration-300 focus:outline-none w-full"
+                className="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 justify-between  hover:border-amber-500 hover:bg-amber-500/5 transition-all duration-300 focus:outline-none w-full"
               >
-                <div className="p-3 bg-black/30 rounded-full text-amber-500">
+                <div className="p-3 bg-black/30 rounded-full  text-amber-500">
                   <Phone size={20} aria-hidden="true" />
                 </div>
                 <div className="flex flex-col items-start rtl:items-end">
@@ -262,7 +239,6 @@ export const Contact = memo(({ lang }: { lang: Language }) => {
               <input
                 id="email"
                 type="email"
-                dir="ltr"
                 placeholder={isEn ? "Email Address" : "آدرس ایمیل"}
                 value={formData.email}
                 onChange={(e) => {
@@ -292,7 +268,6 @@ export const Contact = memo(({ lang }: { lang: Language }) => {
               <input
                 id="phone"
                 type="tel"
-                dir="ltr"
                 placeholder={
                   isEn ? "Phone Number (Optional)" : "شماره تماس (اختیاری)"
                 }

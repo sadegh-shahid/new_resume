@@ -6,7 +6,7 @@ export const HumanMoment = memo(({ lang }: { lang: Language }) => {
   const t = portfolioData[lang].humanMoment;
 
   return (
-    <section className="section-silent border-t border-white/[0.04] py-32 px-6 overflow-hidden">
+    <section className="section-silent border-t border-white/[0.04] py-20 px-6 overflow-hidden">
       <div className="max-w-3xl mx-auto relative">
        
 

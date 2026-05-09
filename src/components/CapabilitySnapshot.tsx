@@ -37,7 +37,7 @@ export const CapabilitySnapshot = memo(({ lang }: { lang: Language }) => {
               <h3 className="text-sm font-medium text-[#F3F1EB] mb-2 tracking-wide">
                 {block.title}
               </h3>
-              <p className="text-xs text-white/55 leading-relaxed">
+              <p className="text-xs text-white/55 leading-relaxed mt-2">
                 {block.description}
               </p>
             </motion.div>

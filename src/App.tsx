@@ -56,9 +56,14 @@ export default function App() {
       </main>
 
       {/* Footer - Minimal, Quiet */}
-      <footer className="text-center py-16 text-white/60 text-[10px] tracking-widest border-t border-white/[0.04] mt-32">
+      <footer className="text-center py-16 text-white/60 text-[12px] tracking-widest border-t border-white/[0.04] mt-32">
         <p className="font-light">{portfolioData[lang].footer.tagline}</p>
-        <p className="mt-3 text-white/50">{portfolioData[lang].footer.copyright.replace('{year}', String(new Date().getFullYear()))}</p>
+        <p className="mt-3 text-white/50">
+          {portfolioData[lang].footer.copyright.replace(
+            "{year}",
+            String(new Date().getFullYear()),
+          )}
+        </p>
       </footer>
     </div>
   );

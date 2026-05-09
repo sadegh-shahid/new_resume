@@ -1,16 +1,16 @@
-import { useState, useEffect, memo } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { portfolioData, Language } from '../data';
-import { CinematicParticles } from './CinematicParticles';
+import { useState, useEffect, memo } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import { portfolioData, Language } from "../data";
+import { CinematicParticles } from "./CinematicParticles";
 
 export const Hero = memo(({ lang }: { lang: Language }) => {
   const t = portfolioData[lang].hero;
-  const isFa = lang === 'fa';
+  const isFa = lang === "fa";
   const [imageLoaded, setImageLoaded] = useState(false);
 
   useEffect(() => {
     const img = new Image();
-    img.src = '/images/photo-1618005182384-a83a8bd57fbe.webp';
+    img.src = "/images/photo-1618005182384-a83a8bd57fbe.webp";
     img.onload = () => setImageLoaded(true);
   }, []);
 
@@ -39,9 +39,10 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
         transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
         className="absolute inset-0 z-0 mix-blend-overlay pointer-events-none"
         style={{
-          backgroundImage: 'url("/images/photo-1618005182384-a83a8bd57fbe.webp")',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundImage:
+            'url("/images/photo-1618005182384-a83a8bd57fbe.webp")',
+          backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
       />
 
@@ -68,12 +69,15 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.2, delay: 0.5 }}
-            className={`text-[10px] md:text-xs text-white/60 uppercase tracking-widest mb-8 block ${isFa ? 'tracking-normal' : ''}`}
+            className={`text-[12px] md:text-xs text-white/60 uppercase tracking-widest mb-8 block ${isFa ? "tracking-normal" : ""}`}
           >
             {t.role}
           </motion.span>
 
-          <h1 className={`${isFa ? 'text-[clamp(2.4rem, 6vw, 4rem)]' : 'text-hero-display'} font-light text-[#F3F1EB] mb-10 ${isFa ? 'leading-[1.45]' : 'leading-[1.35]'}`} dir={isFa ? 'rtl' : 'ltr'}>
+          <h1
+            className={`${isFa ? "text-[clamp(2.6rem, 6vw, 4rem)]" : "text-hero-display"} font-light text-[#F3F1EB] text-4xl pb-6 ${isFa ? "leading-[1.45]" : "leading-[1.35]"}`}
+            dir={isFa ? "rtl" : "ltr"}
+          >
             <span className="sr-only">{t.title}</span>
             <motion.div
               initial="hidden"
@@ -88,12 +92,12 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
                   className="inline-block overflow-hidden"
                   variants={{
                     hidden: { opacity: 0, y: "70%", filter: "blur(5px)" },
-                    visible: { 
-                      opacity: 1, 
-                      y: 0, 
+                    visible: {
+                      opacity: 1,
+                      y: 0,
                       filter: "blur(0px)",
-                      transition: { duration: 1.3, ease: [0.16, 1, 0.3, 1] }
-                    }
+                      transition: { duration: 1.3, ease: [0.16, 1, 0.3, 1] },
+                    },
                   }}
                 >
                   {line}
@@ -106,7 +110,7 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.2, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
-            className={`text-white/60 max-w-[460px] leading-[2.3] mb-12 ${isFa ? 'text-[15px] md:text-base' : 'text-[15px] md:text-body-lg'}`}
+            className={`text-white/60 max-w-[460px] leading-[2.3] mb-12 ${isFa ? "text-[15px] md:text-base" : "text-[15px] md:text-body-lg"}`}
           >
             {t.description}
           </motion.p>
@@ -119,8 +123,18 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
           >
             <a href="#projects" className="btn-primary group">
               {t.ctaPrimary}
-              <svg className="w-4 h-4 transition-transform group-hover:translate-x-[-1px] rtl:group-hover:translate-x-[1px]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              <svg
+                className="w-4 h-4 transition-transform group-hover:translate-x-[-1px] rtl:group-hover:translate-x-[1px]"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={1.5}
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
               </svg>
             </a>
             <a href="/resume.pdf" download className="btn-ghost">
@@ -141,21 +155,21 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
             animate={{ rotate: 360, scale: [1, 1.1, 1] }}
             transition={{
               rotate: { duration: 45, repeat: Infinity, ease: "linear" },
-              scale: { duration: 5, repeat: Infinity, ease: "easeInOut" }
+              scale: { duration: 5, repeat: Infinity, ease: "easeInOut" },
             }}
             className="absolute w-[480px] h-[480px] rounded-full bg-gradient-to-tr from-amber-500/15 to-transparent blur-[100px] will-change-transform"
           />
-          
+
           {/* Secondary Orb — Ivory, offset for depth */}
           <motion.div
             animate={{ rotate: -360, scale: [1, 1.06, 1] }}
             transition={{
               rotate: { duration: 60, repeat: Infinity, ease: "linear" },
-              scale: { duration: 7, repeat: Infinity, ease: "easeInOut" }
+              scale: { duration: 7, repeat: Infinity, ease: "easeInOut" },
             }}
             className="absolute w-[340px] h-[340px] rounded-full bg-gradient-to-bl from-[#D6C7A8]/12 to-transparent blur-[80px] translate-x-[-50px] translate-y-[80px] will-change-transform"
           />
-          
+
           {/* Tertiary Orb — Bronze, small accent pulse */}
           <motion.div
             animate={{ scale: [1, 1.3, 1], opacity: [0.4, 0.7, 0.4] }}
@@ -164,12 +178,12 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
           />
 
           {/* Concentric Rings — "Lens" focal point */}
-          <motion.div 
+          <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
             className="absolute w-[300px] h-[300px] border border-white/[0.05] rounded-full will-change-transform"
           />
-          <motion.div 
+          <motion.div
             animate={{ rotate: -360 }}
             transition={{ duration: 90, repeat: Infinity, ease: "linear" }}
             className="absolute w-[260px] h-[260px] border border-white/[0.04] rounded-full will-change-transform"

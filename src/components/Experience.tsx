@@ -107,7 +107,7 @@ export const Experience = memo(({ lang }: { lang: Language }) => {
                   onClick={() => toggleExpand(item.id)}
                 >
                   <div className="flex justify-between items-start mb-3">
-                    <span className="text-[10px] uppercase tracking-widest text-amber-500 font-mono">
+                    <span className="text-[12px] uppercase tracking-widest text-amber-500 ">
                       {item.date}
                     </span>
                     <motion.div
@@ -147,7 +147,7 @@ export const Experience = memo(({ lang }: { lang: Language }) => {
 
         {/* Combined Expertise & Focus Areas Section */}
         <div className="border-t border-white/[0.04] pt-32">
-          <h3 className="text-xl md:text-2xl font-light tracking-tight mb-16 text-white">
+          <h3 className="text-xl md:text-2xl font-light tracking-tight  pb-4 text-white">
             {skillsT.title}
           </h3>
 
@@ -182,7 +182,7 @@ export const Experience = memo(({ lang }: { lang: Language }) => {
                   {expertiseToFocusMap[i]?.map((focusIdx) => (
                     <span
                       key={focusIdx}
-                      className="text-[9px] uppercase tracking-widest text-white/15 border border-white/[0.04] px-2 py-1 rounded"
+                      className="text-[11px] uppercase tracking-widest text-white/30 border border-white/[0.09] px-2 py-1 rounded"
                     >
                       {aboutT.coreFocus[focusIdx]}
                     </span>

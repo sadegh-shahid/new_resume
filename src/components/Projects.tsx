@@ -2,12 +2,7 @@ import React, { memo } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { useState, useEffect } from "react";
 import { portfolioData, Language } from "../data";
-import {
-  ArrowUpRight,
-  X,
-  ChevronLeft,
-  ChevronRight,
-} from "lucide-react";
+import { ArrowUpRight, X, ChevronLeft, ChevronRight } from "lucide-react";
 
 export const Projects = memo(({ lang }: { lang: Language }) => {
   const t = portfolioData[lang].projects;
@@ -172,7 +167,7 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
                       <span
                         key={tech}
                         dir="ltr"
-                        className="px-3 py-1 text-[10px] border border-white/[0.06] rounded-full text-white/60"
+                        className="px-3 py-1 text-[12px] border border-white/[0.06] rounded-full text-white/60"
                       >
                         {tech}
                       </span>

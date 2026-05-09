@@ -304,8 +304,8 @@ a:hover {
 
 /* Quiet sections - intentional stillness */
 .section-quiet {
-  padding-top: clamp(160px, 18vw, 240px);
-  padding-bottom: clamp(160px, 18vw, 240px);
+  padding-top: clamp(160px, 18vw, 180px);
+  padding-bottom: clamp(120px, 18vw, 1800px);
 }
 
 /* Compressed sections - for rhythm variation */

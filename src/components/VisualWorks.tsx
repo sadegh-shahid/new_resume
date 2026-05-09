@@ -151,7 +151,7 @@ export const VisualWorks = memo(({ lang }: { lang: Language }) => {
                         <div className="mt-8 flex justify-end">
                           <button
                             onClick={() => setExpandedId(null)}
-                            className="text-white/50 hover:text-white transition-colors text-[10px] uppercase tracking-widest px-4 py-2 rounded-full border border-white/[0.06] hover:border-white/[0.15] focus:outline-none"
+                            className="text-white/50 hover:text-white transition-colors text-[12px] uppercase tracking-widest px-4 py-2 rounded-full border border-white/[0.06] hover:border-white/[0.15] focus:outline-none"
                           >
                             {item.closeBtn}
                           </button>
