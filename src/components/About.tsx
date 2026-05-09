@@ -8,10 +8,10 @@ export const About = memo(({ lang }: { lang: Language }) => {
   return (
     <section
       id="about"
-      className="px-6 max-w-5xl mx-auto border-t border-white/[0.04] section-quiet relative"
+      className="px-6 max-w-4xl mx-auto border-t border-white/[0.04] section-quiet relative"
     >
       <div
-        className="absolute top-10 left-6 rtl:left-auto rtl:right-6 text-[clamp(6rem,12vw,10rem)] font-light text-white/[0.05] leading-none select-none pointer-events-none font-serif z-0"
+        className="absolute top-10 left-6 rtl:left-auto rtl:right-6 text-[clamp(6rem,12vw,10rem)] font-light text-white/[0.03] leading-none select-none pointer-events-none font-serif z-0"
         aria-hidden="true"
       >
         {lang === "fa" ? "۰۱" : "01"}

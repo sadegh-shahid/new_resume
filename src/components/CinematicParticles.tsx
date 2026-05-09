@@ -112,7 +112,7 @@ export const CinematicParticles: React.FC = () => {
     <canvas
       ref={canvasRef}
       className="absolute inset-0 w-full h-full pointer-events-none"
-      style={{ zIndex: 0, willChange: 'transform' }}
+      style={{ zIndex: 0 }}
     />
   );
 };
