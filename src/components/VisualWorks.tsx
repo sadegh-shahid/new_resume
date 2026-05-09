@@ -14,7 +14,7 @@ export const VisualWorks = memo(({ lang }: { lang: Language }) => {
   return (
     <section
       id="visual-works"
-      className="py-40 px-6 max-w-5xl mx-auto section-quiet relative"
+      className=" px-6 max-w-5xl mx-auto section-quiet relative"
     >
       <div
         className="absolute top-10 left-6 rtl:left-auto rtl:right-6 text-[clamp(6rem,12vw,10rem)] font-light text-white/[0.03] leading-none select-none pointer-events-none font-serif z-0"
