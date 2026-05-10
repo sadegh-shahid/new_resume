@@ -165,7 +165,7 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
                 </div>
 
                 <div className="flex flex-col flex-grow">
-                  <p className="text-xs uppercase tracking-widest text-amber-500/60 mb-3">
+                  <p className="text-xs uppercase tracking-widest text-amber-500 mb-3">
                     {item.role}
                   </p>
 

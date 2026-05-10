@@ -110,7 +110,7 @@ export const Experience = memo(({ lang }: { lang: Language }) => {
                     </span>
                     <motion.div
                       animate={{ rotate: isExpanded ? 180 : 0 }}
-                      className="text-white/30"
+                      className="text-white/60"
                     >
                       <ChevronDown size={16} aria-hidden="true" />
                     </motion.div>
@@ -180,7 +180,7 @@ export const Experience = memo(({ lang }: { lang: Language }) => {
                   {expertiseToFocusMap[i]?.map((focusIdx) => (
                     <span
                       key={focusIdx}
-                      className="text-[11px] uppercase tracking-widest text-white/30 border border-white/[0.12] px-2 py-1 rounded"
+                      className="text-[11px] uppercase tracking-widest text-white/60 border border-white/[0.12] px-2 py-1 rounded"
                     >
                       {aboutT.coreFocus[focusIdx]}
                     </span>
