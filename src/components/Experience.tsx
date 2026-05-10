@@ -79,7 +79,7 @@ export const Experience = memo(({ lang }: { lang: Language }) => {
         </div>
 
         {/* Timeline - Restrained */}
-        <div className="flex flex-col relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px before:h-full before:w-[1px] before:bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNCIgaGVpZ2h0PSI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxjaXJjbGUgY3g9IjIiIGN5PSIyIiByPSIxIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMTIpIi8+PC9zdmc+')] before:bg-repeat-y before:bg-[length:4px_12px] mb-32">
+        <div className="flex flex-col relative before:absolute before:inset-0 before:ms-5 before:-translate-x-px rtl:before:translate-x-px before:h-full before:w-[1px] before:bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNCIgaGVpZ2h0PSI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxjaXJjbGUgY3g9IjIiIGN5PSIyIiByPSIxIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMTIpIi8+PC9zdmc+')] before:bg-repeat-y before:bg-[length:4px_12px] mb-32">
           {t.items.map((item, index) => {
             const isExpanded = expandedId === item.id;
             return (

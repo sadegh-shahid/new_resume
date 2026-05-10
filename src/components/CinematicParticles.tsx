@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, memo } from 'react';
+import { MotionValue } from 'motion/react';
 
 interface Particle {
   x: number;
@@ -16,8 +17,9 @@ interface Particle {
 interface CinematicParticlesProps {
   centerX?: number;
   centerY?: number;
-  mouseX?: number; // 0-1
-  mouseY?: number; // 0-1
+  mouseX?: MotionValue<number>;
+  mouseY?: MotionValue<number>;
+  isRTL?: boolean;
 }
 
 // Simplified Simplex Noise 3D implementation
@@ -93,8 +95,9 @@ const t3 = (x: number, y: number, z: number, i: number, j: number, k: number) =>
 export const CinematicParticles: React.FC<CinematicParticlesProps> = memo(({
   centerX,
   centerY,
-  mouseX = 0.5,
-  mouseY = 0.5
+  mouseX,
+  mouseY,
+  isRTL = false
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const requestRef = useRef<number>(0);
@@ -153,12 +156,19 @@ export const CinematicParticles: React.FC<CinematicParticlesProps> = memo(({
     const animate = (time: number) => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      const effectiveCenterX = centerX ?? canvas.width * 0.5;
-      const effectiveCenterY = centerY ?? canvas.height * 0.5;
+      // Use logical center if not provided, otherwise use provided (and handle RTL if relative)
+      // Actually, let's make it relative if it's < 1
+      const relX = centerX !== undefined ? (centerX > 1 ? centerX / canvas.width : centerX) : 0.5;
+      const relY = centerY !== undefined ? (centerY > 1 ? centerY / canvas.height : centerY) : 0.5;
+
+      const effectiveCenterX = (isRTL ? (1 - relX) : relX) * canvas.width;
+      const effectiveCenterY = relY * canvas.height;
 
       // Bias based on mouse
-      const biasX = (mouseX - 0.5) * 0.1;
-      const biasY = (mouseY - 0.5) * 0.1;
+      const mx = mouseX?.get() ?? 0.5;
+      const my = mouseY?.get() ?? 0.5;
+      const biasX = (mx - 0.5) * 0.1;
+      const biasY = (my - 0.5) * 0.1;
 
       particles.forEach((p, index) => {
         // Organic drift using Simplex Noise 3D
@@ -247,7 +257,7 @@ export const CinematicParticles: React.FC<CinematicParticlesProps> = memo(({
       window.removeEventListener('resize', resizeCanvas);
       cancelAnimationFrame(requestRef.current);
     };
-  }, [centerX, centerY, mouseX, mouseY]);
+  }, [centerX, centerY, mouseX, mouseY, isRTL]);
 
   return (
     <canvas
