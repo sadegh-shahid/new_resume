@@ -27,6 +27,7 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #08090A;
+  height: -webkit-fill-available;
 }
 
 body {
@@ -37,6 +38,8 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  min-height: 100dvh;
+  min-height: -webkit-fill-available;
 }
 
 /* Cinematic Film Grain Texture - Global */
@@ -201,6 +204,22 @@ a:hover {
 
 .bg-secondary {
   background-color: #171717;
+}
+
+.min-h-screen {
+  min-height: 100vh;
+}
+
+@supports (height: 100dvh) {
+  .min-h-screen {
+    min-height: 100dvh;
+  }
+}
+
+@supports not (height: 100dvh) {
+  .min-h-screen {
+    min-height: -webkit-fill-available;
+  }
 }
 
 .text-primary {

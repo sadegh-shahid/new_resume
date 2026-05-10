@@ -14,7 +14,7 @@ export const About = memo(({ lang }: { lang: Language }) => {
       className="px-6 max-w-5xl mx-auto border-t border-white/[0.08] section-quiet relative mt-[-4rem] z-30"
     >
       <div
-        className="absolute -top-8 -left-12 rtl:-left-auto rtl:-right-12 text-[clamp(12rem,30vw,24rem)] font-light text-white/[0.03] leading-none select-none pointer-events-none z-0 overflow-hidden whitespace-nowrap"
+        className="hidden md:block absolute -top-8 -left-12 rtl:-left-auto rtl:-right-12 text-[clamp(10rem,20vw,18rem)] font-light text-white/[0.03] leading-none select-none pointer-events-none z-0 overflow-hidden whitespace-nowrap"
         aria-hidden="true"
       >
         {isFa ? "۰۱" : "01"}
@@ -68,6 +68,7 @@ export const About = memo(({ lang }: { lang: Language }) => {
           </span>
 
           {/* Mobile: Horizontal Scroll, Desktop: 2x2 Grid */}
+          <div className="relative">
           <div className="flex md:grid md:grid-cols-2 gap-6 lg:gap-8 overflow-x-auto md:overflow-x-visible snap-x snap-mandatory no-scrollbar pb-8 md:pb-0">
             {capT.blocks.map((block, index) => (
               <motion.div
@@ -96,6 +97,14 @@ export const About = memo(({ lang }: { lang: Language }) => {
                 </p>
               </motion.div>
             ))}
+          </div>
+
+          {/* Scroll hint - only on mobile */}
+          <div className="md:hidden absolute right-0 top-0 bottom-8 w-16 bg-gradient-to-l from-[#08090A] to-transparent pointer-events-none rtl:right-auto rtl:left-0 rtl:bg-gradient-to-r" />
+
+          <p className="md:hidden text-center text-[11px] text-white/30 uppercase tracking-widest mt-4 animate-pulse">
+            {isFa ? "← برای دیدن بیشتر بکشید" : "Swipe to see more →"}
+          </p>
           </div>
         </div>
       </motion.div>

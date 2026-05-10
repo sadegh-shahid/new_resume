@@ -101,6 +101,7 @@ export const CinematicParticles: React.FC<CinematicParticlesProps> = memo(({
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const requestRef = useRef<number>(0);
+  const hasInitialized = useRef(false);
 
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -115,11 +116,21 @@ export const CinematicParticles: React.FC<CinematicParticlesProps> = memo(({
 
     const resizeCanvas = () => {
       const parent = canvas.parentElement;
-      if (parent) {
-        canvas.width = parent.clientWidth;
-        canvas.height = parent.clientHeight;
+      if (!parent) return;
+
+      const newWidth = parent.clientWidth;
+      const newHeight = parent.clientHeight;
+
+      // Only re-init if dimensions actually changed meaningfully
+      if (Math.abs(canvas.width - newWidth) > 10 || Math.abs(canvas.height - newHeight) > 10 || !hasInitialized.current) {
+        canvas.width = newWidth;
+        canvas.height = newHeight;
+
+        if (!hasInitialized.current) {
+          initParticles();
+          hasInitialized.current = true;
+        }
       }
-      initParticles();
     };
 
     const initParticles = () => {
@@ -249,12 +260,19 @@ export const CinematicParticles: React.FC<CinematicParticlesProps> = memo(({
       requestRef.current = requestAnimationFrame(animate);
     };
 
-    window.addEventListener('resize', resizeCanvas);
+    let resizeTimeout: ReturnType<typeof setTimeout>;
+    const debouncedResize = () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(resizeCanvas, 250);
+    };
+
+    window.addEventListener('resize', debouncedResize);
     resizeCanvas();
     requestRef.current = requestAnimationFrame(animate);
 
     return () => {
-      window.removeEventListener('resize', resizeCanvas);
+      window.removeEventListener('resize', debouncedResize);
+      clearTimeout(resizeTimeout);
       cancelAnimationFrame(requestRef.current);
     };
   }, [centerX, centerY, mouseX, mouseY, isRTL]);

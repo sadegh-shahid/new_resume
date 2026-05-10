@@ -46,7 +46,7 @@ export default function App() {
 
       {/* Progress Bar — Visible but refined */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-[2px] bg-[#D6C7A8] z-[60] origin-left accent-glow"
+        className={`fixed top-0 left-0 right-0 h-[2px] bg-[#D6C7A8] z-[60] accent-glow ${lang === 'fa' ? 'origin-right' : 'origin-left'}`}
         style={{ scaleX }}
       />
 

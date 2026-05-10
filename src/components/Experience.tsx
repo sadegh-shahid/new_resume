@@ -50,10 +50,10 @@ export const Experience = memo(({ lang }: { lang: Language }) => {
       className="px-6 max-w-5xl mx-auto border-t border-white/[0.08] section-quiet relative"
     >
       <div
-        className="absolute -top-8 -left-12 rtl:-left-auto rtl:-right-12 text-[clamp(12rem,30vw,24rem)] font-light text-white/[0.03] leading-none select-none pointer-events-none z-0 overflow-hidden whitespace-nowrap"
+        className="hidden md:block absolute -top-8 -left-12 rtl:-left-auto rtl:-right-12 text-[clamp(10rem,20vw,18rem)] font-light text-white/[0.03] leading-none select-none pointer-events-none z-0 overflow-hidden whitespace-nowrap"
         aria-hidden="true"
       >
-        {isFa ? "۰۳" : "03"}
+        {isFa ? "۰۴" : "04"}
       </div>
       <motion.div
         initial={{ opacity: 0 }}
