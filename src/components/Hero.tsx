@@ -1,106 +1,165 @@
-import { useState, useEffect, memo } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { useState, useEffect, memo, useMemo } from "react";
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "motion/react";
 import { portfolioData, Language } from "../data";
 import { CinematicParticles } from "./CinematicParticles";
 
 export const Hero = memo(({ lang }: { lang: Language }) => {
   const t = portfolioData[lang].hero;
   const isFa = lang === "fa";
-  const [imageLoaded, setImageLoaded] = useState(false);
+
+  const mouseX = useMotionValue(0.5);
+  const mouseY = useMotionValue(0.5);
+
+  const springConfig = { stiffness: 50, damping: 30 };
+  const springX = useSpring(mouseX, springConfig);
+  const springY = useSpring(mouseY, springConfig);
+
+  // Parallax shifts
+  const layer2X = useTransform(springX, [0, 1], ["-2%", "2%"]);
+  const layer2Y = useTransform(springY, [0, 1], ["-2%", "2%"]);
+  const layer3X = useTransform(springX, [0, 1], ["-1.5%", "1.5%"]);
+  const layer3Y = useTransform(springY, [0, 1], ["-1.5%", "1.5%"]);
+  const layer1X = useTransform(springX, [0, 1], ["-0.8%", "0.8%"]);
+  const layer1Y = useTransform(springY, [0, 1], ["-0.8%", "0.8%"]);
+  const layer4X = useTransform(springX, [0, 1], ["-0.5%", "0.5%"]);
+  const layer4Y = useTransform(springY, [0, 1], ["-0.5%", "0.5%"]);
 
   useEffect(() => {
-    const img = new Image();
-    img.src = "/images/photo-1618005182384-a83a8bd57fbe.webp";
-    img.onload = () => setImageLoaded(true);
-  }, []);
+    const handleMouseMove = (e: MouseEvent) => {
+      mouseX.set(e.clientX / window.innerWidth);
+      mouseY.set(e.clientY / window.innerHeight);
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, [mouseX, mouseY]);
+
+  const titleLines = useMemo(() => t.title.split("\n"), [t.title]);
+  const firstLineWords = titleLines[0].split(" ");
+  const firstTwoWords = firstLineWords.slice(0, 2).join(" ");
+  const remainingFirstLine = firstLineWords.slice(2).join(" ");
 
   return (
-    <section className="min-h-screen flex items-center justify-center pt-[72px] px-6 relative overflow-hidden section-silent">
-      {/* Layer 0: Cinematic Particles — Ambient Floating Dust */}
-      <div className="absolute inset-0 z-[1] pointer-events-none overflow-hidden">
-        <CinematicParticles />
-      </div>
-
-      {/* Loading Placeholder */}
-      <AnimatePresence>
-        {!imageLoaded && (
-          <motion.div
-            initial={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1.5 }}
-            className="absolute inset-0 z-0 bg-white/[0.02] backdrop-blur-sm pointer-events-none"
-          />
-        )}
-      </AnimatePresence>
-
-      {/* Layer 1: Abstract Background Image — Slightly more present */}
+    <section className="min-h-screen flex items-center pt-[72px] px-6 relative overflow-hidden section-silent bg-[#0A0A0A]">
+      {/* Layer 4: Dust Field (Canvas) */}
       <motion.div
-        animate={imageLoaded ? { opacity: 0.12 } : { opacity: 0 }}
-        transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
-        className="absolute inset-0 z-0 mix-blend-overlay pointer-events-none"
-        style={{
-          backgroundImage:
-            'url("/images/photo-1618005182384-a83a8bd57fbe.webp")',
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      />
+        style={{ x: layer4X, y: layer4Y }}
+        className="absolute inset-0 z-[1] pointer-events-none overflow-hidden"
+      >
+        <CinematicParticles
+          centerX={window.innerWidth * 0.2}
+          centerY={window.innerHeight * 0.5}
+          mouseX={mouseX.get()}
+          mouseY={mouseY.get()}
+        />
+      </motion.div>
 
-      {/* Layer 2: Atmospheric Gradient Blobs — Stronger, more complex */}
-      <div className="absolute inset-0 z-[2] pointer-events-none">
-        <div className="absolute top-[-15%] left-[-15%] w-[75%] h-[75%] rounded-full bg-[#D6C7A8]/[0.06] blur-[140px]" />
-        <div className="absolute bottom-[-15%] right-[-15%] w-[65%] h-[65%] rounded-full bg-[#B07D52]/[0.05] blur-[120px]" />
-        <div className="absolute top-[30%] right-[5%] w-[45%] h-[45%] rounded-full bg-[#B07D52]/[0.04] blur-[90px]" />
+      {/* Hero Visual Composition Container (Left-third focus) */}
+      <div className="absolute inset-0 z-[2] pointer-events-none hidden lg:block">
+        <div className="absolute left-[20%] top-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px]">
+
+          {/* Layer 1: God Rays */}
+          <motion.div
+            style={{ x: layer1X, y: layer1Y }}
+            animate={{ rotate: 360 }}
+            transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
+            className="absolute inset-0 flex items-center justify-center opacity-[0.08] mix-blend-screen will-change-transform"
+          >
+            <div
+              className="w-full h-full rounded-full"
+              style={{
+                background: "conic-gradient(from 0deg, transparent 0deg, #D6C7A8 45deg, transparent 90deg, #f59e0b 135deg, transparent 180deg, #D6C7A8 225deg, transparent 270deg, #f59e0b 315deg, transparent 360deg)",
+                maskImage: "radial-gradient(circle, black 20%, transparent 70%)",
+                WebkitMaskImage: "radial-gradient(circle, black 20%, transparent 70%)"
+              }}
+            />
+          </motion.div>
+
+          {/* Layer 2: Primary Glass Lens */}
+          <motion.div
+            style={{ x: layer2X, y: layer2Y }}
+            animate={{ rotate: 360 }}
+            transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
+            className="absolute inset-0 flex items-center justify-center will-change-transform"
+          >
+            <div className="relative w-[420px] h-[420px] rounded-full border border-[#D6C7A8]/15 backdrop-blur-[40px] saturate-[180%] shadow-[inset_0_0_80px_rgba(214,199,168,0.08)]">
+              {/* Chromatic Aberration Pseudo-element */}
+              <div className="absolute -inset-[1px] rounded-full mix-blend-screen opacity-50">
+                <div className="absolute inset-0 rounded-full border-l-2 border-red-500/20 -translate-x-[2px]" />
+                <div className="absolute inset-0 rounded-full border-r-2 border-cyan-500/20 translate-x-[2px]" />
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Layer 3: Secondary Lens */}
+          <motion.div
+            style={{ x: layer3X, y: layer3Y }}
+            animate={{ rotate: -360 }}
+            transition={{ duration: 90, repeat: Infinity, ease: "linear" }}
+            className="absolute inset-0 flex items-center justify-center will-change-transform"
+          >
+            <div className="w-[280px] h-[280px] rounded-full border border-[#D6C7A8]/08 bg-white/[0.01]" />
+          </motion.div>
+
+          {/* Lens Reflection (Center Dot) */}
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-amber-500/20 rounded-full blur-[2px]" />
+        </div>
       </div>
-
-      {/* Layer 3: Text-safe vignette so background can be brighter without hurting readability */}
-      <div className="absolute inset-0 z-[3] pointer-events-none bg-gradient-to-r from-[#0A0A0A]/60 via-transparent to-[#0A0A0A]/60" />
 
       {/* Main Content */}
       <div className="relative z-10 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        {/* Empty left side on desktop to let visual breathe */}
+        <div className="hidden lg:block h-1" />
+
         {/* Right Side — Text */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
-          className="flex flex-col items-start text-right rtl:text-right"
+          className="flex flex-col items-start text-left rtl:text-right"
         >
           <motion.span
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.2, delay: 0.5 }}
-            className={`text-[12px] md:text-xs text-white/60 uppercase tracking-widest mb-8 block ${isFa ? "tracking-normal" : ""}`}
+            className={`text-[12px] md:text-xs text-amber-500/70 uppercase tracking-widest mb-8 block ${isFa ? "tracking-normal" : ""}`}
           >
             {t.role}
           </motion.span>
 
           <h1
-            className={`${isFa ? "text-[clamp(2.6rem, 6vw, 4rem)]" : "text-hero-display"} font-light text-[#F3F1EB] text-4xl pb-6 ${isFa ? "leading-[1.45]" : "leading-[1.35]"}`}
+            className={`${isFa ? "text-[clamp(2.6rem, 6vw, 4rem)]" : "text-hero-display"} text-[#F3F1EB] text-4xl pb-6 ${isFa ? "leading-[1.45]" : "leading-[1.1]"}`}
             dir={isFa ? "rtl" : "ltr"}
           >
             <span className="sr-only">{t.title}</span>
             <motion.div
               initial="hidden"
               animate="visible"
-              variants={{ visible: { transition: { staggerChildren: 0.22 } } }}
+              variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
               aria-hidden="true"
               className="flex flex-col"
             >
-              {t.title.split("\n").map((line, index) => (
+              {titleLines.map((line, index) => (
                 <motion.span
                   key={index}
                   className="inline-block overflow-hidden"
                   variants={{
-                    hidden: { opacity: 0, y: "70%", filter: "blur(5px)" },
+                    hidden: { opacity: 0, y: "40%", filter: "blur(4px)" },
                     visible: {
                       opacity: 1,
                       y: 0,
                       filter: "blur(0px)",
-                      transition: { duration: 1.3, ease: [0.16, 1, 0.3, 1] },
+                      transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] },
                     },
                   }}
                 >
-                  {line}
+                  {index === 0 && !isFa ? (
+                    <>
+                      <span className="font-thin">{firstTwoWords} </span>
+                      <span className="font-light">{remainingFirstLine}</span>
+                    </>
+                  ) : (
+                    <span className={isFa ? "font-normal" : "font-light"}>{line}</span>
+                  )}
                 </motion.span>
               ))}
             </motion.div>
@@ -110,7 +169,7 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.2, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
-            className={`text-white/60 max-w-[460px] leading-[2.3] mb-12 ${isFa ? "text-[15px] md:text-base" : "text-[15px] md:text-body-lg"}`}
+            className={`text-white/70 max-w-[460px] leading-[1.8] mb-12 ${isFa ? "text-[15px] md:text-base leading-[2.2]" : "text-[15px] md:text-body-lg"}`}
           >
             {t.description}
           </motion.p>
@@ -124,7 +183,7 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
             <a href="#projects" className="btn-primary group">
               {t.ctaPrimary}
               <svg
-                className="w-4 h-4 transition-transform group-hover:translate-x-[-1px] rtl:group-hover:translate-x-[1px]"
+                className="w-4 h-4 transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -133,7 +192,7 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth={1.5}
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  d={isFa ? "M7 16l-4-4m0 0l4-4m-4 4h18" : "M17 8l4 4m0 0l-4 4m4-4H3"}
                 />
               </svg>
             </a>
@@ -142,56 +201,10 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
             </a>
           </motion.div>
         </motion.div>
-
-        {/* Left Side — Cinematic Visual Composition */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1], delay: 0.6 }}
-          className="hidden lg:flex items-center justify-center relative h-[600px]"
-        >
-          {/* Primary Orb — Amber, dominant */}
-          <motion.div
-            animate={{ rotate: 360, scale: [1, 1.1, 1] }}
-            transition={{
-              rotate: { duration: 45, repeat: Infinity, ease: "linear" },
-              scale: { duration: 5, repeat: Infinity, ease: "easeInOut" },
-            }}
-            className="absolute w-[480px] h-[480px] rounded-full bg-gradient-to-tr from-amber-500/15 to-transparent blur-[100px] will-change-transform"
-          />
-
-          {/* Secondary Orb — Ivory, offset for depth */}
-          <motion.div
-            animate={{ rotate: -360, scale: [1, 1.06, 1] }}
-            transition={{
-              rotate: { duration: 60, repeat: Infinity, ease: "linear" },
-              scale: { duration: 7, repeat: Infinity, ease: "easeInOut" },
-            }}
-            className="absolute w-[340px] h-[340px] rounded-full bg-gradient-to-bl from-[#D6C7A8]/12 to-transparent blur-[80px] translate-x-[-50px] translate-y-[80px] will-change-transform"
-          />
-
-          {/* Tertiary Orb — Bronze, small accent pulse */}
-          <motion.div
-            animate={{ scale: [1, 1.3, 1], opacity: [0.4, 0.7, 0.4] }}
-            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute w-[180px] h-[180px] rounded-full bg-[#B07D52]/20 blur-[60px] translate-x-[100px] translate-y-[-100px] will-change-transform"
-          />
-
-          {/* Concentric Rings — "Lens" focal point */}
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
-            className="absolute w-[300px] h-[300px] border border-white/[0.05] rounded-full will-change-transform"
-          />
-          <motion.div
-            animate={{ rotate: -360 }}
-            transition={{ duration: 90, repeat: Infinity, ease: "linear" }}
-            className="absolute w-[260px] h-[260px] border border-white/[0.04] rounded-full will-change-transform"
-          />
-          <div className="absolute w-[220px] h-[220px] border border-white/[0.03] rounded-full will-change-transform" />
-          <div className="absolute w-[8px] h-[8px] bg-amber-500/30 rounded-full blur-[2px]" />
-        </motion.div>
       </div>
+
+      {/* Hero to About Bridge Gradient */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-[#0A0A0A] z-20 pointer-events-none" />
     </section>
   );
 });

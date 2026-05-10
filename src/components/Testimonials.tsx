@@ -5,6 +5,7 @@ import { Quote } from "lucide-react";
 
 export const Testimonials = memo(({ lang }: { lang: Language }) => {
   const t = portfolioData[lang].testimonials;
+  const isFa = lang === "fa";
 
   return (
     <section
@@ -13,16 +14,17 @@ export const Testimonials = memo(({ lang }: { lang: Language }) => {
       aria-labelledby="testimonials-heading"
     >
       <div
-        className="absolute top-10 left-6 rtl:left-auto rtl:right-6 text-[clamp(6rem,12vw,10rem)] font-light text-white/[0.05] leading-none select-none pointer-events-none font-serif z-0"
+        className="absolute -top-8 -left-12 rtl:-left-auto rtl:-right-12 text-[clamp(12rem,30vw,24rem)] font-light text-white/[0.03] leading-none select-none pointer-events-none z-0 overflow-hidden whitespace-nowrap"
         aria-hidden="true"
       >
-        {lang === "fa" ? "۰۵" : "05"}
+        {isFa ? "۰۵" : "05"}
       </div>
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8 }}
+        className="relative z-10"
       >
         <div className="mb-16">
           <motion.h2
@@ -31,7 +33,7 @@ export const Testimonials = memo(({ lang }: { lang: Language }) => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, ease: "easeOut" }}
             id="testimonials-heading"
-            className="text-4xl md:text-6xl font-light tracking-tighter mb-12 pb-7"
+            className={`text-4xl md:text-6xl font-light mb-12 pb-7 ${isFa ? 'tracking-normal' : 'tracking-tighter'}`}
           >
             {t.title}
           </motion.h2>
@@ -49,7 +51,7 @@ export const Testimonials = memo(({ lang }: { lang: Language }) => {
                 <div className="text-3xl md:text-4xl font-light text-amber-500 mb-2">
                   {stat.value}
                 </div>
-                <div className="text-xs uppercase tracking-widest text-white/40">
+                <div className="text-xs uppercase tracking-widest text-white/60">
                   {stat.label}
                 </div>
               </motion.div>
@@ -65,7 +67,7 @@ export const Testimonials = memo(({ lang }: { lang: Language }) => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="flex flex-col p-8 rounded-3xl bg-white/5 border border-white/5"
+              className={`flex flex-col p-8 rounded-3xl bg-white/5 border border-white/5 ${index === 0 ? 'border-l-2 border-l-amber-500/20 rtl:border-l-0 rtl:border-r-2 rtl:border-r-amber-500/20' : ''}`}
             >
               <Quote
                 className="text-amber-500/30 mb-6"
@@ -73,7 +75,7 @@ export const Testimonials = memo(({ lang }: { lang: Language }) => {
                 aria-hidden="true"
               />
               <p
-                className={`text-white/90 text-lg md:text-xl font-light mb-8 flex-grow italic ${lang === "en" ? "leading-relaxed" : "leading-[2.2] tracking-normal"}`}
+                className={`text-white/80 text-lg md:text-xl font-light mb-8 flex-grow italic ${lang === "en" ? "leading-relaxed" : "leading-[2.2] tracking-normal"}`}
               >
                 "{item.text}"
               </p>
@@ -96,7 +98,7 @@ export const Testimonials = memo(({ lang }: { lang: Language }) => {
                 </div>
                 <div>
                   <h3 className="text-white font-medium">{item.name}</h3>
-                  <p className="text-white/60 text-xs uppercase tracking-widest">
+                  <p className="text-white/50 text-xs uppercase tracking-widest">
                     {(item as any).role} &middot; {(item as any).company}
                   </p>
                 </div>

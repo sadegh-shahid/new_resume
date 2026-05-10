@@ -37,6 +37,7 @@ export const Experience = memo(({ lang }: { lang: Language }) => {
   const aboutT = portfolioData[lang].about;
   const skillsT = portfolioData[lang].skills;
   const [expandedId, setExpandedId] = useState<number | null>(null);
+  const isFa = lang === "fa";
 
   const toggleExpand = (id: number) => {
     setExpandedId((prev) => (prev === id ? null : id));
@@ -48,16 +49,17 @@ export const Experience = memo(({ lang }: { lang: Language }) => {
       className="px-6 max-w-5xl mx-auto border-t border-white/[0.04] section-quiet relative"
     >
       <div
-        className="absolute top-10 left-6 rtl:left-auto rtl:right-6 text-[clamp(6rem,12vw,10rem)] font-light text-white/[0.05] leading-none select-none pointer-events-none font-serif z-0"
+        className="absolute -top-8 -left-12 rtl:-left-auto rtl:-right-12 text-[clamp(12rem,30vw,24rem)] font-light text-white/[0.03] leading-none select-none pointer-events-none z-0 overflow-hidden whitespace-nowrap"
         aria-hidden="true"
       >
-        {lang === "fa" ? "۰۳" : "03"}
+        {isFa ? "۰۳" : "03"}
       </div>
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 1.2 }}
+        className="relative z-10"
       >
         <div className="mb-24">
           <motion.h2
@@ -65,7 +67,7 @@ export const Experience = memo(({ lang }: { lang: Language }) => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-4xl md:text-5xl font-light tracking-tight"
+            className={`text-4xl md:text-5xl font-light ${isFa ? 'tracking-normal' : 'tracking-tight'}`}
           >
             {t.title}
           </motion.h2>
@@ -74,7 +76,7 @@ export const Experience = memo(({ lang }: { lang: Language }) => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.2 }}
-            className="text-white/60 text-base mt-4 max-w-2xl leading-relaxed"
+            className="text-white/70 text-base mt-4 max-w-2xl leading-relaxed"
           >
             {t.summary}
           </motion.p>
@@ -107,7 +109,7 @@ export const Experience = memo(({ lang }: { lang: Language }) => {
                   onClick={() => toggleExpand(item.id)}
                 >
                   <div className="flex justify-between items-start mb-3">
-                    <span className="text-[12px] uppercase tracking-widest text-amber-500 ">
+                    <span className="text-[12px] uppercase tracking-widest text-amber-500 font-medium">
                       {item.date}
                     </span>
                     <motion.div
@@ -120,7 +122,7 @@ export const Experience = memo(({ lang }: { lang: Language }) => {
                   <h3 className="text-xl font-light mb-1 text-white">
                     {item.role}
                   </h3>
-                  <span className="text-sm font-medium text-white/40 block mb-4">
+                  <span className="text-sm font-medium text-white/60 block mb-4">
                     {item.company}
                   </span>
 
@@ -130,10 +132,10 @@ export const Experience = memo(({ lang }: { lang: Language }) => {
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                        transition={{ duration: 0.1, ease: [0.16, 1, 0.3, 1] }}
                         className="overflow-hidden"
                       >
-                        <p className="text-white/60 leading-relaxed text-sm md:text-base border-t border-white/[0.04] pt-4 mt-2">
+                        <p className="text-white/70 leading-relaxed text-sm md:text-base border-t border-white/[0.04] pt-4 mt-2">
                           {item.description}
                         </p>
                       </motion.div>
@@ -147,7 +149,7 @@ export const Experience = memo(({ lang }: { lang: Language }) => {
 
         {/* Combined Expertise & Focus Areas Section */}
         <div className="border-t border-white/[0.04] pt-32">
-          <h3 className="text-xl md:text-2xl font-light tracking-tight  pb-4 text-white">
+          <h3 className="text-xl md:text-2xl font-light tracking-tight pb-4 text-white">
             {skillsT.title}
           </h3>
 
@@ -174,7 +176,7 @@ export const Experience = memo(({ lang }: { lang: Language }) => {
                 <h4 className="text-lg font-medium text-amber-500/80 mb-3">
                   {cat.name}
                 </h4>
-                <p className="text-white/50 text-sm md:text-base leading-relaxed">
+                <p className="text-white/60 text-sm md:text-base leading-relaxed">
                   {cat.items}
                 </p>
 

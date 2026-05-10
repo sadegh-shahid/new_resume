@@ -104,11 +104,11 @@ export const Contact = memo(({ lang }: { lang: Language }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="text-4xl md:text-5xl font-light tracking-tighter mb-4"
+            className={`text-4xl md:text-5xl font-light mb-4 ${isEn ? 'tracking-tighter' : 'tracking-normal'}`}
           >
             {t.title}
           </motion.h2>
-          <p className="text-white/60 text-lg max-w-xl mx-auto">{t.message}</p>
+          <p className="text-white/70 text-lg max-w-xl mx-auto">{t.message}</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 w-full">
@@ -123,11 +123,11 @@ export const Contact = memo(({ lang }: { lang: Language }) => {
                   <Mail size={20} aria-hidden="true" />
                 </div>
                 <div className="flex flex-col items-start rtl:items-end">
-                  <span className="text-sm text-white/50">
+                  <span className="text-sm text-white/60">
                     {isEn ? "Email" : "ایمیل"}
                   </span>
                   <span
-                    className="text-sm tracking-widest text-white/90"
+                    className="text-sm tracking-widest text-white/90 font-light"
                     dir="ltr"
                   >
                     {t.email}
@@ -146,11 +146,11 @@ export const Contact = memo(({ lang }: { lang: Language }) => {
                   <Phone size={20} aria-hidden="true" />
                 </div>
                 <div className="flex flex-col items-start rtl:items-end">
-                  <span className="text-sm text-white/50">
+                  <span className="text-sm text-white/60">
                     {isEn ? "WhatsApp" : "واتساپ"}
                   </span>
                   <span
-                    className="text-sm tracking-widest text-white/90"
+                    className="text-sm tracking-widest text-white/90 font-light"
                     dir="ltr"
                   >
                     {t.phone}

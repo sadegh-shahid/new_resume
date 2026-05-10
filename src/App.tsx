@@ -3,7 +3,6 @@ import { useScroll, useSpring, motion } from "motion/react";
 import { Language, portfolioData } from "./data";
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
-import { CapabilitySnapshot } from "./components/CapabilitySnapshot";
 import { About } from "./components/About";
 import { Experience } from "./components/Experience";
 import { Projects } from "./components/Projects";
@@ -11,6 +10,7 @@ import { VisualWorks } from "./components/VisualWorks";
 import { Testimonials } from "./components/Testimonials";
 import { HumanMoment } from "./components/HumanMoment";
 import { Contact } from "./components/Contact";
+import { TransitionMoment } from "./components/TransitionMoment";
 
 export default function App() {
   // Default to Persian based on user request priority
@@ -31,7 +31,7 @@ export default function App() {
 
   return (
     <div
-      className="min-h-screen selection:bg-[#D6C7A8] selection:text-[#0A0A0A]"
+      className="min-h-screen selection:bg-[#D6C7A8] selection:text-[#0A0A0A] bg-[#0A0A0A]"
       dir={lang === "fa" ? "rtl" : "ltr"}
       lang={lang}
     >
@@ -46,17 +46,17 @@ export default function App() {
       <main>
         <Hero lang={lang} />
         <About lang={lang} />
-        <CapabilitySnapshot lang={lang} />
         <Projects lang={lang} />
+        <Testimonials lang={lang} />
+        <TransitionMoment lang={lang} />
         <Experience lang={lang} />
         <VisualWorks lang={lang} />
-        <Testimonials lang={lang} />
         <HumanMoment lang={lang} />
         <Contact lang={lang} />
       </main>
 
       {/* Footer - Minimal, Quiet */}
-      <footer className="text-center flex justify-center items-center flex-col py-16 text-white/60 text-[12px] tracking-widest border-t border-white/[0.04] mt-32">
+      <footer className="text-center flex justify-center items-center flex-col py-16 text-white/70 text-[12px] tracking-widest border-t border-white/[0.04] mt-32">
         <p className="font-light">{portfolioData[lang].footer.tagline}</p>
         <p className="mt-3 text-white/50">
           {portfolioData[lang].footer.copyright.replace(
