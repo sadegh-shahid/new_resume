@@ -9,6 +9,7 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+  const isFa = lang === "fa";
 
   const paginate = (newDirection: number, length: number) => {
     setDirection(newDirection);
@@ -66,16 +67,17 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
       className="px-6 max-w-7xl mx-auto section-quiet relative"
     >
       <div
-        className="absolute top-10 left-6 rtl:left-auto rtl:right-6 text-[clamp(6rem,12vw,10rem)] font-light text-white/[0.05] leading-none select-none pointer-events-none font-serif z-0"
+        className="absolute -top-8 -left-12 rtl:-left-auto rtl:-right-12 text-[clamp(12rem,30vw,24rem)] font-light text-white/[0.03] leading-none select-none pointer-events-none z-0 overflow-hidden whitespace-nowrap"
         aria-hidden="true"
       >
-        {lang === "fa" ? "۰۲" : "02"}
+        {isFa ? "۰۲" : "02"}
       </div>
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 1.4 }}
+        className="relative z-10"
       >
         {/* Section Header - Editorial Style */}
         <div className="mb-28 max-w-3xl">
@@ -84,7 +86,7 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-            className="text-[clamp(2.2rem, 5vw, 3.5rem)] font-light tracking-tight text-[#F3F1EB] mb-6"
+            className={`text-[clamp(2.2rem, 5vw, 3.5rem)] font-light text-[#F3F1EB] mb-6 ${isFa ? 'tracking-normal' : 'tracking-tight'}`}
           >
             {t.title}
           </motion.h2>
@@ -93,7 +95,7 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.2 }}
-            className="text-white/40 text-[15px] leading-relaxed max-w-[420px]"
+            className="text-white/60 text-[15px] leading-relaxed max-w-[420px]"
           >
             {lang === "en"
               ? "Selected case studies in creative development and AI-driven design."
@@ -104,6 +106,7 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
         {/* Projects Grid - More Breathing Room */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-20">
           {t.items.map((item, index) => {
+            const isLast = index === t.items.length - 1;
             return (
               <motion.div
                 key={item.id}
@@ -118,7 +121,7 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
                   ease: [0.16, 1, 0.3, 1],
                   delay: index * 0.15,
                 }}
-                className="group flex flex-col p-6 md:p-10 lg:p-12 rounded-3xl card-bg border border-white/[0.03] transition-all duration-500 cursor-pointer focus:outline-none focus:ring-1 focus:ring-amber-500/30"
+                className={`group flex flex-col p-6 md:p-10 lg:p-12 rounded-3xl card-bg border border-white/[0.03] transition-all duration-500 cursor-pointer focus:outline-none focus:ring-1 focus:ring-amber-500/30 ${isLast ? 'border-l-2 border-l-amber-500/20 rtl:border-l-0 rtl:border-r-2 rtl:border-r-amber-500/20' : ''}`}
                 onClick={() => {
                   setSelectedProject(item.id);
                   setCurrentImageIndex(0);
@@ -154,11 +157,11 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
                 </div>
 
                 <div className="mt-auto">
-                  <p className="text-xs uppercase tracking-widest text-white/60 mb-3">
+                  <p className="text-xs uppercase tracking-widest text-amber-500/60 mb-3">
                     {item.role}
                   </p>
 
-                  <p className="text-white/70 leading-relaxed mb-8 text-left rtl:text-right line-clamp-3 text-sm">
+                  <p className="text-white/80 leading-relaxed mb-8 text-left rtl:text-right line-clamp-3 text-sm">
                     {item.impact}
                   </p>
 
@@ -167,7 +170,7 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
                       <span
                         key={tech}
                         dir="ltr"
-                        className="px-3 py-1 text-[12px] border border-white/[0.06] rounded-full text-white/60"
+                        className="px-3 py-1 text-[12px] border border-white/[0.10] rounded-full text-white/70"
                       >
                         {tech}
                       </span>
@@ -198,7 +201,7 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0 }}
+              transition={{ duration: 0.1 }}
               onClick={() => setSelectedProject(null)}
               className="fixed inset-0 bg-black/80 backdrop-blur-sm"
               aria-hidden="true"
@@ -212,7 +215,7 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
                     initial={{ opacity: 0, scale: 0.95, y: 20 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                    transition={{ duration: 0.1 }}
                     className="relative w-full max-w-5xl bg-[#111] overflow-y-auto md:overflow-hidden rounded-3xl border border-white/10 shadow-2xl flex flex-col md:flex-row my-auto max-h-[80vh] z-10"
                   >
                     <button
@@ -371,7 +374,7 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
                         transition={{ duration: 0 }}
                         className="pt-6 border-t border-white/10 text-left rtl:text-right"
                       >
-                        <span className="block text-xs uppercase tracking-widest text-white/40 mb-4">
+                        <span className="block text-xs uppercase tracking-widest text-white/50 mb-4">
                           {lang === "en" ? "Technologies" : "فناوری‌ها"}
                         </span>
                         <div className="flex flex-wrap gap-2 rtl:justify-start">
