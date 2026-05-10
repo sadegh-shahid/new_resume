@@ -46,7 +46,7 @@ export const Experience = memo(({ lang }: { lang: Language }) => {
   return (
     <section
       id="experience"
-      className="px-6 max-w-5xl mx-auto border-t border-white/[0.04] section-quiet relative"
+      className="px-6 max-w-5xl mx-auto border-t border-white/[0.08] section-quiet relative"
     >
       <div
         className="absolute -top-8 -left-12 rtl:-left-auto rtl:-right-12 text-[clamp(12rem,30vw,24rem)] font-light text-white/[0.03] leading-none select-none pointer-events-none z-0 overflow-hidden whitespace-nowrap"
@@ -83,7 +83,7 @@ export const Experience = memo(({ lang }: { lang: Language }) => {
         </div>
 
         {/* Timeline - Restrained */}
-        <div className="flex flex-col relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px before:h-full before:w-[1px] before:bg-gradient-to-b before:from-transparent before:via-white/[0.08] before:to-transparent mb-32">
+        <div className="flex flex-col relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px before:h-full before:w-[1px] before:bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNCIgaGVpZ2h0PSI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxjaXJjbGUgY3g9IjIiIGN5PSIyIiByPSIxIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMTIpIi8+PC9zdmc+')] before:bg-repeat-y before:bg-[length:4px_12px] mb-32">
           {t.items.map((item, index) => {
             const isExpanded = expandedId === item.id;
             return (
@@ -97,7 +97,7 @@ export const Experience = memo(({ lang }: { lang: Language }) => {
               >
                 {/* Timeline marker */}
                 <div
-                  className="flex items-center justify-center w-10 h-10 rounded-full border border-white/[0.08] bg-black/30 text-white shadow shrink-0 z-10 transition-colors group-hover:border-amber-500/30 group-hover:bg-amber-500/5 cursor-pointer"
+                  className="flex items-center justify-center w-10 h-10 rounded-full border border-white/[0.12] bg-black/30 text-white shadow shrink-0 z-10 transition-all group-hover:border-amber-500/30 group-hover:bg-amber-500/5 group-hover:accent-glow cursor-pointer"
                   onClick={() => toggleExpand(item.id)}
                 >
                   <div className="w-1.5 h-1.5 rounded-full bg-white/30 group-hover:bg-amber-500/60 transition-colors" />
@@ -105,7 +105,7 @@ export const Experience = memo(({ lang }: { lang: Language }) => {
 
                 {/* Content card */}
                 <div
-                  className="flex-1 bg-white/[0.03] border border-white/[0.04] p-6 rounded-2xl hover:bg-white/[0.05] transition-colors cursor-pointer text-left rtl:text-right"
+                  className="flex-1 bg-white/[0.03] border border-white/[0.08] p-6 rounded-2xl hover:bg-white/[0.05] transition-colors cursor-pointer text-left rtl:text-right"
                   onClick={() => toggleExpand(item.id)}
                 >
                   <div className="flex justify-between items-start mb-3">
@@ -135,7 +135,7 @@ export const Experience = memo(({ lang }: { lang: Language }) => {
                         transition={{ duration: 0.1, ease: [0.16, 1, 0.3, 1] }}
                         className="overflow-hidden"
                       >
-                        <p className="text-white/70 leading-relaxed text-sm md:text-base border-t border-white/[0.04] pt-4 mt-2">
+                        <p className="text-white/70 leading-relaxed text-sm md:text-base border-t border-white/[0.08] pt-4 mt-2">
                           {item.description}
                         </p>
                       </motion.div>
@@ -148,7 +148,7 @@ export const Experience = memo(({ lang }: { lang: Language }) => {
         </div>
 
         {/* Combined Expertise & Focus Areas Section */}
-        <div className="border-t border-white/[0.04] pt-32">
+        <div className="border-t border-white/[0.08] pt-32">
           <h3 className="text-xl md:text-2xl font-light tracking-tight pb-4 text-white">
             {skillsT.title}
           </h3>
@@ -157,7 +157,7 @@ export const Experience = memo(({ lang }: { lang: Language }) => {
             {skillsT.categories.map((cat, i) => (
               <div
                 key={i}
-                className="bg-white/[0.03] border border-white/[0.04] p-8 rounded-3xl hover:bg-white/[0.05] transition-all duration-500 group"
+                className="bg-white/[0.03] border border-white/[0.08] p-8 rounded-3xl hover:bg-white/[0.05] transition-all duration-500 group"
               >
                 <div className="flex flex-wrap gap-3 mb-6">
                   {expertiseToFocusMap[i]?.map((focusIdx) => {
@@ -184,7 +184,7 @@ export const Experience = memo(({ lang }: { lang: Language }) => {
                   {expertiseToFocusMap[i]?.map((focusIdx) => (
                     <span
                       key={focusIdx}
-                      className="text-[11px] uppercase tracking-widest text-white/30 border border-white/[0.09] px-2 py-1 rounded"
+                      className="text-[11px] uppercase tracking-widest text-white/30 border border-white/[0.12] px-2 py-1 rounded"
                     >
                       {aboutT.coreFocus[focusIdx]}
                     </span>
