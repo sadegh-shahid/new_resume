@@ -339,7 +339,7 @@ export const portfolioData = {
     },
     footer: {
       tagline:
-        "Built with precision, rhythm, and intent. Currently accepting Q3 projects.",
+        "Every project on this site was built with the belief that restraint is more powerful than noise. If you share that belief, we should talk.",
       copyright: "© {year} Sadegh Shahid",
     },
   },
@@ -646,7 +646,7 @@ export const portfolioData = {
     },
     footer: {
       tagline:
-        "ساخته‌شده با دقت، ریتم، و هدف. در حال پذیرش پروژه‌های سه‌ماهه سوم.",
+        "هر پروژه‌ای در این سایت با این باور ساخته شده که خویشتن‌داری قدرتمندتر از هیاهو است. اگر شما هم به این باور دارید، باید با هم صحبت کنیم.",
       copyright: "© {year} صادق شهید",
     },
   },

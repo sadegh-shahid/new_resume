@@ -1,6 +1,6 @@
 import React, { memo, useState } from 'react';
 import { Globe, Menu, X } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'motion/react';
 import { portfolioData, Language } from '../data';
 import { Logo } from './Logo';
 
@@ -12,6 +12,12 @@ interface HeaderProps {
 export const Header = memo(({ lang, setLang }: HeaderProps) => {
   const t = portfolioData[lang].nav;
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { scrollY } = useScroll();
+
+  const headerHeight = useTransform(scrollY, [0, 50], ["72px", "56px"]);
+  const headerBg = useTransform(scrollY, [0, 50], ["rgba(10, 10, 10, 0.6)", "rgba(8, 9, 10, 0.9)"]);
+  const headerBorder = useTransform(scrollY, [0, 50], ["rgba(255, 255, 255, 0.08)", "rgba(255, 255, 255, 0.06)"]);
+  const logoScale = useTransform(scrollY, [0, 50], [1, 0.9]);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     e.preventDefault();
@@ -26,11 +32,19 @@ export const Header = memo(({ lang, setLang }: HeaderProps) => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center h-[72px] px-6 glass-surface !border-white/[0.10] !border-t-0 !border-x-0" role="banner">
+    <motion.header
+      style={{
+        height: headerHeight,
+        backgroundColor: headerBg,
+        borderBottomColor: headerBorder
+      }}
+      className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 backdrop-blur-xl border-b transition-colors duration-300"
+      role="banner"
+    >
       {/* Logo - Left in RTL */}
-      <div className="flex items-center" aria-label="Sadegh Shahid">
+      <motion.div style={{ scale: logoScale }} className="flex items-center" aria-label="Sadegh Shahid">
         <Logo />
-      </div>
+      </motion.div>
       
       {/* Navigation - Center */}
       <nav aria-label="Main Navigation" className="hidden md:flex gap-4 lg:gap-8 text-xs lg:text-sm text-white/60">
@@ -109,7 +123,8 @@ export const Header = memo(({ lang, setLang }: HeaderProps) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="absolute top-[72px] left-0 right-0 bg-[#08090A]/95 backdrop-blur-xl border-b border-white/[0.12] p-6 flex flex-col gap-4 md:hidden z-40"
+            style={{ top: headerHeight }}
+            className="absolute left-0 right-0 bg-[#08090A]/95 backdrop-blur-xl border-b border-white/[0.12] p-6 flex flex-col gap-4 md:hidden z-40"
           >
             <a href="#about" onClick={(e) => handleNavClick(e, 'about')} className="text-lg text-white/70 hover:text-white py-2 border-b border-white/[0.08]">
               {t.about}
@@ -132,6 +147,6 @@ export const Header = memo(({ lang, setLang }: HeaderProps) => {
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </motion.header>
   );
 });

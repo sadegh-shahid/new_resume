@@ -1,6 +1,7 @@
 import { useState, memo } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { portfolioData, Language } from "../data";
+import { WordReveal } from "./WordReveal";
 import {
   ChevronDown,
   Code,
@@ -62,15 +63,10 @@ export const Experience = memo(({ lang }: { lang: Language }) => {
         className="relative z-10"
       >
         <div className="mb-24">
-          <motion.h2
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          <WordReveal
+            text={t.title}
             className={`text-4xl md:text-5xl font-light ${isFa ? 'tracking-normal' : 'tracking-tight'}`}
-          >
-            {t.title}
-          </motion.h2>
+          />
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
