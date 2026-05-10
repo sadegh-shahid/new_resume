@@ -1,6 +1,7 @@
 import { memo } from "react";
 import { motion } from "motion/react";
 import { portfolioData, Language } from "../data";
+import { WordReveal } from "./WordReveal";
 
 export const About = memo(({ lang }: { lang: Language }) => {
   const t = portfolioData[lang].about;
@@ -26,9 +27,10 @@ export const About = memo(({ lang }: { lang: Language }) => {
         transition={{ duration: 1.2 }}
         className="max-w-3xl relative z-10"
       >
-        <h2 className={`text-5xl md:text-6xl font-light mb-24 text-[#F3F1EB] ${isFa ? 'tracking-normal' : 'tracking-tight'}`}>
-          {t.title}
-        </h2>
+        <WordReveal
+          text={t.title}
+          className={`text-5xl md:text-6xl font-light mb-24 text-[#F3F1EB] ${isFa ? 'tracking-normal' : 'tracking-tight'}`}
+        />
 
         <div className={`space-y-20 text-[1.1rem] ${isFa ? 'leading-[2.2]' : 'leading-[1.8]'} text-white/80 font-light`}>
           {t.paragraphs?.map((p, i) => (

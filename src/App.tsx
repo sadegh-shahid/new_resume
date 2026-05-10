@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
-import { useScroll, useSpring, motion } from "motion/react";
+import { useScroll, useSpring, motion, AnimatePresence } from "motion/react";
 import { Language, portfolioData } from "./data";
+import { LoadingSequence } from "./components/LoadingSequence";
 import { Header } from "./components/Header";
+import { CustomCursor } from "./components/CustomCursor";
 import { Hero } from "./components/Hero";
 import { About } from "./components/About";
 import { Experience } from "./components/Experience";
@@ -11,10 +13,12 @@ import { Testimonials } from "./components/Testimonials";
 import { HumanMoment } from "./components/HumanMoment";
 import { Contact } from "./components/Contact";
 import { TransitionMoment } from "./components/TransitionMoment";
+import { ArrowUp } from "lucide-react";
 
 export default function App() {
   // Default to Persian based on user request priority
   const [lang, setLang] = useState<Language>("fa");
+  const [isLoading, setIsLoading] = useState(true);
 
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
@@ -35,6 +39,11 @@ export default function App() {
       dir={lang === "fa" ? "rtl" : "ltr"}
       lang={lang}
     >
+      <CustomCursor />
+      <AnimatePresence>
+        {isLoading && <LoadingSequence onComplete={() => setIsLoading(false)} />}
+      </AnimatePresence>
+
       {/* Progress Bar — Visible but refined */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-[2px] bg-[#D6C7A8] z-[60] origin-left accent-glow"
@@ -43,7 +52,7 @@ export default function App() {
 
       <Header lang={lang} setLang={setLang} />
 
-      <main>
+      <main className={isLoading ? "opacity-0" : "opacity-100 transition-opacity duration-1000"}>
         <Hero lang={lang} />
         <About lang={lang} />
         <Projects lang={lang} />
@@ -55,15 +64,41 @@ export default function App() {
         <Contact lang={lang} />
       </main>
 
-      {/* Footer - Minimal, Quiet */}
-      <footer className="text-center flex justify-center items-center flex-col py-16 text-white/70 text-[12px] tracking-widest border-t border-white/[0.08] mt-32">
-        <p className="font-light">{portfolioData[lang].footer.tagline}</p>
-        <p className="mt-3 text-white/50">
-          {portfolioData[lang].footer.copyright.replace(
-            "{year}",
-            String(new Date().getFullYear()),
-          )}
-        </p>
+      {/* Footer - Architectural */}
+      <footer className="relative w-full py-24 px-6 border-t border-white/[0.08] mt-32 overflow-hidden bg-[#08090A]">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12 md:gap-0 relative z-10">
+          {/* Left Side */}
+          <div className="max-w-md">
+            <p className={`text-lg font-light text-white/80 leading-relaxed ${lang === 'fa' ? 'leading-[2.2]' : ''}`}>
+              {portfolioData[lang].footer.tagline}
+            </p>
+          </div>
+
+          {/* Right Side */}
+          <div className="flex flex-col items-end gap-6 self-end md:self-auto">
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="w-12 h-12 rounded-full border border-white/[0.12] flex items-center justify-center hover:border-amber-500/30 hover:bg-amber-500/5 transition-all group"
+              aria-label="Back to top"
+            >
+              <ArrowUp size={20} className="text-white/40 group-hover:text-amber-500/60 transition-colors" />
+            </button>
+            <p className="text-sm text-white/40 font-light tracking-widest">
+              {portfolioData[lang].footer.copyright.replace(
+                "{year}",
+                String(new Date().getFullYear()),
+              )}
+            </p>
+          </div>
+        </div>
+
+        {/* Watermark */}
+        <div
+          className="absolute bottom-0 left-0 translate-y-1/2 text-[20vw] font-light text-white/[0.02] leading-none pointer-events-none select-none z-0"
+          aria-hidden="true"
+        >
+          {lang === 'fa' ? 'پایان' : 'END'}
+        </div>
       </footer>
     </div>
   );

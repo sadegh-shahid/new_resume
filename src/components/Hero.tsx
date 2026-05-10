@@ -43,6 +43,9 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
       {/* Layer 4: Dust Field (Canvas) */}
       <motion.div
         style={{ x: layer4X, y: layer4Y }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 1.8 }}
         className="absolute inset-0 z-[1] pointer-events-none overflow-hidden"
       >
         <CinematicParticles
@@ -54,7 +57,12 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
       </motion.div>
 
       {/* Hero Visual Composition Container (Left-third focus) */}
-      <div className="absolute inset-0 z-[2] pointer-events-none hidden lg:block">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 1.8 }}
+        className="absolute inset-0 z-[2] pointer-events-none hidden lg:block"
+      >
         <div className="absolute left-[20%] top-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px]">
 
           {/* Layer 1: God Rays */}
@@ -103,7 +111,7 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
           {/* Lens Reflection (Center Dot) */}
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-amber-500/20 rounded-full blur-[2px]" />
         </div>
-      </div>
+      </motion.div>
 
       {/* Main Content */}
       <div className="relative z-10 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -111,16 +119,11 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
         <div className="hidden lg:block h-1" />
 
         {/* Right Side — Text */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
-          className="flex flex-col items-start text-left rtl:text-right"
-        >
+        <div className="flex flex-col items-start text-left rtl:text-right">
           <motion.span
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1.2, delay: 0.5 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.4 }}
             className={`text-[12px] md:text-xs text-amber-500/70 uppercase tracking-widest mb-8 block ${isFa ? "tracking-normal" : ""}`}
           >
             {t.role}
@@ -131,27 +134,19 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
             dir={isFa ? "rtl" : "ltr"}
           >
             <span className="sr-only">{t.title}</span>
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
-              aria-hidden="true"
-              className="flex flex-col"
-            >
+            <div className="flex flex-col" aria-hidden="true">
               {titleLines.map((line, index) => (
-                <motion.span
-                  key={index}
-                  className="inline-block overflow-hidden"
-                  variants={{
-                    hidden: { opacity: 0, y: "40%", filter: "blur(4px)" },
-                    visible: {
-                      opacity: 1,
-                      y: 0,
-                      filter: "blur(0px)",
-                      transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] },
-                    },
-                  }}
-                >
+                <span key={index} className="inline-block overflow-hidden">
+                  <motion.span
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: 0.8,
+                      ease: [0.16, 1, 0.3, 1],
+                      delay: 0.6 + (index * 0.6)
+                    }}
+                    className="inline-block"
+                  >
                   {index === 0 && !isFa ? (
                     <>
                       <span className="font-thin">{firstTwoWords} </span>
@@ -160,15 +155,16 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
                   ) : (
                     <span className={isFa ? "font-normal" : "font-light"}>{line}</span>
                   )}
-                </motion.span>
+                  </motion.span>
+                </span>
               ))}
-            </motion.div>
+            </div>
           </h1>
 
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1.2, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.8, delay: 1.4, ease: [0.16, 1, 0.3, 1] }}
             className={`text-white/70 max-w-[460px] leading-[1.8] mb-12 ${isFa ? "text-[15px] md:text-base leading-[2.2]" : "text-[15px] md:text-body-lg"}`}
           >
             {t.description}
@@ -177,7 +173,7 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1.2, delay: 1.5, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.8, delay: 1.6, ease: [0.16, 1, 0.3, 1] }}
             className="flex flex-wrap gap-5"
           >
             <a href="#projects" className="btn-primary group">
@@ -200,7 +196,7 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
               {t.ctaSecondary}
             </a>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
 
       {/* Hero to About Bridge Gradient */}

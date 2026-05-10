@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from "motion/react";
 import { useState, useEffect } from "react";
 import { portfolioData, Language } from "../data";
 import { ArrowUpRight, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { WordReveal } from "./WordReveal";
+import { useScrollVelocity } from "../hooks/useScrollVelocity";
 
 export const Projects = memo(({ lang }: { lang: Language }) => {
   const t = portfolioData[lang].projects;
@@ -10,6 +12,15 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const isFa = lang === "fa";
+  const scrollSkew = useScrollVelocity(2);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const paginate = (newDirection: number, length: number) => {
     setDirection(newDirection);
@@ -81,15 +92,10 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
       >
         {/* Section Header - Editorial Style */}
         <div className="mb-28 max-w-3xl">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          <WordReveal
+            text={t.title}
             className={`text-[clamp(2.2rem, 5vw, 3.5rem)] font-light text-[#F3F1EB] mb-6 ${isFa ? 'tracking-normal' : 'tracking-tight'}`}
-          >
-            {t.title}
-          </motion.h2>
+          />
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -110,18 +116,11 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
             return (
               <motion.div
                 key={item.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                whileHover={{
-                  backgroundColor: "rgba(255, 255, 255, 0.03)",
-                }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
                 viewport={{ once: true, margin: "-40px" }}
-                transition={{
-                  duration: 1,
-                  ease: [0.16, 1, 0.3, 1],
-                  delay: index * 0.15,
-                }}
-                className={`group flex flex-col p-6 md:p-10 lg:p-12 rounded-3xl card-bg border border-white/[0.08] transition-all duration-500 cursor-pointer focus:outline-none focus:ring-1 focus:ring-amber-500/30 ${isLast ? 'border-l-2 border-l-amber-500/20 rtl:border-l-0 rtl:border-r-2 rtl:border-r-amber-500/20' : ''}`}
+                style={{ skewY: scrollSkew }}
+                className={`group relative overflow-hidden flex flex-col p-6 md:p-10 lg:p-12 rounded-3xl card-bg border border-white/[0.08] transition-all duration-500 cursor-pointer focus:outline-none focus:ring-1 focus:ring-amber-500/30 ${isLast ? 'border-l-2 border-l-amber-500/20 rtl:border-l-0 rtl:border-r-2 rtl:border-r-amber-500/20' : ''}`}
                 onClick={() => {
                   setSelectedProject(item.id);
                   setCurrentImageIndex(0);
@@ -137,6 +136,15 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
                 }}
                 aria-label={`${lang === "en" ? "View details for" : "مشاهده جزئیات"} ${item.name}`}
               >
+                {/* Curtain Reveal Mask */}
+                <motion.div
+                  initial={{ scaleY: 1 }}
+                  whileInView={{ scaleY: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ duration: 0.8, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] }}
+                  className="absolute inset-0 bg-[#08090A] z-20 origin-top pointer-events-none"
+                />
+
                 <div className="flex flex-col-reverse md:flex-row md:justify-between items-start mb-12 gap-4 md:gap-0">
                   <h3 className="text-[clamp(1.4rem, 3vw, 1.8rem)] font-light pr-0 md:pr-8 rtl:pr-0 rtl:md:pl-8 text-[#F3F1EB]">
                     {item.name}
@@ -156,7 +164,7 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
                   </div>
                 </div>
 
-                <div className="mt-auto">
+                <div className="flex flex-col flex-grow">
                   <p className="text-xs uppercase tracking-widest text-amber-500/60 mb-3">
                     {item.role}
                   </p>
@@ -165,25 +173,45 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
                     {item.impact}
                   </p>
 
-                  <div className="flex flex-wrap gap-2 mb-8 rtl:justify-start">
-                    {item.stack.map((tech) => (
-                      <span
-                        key={tech}
-                        dir="ltr"
-                        className="px-3 py-1 text-[12px] border border-white/[0.10] rounded-full text-white/70"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+                  {/* Thumbnail Strip */}
+                  <div className="relative h-20 mb-8 overflow-hidden rounded-lg group/thumbs">
+                    <motion.div
+                      className="flex gap-2 h-full"
+                      whileHover={{ x: isFa ? "20%" : "-20%" }}
+                      transition={{ duration: 2, ease: "linear" }}
+                    >
+                      {item.images.slice(0, 3).map((img, i) => (
+                        <img
+                          key={i}
+                          src={img}
+                          alt=""
+                          className="h-full w-20 object-cover rounded-lg flex-shrink-0 grayscale group-hover/thumbs:grayscale-0 transition-all duration-500"
+                        />
+                      ))}
+                    </motion.div>
                   </div>
 
-                  <div className="flex items-center mt-6">
-                    <div className="w-full md:w-auto flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-amber-500/5 border border-amber-500/10 text-xs uppercase tracking-widest text-amber-500/80 font-medium group-hover:bg-amber-500/10 group-hover:border-amber-500/20 transition-all duration-400">
-                      <span>{item.readMore}</span>
-                      <ArrowUpRight
-                        size={14}
-                        className="transition-transform group-hover:translate-x-[0.5px] group-hover:-translate-y-[0.5px] rtl:group-hover:-translate-x-[0.5px]"
-                      />
+                  <div className="mt-auto">
+                    <div className="flex flex-wrap gap-2 mb-8 rtl:justify-start">
+                      {item.stack.map((tech) => (
+                        <span
+                          key={tech}
+                          dir="ltr"
+                          className="px-3 py-1 text-[12px] border border-white/[0.10] rounded-full text-white/70"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="flex items-center">
+                      <div className="w-full md:w-auto flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-amber-500/5 border border-amber-500/10 text-xs uppercase tracking-widest text-amber-500/80 font-medium group-hover:bg-amber-500/10 group-hover:border-amber-500/20 transition-all duration-400">
+                        <span>{item.readMore}</span>
+                        <ArrowUpRight
+                          size={14}
+                          className="transition-transform group-hover:translate-x-[0.5px] group-hover:-translate-y-[0.5px] rtl:group-hover:-translate-x-[0.5px]"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -212,15 +240,18 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
                 const item = t.items.find((i) => i.id === selectedProject)!;
                 return (
                   <motion.div
-                    initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                    animate={{ opacity: 1, scale: 1, y: 0 }}
-                    exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                    transition={{ duration: 0.1 }}
-                    className="relative w-full max-w-5xl glass-surface !bg-black/40 !backdrop-blur-2xl !border-white/[0.15] overflow-y-auto md:overflow-hidden rounded-3xl shadow-2xl flex flex-col md:flex-row my-auto max-h-[80vh] z-10"
+                    initial={isMobile ? { y: "100%" } : { opacity: 0, scale: 0.98, y: 20 }}
+                    animate={isMobile ? { y: 0 } : { opacity: 1, scale: 1, y: 0 }}
+                    exit={isMobile ? { y: "100%" } : { opacity: 0, scale: 0.98, y: 20 }}
+                    transition={isMobile
+                      ? { type: "spring", stiffness: 300, damping: 30 }
+                      : { type: "spring", stiffness: 400, damping: 25 }
+                    }
+                    className="relative w-full max-w-5xl !bg-black/40 !backdrop-blur-2xl border border-white/[0.15] overflow-y-auto md:overflow-hidden rounded-3xl shadow-2xl flex flex-col md:flex-row my-auto max-h-[90vh] md:max-h-[80vh] z-10"
                   >
                     <button
                       onClick={() => setSelectedProject(null)}
-                      className="absolute top-6 right-6 z-20 p-3 bg-black/50 hover:bg-white hover:text-black rounded-full backdrop-blur-md transition-colors"
+                      className="absolute top-6 right-6 z-20 p-3 bg-white/5 hover:bg-white/10 text-white rounded-full backdrop-blur-md border border-white/[0.08] transition-colors"
                       aria-label="Close dialog"
                     >
                       <X size={24} />
@@ -228,7 +259,7 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
 
                     {/* Image Carousel */}
                     {item.images && item.images.length > 0 && (
-                      <div className="w-full md:w-1/2 relative bg-black/50 group/carousel aspect-video md:aspect-auto md:min-h-full flex-shrink-0 overflow-hidden">
+                      <div className="w-full md:w-1/2 relative bg-black/50 group/carousel aspect-video md:aspect-auto md:min-h-full flex-shrink-0 overflow-hidden border-b md:border-b-0 md:border-r rtl:md:border-r-0 rtl:md:border-l border-white/[0.08]">
                         <AnimatePresence initial={false} custom={direction}>
                           <motion.img
                             key={currentImageIndex}
@@ -309,7 +340,7 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
                     )}
 
                     <div
-                      className={`flex-1 flex flex-col w-full ${item.images && item.images.length > 0 ? "md:w-1/2" : ""} p-6 md:p-12 overflow-visible md:overflow-y-auto`}
+                      className={`flex-1 flex flex-col w-full ${item.images && item.images.length > 0 ? "md:w-1/2" : ""} p-6 md:p-12 overflow-visible md:overflow-y-auto bg-gradient-to-b from-transparent to-black/20`}
                     >
                       <div className="mb-6 md:mb-8 pr-12 lg:pr-0 lg:pl-12 rtl:pr-0 rtl:pl-12 rtl:lg:pl-0 rtl:lg:pr-12">
                         <h3 className="text-4xl md:text-5xl font-light mb-2">
@@ -332,24 +363,24 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
                         className="grid grid-cols-1 gap-6 mb-8"
                       >
                         <div className="grid grid-cols-1 gap-4 mb-6">
-                          <div className="bg-white/5 border border-white/5 rounded-2xl p-6 text-left rtl:text-right">
-                            <span className="block text-xs uppercase tracking-widest text-amber-500 mb-2">
+                          <div className="border-l-2 border-red-500/30 bg-red-500/[0.03] rounded-2xl p-6 text-left rtl:text-right">
+                            <span className="block text-xs uppercase tracking-widest text-red-400 mb-2">
                               {lang === "en" ? "Problem" : "مسئله"}
                             </span>
                             <p className="text-white/90 text-xs md:text-sm leading-relaxed">
                               {item.problem}
                             </p>
                           </div>
-                          <div className="bg-white/5 border border-white/5 rounded-2xl p-6 text-left rtl:text-right">
-                            <span className="block text-xs uppercase tracking-widest text-amber-500 mb-2">
+                          <div className="border-l-2 border-amber-500/30 bg-amber-500/[0.03] rounded-2xl p-6 text-left rtl:text-right">
+                            <span className="block text-xs uppercase tracking-widest text-amber-400 mb-2">
                               {lang === "en" ? "Solution" : "راهکار"}
                             </span>
                             <p className="text-white/90 text-xs md:text-sm leading-relaxed">
                               {item.solution}
                             </p>
                           </div>
-                          <div className="bg-white/5 border border-white/5 rounded-2xl p-6 text-left rtl:text-right">
-                            <span className="block text-xs uppercase tracking-widest text-amber-500 mb-2">
+                          <div className="border-l-2 border-emerald-500/30 bg-emerald-500/[0.03] rounded-2xl p-6 text-left rtl:text-right">
+                            <span className="block text-xs uppercase tracking-widest text-emerald-400 mb-2">
                               {lang === "en" ? "Result" : "نتیجه"}
                             </span>
                             <p className="text-white/90 text-xs md:text-sm leading-relaxed">

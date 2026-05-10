@@ -2,6 +2,7 @@ import { useState, memo } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { portfolioData, Language } from "../data";
 import { ChevronDown, Wrench, Lightbulb, Target } from "lucide-react";
+import { WordReveal } from "./WordReveal";
 
 export const VisualWorks = memo(({ lang }: { lang: Language }) => {
   const t = portfolioData[lang].visual;
@@ -31,15 +32,10 @@ export const VisualWorks = memo(({ lang }: { lang: Language }) => {
         className="relative z-10"
       >
         <div className="mb-24">
-          <motion.h2
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          <WordReveal
+            text={t.title}
             className={`text-4xl md:text-5xl font-light ${isFa ? 'tracking-normal' : 'tracking-tight'}`}
-          >
-            {t.title}
-          </motion.h2>
+          />
         </div>
 
         <div className="flex flex-col gap-4">

@@ -2,6 +2,7 @@ import { memo } from "react";
 import { motion } from "motion/react";
 import { portfolioData, Language } from "../data";
 import { Quote } from "lucide-react";
+import { WordReveal } from "./WordReveal";
 
 export const Testimonials = memo(({ lang }: { lang: Language }) => {
   const t = portfolioData[lang].testimonials;
@@ -27,16 +28,10 @@ export const Testimonials = memo(({ lang }: { lang: Language }) => {
         className="relative z-10"
       >
         <div className="mb-16">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            id="testimonials-heading"
+          <WordReveal
+            text={t.title}
             className={`text-4xl md:text-6xl font-light mb-12 pb-7 ${isFa ? 'tracking-normal' : 'tracking-tighter'}`}
-          >
-            {t.title}
-          </motion.h2>
+          />
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-16">
             {(t as any).stats.map((stat: any, index: number) => (
