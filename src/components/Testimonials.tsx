@@ -70,7 +70,7 @@ export const Testimonials = memo(({ lang }: { lang: Language }) => {
                 aria-hidden="true"
               />
               <p
-                className={`text-white/80 text-lg md:text-xl font-light mb-8 flex-grow italic ${lang === "en" ? "leading-relaxed" : "leading-[2.2] tracking-normal"}`}
+                className={`text-white/90 text-lg md:text-xl font-light mb-8 flex-grow italic ${lang === "en" ? "leading-relaxed" : "leading-[2.2] tracking-normal"}`}
               >
                 "{item.text}"
               </p>

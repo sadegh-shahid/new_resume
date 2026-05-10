@@ -86,7 +86,7 @@ export const Contact = memo(({ lang }: { lang: Language }) => {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8 }}
-        className="relative z-10 flex flex-col items-center glass-surface !border-white/[0.12] rounded-3xl p-8 lg:p-16"
+        className="relative z-10 flex flex-col items-center glass-surface rounded-3xl p-8 lg:p-16"
       >
         <div className="w-full mb-12 text-center">
           <motion.div
