@@ -50,27 +50,27 @@ export const Header = memo(({ lang, setLang }: HeaderProps) => {
       <nav aria-label="Main Navigation" className="hidden md:flex gap-4 lg:gap-8 text-xs lg:text-sm text-white/60">
         <a href="#about" onClick={(e) => handleNavClick(e, 'about')} className="hover:text-white transition-colors relative group">
           {t.about}
-          <span className="absolute bottom-[-4px] left-1/2 w-0 h-[1px] bg-[#D6C7A8] transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+          <span className="absolute bottom-[-4px] start-1/2 w-0 h-[1px] bg-[#D6C7A8] transition-all duration-300 group-hover:w-full group-hover:start-0"></span>
         </a>
         <a href="#projects" onClick={(e) => handleNavClick(e, 'projects')} className="hover:text-white transition-colors relative group">
           {t.projects}
-          <span className="absolute bottom-[-4px] left-1/2 w-0 h-[1px] bg-[#D6C7A8] transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+          <span className="absolute bottom-[-4px] start-1/2 w-0 h-[1px] bg-[#D6C7A8] transition-all duration-300 group-hover:w-full group-hover:start-0"></span>
         </a>
         <a href="#experience" onClick={(e) => handleNavClick(e, 'experience')} className="hover:text-white transition-colors relative group">
           {t.experience}
-          <span className="absolute bottom-[-4px] left-1/2 w-0 h-[1px] bg-[#D6C7A8] transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+          <span className="absolute bottom-[-4px] start-1/2 w-0 h-[1px] bg-[#D6C7A8] transition-all duration-300 group-hover:w-full group-hover:start-0"></span>
         </a>
         <a href="#visual-works" onClick={(e) => handleNavClick(e, 'visual-works')} className="hover:text-white transition-colors relative group">
           {t.visual}
-          <span className="absolute bottom-[-4px] left-1/2 w-0 h-[1px] bg-[#D6C7A8] transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+          <span className="absolute bottom-[-4px] start-1/2 w-0 h-[1px] bg-[#D6C7A8] transition-all duration-300 group-hover:w-full group-hover:start-0"></span>
         </a>
         <a href="#testimonials" onClick={(e) => handleNavClick(e, 'testimonials')} className="hover:text-white transition-colors relative group">
           {t.testimonials}
-          <span className="absolute bottom-[-4px] left-1/2 w-0 h-[1px] bg-[#D6C7A8] transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+          <span className="absolute bottom-[-4px] start-1/2 w-0 h-[1px] bg-[#D6C7A8] transition-all duration-300 group-hover:w-full group-hover:start-0"></span>
         </a>
         <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')} className="hover:text-white transition-colors relative group">
           {t.contact}
-          <span className="absolute bottom-[-4px] left-1/2 w-0 h-[1px] bg-[#D6C7A8] transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+          <span className="absolute bottom-[-4px] start-1/2 w-0 h-[1px] bg-[#D6C7A8] transition-all duration-300 group-hover:w-full group-hover:start-0"></span>
         </a>
       </nav>
 
