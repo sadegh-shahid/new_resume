@@ -56,7 +56,7 @@ export const VisualWorks = memo(({ lang }: { lang: Language }) => {
                   duration: 0.8,
                   ease: [0.16, 1, 0.3, 1],
                 }}
-                className="border border-white/[0.04] rounded-2xl bg-white/[0.03] overflow-hidden group"
+                className="border border-white/[0.08] rounded-2xl bg-white/[0.03] overflow-hidden group"
               >
                 <button
                   onClick={() => toggleExpand(item.id)}
@@ -82,7 +82,7 @@ export const VisualWorks = memo(({ lang }: { lang: Language }) => {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.1, ease: [0.16, 1, 0.3, 1] }}
                     >
-                      <div className="px-6 md:px-10 pb-8 pt-4 border-t border-white/[0.04] text-white/70">
+                      <div className="px-6 md:px-10 pb-8 pt-4 border-t border-white/[0.08] text-white/70">
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                           <div className="flex flex-col gap-2 relative group/tooltip-tools">
                             <div className="flex items-center gap-2 text-amber-500 mb-1 cursor-help w-max">
@@ -129,7 +129,7 @@ export const VisualWorks = memo(({ lang }: { lang: Language }) => {
                                 (img: string, idx: number) => (
                                   <div
                                     key={idx}
-                                    className="relative aspect-video rounded-xl overflow-hidden border border-white/[0.06] group/image"
+                                    className="relative aspect-video rounded-xl overflow-hidden border border-white/[0.08] group/image"
                                   >
                                     <img
                                       src={img}
@@ -148,7 +148,7 @@ export const VisualWorks = memo(({ lang }: { lang: Language }) => {
                         <div className="mt-8 flex justify-end">
                           <button
                             onClick={() => setExpandedId(null)}
-                            className="text-white/50 hover:text-white transition-colors text-[12px] uppercase tracking-widest px-4 py-2 rounded-full border border-white/[0.06] hover:border-white/[0.15] focus:outline-none"
+                            className="text-white/50 hover:text-white transition-colors text-[12px] uppercase tracking-widest px-4 py-2 rounded-full border border-white/[0.08] hover:border-white/[0.20] focus:outline-none"
                           >
                             {item.closeBtn}
                           </button>

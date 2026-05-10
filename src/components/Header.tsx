@@ -26,7 +26,7 @@ export const Header = memo(({ lang, setLang }: HeaderProps) => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center h-[72px] px-6 backdrop-blur-md bg-[#0A0A0A]/60 border-b border-white/[0.08]" role="banner">
+    <header className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center h-[72px] px-6 glass-surface !border-white/[0.10] !border-t-0 !border-x-0" role="banner">
       {/* Logo - Left in RTL */}
       <div className="flex items-center" aria-label="Sadegh Shahid">
         <Logo />
@@ -109,24 +109,24 @@ export const Header = memo(({ lang, setLang }: HeaderProps) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="absolute top-[72px] left-0 right-0 bg-[#0A0A0A]/95 backdrop-blur-xl border-b border-white/[0.06] p-6 flex flex-col gap-4 md:hidden z-40"
+            className="absolute top-[72px] left-0 right-0 bg-[#08090A]/95 backdrop-blur-xl border-b border-white/[0.12] p-6 flex flex-col gap-4 md:hidden z-40"
           >
-            <a href="#about" onClick={(e) => handleNavClick(e, 'about')} className="text-lg text-white/70 hover:text-white py-2 border-b border-white/[0.03]">
+            <a href="#about" onClick={(e) => handleNavClick(e, 'about')} className="text-lg text-white/70 hover:text-white py-2 border-b border-white/[0.08]">
               {t.about}
             </a>
-            <a href="#projects" onClick={(e) => handleNavClick(e, 'projects')} className="text-lg text-white/70 hover:text-white py-2 border-b border-white/[0.03]">
+            <a href="#projects" onClick={(e) => handleNavClick(e, 'projects')} className="text-lg text-white/70 hover:text-white py-2 border-b border-white/[0.08]">
               {t.projects}
             </a>
-            <a href="#experience" onClick={(e) => handleNavClick(e, 'experience')} className="text-lg text-white/70 hover:text-white py-2 border-b border-white/[0.03]">
+            <a href="#experience" onClick={(e) => handleNavClick(e, 'experience')} className="text-lg text-white/70 hover:text-white py-2 border-b border-white/[0.08]">
               {t.experience}
             </a>
-            <a href="#visual-works" onClick={(e) => handleNavClick(e, 'visual-works')} className="text-lg text-white/70 hover:text-white py-2 border-b border-white/[0.03]">
+            <a href="#visual-works" onClick={(e) => handleNavClick(e, 'visual-works')} className="text-lg text-white/70 hover:text-white py-2 border-b border-white/[0.08]">
               {t.visual}
             </a>
-            <a href="#testimonials" onClick={(e) => handleNavClick(e, 'testimonials')} className="text-lg text-white/70 hover:text-white py-2 border-b border-white/[0.03]">
+            <a href="#testimonials" onClick={(e) => handleNavClick(e, 'testimonials')} className="text-lg text-white/70 hover:text-white py-2 border-b border-white/[0.08]">
               {t.testimonials}
             </a>
-            <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')} className="text-lg text-white/70 hover:text-white py-2 border-b border-white/[0.03]">
+            <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')} className="text-lg text-white/70 hover:text-white py-2 border-b border-white/[0.08]">
               {t.contact}
             </a>
           </motion.div>

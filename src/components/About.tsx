@@ -10,7 +10,7 @@ export const About = memo(({ lang }: { lang: Language }) => {
   return (
     <section
       id="about"
-      className="px-6 max-w-5xl mx-auto border-t border-white/[0.04] section-quiet relative mt-[-4rem] z-30"
+      className="px-6 max-w-5xl mx-auto border-t border-white/[0.08] section-quiet relative mt-[-4rem] z-30"
     >
       <div
         className="absolute -top-8 -left-12 rtl:-left-auto rtl:-right-12 text-[clamp(12rem,30vw,24rem)] font-light text-white/[0.03] leading-none select-none pointer-events-none z-0 overflow-hidden whitespace-nowrap"
@@ -54,13 +54,13 @@ export const About = memo(({ lang }: { lang: Language }) => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.4 }}
-          className="mt-24 pt-8 border-t border-white/[0.04] text-xs tracking-widest text-white/60"
+          className="mt-24 pt-8 border-t border-white/[0.08] text-xs tracking-widest text-white/60"
         >
           {t.location}
         </motion.div>
 
         {/* Capability Blocks - Merged from CapabilitySnapshot */}
-        <div className="mt-24 pt-16 border-t border-white/[0.04]">
+        <div className="mt-24 pt-16 border-t border-white/[0.08]">
           <span className="text-xs uppercase tracking-widest text-amber-500/60 mb-12 block">
             {isFa ? "چگونه کار می‌کنم" : "How I Work"}
           </span>
@@ -78,7 +78,7 @@ export const About = memo(({ lang }: { lang: Language }) => {
                   ease: [0.16, 1, 0.3, 1],
                   delay: index * 0.1
                 }}
-                className="min-w-[85vw] md:min-w-0 snap-center group p-8 rounded-2xl bg-white/[0.02] border border-white/[0.04] hover:bg-white/[0.03] hover:border-white/[0.08] transition-all duration-500"
+                className="min-w-[85vw] md:min-w-0 snap-center group p-8 rounded-2xl bg-white/[0.02] border border-white/[0.08] hover:bg-white/[0.03] hover:border-white/[0.12] transition-all duration-500"
               >
                 <div className="mb-6 text-amber-500/40">
                   {index === 0 && <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="10"/></svg>}

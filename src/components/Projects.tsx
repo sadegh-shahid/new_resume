@@ -121,7 +121,7 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
                   ease: [0.16, 1, 0.3, 1],
                   delay: index * 0.15,
                 }}
-                className={`group flex flex-col p-6 md:p-10 lg:p-12 rounded-3xl card-bg border border-white/[0.03] transition-all duration-500 cursor-pointer focus:outline-none focus:ring-1 focus:ring-amber-500/30 ${isLast ? 'border-l-2 border-l-amber-500/20 rtl:border-l-0 rtl:border-r-2 rtl:border-r-amber-500/20' : ''}`}
+                className={`group flex flex-col p-6 md:p-10 lg:p-12 rounded-3xl card-bg border border-white/[0.08] transition-all duration-500 cursor-pointer focus:outline-none focus:ring-1 focus:ring-amber-500/30 ${isLast ? 'border-l-2 border-l-amber-500/20 rtl:border-l-0 rtl:border-r-2 rtl:border-r-amber-500/20' : ''}`}
                 onClick={() => {
                   setSelectedProject(item.id);
                   setCurrentImageIndex(0);
@@ -216,7 +216,7 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.95, y: 20 }}
                     transition={{ duration: 0.1 }}
-                    className="relative w-full max-w-5xl bg-[#111] overflow-y-auto md:overflow-hidden rounded-3xl border border-white/10 shadow-2xl flex flex-col md:flex-row my-auto max-h-[80vh] z-10"
+                    className="relative w-full max-w-5xl glass-surface !bg-black/40 !backdrop-blur-2xl !border-white/[0.15] overflow-y-auto md:overflow-hidden rounded-3xl shadow-2xl flex flex-col md:flex-row my-auto max-h-[80vh] z-10"
                   >
                     <button
                       onClick={() => setSelectedProject(null)}

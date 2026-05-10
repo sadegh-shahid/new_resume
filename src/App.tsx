@@ -31,13 +31,13 @@ export default function App() {
 
   return (
     <div
-      className="min-h-screen selection:bg-[#D6C7A8] selection:text-[#0A0A0A] bg-[#0A0A0A]"
+      className="min-h-screen selection:bg-[#D6C7A8] selection:text-[#0A0A0A] bg-[#08090A]"
       dir={lang === "fa" ? "rtl" : "ltr"}
       lang={lang}
     >
       {/* Progress Bar — Visible but refined */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-[2px] bg-[#D6C7A8] z-[60] origin-left shadow-[0_0_12px_rgba(214,199,168,0.35)]"
+        className="fixed top-0 left-0 right-0 h-[2px] bg-[#D6C7A8] z-[60] origin-left accent-glow"
         style={{ scaleX }}
       />
 
@@ -56,7 +56,7 @@ export default function App() {
       </main>
 
       {/* Footer - Minimal, Quiet */}
-      <footer className="text-center flex justify-center items-center flex-col py-16 text-white/70 text-[12px] tracking-widest border-t border-white/[0.04] mt-32">
+      <footer className="text-center flex justify-center items-center flex-col py-16 text-white/70 text-[12px] tracking-widest border-t border-white/[0.08] mt-32">
         <p className="font-light">{portfolioData[lang].footer.tagline}</p>
         <p className="mt-3 text-white/50">
           {portfolioData[lang].footer.copyright.replace(

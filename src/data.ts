@@ -29,9 +29,9 @@ export const portfolioData = {
     },
     hero: {
       role: "Brand Identity Designer · Full-Stack Developer · AI Creative Systems",
-      title: "Digital experiences,\nshot like cinema",
+      title: "Most websites are forgettable.\nI build the ones that linger.",
       description:
-        "Digital products that feel like cinema — built for brands that refuse to look ordinary. I design interfaces where every transition drives trust and every detail converts attention into action.",
+        "Digital experiences shot like cinema — where every transition earns trust and every detail converts attention into action.",
       ctaPrimary: "View Projects",
       ctaSecondary: "Start a Project",
     },
@@ -61,10 +61,10 @@ export const portfolioData = {
     about: {
       title: "Approach",
       paragraphs: [
-        "I design and engineer interfaces where photography, motion, and code converge. Every pixel, transition, and interaction is intentional — never decorative.",
-        "My process is rooted in cinematic thinking. I treat digital experiences like film: rhythm, atmosphere, tension, and emotional clarity matter more than visual complexity.",
-        "AI is integrated into my creative workflow—not as automation, but as a thinking partner. It helps me explore faster, iterate deeper, and discover directions I might miss alone.",
-        "Performance is aesthetics. Restraint is confidence. Precision is the difference between being seen and being remembered.",
+        "I'm obsessed with the moment a user forgets they're looking at a screen. That happens when photography, motion, and code stop fighting each other and start telling one lie together.",
+        "I treat digital experiences like film reels. Rhythm. Atmosphere. Tension. Emotional clarity. These matter more than visual complexity. A slow fade can be more powerful than a thousand animations.",
+        "AI isn't a tool I use. It's a voice I argue with. The best ideas come from that friction — when the machine suggests something absurd and I have to prove why the human way matters.",
+        "Performance is aesthetics. Restraint is confidence. And precision — the kind you feel before you understand it — is the only thing that separates being seen from being remembered.",
       ],
       location:
         "Based in Iran • Available for selective international projects",
@@ -134,7 +134,7 @@ export const portfolioData = {
           result:
             "Achieved near-perfect Lighthouse scores, 100% automated deployment, and an enterprise-grade security posture with real-time SEO capabilities.",
           impact:
-            "Reduced content management overhead by 70% and established a brand presence that positioned AFS as the premium player in solar energy within 90 days of launch.",
+            "Cut their content chaos in half and made them look like the Tesla of solar energy in Iran.",
           details:
             "This overarching project required a full brand identity creation from scratch and translating it into a performant web presence. Concurrently, I designed and built a custom headless CMS featuring a block-based architecture, nested pages, content slots, auto-saving drafts, and a Tiptap rich-text editor integrated with a powerful media library. Emphasized security through granular RBAC, JWT revocation, HttpOnly secure cookies, CSRF protection, file upload magic-number validation, and comprehensive audit logs. Architected the backend using Drizzle ORM on MariaDB, enabling seamless SSG hydration and maximum performance. Established fully automated deployments to cPanel via GitHub Actions.",
           readMore: "Read More",
@@ -160,7 +160,7 @@ export const portfolioData = {
           result:
             "Reduced task completion time by 30% and unified the visual language across 5+ internal platforms.",
           impact:
-            "Cut internal training time by 40% and unified 5+ platforms under one visual system — making the team faster and the product easier to scale.",
+            "Turned their internal tools from a daily headache into something their team actually wanted to use.",
           details:
             "Designed and developed numerous front-end interfaces for internal organizational tools. The focus was heavily on component reusability, maintaining a clean UI/UX standard across different systems, and improving overall operational efficiency.",
           readMore: "Read More",
@@ -322,8 +322,8 @@ export const portfolioData = {
     },
     humanMoment: {
       quote:
-        "Behind every pixel and line of code, there's a person who cares deeply about the details you might never notice.",
-      attribution: "— A quiet note",
+        "I once spent three hours adjusting the easing on a button hover. Nobody will notice. Everybody will feel it.",
+      attribution: "",
     },
     contact: {
       title: "Let's work together",
@@ -354,9 +354,9 @@ export const portfolioData = {
     },
     hero: {
       role: "طراح هویت برند · توسعه‌دهنده فول‌استک · سیستم‌های خلاقانه AI",
-      title: "تجربه‌های دیجیتال،\nبا نگاه سینمایی",
+      title: "اغلب وب‌سایت‌ها فراموش‌شدنی‌اند.\nمن آن‌هایی را می‌سازم که در ذهن می‌مانند.",
       description:
-        "محصولات دیجیتالی که حس سینما را دارند — برای برندهایی ساخته شده که نمی‌‌پذیرند معمولی به نظر برسند. رابط‌هایی طراحی می‌کنم که هر ترنزیشن اعتماد می‌سازد و هر جزئیات، توجه را به عمل تبدیل می‌کند.",
+        "تجربه‌های دیجیتالی با دکوپاژ سینمایی — جایی که هر ترنزیشن اعتماد می‌سازد و هر جزئیات، توجه را به عمل تبدیل می‌کند.",
       ctaPrimary: "مشاهده پروژه‌ها",
       ctaSecondary: "شروع یک پروژه",
     },
@@ -384,10 +384,10 @@ export const portfolioData = {
     about: {
       title: "رویکرد",
       paragraphs: [
-        "من رابط‌هایی را طراحی و مهندسی می‌کنم که در آن‌ها عکاسی، موشن و کد با هم تلاقی می‌کنند. هر پیکسل، ترنزیشن و تعامل، هدفمند است و هرگز جنبه صرفاً تزیینی ندارد.",
-        "فرآیند من ریشه در تفکر سینمایی دارد. من با تجربه‌های دیجیتال مانند فیلم برخورد می‌کنم: ریتم، اتمسفر، تعلیق و وضوح احساسی بیش از پیچیدگی‌های بصری اهمیت دارند.",
-        "هوش مصنوعی در جریان‌کار خلاقانه من ادغام شده است؛ نه به عنوان اتوماسیون، بلکه به عنوان یک شریک فکری. این ابزار به من کمک می‌کند سریع‌تر کاوش کنم، عمیق‌تر تکرار کنم و مسیرهایی را کشف کنم که ممکن بود به تنهایی نادیده بگیرم.",
-        "عملکرد، عین زیبایی است. خویشتن‌داری، نشانه اعتمادبه‌نفس. و دقت، مرز بین دیده شدن و به یاد ماندن است.",
+        "من شیفته لحظه‌ای هستم که کاربر فراموش می‌کند به یک صفحه نمایش خیره شده است. این زمانی اتفاق می‌افتد که عکاسی، موشن و کد دست از جنگیدن با هم برمی‌دارند و با هم یک رویای مشترک را روایت می‌کنند.",
+        "من با تجربه‌های دیجیتال مانند پلان‌های سینمایی برخورد می‌کنم. ریتم، اتمسفر، تعلیق و وضوح احساسی؛ این‌ها بیش از پیچیدگی‌های بصری اهمیت دارند. گاهی یک فیدِ آرام، قدرتمندتر از هزاران انیمیشن است.",
+        "هوش مصنوعی برای من صرفاً یک ابزار نیست؛ صدایی است که با آن بحث می‌کنم. بهترین ایده‌ها از دل همین اصطکاک بیرون می‌آیند — وقتی ماشین پیشنهادی پوچ می‌دهد و من باید ثابت کنم چرا نگاه انسانی هنوز مهم است.",
+        "عملکرد، عین زیبایی است. خویشتن‌داری، نشانه اعتمادبه‌نفس. و دقت — از آن نوعی که قبل از درک کردن، حسش می‌کنید — تنها چیزی است که مرز بین دیده شدن و به یاد ماندن را تعیین می‌کند.",
       ],
       location: "مستقر در قم • آماده برای پروژه‌های منتخب دورکاری و هیبرید",
       coreFocus: [
@@ -455,7 +455,7 @@ export const portfolioData = {
           result:
             "دستیابی به امتیازهای عالی در Lighthouse، استقرار ۱۰۰٪ خودکار و وضعیت امنیتی در سطح سازمانی با قابلیت‌های سئو بلادرنگ.",
           impact:
-            "۷۰٪ کاهش در هزینه‌های مدیریت محتوا و ساخت یک حضور برند که AFS را در ۹۰ روز اول به عنوان بازیگر برتر انرژی خورشیدی معرفی کرد.",
+            "هرج و مرج محتوایی آن‌ها را به نصف رساندم و تصویری همچون تسلای انرژی خورشیدی در ایران برایشان ساختم.",
           details:
             "این پروژه نیازمند خلق هویت برند از پایه بود که به طراحی یک حضور دیجیتال کارآمد منجر شد. هم‌زمان، معماری یک سیستم مدیریت محتوا با قابلیت‌های پیشرفته شامل ساختار بلاک‌بیس، مدیریت صفحات تودرتو، اسلات‌های محتوا، ذخیره خودکار پیش‌نویس‌ها و پیاده‌سازی ادیتور Tiptap همراه با مدیریت یکپارچه مدیا انجام شد. امنیت سیستم به‌شدت مورد توجه قرار گرفت و به‌وسیله RBAC، کوکی‌های دور از دسترس مرورگر، جلوگیری از حملات پیشرفته، اعتبارسنجی فایل‌های آپلودی مبتنی‌بر ساختار باینری، و لاگ‌های کامل کاربری تضمین شد. بک‌اند با استفاده از Drizzle و MariaDB بازطراحی شد که بستر پیاده‌سازی SSG و بهبود راندمان را فراهم آورد. سیستم CI/CD اتوماتیک نیز با گیت‌هاب اکشنز پیاده‌سازی شد.",
           readMore: "بیشتر بخوانید",
@@ -481,7 +481,7 @@ export const portfolioData = {
           result:
             "کاهش ۳۰ درصدی زمان انجام وظایف و یکپارچه‌سازی زبان بصری در بیش از ۵ پلتفرم داخلی.",
           impact:
-            "۴۰٪ کاهش در زمان آموزش داخلی و یکپارچه‌سازی ۵+ پلتفرم زیر یک سیستم بصری — تیم را سریع‌تر و محصول را برای مقیاس‌پذیری آسان‌تر کرد.",
+            "ابزارهای داخلی‌شان را از یک سردرد روزمره به چیزی تبدیل کردم که تیم واقعاً دوست داشت از آن استفاده کند.",
           details:
             "طراحی و توسعه چندین رابط کاربری برای ابزارهای سازمانی با تمرکز شدید بر قابلیت استفاده مجدد کامپوننت‌ها حفظ استانداردهای UI/UX و بهبود راندمان کلی سیستم.",
           readMore: "بیشتر بخوانید",
@@ -629,8 +629,8 @@ export const portfolioData = {
     },
     humanMoment: {
       quote:
-        "پشت هر پیکسل و هر خط کد، انسانی هست که برای جزئیاتی اهمیت قائل است که شاید هرگز نبینید.",
-      attribution: "— یادداشتی آرام",
+        "یک بار سه ساعت را صرف تنظیم نرمیِ حرکتِ هاور یک دکمه کردم. هیچکس متوجه نخواهد شد. همه آن را حس خواهند کرد.",
+      attribution: "",
     },
     contact: {
       title: "همکاری",
