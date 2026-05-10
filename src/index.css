@@ -183,6 +183,14 @@ a:hover {
 }
 
 /* Utility Classes */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 .bg-primary {
   background-color: #08090A;
 }

@@ -91,7 +91,10 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
             transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
             className="absolute inset-0 flex items-center justify-center will-change-transform"
           >
-            <div className="relative w-[420px] h-[420px] rounded-full border border-[#D6C7A8]/15 backdrop-blur-[40px] saturate-[180%] shadow-[inset_0_0_80px_rgba(214,199,168,0.08)]">
+            <div className="relative w-[420px] h-[420px] rounded-full border border-[#D6C7A8]/15 backdrop-blur-[40px] saturate-[180%] shadow-[inset_0_0_80px_rgba(214,199,168,0.08)] overflow-hidden">
+              {/* Texture Layer to make blur visible */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-amber-500/[0.03] to-transparent pointer-events-none" />
+
               {/* Chromatic Aberration Pseudo-element */}
               <div className="absolute -inset-[1px] rounded-full mix-blend-screen opacity-50">
                 <div className="absolute inset-0 rounded-full border-l-2 border-red-500/20 -translate-x-[2px]" />

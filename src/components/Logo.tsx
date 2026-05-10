@@ -41,7 +41,10 @@ export const Logo = ({ isDrawing = false, className = "w-8 h-8" }: LogoProps) =>
                 opacity: { duration: 0.8 },
                 fill: { delay: 0.8, duration: 0.4 }
               }
-            } : undefined,
+            } : {
+              pathLength: 1,
+              opacity: 1
+            },
             hover: { x: 3, y: 2 }
           }}
           transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
@@ -65,7 +68,10 @@ export const Logo = ({ isDrawing = false, className = "w-8 h-8" }: LogoProps) =>
                 opacity: { duration: 0.8 },
                 fill: { delay: 0.8, duration: 0.4 }
               }
-            } : undefined,
+            } : {
+              pathLength: 1,
+              opacity: 1
+            },
             hover: { x: -3, y: -2 }
           }}
           transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}

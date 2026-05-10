@@ -21,16 +21,9 @@ export const TransitionMoment = memo(({ lang }: { lang: Language }) => {
           <blockquote className={`text-3xl md:text-5xl font-light text-[#F3F1EB]/80 leading-snug ${!isFa ? 'tracking-[-0.02em]' : ''}`}>
             {quote}
           </blockquote>
-          {!isFa && (
-             <p className="mt-8 text-white/40 text-xs uppercase tracking-widest">
-              {author}
-            </p>
-          )}
-          {isFa && (
-             <p className="mt-8 text-white/40 text-sm font-light">
-              {author}
-            </p>
-          )}
+          <p className={`mt-8 text-white/40 text-xs tracking-widest ${!isFa ? 'uppercase' : 'font-light'}`}>
+            {author}
+          </p>
         </motion.div>
       </div>
     </section>
