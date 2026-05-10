@@ -15,7 +15,7 @@ export const WordReveal = ({ text, className }: WordRevealProps) => {
       viewport={{ once: true, margin: "-100px" }}
     >
       {words.map((word, i) => (
-        <span key={i} className="inline-block overflow-hidden me-[0.25em]">
+        <span key={i} className="inline-block overflow-hidden me-[0.25em] last:me-0">
           <motion.span
             className="inline-block"
             variants={{

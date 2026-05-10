@@ -94,7 +94,7 @@ export default function App() {
 
         {/* Watermark */}
         <div
-          className="absolute bottom-0 left-0 translate-y-1/2 text-[20vw] font-light text-white/[0.02] leading-none pointer-events-none select-none z-0"
+          className="absolute bottom-0 end-0 translate-y-1/2 text-[20vw] font-light text-white/[0.02] leading-none pointer-events-none select-none z-0"
           aria-hidden="true"
         >
           {lang === 'fa' ? 'پایان' : 'END'}

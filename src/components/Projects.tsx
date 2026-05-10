@@ -177,7 +177,7 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
                   <div className="relative h-20 mb-8 overflow-hidden rounded-lg group/thumbs">
                     <motion.div
                       className="flex gap-2 h-full"
-                      whileHover={{ x: isFa ? "20%" : "-20%" }}
+                      whileHover={{ x: "-20%" }}
                       transition={{ duration: 2, ease: "linear" }}
                     >
                       {item.images.slice(0, 3).map((img, i) => (
@@ -251,7 +251,7 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
                   >
                     <button
                       onClick={() => setSelectedProject(null)}
-                      className="absolute top-6 right-6 z-20 p-3 bg-white/5 hover:bg-white/10 text-white rounded-full backdrop-blur-md border border-white/[0.08] transition-colors"
+                      className="absolute top-6 right-6 rtl:left-6 rtl:right-auto z-20 p-3 bg-white/5 hover:bg-white/10 text-white rounded-full backdrop-blur-md border border-white/[0.08] transition-colors"
                       aria-label="Close dialog"
                     >
                       <X size={24} />
