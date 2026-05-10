@@ -16,7 +16,8 @@ export const Header = memo(({ lang, setLang }: HeaderProps) => {
 
   const headerHeight = useTransform(scrollY, [0, 50], ["72px", "56px"]);
   const headerBg = useTransform(scrollY, [0, 50], ["rgba(10, 10, 10, 0.6)", "rgba(8, 9, 10, 0.9)"]);
-  const headerBorder = useTransform(scrollY, [0, 50], ["rgba(255, 255, 255, 0.08)", "rgba(255, 255, 255, 0.06)"]);
+  const headerBorder = useTransform(scrollY, [0, 50], ["rgba(255, 255, 255, 0.08)", "rgba(255, 255, 255, 0.12)"]);
+  const headerShadow = useTransform(scrollY, [0, 50], ["0 0 0 rgba(0,0,0,0)", "0 8px 32px rgba(0,0,0,0.6)"]);
   const logoScale = useTransform(scrollY, [0, 50], [1, 0.9]);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
@@ -36,7 +37,8 @@ export const Header = memo(({ lang, setLang }: HeaderProps) => {
       style={{
         height: headerHeight,
         backgroundColor: headerBg,
-        borderBottomColor: headerBorder
+        borderBottomColor: headerBorder,
+        boxShadow: headerShadow
       }}
       className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 backdrop-blur-xl border-b transition-colors duration-300"
       role="banner"
@@ -56,16 +58,16 @@ export const Header = memo(({ lang, setLang }: HeaderProps) => {
           {t.projects}
           <span className="absolute bottom-[-4px] start-1/2 w-0 h-[1px] bg-[#D6C7A8] transition-all duration-300 group-hover:w-full group-hover:start-0"></span>
         </a>
+        <a href="#testimonials" onClick={(e) => handleNavClick(e, 'testimonials')} className="hover:text-white transition-colors relative group">
+          {t.testimonials}
+          <span className="absolute bottom-[-4px] start-1/2 w-0 h-[1px] bg-[#D6C7A8] transition-all duration-300 group-hover:w-full group-hover:start-0"></span>
+        </a>
         <a href="#experience" onClick={(e) => handleNavClick(e, 'experience')} className="hover:text-white transition-colors relative group">
           {t.experience}
           <span className="absolute bottom-[-4px] start-1/2 w-0 h-[1px] bg-[#D6C7A8] transition-all duration-300 group-hover:w-full group-hover:start-0"></span>
         </a>
         <a href="#visual-works" onClick={(e) => handleNavClick(e, 'visual-works')} className="hover:text-white transition-colors relative group">
           {t.visual}
-          <span className="absolute bottom-[-4px] start-1/2 w-0 h-[1px] bg-[#D6C7A8] transition-all duration-300 group-hover:w-full group-hover:start-0"></span>
-        </a>
-        <a href="#testimonials" onClick={(e) => handleNavClick(e, 'testimonials')} className="hover:text-white transition-colors relative group">
-          {t.testimonials}
           <span className="absolute bottom-[-4px] start-1/2 w-0 h-[1px] bg-[#D6C7A8] transition-all duration-300 group-hover:w-full group-hover:start-0"></span>
         </a>
         <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')} className="hover:text-white transition-colors relative group">
@@ -124,24 +126,24 @@ export const Header = memo(({ lang, setLang }: HeaderProps) => {
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
             style={{ top: headerHeight }}
-            className="absolute left-0 right-0 bg-[#08090A]/95 backdrop-blur-xl border-b border-white/[0.12] p-6 flex flex-col gap-4 md:hidden z-40"
+            className="absolute left-0 right-0 bg-[#08090A] backdrop-blur-xl border-b border-white/[0.12] p-6 flex flex-col gap-4 md:hidden z-40 shadow-[0_20px_60px_rgba(0,0,0,0.8)]"
           >
-            <a href="#about" onClick={(e) => handleNavClick(e, 'about')} className="text-lg text-white/70 hover:text-white py-2 border-b border-white/[0.08]">
+            <a href="#about" onClick={(e) => handleNavClick(e, 'about')} className="text-lg text-white/90 hover:text-white py-3 border-b border-white/[0.08]">
               {t.about}
             </a>
-            <a href="#projects" onClick={(e) => handleNavClick(e, 'projects')} className="text-lg text-white/70 hover:text-white py-2 border-b border-white/[0.08]">
+            <a href="#projects" onClick={(e) => handleNavClick(e, 'projects')} className="text-lg text-white/90 hover:text-white py-3 border-b border-white/[0.08]">
               {t.projects}
             </a>
-            <a href="#experience" onClick={(e) => handleNavClick(e, 'experience')} className="text-lg text-white/70 hover:text-white py-2 border-b border-white/[0.08]">
-              {t.experience}
-            </a>
-            <a href="#visual-works" onClick={(e) => handleNavClick(e, 'visual-works')} className="text-lg text-white/70 hover:text-white py-2 border-b border-white/[0.08]">
-              {t.visual}
-            </a>
-            <a href="#testimonials" onClick={(e) => handleNavClick(e, 'testimonials')} className="text-lg text-white/70 hover:text-white py-2 border-b border-white/[0.08]">
+            <a href="#testimonials" onClick={(e) => handleNavClick(e, 'testimonials')} className="text-lg text-white/90 hover:text-white py-3 border-b border-white/[0.08]">
               {t.testimonials}
             </a>
-            <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')} className="text-lg text-white/70 hover:text-white py-2 border-b border-white/[0.08]">
+            <a href="#experience" onClick={(e) => handleNavClick(e, 'experience')} className="text-lg text-white/90 hover:text-white py-3 border-b border-white/[0.08]">
+              {t.experience}
+            </a>
+            <a href="#visual-works" onClick={(e) => handleNavClick(e, 'visual-works')} className="text-lg text-white/90 hover:text-white py-3 border-b border-white/[0.08]">
+              {t.visual}
+            </a>
+            <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')} className="text-lg text-white/90 hover:text-white py-3 border-b border-white/[0.08]">
               {t.contact}
             </a>
           </motion.div>

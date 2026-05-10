@@ -19,10 +19,10 @@ export const VisualWorks = memo(({ lang }: { lang: Language }) => {
       className="px-6 max-w-5xl mx-auto section-quiet relative"
     >
       <div
-        className="absolute -top-8 -left-12 rtl:-left-auto rtl:-right-12 text-[clamp(12rem,30vw,24rem)] font-light text-white/[0.03] leading-none select-none pointer-events-none z-0 overflow-hidden whitespace-nowrap"
+        className="hidden md:block absolute -top-8 -left-12 rtl:-left-auto rtl:-right-12 text-[clamp(10rem,20vw,18rem)] font-light text-white/[0.03] leading-none select-none pointer-events-none z-0 overflow-hidden whitespace-nowrap"
         aria-hidden="true"
       >
-        {isFa ? "۰۴" : "04"}
+        {isFa ? "۰۵" : "05"}
       </div>
       <motion.div
         initial={{ opacity: 0 }}
@@ -64,7 +64,7 @@ export const VisualWorks = memo(({ lang }: { lang: Language }) => {
                   </h3>
                   <motion.div
                     animate={{ rotate: isExpanded ? 180 : 0 }}
-                    className="text-white/30 shrink-0 ml-4"
+                    className="text-white/30 shrink-0 ms-4"
                   >
                     <ChevronDown size={20} aria-hidden="true" />
                   </motion.div>

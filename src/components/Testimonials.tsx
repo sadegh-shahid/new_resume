@@ -15,10 +15,10 @@ export const Testimonials = memo(({ lang }: { lang: Language }) => {
       aria-labelledby="testimonials-heading"
     >
       <div
-        className="absolute -top-8 -left-12 rtl:-left-auto rtl:-right-12 text-[clamp(12rem,30vw,24rem)] font-light text-white/[0.03] leading-none select-none pointer-events-none z-0 overflow-hidden whitespace-nowrap"
+        className="hidden md:block absolute -top-8 -left-12 rtl:-left-auto rtl:-right-12 text-[clamp(10rem,20vw,18rem)] font-light text-white/[0.03] leading-none select-none pointer-events-none z-0 overflow-hidden whitespace-nowrap"
         aria-hidden="true"
       >
-        {isFa ? "۰۵" : "05"}
+        {isFa ? "۰۳" : "03"}
       </div>
       <motion.div
         initial={{ opacity: 0 }}
@@ -62,7 +62,7 @@ export const Testimonials = memo(({ lang }: { lang: Language }) => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className={`flex flex-col p-8 rounded-3xl bg-white/5 border border-white/5 ${index === 0 ? 'border-l-2 border-l-amber-500/20 rtl:border-l-0 rtl:border-r-2 rtl:border-r-amber-500/20' : ''}`}
+              className={`flex flex-col p-8 rounded-3xl bg-white/5 border border-white/5`}
             >
               <Quote
                 className="text-amber-500/30 mb-6"

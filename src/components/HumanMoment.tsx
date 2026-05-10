@@ -35,6 +35,7 @@ export const HumanMoment = memo(({ lang }: { lang: Language }) => {
   return (
     <section
       className="min-h-screen flex items-center justify-center px-6 overflow-hidden border-t border-b border-white/[0.08] relative py-0"
+      style={{ minHeight: '100dvh' }}
     >
       <div className="max-w-5xl mx-auto text-center" ref={ref}>
         {/* Decorative horizontal line */}
