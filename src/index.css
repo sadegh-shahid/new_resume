@@ -316,8 +316,8 @@ a:hover {
 
 /* Visual silence - extra breathing room */
 .section-silent {
-  padding-top: clamp(200px, 22vw, 320px);
-  padding-bottom: clamp(200px, 22vw, 320px);
+  padding-top: clamp(200px, 15vw, 320px);
+  padding-bottom: clamp(160px, 15vw, 320px);
 }
 
 

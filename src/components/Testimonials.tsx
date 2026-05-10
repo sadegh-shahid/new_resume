@@ -31,7 +31,7 @@ export const Testimonials = memo(({ lang }: { lang: Language }) => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, ease: "easeOut" }}
             id="testimonials-heading"
-            className="text-4xl md:text-6xl font-light tracking-tighter mb-12"
+            className="text-4xl md:text-6xl font-light tracking-tighter mb-12 pb-7"
           >
             {t.title}
           </motion.h2>
