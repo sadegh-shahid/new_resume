@@ -647,7 +647,7 @@ export const portfolioData = {
     footer: {
       tagline:
         "هر پروژه‌ای در این سایت با این باور ساخته شده که خویشتن‌داری قدرتمندتر از هیاهو است. اگر شما هم به این باور دارید، باید با هم صحبت کنیم.",
-      copyright: "© {year} صادق شهید",
+      copyright: "© {year} sadegh shahid",
     },
   },
 };
