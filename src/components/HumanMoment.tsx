@@ -52,7 +52,7 @@ export const HumanMoment = memo(({ lang }: { lang: Language }) => {
           className={`text-[clamp(1.5rem,4vw,3.5rem)] font-light text-white/80 tracking-tight ${isFa ? 'leading-[1.6] tracking-normal' : 'leading-[1.3]'}`}
         >
           {words.map((word, idx) => (
-            <span key={idx} className="inline-block mr-[0.25em] last:mr-0">
+            <span key={idx} className="inline-block me-[0.25em] last:me-0">
               <motion.span
                 variants={wordVariants}
                 className="inline-block"
