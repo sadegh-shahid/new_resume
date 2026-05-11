@@ -120,7 +120,7 @@ export const Experience = memo(({ lang }: { lang: Language }) => {
                       <ChevronDown size={16} aria-hidden="true" />
                     </motion.div>
                   </div>
-                  <h3 className="text-xl font-light mb-1 text-white">
+                  <h3 className="text-subhead font-light mb-1 text-white">
                     {item.role}
                   </h3>
                   <span className="text-sm font-medium text-white/60 block mb-4">

@@ -179,7 +179,7 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
                 />
 
                 <div className="flex flex-col-reverse md:flex-row md:justify-between items-start mb-12 gap-4 md:gap-0">
-                  <h3 className="text-[clamp(1.4rem, 3vw, 1.8rem)] font-light pr-0 md:pr-8 rtl:pr-0 rtl:md:pl-8 text-[#F3F1EB]">
+                  <h3 className="text-subhead font-light pr-0 md:pr-8 rtl:pr-0 rtl:md:pl-8 text-[#F3F1EB]">
                     {item.name}
                   </h3>
                   <div className="flex w-full md:w-auto justify-end gap-2 shrink-0 z-10 relative">

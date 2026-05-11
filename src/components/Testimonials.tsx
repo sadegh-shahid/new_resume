@@ -48,7 +48,7 @@ export const Testimonials = memo(({ lang }: { lang: Language }) => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="bg-white/5 border border-white/5 rounded-2xl p-8 text-center"
               >
-                <div className="text-3xl md:text-4xl font-light text-amber-500 mb-2">
+                <div className="text-section-title font-light text-amber-500 mb-2">
                   {stat.value}
                 </div>
                 <div className="text-xs uppercase tracking-widest text-white/60">
