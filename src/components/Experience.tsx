@@ -47,7 +47,7 @@ export const Experience = memo(({ lang }: { lang: Language }) => {
   return (
     <section
       id="experience"
-      className="px-6 max-w-5xl mx-auto border-t border-white/[0.08] section-quiet relative"
+      className="px-6 max-w-5xl mx-auto border-t border-white/[0.08] section-mezzo relative"
     >
       <div
         className="hidden md:block absolute -top-8 -left-12 rtl:-left-auto rtl:-right-12 text-[clamp(10rem,20vw,18rem)] font-light text-white/[0.03] leading-none select-none pointer-events-none z-0 overflow-hidden whitespace-nowrap"

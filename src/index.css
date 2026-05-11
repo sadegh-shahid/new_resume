@@ -13,9 +13,16 @@
   --color-border-soft: rgba(255, 255, 255, 0.08);
   --color-accent-ivory: #D6C7A8;
   --color-accent-olive: #5E6654;
-  --color-accent-amber: #B07D52;
+  --color-accent-amber: #C9945F;
   --color-shadow-deep: rgba(0, 0, 0, 0.45);
 }
+
+/* CONTRAST COMPLIANCE:
+   #F3F1EB: 17.64:1 - any size
+   #D6C7A8: 11.95:1 - any size
+   #C9945F: 7.2:1 - 18px+ or bold 14px+
+   #8B8B8B: 5.85:1 - 18px+ only, never for small labels
+*/
 
 /* Global Reset & Base */
 *, *::before, *::after {
@@ -261,7 +268,7 @@ a:hover {
 }
 
 .accent-amber {
-  color: #B07D52;
+  color: #C9945F;
 }
 
 /* Animation Easing - Slow Confidence */
@@ -349,8 +356,8 @@ a:hover {
   }
 }
 
-/* Quiet sections - intentional stillness */
-.section-quiet {
+/* Mezzo sections - intentional stillness */
+.section-mezzo {
   padding-top: clamp(160px, 18vw, 180px);
   padding-bottom: clamp(120px, 18vw, 180px);
 }
@@ -361,8 +368,8 @@ a:hover {
   padding-bottom: clamp(80px, 10vw, 120px);
 }
 
-/* Visual silence - extra breathing room */
-.section-silent {
+/* Forte sections - extra breathing room */
+.section-forte {
   padding-top: clamp(200px, 15vw, 320px);
   padding-bottom: clamp(160px, 15vw, 320px);
 }
