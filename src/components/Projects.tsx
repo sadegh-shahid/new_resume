@@ -2,7 +2,7 @@ import React, { memo, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { useState, useEffect } from "react";
 import { portfolioData, Language } from "../data";
-import { ArrowUpRight, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowUpRight, ArrowUpLeft, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { WordReveal } from "./WordReveal";
 import { useScrollVelocity } from "../hooks/useScrollVelocity";
 import { usePrefersReducedMotion } from "../hooks/usePrefersReducedMotion";
@@ -191,7 +191,7 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
                         onClick={(e) => e.stopPropagation()}
                         className="p-3 bg-white/5 rounded-full hover:bg-white/10 transition-colors"
                       >
-                        <ArrowUpRight size={18} />
+                        {isFa ? <ArrowUpLeft size={18} /> : <ArrowUpRight size={18} />}
                       </a>
                     )}
                   </div>
@@ -243,10 +243,17 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
                     <div className="flex items-center">
                       <div className="w-full md:w-auto flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-amber-500/5 border border-amber-500/10 text-xs uppercase tracking-widest text-amber-500/80 font-medium group-hover:bg-amber-500/10 group-hover:border-amber-500/20 transition-all duration-400">
                         <span>{item.readMore}</span>
-                        <ArrowUpRight
-                          size={14}
-                          className="transition-transform group-hover:translate-x-[0.5px] group-hover:-translate-y-[0.5px] rtl:group-hover:-translate-x-[0.5px]"
-                        />
+                        {isFa ? (
+                          <ArrowUpLeft
+                            size={14}
+                            className="transition-transform group-hover:-translate-x-[0.5px] group-hover:-translate-y-[0.5px]"
+                          />
+                        ) : (
+                          <ArrowUpRight
+                            size={14}
+                            className="transition-transform group-hover:translate-x-[0.5px] group-hover:-translate-y-[0.5px]"
+                          />
+                        )}
                       </div>
                     </div>
                   </div>
@@ -345,7 +352,7 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
                                 e.stopPropagation();
                                 paginate(-1, item.images!.length);
                               }}
-                              className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-black/30 hover:bg-black/60 rounded-full text-white/70 hover:text-white backdrop-blur-sm transition-all opacity-0 group-hover/carousel:opacity-100 focus:opacity-100 -translate-x-4 group-hover/carousel:translate-x-0 z-20"
+                              className="absolute start-4 top-1/2 -translate-y-1/2 p-2 bg-black/30 hover:bg-black/60 rounded-full text-white/70 hover:text-white backdrop-blur-sm transition-all opacity-0 group-hover/carousel:opacity-100 focus:opacity-100 -translate-x-4 group-hover/carousel:translate-x-0 z-20"
                               aria-label="Previous image"
                             >
                               <ChevronLeft size={24} />
@@ -355,7 +362,7 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
                                 e.stopPropagation();
                                 paginate(1, item.images!.length);
                               }}
-                              className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-black/30 hover:bg-black/60 rounded-full text-white/70 hover:text-white backdrop-blur-sm transition-all opacity-0 group-hover/carousel:opacity-100 focus:opacity-100 translate-x-4 group-hover/carousel:translate-x-0 z-20"
+                              className="absolute end-4 top-1/2 -translate-y-1/2 p-2 bg-black/30 hover:bg-black/60 rounded-full text-white/70 hover:text-white backdrop-blur-sm transition-all opacity-0 group-hover/carousel:opacity-100 focus:opacity-100 translate-x-4 group-hover/carousel:translate-x-0 z-20"
                               aria-label="Next image"
                             >
                               <ChevronRight size={24} />
@@ -382,9 +389,9 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
                     )}
 
                     <div
-                      className={`flex-1 flex flex-col w-full ${item.images && item.images.length > 0 ? "md:w-1/2" : ""} p-6 md:p-12 overflow-visible md:overflow-y-auto bg-gradient-to-b from-transparent to-black/20`}
+                      className={`flex-1 flex flex-col w-full ${item.images && item.images.length > 0 ? "md:w-1/2" : ""} p-6 md:p-12 overflow-visible md:overflow-y-auto bg-gradient-to-b from-transparent to-black/20 ps-12 lg:ps-0 lg:pe-12`}
                     >
-                      <div className="mb-6 md:mb-8 pr-12 lg:pr-0 lg:pl-12 rtl:pr-0 rtl:pl-12 rtl:lg:pl-0 rtl:lg:pr-12">
+                      <div className="mb-6 md:mb-8 ps-12 lg:ps-0 lg:pe-12">
                         <h3 className="text-4xl md:text-5xl font-light mb-2">
                           {item.name}
                         </h3>

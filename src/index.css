@@ -86,7 +86,7 @@ h1, h2, h3, h4, h5, h6 {
 
 [dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] h4, [dir="rtl"] h5, [dir="rtl"] h6 {
   font-family: "Vazirmatn", sans-serif;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 [dir="rtl"] p {
@@ -100,7 +100,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 [dir="ltr"] h1, [dir="ltr"] h2, [dir="ltr"] h3 {
-  font-family: "Inter Tight", "Inter", sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 /* Persian Typography Specifics */

@@ -86,10 +86,12 @@ export default function App() {
               <ArrowUp size={20} className="text-white/60 group-hover:text-amber-500 transition-colors" />
             </button>
             <p className="text-sm text-white/60 font-light tracking-widest">
-              {portfolioData[lang].footer.copyright.replace(
-                "{year}",
-                String(new Date().getFullYear()),
-              )}
+              <span dir="ltr">
+                {portfolioData[lang].footer.copyright.replace(
+                  "{year}",
+                  String(new Date().getFullYear()),
+                )}
+              </span>
             </p>
           </div>
         </div>
