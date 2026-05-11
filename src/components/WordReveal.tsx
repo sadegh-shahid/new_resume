@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 
 interface WordRevealProps {
   text: string;
@@ -7,6 +7,8 @@ interface WordRevealProps {
 
 export const WordReveal = ({ text, className }: WordRevealProps) => {
   const words = text.split(" ");
+  const prefersReduced = useReducedMotion();
+
   return (
     <motion.h2
       className={className}
@@ -19,7 +21,7 @@ export const WordReveal = ({ text, className }: WordRevealProps) => {
           <motion.span
             className="inline-block"
             variants={{
-              hidden: { y: "100%", opacity: 0 },
+              hidden: { y: prefersReduced ? 0 : "100%", opacity: 0 },
               visible: {
                 y: 0,
                 opacity: 1,
