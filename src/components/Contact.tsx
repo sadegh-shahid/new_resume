@@ -75,7 +75,7 @@ export const Contact = memo(({ lang }: { lang: Language }) => {
   const isEn = lang === "en";
 
   return (
-    <section id="contact" className="section-p px-gutter max-w-5xl mx-auto relative">
+    <section id="contact" className="py-24 px-6 max-w-5xl mx-auto relative">
       <motion.div
         animate={{
           scale: 1,
@@ -98,7 +98,7 @@ export const Contact = memo(({ lang }: { lang: Language }) => {
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 accent-amber text-caption uppercase tracking-widest mb-6"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-500 text-[12px] uppercase tracking-widest mb-6"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
             {isEn
@@ -107,9 +107,9 @@ export const Contact = memo(({ lang }: { lang: Language }) => {
           </motion.div>
           <WordReveal
             text={t.title}
-            className={`text-headline font-light mb-4 ${isEn ? 'tracking-tighter' : 'tracking-normal'}`}
+            className={`text-4xl md:text-5xl font-light mb-4 ${isEn ? 'tracking-tighter' : 'tracking-normal'}`}
           />
-          <p className="text-secondary text-lead max-w-xl mx-auto">{t.message}</p>
+          <p className="text-white/70 text-lg max-w-xl mx-auto">{t.message}</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 w-full">
@@ -120,15 +120,15 @@ export const Contact = memo(({ lang }: { lang: Language }) => {
                 aria-label="Send an email"
                 className="flex items-center justify-between  gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500 hover:bg-amber-500/5 transition-all duration-300 focus:outline-none w-full"
               >
-                <div className="p-3 bg-black/30 rounded-full accent-amber">
+                <div className="p-3 bg-black/30 rounded-full text-amber-500">
                   <Mail size={20} aria-hidden="true" />
                 </div>
                 <div className="flex flex-col items-start rtl:items-end">
-                  <span className="text-body text-secondary">
+                  <span className="text-sm text-white/60">
                     {isEn ? "Email" : "ایمیل"}
                   </span>
                   <span
-                    className="text-body tracking-widest text-primary font-light"
+                    className="text-sm tracking-widest text-white/90 font-light"
                     dir="ltr"
                   >
                     {t.email}
@@ -143,15 +143,15 @@ export const Contact = memo(({ lang }: { lang: Language }) => {
                 aria-label="Contact on WhatsApp"
                 className="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 justify-between  hover:border-amber-500 hover:bg-amber-500/5 transition-all duration-300 focus:outline-none w-full"
               >
-                <div className="p-3 bg-black/30 rounded-full  accent-amber">
+                <div className="p-3 bg-black/30 rounded-full  text-amber-500">
                   <Phone size={20} aria-hidden="true" />
                 </div>
                 <div className="flex flex-col items-start rtl:items-end">
-                  <span className="text-body text-secondary">
+                  <span className="text-sm text-white/60">
                     {isEn ? "WhatsApp" : "واتساپ"}
                   </span>
                   <span
-                    className="text-body tracking-widest text-primary font-light"
+                    className="text-sm tracking-widest text-white/90 font-light"
                     dir="ltr"
                   >
                     {t.phone}
@@ -166,7 +166,7 @@ export const Contact = memo(({ lang }: { lang: Language }) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn Profile"
-                className="p-4 bg-white/5 border border-white/10 text-secondary hover:accent-amber hover:border-amber-500/50 hover:bg-amber-500/10 transition-all duration-300 focus:outline-none rounded-2xl"
+                className="p-4 bg-white/5 border border-white/10 text-white/60 hover:text-amber-500 hover:border-amber-500/50 hover:bg-amber-500/10 transition-all duration-300 focus:outline-none rounded-2xl"
               >
                 <Linkedin size={22} aria-hidden="true" />
               </a>
@@ -175,7 +175,7 @@ export const Contact = memo(({ lang }: { lang: Language }) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub Profile"
-                className="p-4 bg-white/5 border border-white/10 text-secondary hover:accent-amber hover:border-amber-500/50 hover:bg-amber-500/10 transition-all duration-300 focus:outline-none rounded-2xl"
+                className="p-4 bg-white/5 border border-white/10 text-white/60 hover:text-amber-500 hover:border-amber-500/50 hover:bg-amber-500/10 transition-all duration-300 focus:outline-none rounded-2xl"
               >
                 <Github size={22} aria-hidden="true" />
               </a>
@@ -192,7 +192,7 @@ export const Contact = memo(({ lang }: { lang: Language }) => {
                   initial={{ opacity: 0, y: -20, height: 0 }}
                   animate={{ opacity: 1, y: 0, height: "auto" }}
                   exit={{ opacity: 0, y: -20, height: 0 }}
-                  className="bg-amber-500/10 border border-amber-500/30 accent-amber p-4 rounded-xl flex items-center gap-3 mb-2"
+                  className="bg-amber-500/10 border border-amber-500/30 text-amber-500 p-4 rounded-xl flex items-center gap-3 mb-2"
                 >
                   <CheckCircle2 size={24} />
                   <span className="font-semibold">
@@ -217,7 +217,7 @@ export const Contact = memo(({ lang }: { lang: Language }) => {
                   setFormData({ ...formData, name: e.target.value });
                   if (errors.name) setErrors({ ...errors, name: "" });
                 }}
-                className={`w-full bg-black/30 border ${errors.name ? "border-red-500 focus:ring-red-500/50" : "border-white/[0.15] focus:border-amber-500/50 focus:ring-amber-500/50"} rounded-xl px-4 py-3 text-primary placeholder-white/50 focus:outline-none focus:ring-1 transition-all`}
+                className={`w-full bg-black/30 border ${errors.name ? "border-red-500 focus:ring-red-500/50" : "border-white/[0.15] focus:border-amber-500/50 focus:ring-amber-500/50"} rounded-xl px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:ring-1 transition-all`}
               />
               <AnimatePresence>
                 {errors.name && (
@@ -225,7 +225,7 @@ export const Contact = memo(({ lang }: { lang: Language }) => {
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
-                    className="text-red-500 text-caption px-2"
+                    className="text-red-500 text-xs px-2"
                   >
                     {errors.name}
                   </motion.span>
@@ -246,7 +246,7 @@ export const Contact = memo(({ lang }: { lang: Language }) => {
                   setFormData({ ...formData, email: e.target.value });
                   if (errors.email) setErrors({ ...errors, email: "" });
                 }}
-                className={`w-full bg-black/30 border ${errors.email ? "border-red-500 focus:ring-red-500/50" : "border-white/[0.15] focus:border-amber-500/50 focus:ring-amber-500/50"} rounded-xl px-4 py-3 text-primary placeholder-white/50 focus:outline-none focus:ring-1 transition-all ${!isEn && "text-right"}`}
+                className={`w-full bg-black/30 border ${errors.email ? "border-red-500 focus:ring-red-500/50" : "border-white/[0.15] focus:border-amber-500/50 focus:ring-amber-500/50"} rounded-xl px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:ring-1 transition-all ${!isEn && "text-right"}`}
               />
               <AnimatePresence>
                 {errors.email && (
@@ -254,7 +254,7 @@ export const Contact = memo(({ lang }: { lang: Language }) => {
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
-                    className="text-red-500 text-caption px-2"
+                    className="text-red-500 text-xs px-2"
                   >
                     {errors.email}
                   </motion.span>
@@ -277,7 +277,7 @@ export const Contact = memo(({ lang }: { lang: Language }) => {
                   setFormData({ ...formData, phone: e.target.value });
                   if (errors.phone) setErrors({ ...errors, phone: "" });
                 }}
-                className={`w-full bg-black/30 border ${errors.phone ? "border-red-500 focus:ring-red-500/50" : "border-white/[0.15] focus:border-amber-500/50 focus:ring-amber-500/50"} rounded-xl px-4 py-3 text-primary placeholder-white/50 focus:outline-none focus:ring-1 transition-all ${!isEn && "text-right"}`}
+                className={`w-full bg-black/30 border ${errors.phone ? "border-red-500 focus:ring-red-500/50" : "border-white/[0.15] focus:border-amber-500/50 focus:ring-amber-500/50"} rounded-xl px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:ring-1 transition-all ${!isEn && "text-right"}`}
               />
               <AnimatePresence>
                 {errors.phone && (
@@ -285,7 +285,7 @@ export const Contact = memo(({ lang }: { lang: Language }) => {
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
-                    className="text-red-500 text-caption px-2"
+                    className="text-red-500 text-xs px-2"
                   >
                     {errors.phone}
                   </motion.span>
@@ -306,7 +306,7 @@ export const Contact = memo(({ lang }: { lang: Language }) => {
                   setFormData({ ...formData, message: e.target.value });
                   if (errors.message) setErrors({ ...errors, message: "" });
                 }}
-                className={`w-full bg-black/30 border ${errors.message ? "border-red-500 focus:ring-red-500/50" : "border-white/[0.15] focus:border-amber-500/50 focus:ring-amber-500/50"} rounded-xl px-4 py-3 text-primary placeholder-white/50 focus:outline-none focus:ring-1 transition-all resize-none`}
+                className={`w-full bg-black/30 border ${errors.message ? "border-red-500 focus:ring-red-500/50" : "border-white/[0.15] focus:border-amber-500/50 focus:ring-amber-500/50"} rounded-xl px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:ring-1 transition-all resize-none`}
               />
               <AnimatePresence>
                 {errors.message && (
@@ -314,7 +314,7 @@ export const Contact = memo(({ lang }: { lang: Language }) => {
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
-                    className="text-red-500 text-caption px-2"
+                    className="text-red-500 text-xs px-2"
                   >
                     {errors.message}
                   </motion.span>
@@ -325,7 +325,7 @@ export const Contact = memo(({ lang }: { lang: Language }) => {
             <button
               type="submit"
               disabled={status === "submitting" || status === "success"}
-              className="group relative flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-accent-ivory text-[#0A0A0A] font-medium hover:bg-[#E5D5B8] hover:accent-glow transition-all disabled:opacity-80 disabled:cursor-not-allowed overflow-hidden mt-2"
+              className="group relative flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-[#D6C7A8] text-[#0A0A0A] font-medium hover:bg-[#E5D5B8] hover:accent-glow transition-all disabled:opacity-80 disabled:cursor-not-allowed overflow-hidden mt-2"
             >
               <AnimatePresence mode="wait">
                 {status === "submitting" ? (

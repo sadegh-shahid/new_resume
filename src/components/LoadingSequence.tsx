@@ -30,7 +30,7 @@ export const LoadingSequence = ({ onComplete }: LoadingSequenceProps) => {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
-          className="fixed inset-0 z-[100] bg-void flex items-center justify-center overflow-hidden"
+          className="fixed inset-0 z-[100] bg-[#08090A] flex items-center justify-center overflow-hidden"
         >
           {/* Logo Drawing (0.0s - 0.8s) */}
           <motion.div
@@ -61,7 +61,7 @@ export const LoadingSequence = ({ onComplete }: LoadingSequenceProps) => {
                     initial={{ x: "-100%" }}
                     animate={{ x: "100%" }}
                     transition={{ delay: 0.6, duration: 1.4, ease: "easeInOut" }}
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-[var(--color-accent-ivory)]/20 to-transparent"
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-[#D6C7A8]/20 to-transparent"
                  />
               </motion.div>
               <motion.div
@@ -74,7 +74,7 @@ export const LoadingSequence = ({ onComplete }: LoadingSequenceProps) => {
                     initial={{ x: "-100%" }}
                     animate={{ x: "100%" }}
                     transition={{ delay: 1.2, duration: 0.8, ease: "easeInOut" }}
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-[var(--color-accent-ivory)]/20 to-transparent"
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-[#D6C7A8]/20 to-transparent"
                  />
               </motion.div>
             </div>
