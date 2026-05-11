@@ -1,18 +1,21 @@
-import React, { memo } from "react";
+import React, { memo, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { useState, useEffect } from "react";
 import { portfolioData, Language } from "../data";
 import { ArrowUpRight, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { WordReveal } from "./WordReveal";
 import { useScrollVelocity } from "../hooks/useScrollVelocity";
+import { usePrefersReducedMotion } from "../hooks/usePrefersReducedMotion";
 
 export const Projects = memo(({ lang }: { lang: Language }) => {
   const t = portfolioData[lang].projects;
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const isFa = lang === "fa";
-  const scrollSkew = useScrollVelocity(2);
+  const prefersReduced = usePrefersReducedMotion();
+  const scrollSkew = useScrollVelocity(prefersReduced ? 0 : 2);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -54,12 +57,37 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
       if (e.key === "Escape") {
         setSelectedProject(null);
       }
+
+      if (e.key === "Tab" && modalRef.current) {
+        const focusableElements = modalRef.current.querySelectorAll(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        const firstElement = focusableElements[0] as HTMLElement;
+        const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
+
+        if (e.shiftKey) {
+          if (document.activeElement === firstElement) {
+            lastElement.focus();
+            e.preventDefault();
+          }
+        } else {
+          if (document.activeElement === lastElement) {
+            firstElement.focus();
+            e.preventDefault();
+          }
+        }
+      }
     };
 
     if (selectedProject !== null) {
       document.body.style.overflow = "hidden";
       document.body.classList.add("modal-open");
       window.addEventListener("keydown", handleKeyDown);
+      // Focus the first element in the modal
+      setTimeout(() => {
+        const firstButton = modalRef.current?.querySelector('button');
+        firstButton?.focus();
+      }, 100);
     } else {
       document.body.style.overflow = "";
       document.body.classList.remove("modal-open");
@@ -92,10 +120,15 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
       >
         {/* Section Header - Editorial Style */}
         <div className="mb-28 max-w-3xl">
-          <WordReveal
-            text={t.title}
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className={`text-[clamp(2.2rem, 5vw, 3.5rem)] font-light text-[#F3F1EB] mb-6 ${isFa ? 'tracking-normal' : 'tracking-tight'}`}
-          />
+          >
+            {t.title}
+          </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -185,6 +218,9 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
                           key={i}
                           src={img}
                           alt=""
+                          onError={(e) => {
+                            e.currentTarget.style.display = 'none';
+                          }}
                           className="h-full w-20 object-cover rounded-lg flex-shrink-0 grayscale group-hover/thumbs:grayscale-0 transition-all duration-500"
                         />
                       ))}
@@ -240,6 +276,9 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
                 const item = t.items.find((i) => i.id === selectedProject)!;
                 return (
                   <motion.div
+                    ref={modalRef}
+                    role="dialog"
+                    aria-modal="true"
                     initial={isMobile ? { y: "100%" } : { opacity: 0, scale: 0.98, y: 20 }}
                     animate={isMobile ? { y: 0 } : { opacity: 1, scale: 1, y: 0 }}
                     exit={isMobile ? { y: "100%" } : { opacity: 0, scale: 0.98, y: 20 }}
@@ -265,6 +304,9 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
                             key={currentImageIndex}
                             src={item.images[currentImageIndex]}
                             alt={`${item.name} screenshot ${currentImageIndex + 1}`}
+                            onError={(e) => {
+                              e.currentTarget.src = '/fallback-image.jpg';
+                            }}
                             custom={direction}
                             variants={slideVariants}
                             initial="enter"
@@ -363,24 +405,24 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
                         className="grid grid-cols-1 gap-6 mb-8"
                       >
                         <div className="grid grid-cols-1 gap-4 mb-6">
-                          <div className="border-l-2 border-red-500/30 bg-red-500/[0.03] rounded-2xl p-6 text-left rtl:text-right">
-                            <span className="block text-xs uppercase tracking-widest text-red-400 mb-2">
+                          <div className="border-l-2 border-[#8B3A3A]/30 bg-[#8B3A3A]/[0.03] rounded-2xl p-6 text-left rtl:text-right">
+                            <span className="block text-xs uppercase tracking-widest text-[#C98B8B] mb-2">
                               {lang === "en" ? "Problem" : "مسئله"}
                             </span>
                             <p className="text-white/90 text-xs md:text-sm leading-relaxed">
                               {item.problem}
                             </p>
                           </div>
-                          <div className="border-l-2 border-amber-500/30 bg-amber-500/[0.03] rounded-2xl p-6 text-left rtl:text-right">
-                            <span className="block text-xs uppercase tracking-widest text-amber-400 mb-2">
+                          <div className="border-l-2 border-[#D6C7A8]/30 bg-[#D6C7A8]/[0.03] rounded-2xl p-6 text-left rtl:text-right">
+                            <span className="block text-xs uppercase tracking-widest text-[#D6C7A8] mb-2">
                               {lang === "en" ? "Solution" : "راهکار"}
                             </span>
                             <p className="text-white/90 text-xs md:text-sm leading-relaxed">
                               {item.solution}
                             </p>
                           </div>
-                          <div className="border-l-2 border-emerald-500/30 bg-emerald-500/[0.03] rounded-2xl p-6 text-left rtl:text-right">
-                            <span className="block text-xs uppercase tracking-widest text-emerald-400 mb-2">
+                          <div className="border-l-2 border-[#5E6654]/30 bg-[#5E6654]/[0.03] rounded-2xl p-6 text-left rtl:text-right">
+                            <span className="block text-xs uppercase tracking-widest text-[#8B9A7D] mb-2">
                               {lang === "en" ? "Result" : "نتیجه"}
                             </span>
                             <p className="text-white/90 text-xs md:text-sm leading-relaxed">

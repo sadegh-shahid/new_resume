@@ -3,10 +3,12 @@ import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from
 import { ArrowDownRight } from "lucide-react";
 import { portfolioData, Language } from "../data";
 import { CinematicParticles } from "./CinematicParticles";
+import { usePrefersReducedMotion } from "../hooks/usePrefersReducedMotion";
 
 export const Hero = memo(({ lang }: { lang: Language }) => {
   const t = portfolioData[lang].hero;
   const isFa = lang === "fa";
+  const prefersReduced = usePrefersReducedMotion();
 
   const mouseX = useMotionValue(0.5);
   const mouseY = useMotionValue(0.5);
@@ -16,14 +18,14 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
   const springY = useSpring(mouseY, springConfig);
 
   // Parallax shifts
-  const layer2X = useTransform(springX, [0, 1], ["-2%", "2%"]);
-  const layer2Y = useTransform(springY, [0, 1], ["-2%", "2%"]);
-  const layer3X = useTransform(springX, [0, 1], ["-1.5%", "1.5%"]);
-  const layer3Y = useTransform(springY, [0, 1], ["-1.5%", "1.5%"]);
-  const layer1X = useTransform(springX, [0, 1], ["-0.8%", "0.8%"]);
-  const layer1Y = useTransform(springY, [0, 1], ["-0.8%", "0.8%"]);
-  const layer4X = useTransform(springX, [0, 1], ["-0.5%", "0.5%"]);
-  const layer4Y = useTransform(springY, [0, 1], ["-0.5%", "0.5%"]);
+  const layer2X = useTransform(springX, (v) => prefersReduced ? "0%" : `${(v - 0.5) * 4}%`);
+  const layer2Y = useTransform(springY, (v) => prefersReduced ? "0%" : `${(v - 0.5) * 4}%`);
+  const layer3X = useTransform(springX, (v) => prefersReduced ? "0%" : `${(v - 0.5) * 3}%`);
+  const layer3Y = useTransform(springY, (v) => prefersReduced ? "0%" : `${(v - 0.5) * 3}%`);
+  const layer1X = useTransform(springX, (v) => prefersReduced ? "0%" : `${(v - 0.5) * 1.6}%`);
+  const layer1Y = useTransform(springY, (v) => prefersReduced ? "0%" : `${(v - 0.5) * 1.6}%`);
+  const layer4X = useTransform(springX, (v) => prefersReduced ? "0%" : `${(v - 0.5) * 1}%`);
+  const layer4Y = useTransform(springY, (v) => prefersReduced ? "0%" : `${(v - 0.5) * 1}%`);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -70,7 +72,7 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
           {/* Layer 1: God Rays */}
           <motion.div
             style={{ x: layer1X, y: layer1Y }}
-            animate={{ rotate: 360 }}
+            animate={prefersReduced ? {} : { rotate: 360 }}
             transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
             className="absolute inset-0 flex items-center justify-center opacity-[0.08] mix-blend-screen will-change-transform"
           >
@@ -87,7 +89,7 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
           {/* Layer 2: Primary Glass Lens */}
           <motion.div
             style={{ x: layer2X, y: layer2Y }}
-            animate={{ rotate: 360 }}
+            animate={prefersReduced ? {} : { rotate: 360 }}
             transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
             className="absolute inset-0 flex items-center justify-center will-change-transform"
           >
@@ -106,7 +108,7 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
           {/* Layer 3: Secondary Lens */}
           <motion.div
             style={{ x: layer3X, y: layer3Y }}
-            animate={{ rotate: -360 }}
+            animate={prefersReduced ? {} : { rotate: -360 }}
             transition={{ duration: 90, repeat: Infinity, ease: "linear" }}
             className="absolute inset-0 flex items-center justify-center will-change-transform"
           >
@@ -135,7 +137,7 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
           </motion.span>
 
           <h1
-            className={`${isFa ? "text-[clamp(2.6rem, 6vw, 4rem)]" : "text-hero-display"} text-[#F3F1EB] text-4xl pb-6 ${isFa ? "leading-[1.45]" : "leading-[1.1]"}`}
+            className={`${isFa ? "text-[clamp(2.8rem, 7vw, 5rem)]" : "text-hero-display"} text-[#F3F1EB] text-4xl pb-6 ${isFa ? "leading-[1.45]" : "leading-[1.1]"}`}
             dir={isFa ? "rtl" : "ltr"}
           >
             <span className="sr-only">{t.title}</span>

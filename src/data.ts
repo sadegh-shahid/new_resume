@@ -29,7 +29,7 @@ export const portfolioData = {
     },
     hero: {
       role: "Brand Identity Designer · Full-Stack Developer · AI Creative Systems",
-      title: "Most websites are forgettable.\nI build the ones that linger.",
+      title: "Most websites are forgettable.\nI build the ones that stay with you.",
       description:
         "Digital experiences shot like cinema — where every transition earns trust and every detail converts attention into action.",
       ctaPrimary: "View Projects",
