@@ -1,6 +1,6 @@
 import { useState, useEffect, memo, useMemo } from "react";
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "motion/react";
-import { ArrowDownRight } from "lucide-react";
+import { ArrowDownRight, ArrowDownLeft } from "lucide-react";
 import { portfolioData, Language } from "../data";
 import { CinematicParticles } from "./CinematicParticles";
 import { usePrefersReducedMotion } from "../hooks/usePrefersReducedMotion";
@@ -67,7 +67,7 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
         transition={{ duration: 1, delay: 1.8 }}
         className="absolute inset-0 z-[2] pointer-events-none hidden lg:block"
       >
-        <div className="absolute start-[20%] top-1/2 -translate-x-1/2 rtl:translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px]">
+        <div className="absolute start-[20%] top-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px]">
 
           {/* Layer 1: God Rays */}
           <motion.div
@@ -185,7 +185,11 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
           >
             <a href="#projects" className="btn-primary group">
               {t.ctaPrimary}
-              <ArrowDownRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:translate-y-px rtl:group-hover:-translate-x-1" />
+              {isFa ? (
+                <ArrowDownLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1 group-hover:translate-y-px" />
+              ) : (
+                <ArrowDownRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:translate-y-px" />
+              )}
             </a>
             <a href="#contact" className="btn-ghost">
               {t.ctaSecondary}
