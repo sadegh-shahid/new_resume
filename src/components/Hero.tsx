@@ -42,7 +42,7 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
   const remainingFirstLine = firstLineWords.slice(2).join(" ");
 
   return (
-    <section className="min-h-screen flex items-center pt-[72px] px-6 relative overflow-hidden section-silent bg-[#08090A]" style={{ minHeight: '100dvh' }}>
+    <section className="min-h-screen flex items-center pt-[72px] px-6 relative overflow-hidden section-forte bg-[#08090A]" style={{ minHeight: '100dvh' }}>
       {/* Layer 4: Dust Field (Canvas) */}
       <motion.div
         style={{ x: layer4X, y: layer4Y }}
