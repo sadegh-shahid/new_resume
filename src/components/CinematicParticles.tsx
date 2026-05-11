@@ -92,6 +92,8 @@ const t3 = (x: number, y: number, z: number, i: number, j: number, k: number) =>
   return t * t * dot(grad3[p[i + p[j + p[k]]] % 12], x, y, z);
 };
 
+import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
+
 export const CinematicParticles: React.FC<CinematicParticlesProps> = memo(({
   centerX,
   centerY,
@@ -102,9 +104,10 @@ export const CinematicParticles: React.FC<CinematicParticlesProps> = memo(({
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const requestRef = useRef<number>(0);
   const hasInitialized = useRef(false);
+  const prefersReduced = usePrefersReducedMotion();
 
   useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (prefersReduced) return;
 
     const canvas = canvasRef.current;
     if (!canvas) return;

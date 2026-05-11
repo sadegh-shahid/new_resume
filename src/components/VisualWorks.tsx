@@ -32,10 +32,15 @@ export const VisualWorks = memo(({ lang }: { lang: Language }) => {
         className="relative z-10"
       >
         <div className="mb-24">
-          <WordReveal
-            text={t.title}
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className={`text-4xl md:text-5xl font-light ${isFa ? 'tracking-normal' : 'tracking-tight'}`}
-          />
+          >
+            {t.title}
+          </motion.h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -60,6 +65,9 @@ export const VisualWorks = memo(({ lang }: { lang: Language }) => {
                     <img
                       src={(item as any).images[0]}
                       alt={item.title}
+                      onError={(e) => {
+                        e.currentTarget.src = '/fallback-image.jpg';
+                      }}
                       className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
                       loading="lazy"
                     />
@@ -134,6 +142,9 @@ export const VisualWorks = memo(({ lang }: { lang: Language }) => {
                                 <img
                                   src={(item as any).images[1]}
                                   alt={`${item.title} secondary`}
+                                  onError={(e) => {
+                                    e.currentTarget.style.display = 'none';
+                                  }}
                                   className="w-full h-auto object-cover"
                                 />
                               </div>

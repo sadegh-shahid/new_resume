@@ -64,6 +64,11 @@ export const Contact = memo(({ lang }: { lang: Language }) => {
     setTimeout(() => {
       setStatus("success");
       setFormData({ name: "", email: "", phone: "", message: "" });
+
+      // Fallback: Open mailto with form data
+      const subject = encodeURIComponent(`Project Inquiry from ${formData.name}`);
+      const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone || 'N/A'}\n\nMessage:\n${formData.message}`);
+      window.location.href = `mailto:${t.email}?subject=${subject}&body=${body}`;
     }, 1500);
   };
 
@@ -97,8 +102,8 @@ export const Contact = memo(({ lang }: { lang: Language }) => {
           >
             <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
             {isEn
-              ? "Available for freelance / remote"
-              : "آماده برای پروژه‌های منتخب"}
+              ? "Currently: Deep in a brand system for a solar energy client. Open for Q3 2026."
+              : "در حال حاضر: غرق در طراحی سیستم برند برای یک مشتری انرژی خورشیدی. آماده برای همکاری‌های جدید."}
           </motion.div>
           <WordReveal
             text={t.title}

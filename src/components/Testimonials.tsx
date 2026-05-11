@@ -28,10 +28,15 @@ export const Testimonials = memo(({ lang }: { lang: Language }) => {
         className="relative z-10"
       >
         <div className="mb-16">
-          <WordReveal
-            text={t.title}
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className={`text-4xl md:text-6xl font-light mb-12 pb-7 ${isFa ? 'tracking-normal' : 'tracking-tighter'}`}
-          />
+          >
+            {t.title}
+          </motion.h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-16">
             {(t as any).stats.map((stat: any, index: number) => (
