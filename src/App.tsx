@@ -3,22 +3,21 @@ import { useScroll, useSpring, motion, AnimatePresence } from "motion/react";
 import { Language, portfolioData } from "./data";
 import { LoadingSequence } from "./components/LoadingSequence";
 import { Header } from "./components/Header";
-import { CustomCursor } from "./components/CustomCursor";
 import { Hero } from "./components/Hero";
 import { About } from "./components/About";
 import { Experience } from "./components/Experience";
 import { Projects } from "./components/Projects";
 import { VisualWorks } from "./components/VisualWorks";
 import { Testimonials } from "./components/Testimonials";
-import { HumanMoment } from "./components/HumanMoment";
 import { Contact } from "./components/Contact";
-import { TransitionMoment } from "./components/TransitionMoment";
 import { ArrowUp } from "lucide-react";
 
 export default function App() {
   // Default to Persian based on user request priority
   const [lang, setLang] = useState<Language>("fa");
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(() => {
+    return sessionStorage.getItem('hasVisited') !== 'true';
+  });
 
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
@@ -33,13 +32,18 @@ export default function App() {
     document.documentElement.lang = lang;
   }, [lang]);
 
+  useEffect(() => {
+    if (!isLoading) {
+      sessionStorage.setItem('hasVisited', 'true');
+    }
+  }, [isLoading]);
+
   return (
     <div
       className="min-h-screen selection:bg-[#D6C7A8] selection:text-[#0A0A0A] bg-[#08090A]"
       dir={lang === "fa" ? "rtl" : "ltr"}
       lang={lang}
     >
-      <CustomCursor />
       <AnimatePresence>
         {isLoading && <LoadingSequence onComplete={() => setIsLoading(false)} />}
       </AnimatePresence>
@@ -56,11 +60,9 @@ export default function App() {
         <Hero lang={lang} />
         <About lang={lang} />
         <Projects lang={lang} />
-        <Testimonials lang={lang} />
-        <TransitionMoment lang={lang} />
         <Experience lang={lang} />
         <VisualWorks lang={lang} />
-        <HumanMoment lang={lang} />
+        <Testimonials lang={lang} />
         <Contact lang={lang} />
       </main>
 
@@ -81,9 +83,9 @@ export default function App() {
               className="w-12 h-12 rounded-full border border-white/[0.12] flex items-center justify-center hover:border-amber-500/30 hover:bg-amber-500/5 transition-all group"
               aria-label="Back to top"
             >
-              <ArrowUp size={20} className="text-white/40 group-hover:text-amber-500/60 transition-colors" />
+              <ArrowUp size={20} className="text-white/60 group-hover:text-amber-500 transition-colors" />
             </button>
-            <p className="text-sm text-white/40 font-light tracking-widest">
+            <p className="text-sm text-white/60 font-light tracking-widest">
               {portfolioData[lang].footer.copyright.replace(
                 "{year}",
                 String(new Date().getFullYear()),

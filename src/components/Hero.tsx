@@ -185,7 +185,7 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
               {t.ctaPrimary}
               <ArrowDownRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:translate-y-px rtl:group-hover:-translate-x-1" />
             </a>
-            <a href="/resume.pdf" download className="btn-ghost">
+            <a href="#contact" className="btn-ghost">
               {t.ctaSecondary}
             </a>
           </motion.div>
