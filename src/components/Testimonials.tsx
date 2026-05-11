@@ -11,11 +11,11 @@ export const Testimonials = memo(({ lang }: { lang: Language }) => {
   return (
     <section
       id="testimonials"
-      className="section-p px-gutter max-w-5xl mx-auto border-t border-white/10 relative"
+      className="py-24 px-6 max-w-5xl mx-auto border-t border-white/10 relative"
       aria-labelledby="testimonials-heading"
     >
       <div
-        className="hidden md:block absolute -top-8 -left-12 rtl:-left-auto rtl:-right-12 text-[clamp(10rem,20vw,18rem)] font-light text-primary/[0.03] leading-none select-none pointer-events-none z-0 overflow-hidden whitespace-nowrap"
+        className="hidden md:block absolute -top-8 -left-12 rtl:-left-auto rtl:-right-12 text-[clamp(10rem,20vw,18rem)] font-light text-white/[0.03] leading-none select-none pointer-events-none z-0 overflow-hidden whitespace-nowrap"
         aria-hidden="true"
       >
         {isFa ? "۰۳" : "03"}
@@ -33,7 +33,7 @@ export const Testimonials = memo(({ lang }: { lang: Language }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className={`text-headline font-light mb-12 pb-7 ${isFa ? 'tracking-normal' : 'tracking-tighter'}`}
+            className={`text-4xl md:text-6xl font-light mb-12 pb-7 ${isFa ? 'tracking-normal' : 'tracking-tighter'}`}
           >
             {t.title}
           </motion.h2>
@@ -48,10 +48,10 @@ export const Testimonials = memo(({ lang }: { lang: Language }) => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="bg-white/5 border border-white/5 rounded-2xl p-8 text-center"
               >
-                <div className="text-subhead md:text-headline font-light accent-amber mb-2">
+                <div className="text-3xl md:text-4xl font-light text-amber-500 mb-2">
                   {stat.value}
                 </div>
-                <div className="text-caption uppercase tracking-widest text-secondary">
+                <div className="text-xs uppercase tracking-widest text-white/60">
                   {stat.label}
                 </div>
               </motion.div>
@@ -70,35 +70,35 @@ export const Testimonials = memo(({ lang }: { lang: Language }) => {
               className={`flex flex-col p-8 rounded-3xl bg-white/5 border border-white/5`}
             >
               <Quote
-                className="accent-amber/30 mb-6"
+                className="text-amber-500/30 mb-6"
                 size={40}
                 aria-hidden="true"
               />
               <p
-                className={`text-primary text-lead md:text-subhead font-light mb-8 flex-grow italic ${lang === "en" ? "leading-relaxed" : "leading-[2.2] tracking-normal"}`}
+                className={`text-white/90 text-lg md:text-xl font-light mb-8 flex-grow italic ${lang === "en" ? "leading-relaxed" : "leading-[2.2] tracking-normal"}`}
               >
                 "{item.text}"
               </p>
 
               <div className="bg-amber-500/5 border border-amber-500/10 rounded-2xl p-4 mb-8">
-                <span className="block text-caption uppercase tracking-[0.2em] accent-amber mb-1">
+                <span className="block text-[12px] uppercase tracking-[0.2em] text-amber-500 mb-1">
                   {lang === "en" ? "Result" : "نتیجه"}
                 </span>
-                <p className="text-primary/80 text-body font-medium">
+                <p className="text-white/80 text-sm font-medium">
                   {(item as any).result}
                 </p>
               </div>
 
               <div className="flex items-center gap-4 mt-auto">
                 <div
-                  className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center font-serif text-subhead border border-white/20"
+                  className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center font-serif text-xl border border-white/20"
                   aria-hidden="true"
                 >
                   {item.name.charAt(0)}
                 </div>
                 <div>
-                  <h3 className="text-primary font-medium">{item.name}</h3>
-                  <p className="text-primary/50 text-caption uppercase tracking-widest">
+                  <h3 className="text-white font-medium">{item.name}</h3>
+                  <p className="text-white/50 text-xs uppercase tracking-widest">
                     {(item as any).role} &middot; {(item as any).company}
                   </p>
                 </div>

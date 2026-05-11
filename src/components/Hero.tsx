@@ -42,7 +42,7 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
   const remainingFirstLine = firstLineWords.slice(2).join(" ");
 
   return (
-    <section className="min-h-screen flex items-center pt-[72px] px-gutter relative overflow-hidden section-ff bg-void" style={{ minHeight: '100dvh' }}>
+    <section className="min-h-screen flex items-center pt-[72px] px-6 relative overflow-hidden section-silent bg-[#08090A]" style={{ minHeight: '100dvh' }}>
       {/* Layer 4: Dust Field (Canvas) */}
       <motion.div
         style={{ x: layer4X, y: layer4Y }}
@@ -79,7 +79,7 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
             <div
               className="w-full h-full rounded-full"
               style={{
-                background: "conic-gradient(from 0deg, transparent 0deg, var(--color-accent-ivory) 45deg, transparent 90deg, #f59e0b 135deg, transparent 180deg, var(--color-accent-ivory) 225deg, transparent 270deg, #f59e0b 315deg, transparent 360deg)",
+                background: "conic-gradient(from 0deg, transparent 0deg, #D6C7A8 45deg, transparent 90deg, #f59e0b 135deg, transparent 180deg, #D6C7A8 225deg, transparent 270deg, #f59e0b 315deg, transparent 360deg)",
                 maskImage: "radial-gradient(circle, black 20%, transparent 70%)",
                 WebkitMaskImage: "radial-gradient(circle, black 20%, transparent 70%)"
               }}
@@ -93,7 +93,7 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
             transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
             className="absolute inset-0 flex items-center justify-center will-change-transform"
           >
-            <div className="relative w-[420px] h-[420px] rounded-full border border-accent-ivory/15 backdrop-blur-[40px] saturate-[180%] shadow-[inset_0_0_80px_rgba(214,199,168,0.08)] overflow-hidden">
+            <div className="relative w-[420px] h-[420px] rounded-full border border-[#D6C7A8]/15 backdrop-blur-[40px] saturate-[180%] shadow-[inset_0_0_80px_rgba(214,199,168,0.08)] overflow-hidden">
               {/* Texture Layer to make blur visible */}
               <div className="absolute inset-0 bg-gradient-to-tr from-amber-500/[0.03] to-transparent pointer-events-none" />
 
@@ -112,7 +112,7 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
             transition={{ duration: 90, repeat: Infinity, ease: "linear" }}
             className="absolute inset-0 flex items-center justify-center will-change-transform"
           >
-            <div className="w-[280px] h-[280px] rounded-full border border-accent-ivory/08 bg-white/[0.01]" />
+            <div className="w-[280px] h-[280px] rounded-full border border-[#D6C7A8]/08 bg-white/[0.01]" />
           </motion.div>
 
           {/* Lens Reflection (Center Dot) */}
@@ -131,13 +131,13 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.4 }}
-            className={`text-caption md:text-caption accent-amber/70 uppercase tracking-widest mb-8 block ${isFa ? "tracking-normal" : ""}`}
+            className={`text-[12px] md:text-xs text-amber-500/70 uppercase tracking-widest mb-8 block ${isFa ? "tracking-normal" : ""}`}
           >
             {t.role}
           </motion.span>
 
           <h1
-            className={`${isFa ? "text-[clamp(2.8rem, 7vw, 5rem)]" : "text-display"} text-primary pb-6 ${isFa ? "leading-[1.45]" : "leading-[1.1]"}`}
+            className={`${isFa ? "text-[clamp(2.8rem, 7vw, 5rem)]" : "text-hero-display"} text-[#F3F1EB] text-4xl pb-6 ${isFa ? "leading-[1.45]" : "leading-[1.1]"}`}
             dir={isFa ? "rtl" : "ltr"}
           >
             <span className="sr-only">{t.title}</span>
@@ -172,7 +172,7 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 1.4, ease: [0.16, 1, 0.3, 1] }}
-            className={`text-secondary max-w-[460px] leading-[1.8] mb-12 ${isFa ? "text-[15px] md:text-body leading-[2.2]" : "text-[15px] md:text-lead"}`}
+            className={`text-white/70 max-w-[460px] leading-[1.8] mb-12 ${isFa ? "text-[15px] md:text-base leading-[2.2]" : "text-[15px] md:text-body-lg"}`}
           >
             {t.description}
           </motion.p>
@@ -199,7 +199,7 @@ export const Hero = memo(({ lang }: { lang: Language }) => {
       </div>
 
       {/* Hero to About Bridge Gradient */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-bg-void z-20 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-[#08090A] z-20 pointer-events-none" />
     </section>
   );
 });
