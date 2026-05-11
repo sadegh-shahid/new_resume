@@ -78,20 +78,6 @@ export const About = memo(({ lang }: { lang: Language }) => {
         </div>
 
         <div className={`space-y-20 text-[1.1rem] ${isFa ? 'leading-[2.2]' : 'leading-[1.8]'} text-white/80 font-light`}>
-          {/* Integrated Human Moment Quote */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="py-12 border-y border-white/[0.08] relative group"
-          >
-             <div className="absolute -left-4 top-0 bottom-0 w-[1px] bg-amber-500/30 scale-y-0 group-hover:scale-y-100 transition-transform duration-700 origin-top" />
-             <p className={`text-2xl md:text-3xl font-light text-white/90 italic leading-relaxed`}>
-               "{portfolioData[lang].humanMoment.quote}"
-             </p>
-          </motion.div>
-
           {t.paragraphs?.map((p, i) => (
             <motion.p
               key={i}

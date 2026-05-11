@@ -29,7 +29,7 @@ export const portfolioData = {
     },
     hero: {
       role: "Brand Identity Designer · Full-Stack Developer · AI Creative Systems",
-      title: "Most websites are forgettable.\nI build the ones that stay with you.",
+      title: "Most websites are forgettable.\nMine aren't.",
       description:
         "Digital experiences shot like cinema — where every transition earns trust and every detail converts attention into action.",
       ctaPrimary: "View Projects",
@@ -354,7 +354,7 @@ export const portfolioData = {
     },
     hero: {
       role: "طراح هویت برند · توسعه‌دهنده فول‌استک · سیستم‌های خلاقانه AI",
-      title: "اغلب وب‌سایت‌ها فراموش‌شدنی‌اند.\nمن آن‌هایی را می‌سازم که در ذهن می‌مانند.",
+      title: "اغلب وب‌سایت‌ها فراموش‌شدنی‌اند.\nمن فراموش‌نشدنی می‌سازم.",
       description:
         "تجربه‌های دیجیتالی با دکوپاژ سینمایی — جایی که هر ترنزیشن اعتماد می‌سازد و هر جزئیات، توجه را به عمل تبدیل می‌کند.",
       ctaPrimary: "مشاهده پروژه‌ها",
