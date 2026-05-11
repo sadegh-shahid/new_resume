@@ -16,10 +16,10 @@ export const VisualWorks = memo(({ lang }: { lang: Language }) => {
   return (
     <section
       id="visual-works"
-      className="px-6 max-w-5xl mx-auto section-quiet relative"
+      className="px-gutter max-w-5xl mx-auto section-p relative"
     >
       <div
-        className="hidden md:block absolute -top-8 -left-12 rtl:-left-auto rtl:-right-12 text-[clamp(10rem,20vw,18rem)] font-light text-white/[0.03] leading-none select-none pointer-events-none z-0 overflow-hidden whitespace-nowrap"
+        className="hidden md:block absolute -top-8 -left-12 rtl:-left-auto rtl:-right-12 text-[clamp(10rem,20vw,18rem)] font-light text-primary/[0.03] leading-none select-none pointer-events-none z-0 overflow-hidden whitespace-nowrap"
         aria-hidden="true"
       >
         {isFa ? "۰۵" : "05"}
@@ -37,7 +37,7 @@ export const VisualWorks = memo(({ lang }: { lang: Language }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className={`text-4xl md:text-5xl font-light ${isFa ? 'tracking-normal' : 'tracking-tight'}`}
+            className={`text-headline font-light ${isFa ? 'tracking-normal' : 'tracking-tight'}`}
           >
             {t.title}
           </motion.h2>
@@ -76,31 +76,31 @@ export const VisualWorks = memo(({ lang }: { lang: Language }) => {
                 )}
 
                 <div className="p-8 flex flex-col flex-grow">
-                  <h3 className="text-xl md:text-2xl font-light text-white/90 group-hover:text-white transition-colors mb-6">
+                  <h3 className="text-subhead font-light text-primary group-hover:text-primary transition-colors mb-6">
                     {item.title}
                   </h3>
 
                   <div className="space-y-6 flex-grow mb-8">
                     <div className="flex flex-col gap-1">
-                      <div className="flex items-center gap-2 text-amber-500/80 mb-1">
+                      <div className="flex items-center gap-2 accent-amber/80 mb-1">
                         <Wrench size={12} aria-hidden="true" />
                         <span className="font-medium text-[10px] uppercase tracking-widest">
                           {lang === "en" ? "Tools" : "ابزارها"}
                         </span>
                       </div>
-                      <p className="text-xs font-mono text-white/60">
+                      <p className="text-caption font-mono text-secondary">
                         {item.tools}
                       </p>
                     </div>
 
                     <div className="flex flex-col gap-1">
-                      <div className="flex items-center gap-2 text-amber-500/80 mb-1">
+                      <div className="flex items-center gap-2 accent-amber/80 mb-1">
                         <Target size={12} aria-hidden="true" />
                         <span className="font-medium text-[10px] uppercase tracking-widest">
                           {lang === "en" ? "Impact" : "تأثیر"}
                         </span>
                       </div>
-                      <p className="text-xs leading-relaxed text-white/70">
+                      <p className="text-caption leading-relaxed text-secondary">
                         {item.impact}
                       </p>
                     </div>
@@ -108,7 +108,7 @@ export const VisualWorks = memo(({ lang }: { lang: Language }) => {
 
                   <button
                     onClick={() => toggleExpand(item.id)}
-                    className="w-full py-4 px-6 rounded-xl border border-white/[0.08] hover:border-white/[0.2] hover:bg-white/[0.02] transition-all flex items-center justify-between text-xs uppercase tracking-widest text-white/50 hover:text-white/80"
+                    className="w-full py-4 px-gutter rounded-xl border border-white/[0.08] hover:border-white/[0.2] hover:bg-white/[0.02] transition-all flex items-center justify-between text-caption uppercase tracking-widest text-primary/50 hover:text-primary/80"
                   >
                     <span>{isExpanded ? item.closeBtn : item.detailsBtn}</span>
                     <motion.div animate={{ rotate: isExpanded ? 180 : 0 }}>
@@ -126,13 +126,13 @@ export const VisualWorks = memo(({ lang }: { lang: Language }) => {
                         className="overflow-hidden"
                       >
                         <div className="pt-8 mt-8 border-t border-white/[0.08]">
-                           <div className="flex items-center gap-2 text-amber-500/80 mb-3">
+                           <div className="flex items-center gap-2 accent-amber/80 mb-3">
                               <Lightbulb size={12} aria-hidden="true" />
                               <span className="font-medium text-[10px] uppercase tracking-widest">
                                 {lang === "en" ? "Concept" : "مفهوم"}
                               </span>
                             </div>
-                            <p className="text-sm leading-relaxed text-white/80">
+                            <p className="text-body leading-relaxed text-primary/80">
                               {item.concept}
                             </p>
 
