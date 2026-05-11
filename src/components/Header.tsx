@@ -40,7 +40,7 @@ export const Header = memo(({ lang, setLang }: HeaderProps) => {
         borderBottomColor: headerBorder,
         boxShadow: headerShadow
       }}
-      className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 backdrop-blur-xl border-b transition-colors duration-300"
+      className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-gutter backdrop-blur-xl border-b transition-colors duration-300"
       role="banner"
     >
       {/* Logo - Left in RTL */}
@@ -49,30 +49,30 @@ export const Header = memo(({ lang, setLang }: HeaderProps) => {
       </motion.div>
       
       {/* Navigation - Center */}
-      <nav aria-label="Main Navigation" className="hidden md:flex gap-4 lg:gap-8 text-xs lg:text-sm text-white/60">
-        <a href="#about" onClick={(e) => handleNavClick(e, 'about')} className="hover:text-white transition-colors relative group">
+      <nav aria-label="Main Navigation" className="hidden md:flex gap-4 lg:gap-8 text-caption lg:text-body text-secondary">
+        <a href="#about" onClick={(e) => handleNavClick(e, 'about')} className="hover:text-primary transition-colors relative group">
           {t.about}
-          <span className="absolute bottom-[-4px] start-1/2 w-0 h-[1px] bg-[#D6C7A8] transition-all duration-300 group-hover:w-full group-hover:start-0"></span>
+          <span className="absolute bottom-[-4px] start-1/2 w-0 h-[1px] bg-accent-ivory transition-all duration-300 group-hover:w-full group-hover:start-0"></span>
         </a>
-        <a href="#projects" onClick={(e) => handleNavClick(e, 'projects')} className="hover:text-white transition-colors relative group">
+        <a href="#projects" onClick={(e) => handleNavClick(e, 'projects')} className="hover:text-primary transition-colors relative group">
           {t.projects}
-          <span className="absolute bottom-[-4px] start-1/2 w-0 h-[1px] bg-[#D6C7A8] transition-all duration-300 group-hover:w-full group-hover:start-0"></span>
+          <span className="absolute bottom-[-4px] start-1/2 w-0 h-[1px] bg-accent-ivory transition-all duration-300 group-hover:w-full group-hover:start-0"></span>
         </a>
-        <a href="#testimonials" onClick={(e) => handleNavClick(e, 'testimonials')} className="hover:text-white transition-colors relative group">
+        <a href="#testimonials" onClick={(e) => handleNavClick(e, 'testimonials')} className="hover:text-primary transition-colors relative group">
           {t.testimonials}
-          <span className="absolute bottom-[-4px] start-1/2 w-0 h-[1px] bg-[#D6C7A8] transition-all duration-300 group-hover:w-full group-hover:start-0"></span>
+          <span className="absolute bottom-[-4px] start-1/2 w-0 h-[1px] bg-accent-ivory transition-all duration-300 group-hover:w-full group-hover:start-0"></span>
         </a>
-        <a href="#experience" onClick={(e) => handleNavClick(e, 'experience')} className="hover:text-white transition-colors relative group">
+        <a href="#experience" onClick={(e) => handleNavClick(e, 'experience')} className="hover:text-primary transition-colors relative group">
           {t.experience}
-          <span className="absolute bottom-[-4px] start-1/2 w-0 h-[1px] bg-[#D6C7A8] transition-all duration-300 group-hover:w-full group-hover:start-0"></span>
+          <span className="absolute bottom-[-4px] start-1/2 w-0 h-[1px] bg-accent-ivory transition-all duration-300 group-hover:w-full group-hover:start-0"></span>
         </a>
-        <a href="#visual-works" onClick={(e) => handleNavClick(e, 'visual-works')} className="hover:text-white transition-colors relative group">
+        <a href="#visual-works" onClick={(e) => handleNavClick(e, 'visual-works')} className="hover:text-primary transition-colors relative group">
           {t.visual}
-          <span className="absolute bottom-[-4px] start-1/2 w-0 h-[1px] bg-[#D6C7A8] transition-all duration-300 group-hover:w-full group-hover:start-0"></span>
+          <span className="absolute bottom-[-4px] start-1/2 w-0 h-[1px] bg-accent-ivory transition-all duration-300 group-hover:w-full group-hover:start-0"></span>
         </a>
-        <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')} className="hover:text-white transition-colors relative group">
+        <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')} className="hover:text-primary transition-colors relative group">
           {t.contact}
-          <span className="absolute bottom-[-4px] start-1/2 w-0 h-[1px] bg-[#D6C7A8] transition-all duration-300 group-hover:w-full group-hover:start-0"></span>
+          <span className="absolute bottom-[-4px] start-1/2 w-0 h-[1px] bg-accent-ivory transition-all duration-300 group-hover:w-full group-hover:start-0"></span>
         </a>
       </nav>
 
@@ -80,7 +80,7 @@ export const Header = memo(({ lang, setLang }: HeaderProps) => {
       <div className="flex items-center gap-4">
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden p-2 text-white/60 hover:text-white transition-colors focus:outline-none"
+          className="md:hidden p-2 text-secondary hover:text-primary transition-colors focus:outline-none"
           aria-label="Toggle menu"
           aria-expanded={mobileOpen}
         >
@@ -101,7 +101,7 @@ export const Header = memo(({ lang, setLang }: HeaderProps) => {
         onClick={() => setLang(lang === 'en' ? 'fa' : 'en')}
         aria-label={`Switch language to ${lang === 'en' ? 'Persian' : 'English'}`}
         whileTap={{ scale: 0.95 }}
-        className="flex items-center gap-2 text-xs text-white/50 border border-white/[0.15] rounded-full px-3 py-1.5 hover:bg-white/[0.08] transition-colors focus:outline-none focus:ring-1 focus:ring-[#D6C7A8]/50 overflow-hidden relative"
+        className="flex items-center gap-2 text-caption text-primary/50 border border-white/[0.15] rounded-full px-3 py-1.5 hover:bg-white/[0.08] transition-colors focus:outline-none focus:ring-1 focus:ring-[var(--color-accent-ivory)]/50 overflow-hidden relative"
       >
         <AnimatePresence mode="wait">
           <motion.span
@@ -126,24 +126,24 @@ export const Header = memo(({ lang, setLang }: HeaderProps) => {
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
             style={{ top: headerHeight }}
-            className="absolute left-0 right-0 bg-[#08090A] backdrop-blur-xl border-b border-white/[0.12] p-6 flex flex-col gap-4 md:hidden z-40 shadow-[0_20px_60px_rgba(0,0,0,0.8)]"
+            className="absolute left-0 right-0 bg-void backdrop-blur-xl border-b border-white/[0.12] p-6 flex flex-col gap-4 md:hidden z-40 shadow-[0_20px_60px_rgba(0,0,0,0.8)]"
           >
-            <a href="#about" onClick={(e) => handleNavClick(e, 'about')} className="text-lg text-white/90 hover:text-white py-3 border-b border-white/[0.08]">
+            <a href="#about" onClick={(e) => handleNavClick(e, 'about')} className="text-lead text-primary hover:text-primary py-3 border-b border-white/[0.08]">
               {t.about}
             </a>
-            <a href="#projects" onClick={(e) => handleNavClick(e, 'projects')} className="text-lg text-white/90 hover:text-white py-3 border-b border-white/[0.08]">
+            <a href="#projects" onClick={(e) => handleNavClick(e, 'projects')} className="text-lead text-primary hover:text-primary py-3 border-b border-white/[0.08]">
               {t.projects}
             </a>
-            <a href="#testimonials" onClick={(e) => handleNavClick(e, 'testimonials')} className="text-lg text-white/90 hover:text-white py-3 border-b border-white/[0.08]">
+            <a href="#testimonials" onClick={(e) => handleNavClick(e, 'testimonials')} className="text-lead text-primary hover:text-primary py-3 border-b border-white/[0.08]">
               {t.testimonials}
             </a>
-            <a href="#experience" onClick={(e) => handleNavClick(e, 'experience')} className="text-lg text-white/90 hover:text-white py-3 border-b border-white/[0.08]">
+            <a href="#experience" onClick={(e) => handleNavClick(e, 'experience')} className="text-lead text-primary hover:text-primary py-3 border-b border-white/[0.08]">
               {t.experience}
             </a>
-            <a href="#visual-works" onClick={(e) => handleNavClick(e, 'visual-works')} className="text-lg text-white/90 hover:text-white py-3 border-b border-white/[0.08]">
+            <a href="#visual-works" onClick={(e) => handleNavClick(e, 'visual-works')} className="text-lead text-primary hover:text-primary py-3 border-b border-white/[0.08]">
               {t.visual}
             </a>
-            <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')} className="text-lg text-white/90 hover:text-white py-3 border-b border-white/[0.08]">
+            <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')} className="text-lead text-primary hover:text-primary py-3 border-b border-white/[0.08]">
               {t.contact}
             </a>
           </motion.div>
