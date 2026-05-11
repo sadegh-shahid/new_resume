@@ -143,7 +143,7 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
         </div>
 
         {/* Projects Grid - More Breathing Room */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-20">
+        <div style={{ skewY: scrollSkew }} className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-20">
           {t.items.map((item, index) => {
             const isLast = index === t.items.length - 1;
             return (
@@ -152,7 +152,6 @@ export const Projects = memo(({ lang }: { lang: Language }) => {
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true, margin: "-40px" }}
-                style={{ skewY: scrollSkew }}
                 className={`group relative overflow-hidden flex flex-col p-6 md:p-10 lg:p-12 rounded-3xl card-bg border border-white/[0.08] transition-all duration-500 cursor-pointer focus:outline-none focus:ring-1 focus:ring-amber-500/30`}
                 onClick={() => {
                   setSelectedProject(item.id);

@@ -167,7 +167,17 @@ export const CinematicParticles: React.FC<CinematicParticlesProps> = memo(({
       };
     };
 
+    let lastFrameTime = 0;
     const animate = (time: number) => {
+      const isMobile = window.innerWidth < 768;
+      const frameInterval = isMobile ? 33 : 16; // 30fps mobile, 60fps desktop
+
+      if (time - lastFrameTime < frameInterval) {
+        requestRef.current = requestAnimationFrame(animate);
+        return;
+      }
+      lastFrameTime = time;
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       // Use logical center if not provided, otherwise use provided (and handle RTL if relative)
