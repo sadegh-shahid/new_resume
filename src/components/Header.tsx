@@ -12,7 +12,14 @@ interface HeaderProps {
 export const Header = memo(({ lang, setLang }: HeaderProps) => {
   const t = portfolioData[lang].nav;
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { scrollY } = useScroll();
+  const { scrollY, scrollYProgress } = useScroll();
+
+  const timeDisplay = useTransform(scrollYProgress, (p) => {
+    const totalSeconds = Math.floor(p * 90);
+    const mm = Math.floor(totalSeconds / 60).toString().padStart(2, '0');
+    const ss = (totalSeconds % 60).toString().padStart(2, '0');
+    return `00:${mm}:${ss}`;
+  });
 
   const headerHeight = useTransform(scrollY, [0, 50], ["72px", "56px"]);
   const headerBg = useTransform(scrollY, [0, 50], ["rgba(10, 10, 10, 0.6)", "rgba(8, 9, 10, 0.9)"]);
@@ -77,7 +84,10 @@ export const Header = memo(({ lang, setLang }: HeaderProps) => {
       </nav>
 
       {/* Language Switch - Right in RTL */}
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-4 relative">
+        <motion.div className="hidden md:block absolute end-full me-4 top-1/2 -translate-y-1/2 font-mono text-[10px] text-white/30 whitespace-nowrap">
+          {timeDisplay}
+        </motion.div>
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
           className="md:hidden p-2 text-white/60 hover:text-white transition-colors focus:outline-none"
