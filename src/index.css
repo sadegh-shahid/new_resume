@@ -3,402 +3,505 @@
 @theme {
   --font-sans: "Vazirmatn", "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Playfair Display", ui-serif, serif;
-  
-  /* Color Palette - Warm Monochrome Cinematic Minimalism */
-  --color-bg-primary: #08090A;
-  --color-bg-elevated: #111111;
-  --color-bg-secondary: #171717;
-  --color-text-primary: #F3F1EB;
-  --color-text-secondary: #8B8B8B;
-  --color-border-soft: rgba(255, 255, 255, 0.08);
-  --color-accent-ivory: #D6C7A8;
-  --color-accent-olive: #5E6654;
-  --color-accent-amber: #C9945F;
-  --color-shadow-deep: rgba(0, 0, 0, 0.45);
+
+  /* UNIFIED CINEMATIC PALETTE — Kodak Gold / Film Stock */
+  --color-bg-primary: #050505;
+  --color-bg-elevated: #0a0a0a;
+  --color-bg-secondary: #111111;
+  --color-text-primary: #E8E6E1;
+  --color-text-secondary: #8A8A8A;
+  --color-border-soft: rgba(255, 255, 255, 0.06);
+  --color-accent-gold: #C9A84C;
+  --color-accent-gold-dim: rgba(201, 168, 76, 0.6);
+  --color-accent-gold-subtle: rgba(201, 168, 76, 0.15);
+  --color-accent-teal: #2A9D8F;
+  --color-accent-teal-dim: rgba(42, 157, 143, 0.4);
+  --color-accent-rose: #8B4A4E;
+  --color-accent-cream: #D4CFC7;
 }
 
-/* CONTRAST COMPLIANCE:
-   #F3F1EB: 17.64:1 - any size
-   #D6C7A8: 11.95:1 - any size
-   #C9945F: 7.2:1 - 18px+ or bold 14px+
-   #8B8B8B: 5.85:1 - 18px+ only, never for small labels
-*/
-
-/* Global Reset & Base */
-*, *::before, *::after {
-  box-sizing: border-box;
-}
+*, *::before, *::after { box-sizing: border-box; }
 
 html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #08090A;
-  height: -webkit-fill-available;
+  background-color: #050505;
 }
 
 body {
   font-family: var(--font-sans);
-  background-color: #08090A;
-  color: #F3F1EB;
-  line-height: 2.1;
+  background-color: #050505;
+  color: #E8E6E1;
+  line-height: 1.7;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
   min-height: 100dvh;
-  min-height: -webkit-fill-available;
 }
 
-/* Cinematic Film Grain Texture - Global */
+/* ============================================
+   FILM GRAIN — Refined, organic flicker
+   Reduced opacity and faster steps for smoother feel
+   ============================================ */
 body::before {
   content: "";
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   pointer-events: none;
   z-index: 9999;
-  opacity: 0.025;
+  opacity: 0.018;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
   mix-blend-mode: overlay;
+  animation: grainFlicker 0.15s steps(4) infinite;
 }
 
-/* Subtle Vignette */
+@keyframes grainFlicker {
+  0%, 100% { opacity: 0.015; transform: translate(0, 0); }
+  25% { opacity: 0.022; transform: translate(-2px, 1px); }
+  50% { opacity: 0.018; transform: translate(1px, -2px); }
+  75% { opacity: 0.025; transform: translate(-1px, -1px); }
+}
+
+/* ============================================
+   VIGNETTE — Cinematic lens falloff
+   Reduced from 0.55 to 0.22 for breathable edges
+   ============================================ */
 body::after {
   content: "";
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   pointer-events: none;
   z-index: 9998;
-  background: radial-gradient(ellipse at center, transparent 0%, transparent 50%, rgba(0, 0, 0, 0.4) 100%);
+  background: radial-gradient(ellipse at center, transparent 0%, transparent 55%, rgba(0, 0, 0, 0.22) 100%);
 }
 
-/* Typography System - Persian First */
+/* ============================================
+   TYPOGRAPHY — Cinematic Scale
+   Fixed: Persian weights, English extralight, hierarchy
+   ============================================ */
 h1, h2, h3, h4, h5, h6 {
-  color: #F3F1EB;
-  font-weight: 500;
-  line-height: 1.4;
+  color: #E8E6E1;
+  font-weight: 400;
+  line-height: 1.2;
   letter-spacing: normal;
   margin: 0;
+  text-wrap: balance;
 }
 
-/* RTL Default Styling */
-[dir="rtl"] {
-  text-align: right;
-}
+/* RTL — Persian */
+[dir="rtl"] { text-align: right; }
+[dir="rtl"] h1 { font-family: "Vazirmatn", sans-serif; font-weight: 700; }
+[dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] h4 { font-family: "Vazirmatn", sans-serif; font-weight: 600; }
+[dir="rtl"] h5, [dir="rtl"] h6 { font-family: "Vazirmatn", sans-serif; font-weight: 500; }
+[dir="rtl"] p { line-height: 1.75; }
 
-[dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] h4, [dir="rtl"] h5, [dir="rtl"] h6 {
-  font-family: "Vazirmatn", sans-serif;
-  font-weight: 700;
-}
+/* LTR — English */
+[dir="ltr"] { text-align: left; }
+[dir="ltr"] h1 { font-family: "Inter", sans-serif; font-weight: 300; letter-spacing: -0.03em; }
+[dir="ltr"] h2 { font-family: "Inter", sans-serif; font-weight: 300; letter-spacing: -0.02em; }
+[dir="ltr"] h3 { font-family: "Inter", sans-serif; font-weight: 400; letter-spacing: -0.01em; }
+[dir="ltr"] p { line-height: 1.7; }
 
-[dir="rtl"] p {
-  line-height: 2.2;
-  max-width: 640px;
-}
-
-/* LTR for English */
-[dir="ltr"] {
-  text-align: left;
-}
-
-[dir="ltr"] h1, [dir="ltr"] h2, [dir="ltr"] h3 {
-  font-family: "Inter", sans-serif;
-}
-
-/* Persian Typography Specifics */
-.fa-text {
-  font-feature-settings: "ss01";
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* Prevent letter-spacing on Persian/Arabic */
+/* Prevent letter-spacing on Persian */
 [dir="rtl"] .tracking-widest,
 [dir="rtl"] .tracking-wider,
 [dir="rtl"] .tracking-wide,
-[dir="rtl"] .tracking-normal,
 [dir="rtl"] .tracking-tight,
-[dir="rtl"] .tracking-tighter {
-  letter-spacing: normal !important;
-}
+[dir="rtl"] .tracking-tighter { letter-spacing: normal !important; }
 
-/* Font Sizes - Persian Editorial Scale */
+.prose-persian p { max-width: 52ch; }
+
+/* HERO — Ultra-thin, cinematic, STRONGER */
 .text-hero-display {
-  font-size: clamp(3rem, 8vw, 6.5rem);
-  line-height: 1.35;
+  font-size: clamp(3.2rem, 10vw, 9rem);
+  line-height: 0.92;
+  font-weight: 200;
+  letter-spacing: -0.02em;
 }
 
+[dir="rtl"] .text-hero-display {
+  line-height: 1.08;
+  font-weight: 700;
+  letter-spacing: normal;
+}
+
+/* SECTION TITLES — Movie poster credits, LARGER */
 .text-section-title {
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  line-height: 1.35;
+  font-size: clamp(2.2rem, 5vw, 4.5rem);
+  line-height: 1.05;
+  font-weight: 300;
 }
 
-.text-subhead {
-  font-size: clamp(1.25rem, 2vw, 1.75rem);
-  line-height: 1.4;
+[dir="ltr"] .text-section-title {
+  font-family: "Inter", sans-serif;
+  font-weight: 300;
+  letter-spacing: -0.02em;
 }
 
-[dir="rtl"] .text-subhead {
-  line-height: 1.6;
+/* CINEMATIC LABELS — All caps, wide tracking, READABLE */
+.cinematic-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.55);
 }
 
-.text-lead {
-  font-size: clamp(1.1rem, 1.5vw, 1.25rem);
-  line-height: 1.8;
-}
-
-[dir="rtl"] .text-lead {
-  line-height: 2.0;
+[dir="rtl"] .cinematic-label {
+  letter-spacing: 0.1em;
 }
 
 .text-body-lg {
-  font-size: 18px;
-  line-height: 1.9;
+  font-size: 1.125rem;
+  line-height: 1.75;
+  font-weight: 300;
 }
 
 @media (max-width: 768px) {
-  .text-body-lg {
-    font-size: 16px;
-  }
+  .text-body-lg { font-size: 1rem; }
+  .text-hero-display { font-size: clamp(2.6rem, 10vw, 3.8rem); }
+  .text-section-title { font-size: clamp(1.8rem, 6vw, 2.8rem); }
 }
 
-/* Links & Interactive */
-a {
-  color: inherit;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
+a { color: inherit; text-decoration: none; transition: color 0.4s ease; }
+a:hover { color: #C9A84C; }
 
-a:hover {
-  color: #D6C7A8;
-}
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: #050505; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
 
-/* Scrollbar - Minimal */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
+:focus-visible { outline: 2px solid #C9A84C; outline-offset: 3px; }
+::selection { background-color: #C9A84C; color: #050505; }
 
-::-webkit-scrollbar-track {
-  background: #08090A;
-}
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
 
-::-webkit-scrollbar-thumb {
-  background: #2A2A2A;
-  border-radius: 3px;
-}
+.bg-primary { background-color: #050505; }
+.bg-elevated { background-color: #0a0a0a; }
+.bg-secondary { background-color: #111; }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #3A3A3A;
-}
+.min-h-screen { min-height: 100vh; }
+@supports (height: 100dvh) { .min-h-screen { min-height: 100dvh; } }
 
-/* Focus States - Accessible */
-:focus-visible {
-  outline: 2px solid #D6C7A8;
-  outline-offset: 4px;
-}
-
-/* Selection */
-::selection {
-  background-color: #D6C7A8;
-  color: #0A0A0A;
-  text-shadow: 0 0 10px rgba(214, 199, 168, 0.3);
-}
-
-/* Utility Classes */
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-
-.bg-primary {
-  background-color: #08090A;
-}
-
-.bg-elevated {
-  background-color: #111111;
-}
-
-.bg-secondary {
-  background-color: #171717;
-}
-
-.min-h-screen {
-  min-height: 100vh;
-}
-
-@supports (height: 100dvh) {
-  .min-h-screen {
-    min-height: 100dvh;
-  }
-}
-
-@supports not (height: 100dvh) {
-  .min-h-screen {
-    min-height: -webkit-fill-available;
-  }
-}
-
-.text-primary {
-  color: #F3F1EB;
-}
-
-.text-secondary {
-  color: #8B8B8B;
-}
-
-.border-soft {
-  border-color: rgba(255, 255, 255, 0.08);
-}
-
-.accent-ivory {
-  color: #D6C7A8;
-}
-
-.accent-olive {
-  color: #5E6654;
-}
-
-.accent-amber {
-  color: #C9945F;
-}
-
-/* Animation Easing - Slow Confidence */
-.ease-cinematic {
-  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* Reduced Motion */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-  
-  html {
-    scroll-behavior: auto;
-  }
-}
-
-/* Card Background */
-.card-bg {
-  background-color: #111111;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.card-bg:hover {
-  border-color: rgba(255, 255, 255, 0.12);
-  background-color: #171717;
-}
-
-/* Button Styles - Restrained, No Jump */
-.btn-primary {
-  background-color: #D6C7A8;
-  color: #0A0A0A;
-  padding: 1rem 2rem;
-  border-radius: 9999px;
-  font-weight: 500;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  position: relative;
-  overflow: hidden;
-}
-
-.btn-primary::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-  transform: translateX(-100%);
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.btn-primary:hover::before {
-  transform: translateX(100%);
-}
-
-.btn-primary:hover {
-  background-color: #E5D5B8;
-}
-
-.btn-ghost {
-  background-color: transparent;
-  color: #F3F1EB;
-  padding: 1rem 2rem;
-  border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  font-weight: 500;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-.btn-ghost:hover {
-  border-color: rgba(255, 255, 255, 0.3);
-  background-color: rgba(255, 255, 255, 0.03);
-}
-
-/* Section Spacing - Editorial Breathing Room with Rhythm Variation */
+/* SECTION SPACING — Wider, more air */
 .section-padding {
   padding-top: clamp(120px, 14vw, 200px);
   padding-bottom: clamp(120px, 14vw, 200px);
 }
-
-.section-padding-mobile {
+.section-padding-lg {
+  padding-top: clamp(160px, 18vw, 260px);
+  padding-bottom: clamp(160px, 18vw, 260px);
+}
+.section-padding-sm {
   padding-top: clamp(80px, 10vw, 120px);
   padding-bottom: clamp(80px, 10vw, 120px);
 }
 
-@media (min-width: 768px) {
-  .section-padding-mobile {
-    padding-top: clamp(120px, 14vw, 200px);
-    padding-bottom: clamp(120px, 14vw, 200px);
+/* ============================================
+   CARDS — Film frame feel
+   ============================================ */
+.card-bg {
+  background-color: #0a0a0a;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  transition: all 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.card-bg:hover {
+  border-color: rgba(201, 168, 76, 0.15);
+  background-color: #0f0f0f;
+}
+
+/* ============================================
+   BUTTONS — Minimal with gold draw hover
+   ============================================ */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+  background-color: transparent;
+  color: #E8E6E1;
+  padding: 0.9rem 2rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(201, 168, 76, 0.4);
+  font-weight: 400;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(201,168,76,0.12), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.7s ease;
+}
+.btn-primary:hover::before {
+  transform: translateX(100%);
+}
+.btn-primary:hover {
+  background-color: rgba(201, 168, 76, 0.08);
+  border-color: rgba(201, 168, 76, 0.7);
+  color: #C9A84C;
+}
+
+.btn-ghost {
+  position: relative;
+  overflow: hidden;
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.5);
+  padding: 0.9rem 2rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-weight: 400;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.btn-ghost:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* ============================================
+   TAGS — Cinematic, readable
+   ============================================ */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.9rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.55);
+  transition: all 0.4s ease;
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.tag:hover { border-color: #C9A84C; color: #C9A84C; }
+.tag-gold {
+  border-color: rgba(201, 168, 76, 0.3);
+  color: #C9A84C;
+  background: rgba(201, 168, 76, 0.04);
+}
+.tag-teal {
+  border-color: rgba(42, 157, 143, 0.3);
+  color: #2A9D8F;
+  background: rgba(42, 157, 143, 0.04);
+}
+
+/* ============================================
+   ANAMORPHIC FLARE UTILITIES
+   ============================================ */
+.anamorphic-streak {
+  position: absolute;
+  height: 1px;
+  width: 140%;
+  left: -20%;
+  background: linear-gradient(90deg, transparent 0%, rgba(201,168,76,0.12) 25%, rgba(201,168,76,0.25) 50%, rgba(201,168,76,0.12) 75%, transparent 100%);
+  filter: blur(1px);
+  pointer-events: none;
+}
+.anamorphic-streak-strong {
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(201,168,76,0.2) 30%, rgba(201,168,76,0.4) 50%, rgba(201,168,76,0.2) 70%, transparent 100%);
+  filter: blur(2px);
+}
+
+/* LETTERBOX BARS */
+.letterbox::before,
+.letterbox::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  height: 6%;
+  background: #050505;
+  z-index: 20;
+  pointer-events: none;
+}
+.letterbox::before { top: 0; }
+.letterbox::after { bottom: 0; }
+
+/* MASONRY */
+.masonry-grid { column-count: 1; column-gap: 1rem; }
+@media (min-width: 640px) { .masonry-grid { column-count: 2; } }
+.masonry-grid > * { break-inside: avoid; margin-bottom: 1rem; }
+
+/* ============================================
+   IMAGE — Cinematic grade
+   ============================================ */
+.img-cinematic {
+  filter: brightness(0.75) contrast(1.1) saturate(0.6);
+  transition: filter 0.8s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.img-cinematic:hover {
+  filter: brightness(1) contrast(1) saturate(1);
+  transform: scale(1.02);
+}
+
+/* ============================================
+   WATERMARK NUMBERS — Visible enough to be felt
+   ============================================ */
+.watermark-num {
+  font-size: clamp(8rem, 18vw, 16rem);
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.035);
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  font-family: "Vazirmatn", sans-serif;
+}
+[dir="ltr"] .watermark-num { font-family: "Inter", sans-serif; font-weight: 800; }
+
+/* ============================================
+   Reduced Motion — Comprehensive
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+  html { scroll-behavior: auto; }
+  body::before { display: none; }
+  body::after { display: none; }
+  .parallax-layer { transform: none !important; }
+}
+
+/* ============================================
+   Custom Cursor — Enhanced visibility
+   ============================================ */
+.custom-cursor {
+  position: fixed;
+  top: 0; left: 0;
+  z-index: 9999;
+  pointer-events: none;
+  border-radius: 50%;
+  mix-blend-mode: difference;
+}
+.custom-cursor::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+/* ============================================
+   Process Section — Method visualization
+   ============================================ */
+.process-step {
+  position: relative;
+  padding-left: 2rem;
+  border-left: 1px solid rgba(255,255,255,0.06);
+}
+[dir="rtl"] .process-step {
+  padding-left: 0;
+  padding-right: 2rem;
+  border-left: none;
+  border-right: 1px solid rgba(255,255,255,0.06);
+}
+.process-step::before {
+  content: '';
+  position: absolute;
+  left: -3px;
+  top: 0.5rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #C9A84C;
+}
+[dir="rtl"] .process-step::before {
+  left: auto;
+  right: -3px;
+}
+
+/* ============================================
+   Film Frame Hover Effect for Projects
+   ============================================ */
+.film-frame-hover {
+  position: relative;
+}
+.film-frame-hover::before,
+.film-frame-hover::after {
+  content: '';
+  position: absolute;
+  left: 4%; right: 4%;
+  height: 2px;
+  background: rgba(255,255,255,0.15);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 10;
+  pointer-events: none;
+}
+.film-frame-hover::before { top: 4%; }
+.film-frame-hover::after { bottom: 4%; }
+.film-frame-hover:hover::before,
+.film-frame-hover:hover::after {
+  opacity: 1;
+}
+
+/* ============================================
+   MOBILE PERFORMANCE OVERRIDES
+   Remove expensive effects on low-power devices
+   ============================================ */
+
+/* Disable film grain on mobile */
+@media (pointer: coarse) {
+  body::before { display: none; }
+}
+
+/* Reduce vignette intensity on mobile */
+@media (pointer: coarse) {
+  body::after {
+    background: radial-gradient(ellipse at center, transparent 0%, transparent 60%, rgba(0,0,0,0.15) 100%);
   }
 }
 
-/* Mezzo sections - intentional stillness */
-.section-mezzo {
-  padding-top: clamp(160px, 18vw, 180px);
-  padding-bottom: clamp(120px, 18vw, 180px);
+/* Replace backdrop-blur with solid colors on mobile */
+@media (pointer: coarse) {
+  .backdrop-blur-xl,
+  .backdrop-blur-md,
+  .backdrop-blur-sm {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
 }
 
-/* Compressed sections - for rhythm variation */
-.section-compressed {
-  padding-top: clamp(80px, 10vw, 120px);
-  padding-bottom: clamp(80px, 10vw, 120px);
+/* GPU acceleration helpers */
+.gpu-layer {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000;
 }
 
-/* Forte sections - extra breathing room */
-.section-forte {
-  padding-top: clamp(200px, 15vw, 320px);
-  padding-bottom: clamp(160px, 15vw, 320px);
+/* Content visibility for off-screen sections */
+.content-visibility-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 500px;
 }
 
-/* Glass Surface Material */
-.glass-surface {
-  background-color: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05), 0 8px 32px rgba(0, 0, 0, 0.4);
+/* Reduced motion comprehensive */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+  body::before, body::after { display: none !important; }
+  .parallax-layer { transform: none !important; }
+  canvas { display: none !important; }
 }
-
-/* Accent Glow System */
-.accent-glow {
-  box-shadow: 0 0 20px rgba(214, 199, 168, 0.15), 0 0 60px rgba(214, 199, 168, 0.08);
-}
-

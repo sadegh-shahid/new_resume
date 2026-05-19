@@ -1,6 +1,5 @@
 import { motion, AnimatePresence } from "motion/react";
 import { useEffect, useState } from "react";
-import { Logo } from "./Logo";
 
 interface LoadingSequenceProps {
   onComplete: () => void;
@@ -8,28 +7,25 @@ interface LoadingSequenceProps {
 
 export const LoadingSequence = ({ onComplete }: LoadingSequenceProps) => {
   const [isVisible, setIsVisible] = useState(true);
+  const [showName, setShowName] = useState(false);
 
   useEffect(() => {
-    const minDisplayTime = 800; // Show loader at least 800ms (avoids flash)
-    const maxWaitTime = 2500;   // Cap at 2.5s (prevents hanging)
+    // Fast sequence: logo draws (0-600ms), name appears (400-800ms), exit (800ms)
+    const nameTimer = setTimeout(() => setShowName(true), 400);
+    const exitTimer = setTimeout(() => {
+      setIsVisible(false);
+      setTimeout(onComplete, 300); // Exit animation duration
+    }, 800);
 
-    const startTime = Date.now();
-
-    Promise.race([
-      document.fonts.ready,
-      new Promise(resolve => setTimeout(resolve, maxWaitTime))
-    ]).then(() => {
-      const elapsed = Date.now() - startTime;
-      const remaining = Math.max(0, minDisplayTime - elapsed);
-
-      setTimeout(() => {
-        setIsVisible(false);
-        setTimeout(onComplete, 500);
-      }, remaining);
-    });
+    return () => {
+      clearTimeout(nameTimer);
+      clearTimeout(exitTimer);
+    };
   }, [onComplete]);
 
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  // Skip entirely for reduced motion
+  if (typeof window !== "undefined" && 
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     onComplete();
     return null;
   }
@@ -40,56 +36,77 @@ export const LoadingSequence = ({ onComplete }: LoadingSequenceProps) => {
         <motion.div
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
           className="fixed inset-0 z-[100] bg-[#08090A] flex items-center justify-center overflow-hidden"
         >
-          {/* Logo Drawing (0.0s - 0.8s) */}
-          <motion.div
-            initial={{ scale: 1.2, opacity: 0 }}
-            animate={{
-              scale: [1.2, 1.2, 1],
-              opacity: [0, 1, 1],
-              y: [0, 0, -20] // Move up slightly as it scales down
-            }}
-            transition={{
-              duration: 1.4,
-              times: [0, 0.4, 1],
-              ease: "easeInOut"
-            }}
-            className="flex flex-col items-center"
-          >
-            <Logo isDrawing={true} className="w-24 h-24 mb-8" />
+          <div className="flex flex-col items-center">
+            {/* Logo — draws in 600ms */}
+            <motion.svg
+              width="48"
+              height="48"
+              viewBox="0 0 40 40"
+              fill="none"
+              className="mb-6"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.3 }}
+            >
+              <motion.path
+                d="M12 10 L24 10 C28 10 30 13 28 16 L16 24 C12 27 14 30 18 30 L30 30"
+                stroke="#C9A84C"
+                strokeWidth="3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                fill="none"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: 1 }}
+                transition={{ duration: 0.6, ease: "easeInOut", delay: 0.1 }}
+              />
+              <motion.circle
+                cx="10"
+                cy="30"
+                r="3.5"
+                fill="none"
+                stroke="#2A9D8F"
+                strokeWidth="2"
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.2, delay: 0.6 }}
+              />
+            </motion.svg>
 
-            {/* Hero text simulation (0.6s - 2.0s) */}
-            <div className="flex flex-col items-center gap-4 mt-8">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className="h-4 w-64 bg-white/5 rounded-full overflow-hidden relative"
-              >
-                 <motion.div
-                    initial={{ x: "-100%" }}
-                    animate={{ x: "100%" }}
-                    transition={{ delay: 0.6, duration: 1.4, ease: "easeInOut" }}
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-[#D6C7A8]/20 to-transparent"
-                 />
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className="h-4 w-48 bg-white/5 rounded-full overflow-hidden relative"
-              >
+            {/* Name — types in after logo starts */}
+            <AnimatePresence>
+              {showName && (
                 <motion.div
-                    initial={{ x: "-100%" }}
-                    animate={{ x: "100%" }}
-                    transition={{ delay: 1.2, duration: 0.8, ease: "easeInOut" }}
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-[#D6C7A8]/20 to-transparent"
-                 />
-              </motion.div>
-            </div>
-          </motion.div>
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -4 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                  className="flex flex-col items-center"
+                >
+                  <span className="text-[11px] font-light tracking-[0.35em] text-white/50 uppercase">
+                    Sadegh Shahid
+                  </span>
+
+                  {/* Quick progress bar */}
+                  <motion.div 
+                    className="w-16 h-[1px] bg-white/10 rounded-full overflow-hidden mt-3"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.5 }}
+                  >
+                    <motion.div
+                      className="h-full bg-[#C9A84C]/40"
+                      initial={{ width: "0%" }}
+                      animate={{ width: "100%" }}
+                      transition={{ duration: 0.3, delay: 0.5, ease: "easeOut" }}
+                    />
+                  </motion.div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
         </motion.div>
       )}
     </AnimatePresence>

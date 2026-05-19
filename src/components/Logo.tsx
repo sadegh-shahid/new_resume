@@ -1,17 +1,21 @@
-import { motion } from 'motion/react';
+import { motion } from "motion/react";
 
 interface LogoProps {
-  isDrawing?: boolean;
   className?: string;
+  isDrawing?: boolean;
 }
 
-export const Logo = ({ isDrawing = false, className = "w-8 h-8" }: LogoProps) => {
+export const Logo = ({ className = "w-8 h-8", isDrawing = false }: LogoProps) => {
   return (
-    <motion.div
-      className="relative flex items-center justify-center cursor-pointer select-none"
-      whileHover={isDrawing ? undefined : "hover"}
-      initial="initial"
-      animate="animate"
+    <motion.a
+      href="#"
+      onClick={(e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }}
+      className="relative flex items-center justify-center cursor-pointer select-none group"
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
     >
       <svg
         width="32"
@@ -20,63 +24,55 @@ export const Logo = ({ isDrawing = false, className = "w-8 h-8" }: LogoProps) =>
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className={className}
-        aria-label="Sadegh Shahid Logo"
+        aria-label="Sadegh Shahid"
       >
-        {/* Letter S (Shahid) - Secondary, background */}
+        {/* 
+          SAUL BASS-INSPIRED GEOMETRIC S
+          Reduced to 3 points + 1 accent
+          Upper diagonal → curve → lower diagonal
+          The dot is the "start point" — represents the origin of the design process
+        */}
         <motion.path
-          d="M26 13C26 10.7909 24.2091 9 22 9H18C15.7909 9 14 10.7909 14 13V17C14 19.2091 15.7909 21 18 21H22C24.2091 21 26 22.7909 26 25V29C26 31.2091 24.2091 33 22 33H18C15.7909 33 14 31.2091 14 29"
-          stroke="#F3F1EB"
-          strokeOpacity={isDrawing ? 1 : 0.6}
-          strokeWidth={isDrawing ? "2" : "3"}
+          d="M12 10 L24 10 C28 10 30 13 28 16 L16 24 C12 27 14 30 18 30 L30 30"
+          stroke="#C9A84C"
+          strokeWidth="3"
           strokeLinecap="round"
+          strokeLinejoin="round"
           fill="none"
-          variants={{
-            initial: isDrawing ? { pathLength: 0, opacity: 0, x: 1, y: 1 } : { x: 1, y: 1 },
-            animate: isDrawing ? {
-              pathLength: 1,
-              opacity: 1,
-              fill: "rgba(214,199,168,0.02)",
-              transition: {
-                pathLength: { duration: 0.8, ease: "easeInOut" },
-                opacity: { duration: 0.8 },
-                fill: { delay: 0.8, duration: 0.4 }
-              }
-            } : {
-              pathLength: 1,
-              opacity: 1
-            },
-            hover: { x: 3, y: 2 }
+          initial={{ pathLength: 0, opacity: 0 }}
+          animate={{ 
+            pathLength: isDrawing ? [0, 1] : 1, 
+            opacity: 1 
           }}
-          transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+          transition={{ 
+            duration: isDrawing ? 1.0 : 0, 
+            ease: "easeInOut",
+            delay: isDrawing ? 0.2 : 0
+          }}
+          whileHover={{
+            strokeWidth: 4,
+            transition: { duration: 0.3 }
+          }}
         />
 
-        {/* Letter S (Sadegh) - Primary, foreground */}
-        <motion.path
-          d="M24 11C24 8.79086 22.2091 7 20 7H16C13.7909 7 12 8.79086 12 11V15C12 17.2091 13.7909 19 16 19H20C22.2091 19 24 20.7909 24 23V27C24 29.2091 22.2091 31 20 31H16C13.7909 31 12 29.2091 12 27"
-          stroke="#D6C7A8"
-          strokeWidth={isDrawing ? "2" : "3"}
-          strokeLinecap="round"
+        {/* Origin dot — represents the starting point of creation */}
+        <motion.circle
+          cx="10"
+          cy="30"
+          r="3.5"
           fill="none"
-          variants={{
-            initial: isDrawing ? { pathLength: 0, opacity: 0, x: -1, y: -1 } : { x: -1, y: -1 },
-            animate: isDrawing ? {
-              pathLength: 1,
-              opacity: 1,
-              fill: "rgba(214,199,168,0.05)",
-              transition: {
-                pathLength: { duration: 0.8, ease: "easeInOut" },
-                opacity: { duration: 0.8 },
-                fill: { delay: 0.8, duration: 0.4 }
-              }
-            } : {
-              pathLength: 1,
-              opacity: 1
-            },
-            hover: { x: -3, y: -2 }
+          stroke="#2A9D8F"
+          strokeWidth="2"
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.3, delay: isDrawing ? 1.0 : 0.4 }}
+          whileHover={{
+            scale: 1.4,
+            fill: "#2A9D8F",
+            transition: { duration: 0.3 }
           }}
-          transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
         />
       </svg>
-    </motion.div>
+    </motion.a>
   );
 };

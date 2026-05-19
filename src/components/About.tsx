@@ -1,112 +1,110 @@
 import { memo } from "react";
 import { motion } from "motion/react";
 import { portfolioData, Language } from "../data";
-import { WordReveal } from "./WordReveal";
+import { ParallaxLayer } from "./ParallaxLayer";
 
 export const About = memo(({ lang }: { lang: Language }) => {
   const t = portfolioData[lang].about;
-  const capT = portfolioData[lang].capabilities;
   const isFa = lang === "fa";
 
   return (
-    <section
-      id="about"
-      className="px-6 max-w-5xl mx-auto border-t border-white/[0.08] section-mezzo relative mt-[-4rem] z-30"
-    >
-      <div
-        className="hidden md:block absolute -top-8 -left-12 rtl:-left-auto rtl:-right-12 text-[clamp(10rem,20vw,18rem)] font-light text-white/[0.03] leading-none select-none pointer-events-none z-0 overflow-hidden whitespace-nowrap"
-        aria-hidden="true"
-      >
-        {isFa ? "۰۱" : "01"}
+    <section id="about" className="px-6 max-w-6xl mx-auto section-padding relative">
+      <div className={`watermark-num ${isFa ? "-right-4" : "-left-4"} top-0`} aria-hidden="true">
+        {isFa ? "۰۴" : "04"}
       </div>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true, margin: "-50px" }}
-        transition={{ duration: 1.2 }}
-        className="max-w-3xl relative z-10"
-      >
-        <WordReveal
-          text={t.title}
-          className={`text-5xl md:text-6xl font-light mb-24 text-[#F3F1EB] ${isFa ? 'tracking-normal' : 'tracking-tight'}`}
-        />
+      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        {/* Left — Title + floating portrait mark */}
+        <div className="lg:col-span-4">
+          <ParallaxLayer speed={-0.2}>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.2 }}
+              className={`text-section-title text-[#E8E6E1] mb-4 ${isFa ? "" : "tracking-tight"}`}
+            >
+              {t.title}
+            </motion.h2>
+            <motion.div
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, delay: 0.3 }}
+              className="w-12 h-[1px] bg-[#C9A84C] origin-left rtl:origin-right"
+            />
 
-        {/* Capability Blocks - Moved to Top */}
-        <div className="mb-32">
-          <span className="text-xs uppercase tracking-widest text-amber-500 mb-12 block">
-            {isFa ? "چگونه کار می‌کنم" : "How I Work"}
-          </span>
-
-          <div className="relative">
-            <div className="flex md:grid md:grid-cols-2 gap-6 lg:gap-8 overflow-x-auto md:overflow-x-visible snap-x snap-mandatory no-scrollbar pb-8 md:pb-0">
-              {capT.blocks.map((block, index) => (
-                <motion.div
-                  key={block.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-30px" }}
-                  transition={{
-                    duration: 0.8,
-                    ease: [0.16, 1, 0.3, 1],
-                    delay: index * 0.1
-                  }}
-                  className="min-w-[85vw] md:min-w-0 snap-center group p-8 rounded-2xl bg-white/[0.02] border border-white/[0.08] hover:bg-white/[0.03] hover:border-white/[0.12] transition-all duration-500"
-                >
-                  <div className="mb-6 text-amber-500/40">
-                    {index === 0 && <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="10"/></svg>}
-                    {index === 1 && <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>}
-                    {index === 2 && <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/></svg>}
-                    {index === 3 && <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>}
-                  </div>
-                  <h3 className="text-sm font-medium text-[#F3F1EB] mb-3 tracking-wide">
-                    {block.title}
-                  </h3>
-                  <p className="text-xs text-white/60 leading-relaxed">
-                    {block.description}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-
-            <div className="md:hidden absolute right-0 top-0 bottom-8 w-16 bg-gradient-to-l from-[#08090A] to-transparent pointer-events-none rtl:right-auto rtl:left-0 rtl:bg-gradient-to-r" />
-
-            <p className="md:hidden text-center text-[11px] text-white/60 uppercase tracking-widest mt-4 animate-pulse">
-              {isFa ? "→ برای دیدن بیشتر بکشید" : "Swipe to see more →"}
-            </p>
-          </div>
-        </div>
-
-        <div className={`space-y-20 text-[1.1rem] ${isFa ? 'leading-[2.2]' : 'leading-[1.8]'} text-white/80 font-light`}>
-          {t.paragraphs?.map((p, i) => (
-            <motion.p
-              key={i}
+            {/* Floating geometric portrait */}
+            <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              viewport={{ once: true, margin: "-30px" }}
-              transition={{
-                duration: 1,
-                delay: i * 0.1,
-                ease: [0.16, 1, 0.3, 1],
-              }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.5, delay: 0.5 }}
+              className="mt-12 relative"
             >
-              {p}
-            </motion.p>
-          ))}
+              <div className="w-28 h-28 rounded-full border border-white/[0.08] bg-[#0a0a0a] flex items-center justify-center overflow-hidden relative">
+                <span className="text-4xl font-extralight text-[#C9A84C]" style={{ fontFamily: '"Playfair Display", ui-serif, serif' }}>S</span>
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                  className="absolute inset-0 rounded-full border border-[#C9A84C]/10"
+                  style={{ borderStyle: "dashed" }}
+                />
+              </div>
+            </motion.div>
+          </ParallaxLayer>
         </div>
 
-        {/* Signature Line */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, delay: 0.4 }}
-          className="mt-24 pt-8 border-t border-white/[0.08] text-xs tracking-widest text-white/60"
-        >
-          {t.location}
-        </motion.div>
+        {/* Right — Content */}
+        <div className="lg:col-span-8">
+          <ParallaxLayer speed={-0.1}>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.2, delay: 0.1 }}
+              className={`text-lg md:text-xl text-white/70 font-light leading-relaxed ${isFa ? "leading-[1.75] mb-12 prose-persian" : "mb-12 max-w-2xl"}`}
+            >
+              {t.paragraph}
+            </motion.p>
 
-      </motion.div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, delay: 0.4 }}
+            >
+              <span className="cinematic-label block mb-4">
+                {isFa ? "توانایی‌ها" : "Capabilities"}
+              </span>
+              <div className="flex flex-wrap gap-2">
+                {t.capabilities.map((cap, i) => (
+                  <motion.span
+                    key={cap}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.4 + i * 0.06 }}
+                    className="tag tag-gold"
+                  >
+                    {cap}
+                  </motion.span>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.2, delay: 0.6 }}
+              className="mt-12 pt-6 border-t border-white/[0.04] text-xs text-white/45 font-light tracking-widest"
+            >
+              {t.location}
+            </motion.p>
+          </ParallaxLayer>
+        </div>
+      </div>
     </section>
   );
 });
